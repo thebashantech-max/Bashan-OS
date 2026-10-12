@@ -1,0 +1,28 @@
+# Build output and scratch
+build/work/
+build/out/
+build/logs/
+*.iso
+*.iso.sha256
+*.img
+*.squashfs
+
+# Bashan app source/archive: never in git, never in the ISO
+assets/apps/
+
+# Large source assets stay local; only generated branding is tracked
+assets/_extra-copies/
+
+# Secrets
+*.key
+*.pem
+*.gpg
+*.asc
+secrets/
+.env
+.env.*
+
+# Editor / OS noise
+*~
+.*.swp
+.DS_Store
