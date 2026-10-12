@@ -1,0 +1,19 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Bashan
+GenericName=Bashan App
+Comment=The Bashan web app in its own window
+# Brave in app mode: no tabs, no address bar, its own window.
+# IMPORTANT: the binary is brave-browser-stable. Brave's deb does NOT ship a
+# /usr/bin/brave-browser symlink, so that name would silently fail.
+# --class gives this window its own WM_CLASS so Plasma treats it as a separate
+# application instead of grouping it with Brave (whose class is brave-browser).
+Exec=/usr/bin/brave-browser-stable --app=https://bashan.app --class=bashan-app
+Icon=bashan-app
+Terminal=false
+StartupNotify=true
+StartupWMClass=bashan-app
+Categories=Network;WebBrowser;
+Keywords=Bashan;
+# Translations for all 13 shipped languages are added in Stage 8.

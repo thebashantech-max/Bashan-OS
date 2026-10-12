@@ -14,9 +14,36 @@ repo and signing key are preconfigured, but the `.deb` is **not** baked into the
 ISO; the user installs it on first boot or through Discover. The dock keeps its
 Chrome slot.
 
-**Bashan app** — a Brave app-mode wrapper: a `.desktop` launching
-`--app=https://bashan.app`, owner's logo as icon, its own WM class. No Electron,
-no Tauri. The app zip, its source and any keys never enter git or the ISO.
+**Bashan app** — a Brave app-mode wrapper. No Electron, no Tauri, no extra
+runtime: it is one `.desktop` file plus nine PNG icons, and it reuses the Brave
+that is already installed. The app zip, its source and any keys never enter git
+or the ISO (`assets/apps/` is gitignored and nothing reads it).
+
+Built at Stage 5:
+
+| File | Purpose |
+|---|---|
+| `apps/rootfs/usr/share/applications/bashan-app.desktop` | the launcher |
+| `apps/rootfs/usr/share/icons/hicolor/<size>/apps/bashan-app.png` | 9 sizes, 16-512 px |
+| `scripts/20-bashan-app-icons.py` | regenerates the icons from the source logo |
+
+```
+Exec=/usr/bin/brave-browser-stable --app=https://bashan.app --class=bashan-app
+StartupWMClass=bashan-app
+```
+
+**The binary is `brave-browser-stable`.** Brave's deb ships no
+`/usr/bin/brave-browser` symlink; verified by unpacking the 1.97.56 package.
+Using the shorter name would have produced a launcher that silently does
+nothing.
+
+**`--class=bashan-app`** gives the window its own `WM_CLASS`. Brave's own class
+is `brave-browser`, so without this the Bashan app would be grouped under
+Brave's dock icon instead of getting its own. Still to verify with `xprop` in a
+real session at Stage 9: that Chromium applies the class exactly as given.
+
+No `--user-data-dir`: the app shares the normal Brave profile, so the user
+stays signed in and there is no second browser profile on disk.
 
 **Viewers / editors** — Okular, Gwenview, Spectacle, Kate, Ark, calculator,
 camera app.

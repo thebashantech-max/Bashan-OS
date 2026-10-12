@@ -69,10 +69,14 @@ for f in "$ROOT"/hooks/chroot/*.hook.chroot; do
   install -m 0755 -v "$f" config/hooks/normal/
 done
 
-echo "I: rootfs overlay"
-if [ -d "$ROOT/hooks/rootfs" ]; then
-  cp -a "$ROOT/hooks/rootfs/." config/includes.chroot/
-  find config/includes.chroot -type f | sed 's|^config/includes.chroot|  /|'
-fi
+# Two overlay sources, both copied verbatim into the image:
+#   hooks/rootfs  - system tuning and defaults
+#   apps/rootfs   - the Bashan app wrapper and its icons
+echo "I: rootfs overlays"
+for src in "$ROOT/hooks/rootfs" "$ROOT/apps/rootfs"; do
+  [ -d "$src" ] || continue
+  cp -a "$src/." config/includes.chroot/
+done
+find config/includes.chroot -type f | sed 's|^config/includes.chroot|  /|' | sort
 
 echo "I: live-build tree ready"

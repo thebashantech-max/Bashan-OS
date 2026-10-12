@@ -4,6 +4,24 @@ All notable changes to the build pipeline. Newest first.
 
 ## [Unreleased]
 
+### Stage 5 — 2026-10-12
+- Added the Bashan app wrapper: `bashan-app.desktop` (Brave app mode,
+  `--app=https://bashan.app`, own WM class `bashan-app`), validated with
+  `desktop-file-validate`.
+- Added `scripts/20-bashan-app-icons.py`, generating 9 icon sizes (16-512 px)
+  from `assets/branding/logo-source.jpg` with alpha derived from brightness so
+  the cyan glow survives as a halo.
+- **Verified by unpacking the Brave 1.97.56 deb: there is no
+  `/usr/bin/brave-browser`, only `/usr/bin/brave-browser-stable`.** The
+  launcher uses the correct name.
+- Recorded measured limits of the source logo: real artwork is 374x532, so
+  512 px is the clean ceiling. Documented in docs/DESIGN.md.
+- Recorded the dock pinned order with verified desktop IDs, and flagged that
+  the Chrome slot cannot render until Chrome is installed.
+- `scripts/10-lb-config.sh` now also copies `apps/rootfs/` into the image.
+- `assets/apps/bashan-app.zip` untouched, still gitignored, absent from the
+  build tree.
+
 ### Stage 4 — 2026-10-12
 - Added eight package lists: desktop (Plasma 6 minimal), firmware, browsers,
   apps, office, system-tools, fonts, i18n. 166 names total.
