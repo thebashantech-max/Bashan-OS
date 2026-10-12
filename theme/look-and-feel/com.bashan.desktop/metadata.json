@@ -1,0 +1,16 @@
+{
+    "KPlugin": {
+        "Id": "com.bashan.desktop",
+        "Name": "Bashan",
+        "Description": "The Bashan OS desktop look and feel",
+        "Authors": [
+            {
+                "Name": "Bashan Tech LLC"
+            }
+        ],
+        "License": "Proprietary",
+        "Version": "1.0",
+        "Website": "https://bashan.app"
+    },
+    "KPackageStructure": "Plasma/LookAndFeel"
+}

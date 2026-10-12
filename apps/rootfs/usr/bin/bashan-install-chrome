@@ -1,0 +1,57 @@
+#!/bin/sh
+# Bashan OS — install Google Chrome on demand, for a non-technical user.
+# Asks first, shows progress, and explains any failure in plain words.
+set -u
+
+TITLE="Install Google Chrome"
+
+if command -v kdialog >/dev/null 2>&1; then
+    ask()  { kdialog --title "$TITLE" --yesno "$1"; }
+    note() { kdialog --title "$TITLE" --msgbox "$1"; }
+    oops() { kdialog --title "$TITLE" --error "$1"; }
+    busy() { kdialog --title "$TITLE" --passivepopup "$1" 20 >/dev/null 2>&1; }
+else
+    ask()  { return 0; }
+    note() { echo "$1"; }
+    oops() { echo "$1" >&2; }
+    busy() { echo "$1"; }
+fi
+
+if [ -x /usr/bin/google-chrome-stable ]; then
+    note "Google Chrome is already installed."
+    exec /usr/bin/google-chrome-stable
+fi
+
+ask "Google Chrome is not installed yet.
+
+It will be downloaded from Google and installed on this computer. This needs
+about 400 MB of space and an internet connection, and usually takes a few
+minutes.
+
+You will be asked for your password.
+
+Install Google Chrome now?" || exit 0
+
+busy "Installing Google Chrome. This can take a few minutes — you can keep working."
+
+err=$(pkexec /usr/libexec/bashan/chrome-install 2>&1)
+rc=$?
+
+if [ "$rc" -eq 0 ] && [ -x /usr/bin/google-chrome-stable ]; then
+    note "Google Chrome is installed and ready to use."
+    exec /usr/bin/google-chrome-stable
+fi
+
+case "$rc" in
+    126|127) oops "Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed. You can try again at any time." ;;
+    *)       oops "Google Chrome could not be installed.
+
+The most common reason is no internet connection. Please check your
+connection and try again.
+
+Technical detail:
+$err" ;;
+esac
+exit 1

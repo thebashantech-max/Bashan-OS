@@ -31,5 +31,12 @@ nvidia-detect
 # Passwords/keys used by the desktop
 kwalletmanager
 
+# Needed by the Chrome placeholder launcher: kdialog draws the confirmation
+# and result boxes, pkexec runs the install as root, and the KDE polkit agent
+# is what actually shows the password prompt (without it pkexec has no GUI).
+kdialog
+pkexec
+polkit-kde-agent-1
+
 # System information banner
 fastfetch

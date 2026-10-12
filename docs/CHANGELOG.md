@@ -4,6 +4,29 @@ All notable changes to the build pipeline. Newest first.
 
 ## [Unreleased]
 
+### Stage 6 — 2026-10-12
+- Added `theme/palette.json`, 24 design tokens. Accent sampled from the
+  logo's cyan glow (hue 189).
+- Added procedural wallpapers: 4K, 1080p and a darker login variant, from
+  ridged fractal noise with perspective-correct frequency and dithering.
+  Peak render memory measured at 621 MB.
+- Added trash icons in two variants (A faithful, B text-free), 8 sizes each,
+  extracted from the reference with a rounded-tile mask and component-based
+  text removal. `TRASH_VARIANT` in `config/build.conf` selects one.
+- Added the `Bashan` colour scheme, the `com.bashan.desktop` look-and-feel
+  package with the dock layout, and icon theme indexes inheriting
+  breeze-dark.
+- Added the glowing `bashan-launcher` icon.
+- Added the Google Chrome placeholder launcher and
+  `/usr/bin/bashan-install-chrome`, with confirmation, progress and
+  plain-language errors. Added `kdialog`, `pkexec`, `polkit-kde-agent-1`.
+- Added `/etc/xdg/kdeglobals` so new accounts come up in the Bashan look.
+- `scripts/10-lb-config.sh` now assembles the theme and picks the trash
+  variant.
+- All plasmoid ids verified against the Debian packages that ship them.
+- Previews in `build/previews/`. **Mockups, not screenshots** — nothing has
+  run Plasma yet.
+
 ### Stage 5 — 2026-10-12
 - Added the Bashan app wrapper: `bashan-app.desktop` (Brave app mode,
   `--app=https://bashan.app`, own WM class `bashan-app`), validated with

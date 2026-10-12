@@ -99,6 +99,89 @@ and it has an existing operating system on it.
 
 `os-prober` is already in `packages/base.list.chroot` for this reason.
 
+## Built at Stage 6
+
+Everything below is generated from `theme/palette.json`. Change a colour
+there and the wallpaper, colour scheme and dock follow.
+
+| Script | Produces |
+|---|---|
+| `scripts/21-trash-icons.py` | trash icons, both variants, 8 sizes each |
+| `scripts/22-wallpaper.py` | 4K, 1080p and login wallpapers |
+| `scripts/23-theme-package.py` | colour scheme, look-and-feel package, icon theme indexes |
+| `scripts/24-previews.py` | the approval previews in `build/previews/` |
+| `scripts/20-bashan-app-icons.py` | app icon and the glowing launcher icon |
+
+### Palette
+
+Accent `#22d3ee`, hue 189 degrees, **sampled from the cyan glow in
+`logo-source.jpg`** (measured mean of cyan-dominant pixels, brightest
+decile `#0e737b`), not chosen by eye. Mint `#5eead4` for the dock's active
+indicator. 24 tokens in `theme/palette.json`.
+
+### Wallpaper
+
+Fully procedural, no source image and nothing to license. A sky gradient, a
+cyan bloom on the horizon, then six ridge layers of 1-D fractal noise.
+
+Two things that matter:
+  * **Ridged noise.** Plain fractal noise gives rolling hills. Folding each
+    octave around its midpoint gives sharp crests, which is what reads as
+    mountains.
+  * **Perspective frequency.** A distant range packs many small peaks into
+    the same screen width; a near one shows few large ones. Roughness falls
+    and amplitude rises as ranges come forward. Doing it the other way round
+    looks like waves.
+
+Dithered before the 8-bit save: a dark smooth gradient bands visibly without
+it, on exactly the sort of panel this ships to. `SEED` fixes the range, so
+rebuilds are identical.
+
+Measured peak memory for the 4K render: **621 MB**.
+
+### Icon theme
+
+`Bashan`, inheriting `breeze-dark`. It overrides only the trash states;
+everything else falls through to Breeze. Both trash variants are generated
+and `TRASH_VARIANT` in `config/build.conf` picks which one ships.
+
+Extracting the trash art needed three attempts and the reasoning is worth
+keeping: the reference's rounded tile is a presentation device, so it is
+masked off by its actual rounded-rectangle shape (a uniform inset clips the
+glass where it reaches toward an edge). Alpha comes from brightness, which
+is what makes glass read as glass. The Arabic text is removed by labelling
+every bright shape in the region and erasing only those touching no edge —
+the rim and the contents run off an edge and survive, the glyphs float free
+and go. A rectangular patch or a per-column rim estimate both destroy the
+rim.
+
+### Dock
+
+A floating pill, centred, `lengthMode = fit`, 60 px tall, 18 px clear of the
+screen edge. Plasma 6 draws the blur and 1 px border once `floating` is on.
+Every plasmoid id in the layout was read out of the Debian packages that
+ship them, not guessed.
+
+**One decision taken, flagged for approval:** the brief lists only the seven
+pinned items, but a laptop needs battery, wi-fi, volume and bluetooth
+indicators somewhere. Rather than add a second panel (more RAM, more
+clutter), the system tray and a compact clock sit at the right end of the
+same pill, behind a divider. Say the word and they move.
+
+### Chrome placeholder
+
+`/usr/share/applications/google-chrome.desktop` is shipped as a placeholder
+whose `Exec` is `/usr/bin/bashan-install-chrome`. That script asks for
+confirmation in plain words, states the download size and that a password
+will be needed, runs the install through `pkexec`, and reports success or a
+plain-language failure. The root half deletes the placeholder immediately
+before `apt-get install`, so the real Chrome entry lands on the same path
+and the same dock pin with no handover step and no dpkg file conflict.
+
+Needs `kdialog`, `pkexec` and `polkit-kde-agent-1`, all added to the
+system-tools list. Without the polkit agent there is no graphical password
+prompt at all.
+
 ## Open
 
 - Trash icon: variant A (faithful to reference, keeps baked-in Arabic text) vs

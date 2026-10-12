@@ -1,0 +1,15 @@
+# Bashan OS — system-wide KDE defaults.
+# This is what makes a brand new user account come up in the Bashan look
+# instead of stock Breeze: Plasma reads LookAndFeelPackage on first start,
+# finds no existing panel config, and applies the Bashan layout from
+# /usr/share/plasma/look-and-feel/com.bashan.desktop/.
+[KDE]
+LookAndFeelPackage=com.bashan.desktop
+widgetStyle=Breeze
+
+[General]
+ColorScheme=Bashan
+AccentColor=#22d3ee
+
+[Icons]
+Theme=Bashan

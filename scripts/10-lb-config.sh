@@ -69,14 +69,38 @@ for f in "$ROOT"/hooks/chroot/*.hook.chroot; do
   install -m 0755 -v "$f" config/hooks/normal/
 done
 
-# Two overlay sources, both copied verbatim into the image:
+# Overlay sources copied verbatim into the image:
 #   hooks/rootfs  - system tuning and defaults
-#   apps/rootfs   - the Bashan app wrapper and its icons
+#   apps/rootfs   - the Bashan app wrapper, Chrome placeholder, icons
 echo "I: rootfs overlays"
 for src in "$ROOT/hooks/rootfs" "$ROOT/apps/rootfs"; do
   [ -d "$src" ] || continue
   cp -a "$src/." config/includes.chroot/
 done
+
+# --- theme -------------------------------------------------------------
+# Assembled rather than copied, because the trash icon variant is a choice.
+echo "I: theme (trash variant ${TRASH_VARIANT:-B})"
+inc="config/includes.chroot/usr/share"
+mkdir -p "$inc/wallpapers/Bashan/contents/images" "$inc/color-schemes" \
+         "$inc/plasma/look-and-feel" "$inc/icons"
+
+cp -a "$ROOT"/theme/wallpapers/*.png "$inc/wallpapers/Bashan/contents/images/"
+# Plasma looks for the wallpaper by its pixel dimensions.
+cp -a "$ROOT/theme/wallpapers/bashan-ridge-3840x2160.png" \
+      "$inc/wallpapers/Bashan/contents/images/3840x2160.png"
+cp -a "$ROOT/theme/wallpapers/bashan-ridge-1920x1080.png" \
+      "$inc/wallpapers/Bashan/contents/images/1920x1080.png"
+cp -a "$ROOT/theme/color-schemes/Bashan.colors" "$inc/color-schemes/"
+cp -a "$ROOT/theme/look-and-feel/com.bashan.desktop" "$inc/plasma/look-and-feel/"
+
+variant="$ROOT/theme/icons/Bashan-${TRASH_VARIANT:-B}"
+if [ ! -d "$variant" ]; then
+  echo "E: unknown TRASH_VARIANT '${TRASH_VARIANT:-}' (expected A or B)" >&2
+  exit 1
+fi
+rm -rf "$inc/icons/Bashan"
+cp -a "$variant" "$inc/icons/Bashan"
 find config/includes.chroot -type f | sed 's|^config/includes.chroot|  /|' | sort
 
 echo "I: live-build tree ready"

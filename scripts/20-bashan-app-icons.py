@@ -15,13 +15,19 @@ import sys
 from pathlib import Path
 
 import numpy as np
-from PIL import Image, ImageFilter
+from PIL import Image, ImageChops, ImageFilter
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "assets/branding/logo-source.jpg"
 OUT = ROOT / "apps/rootfs/usr/share/icons/hicolor"
 NAME = "bashan-app"
+LAUNCHER = "bashan-launcher"
 SIZES = (16, 22, 24, 32, 48, 64, 128, 256, 512)
+# Extra cyan bloom behind the dock launcher button, from the palette accent.
+GLOW_RGB = (34, 211, 238)
+GLOW_RADIUS = 0.10
+GLOW_STRENGTH = 1.0
+GLOW_PASSES = 3
 
 # Below this brightness a pixel is background, not artwork.
 CONTENT_THRESHOLD = 8
@@ -60,12 +66,25 @@ def build_rgba(src: Path) -> Image.Image:
     return canvas
 
 
-def main() -> None:
-    if not SRC.exists():
-        sys.exit(f"E: missing source logo {SRC}")
-    art = build_rgba(SRC)
-    print(f"I: source {SRC.name}, artwork cropped to {art.size[0]}x{art.size[1]} square")
+def add_glow(art: Image.Image) -> Image.Image:
+    """Cyan bloom behind the mark, for the dock launcher button."""
+    side = art.size[0]
+    halo = art.getchannel("A").filter(
+        ImageFilter.GaussianBlur(max(1, int(side * GLOW_RADIUS))))
+    if GLOW_STRENGTH < 1.0:
+        halo = ImageChops.multiply(
+            halo, Image.new("L", art.size, int(255 * GLOW_STRENGTH)))
+    glow = Image.new("RGBA", art.size, GLOW_RGB + (0,))
+    glow.putalpha(halo)
+    # Stack the bloom so it still reads at 48 px on a dark dock; a single
+    # pass washes out completely at that size.
+    out = glow
+    for _ in range(GLOW_PASSES - 1):
+        out = Image.alpha_composite(out, glow)
+    return Image.alpha_composite(out, art)
 
+
+def emit(art: Image.Image, name: str) -> None:
     for size in SIZES:
         icon = art.resize((size, size), Image.LANCZOS)
         # Detail is lost below ~48px; a light sharpen keeps the silhouette
@@ -74,9 +93,18 @@ def main() -> None:
             icon = icon.filter(ImageFilter.UnsharpMask(radius=1, percent=80, threshold=2))
         d = OUT / f"{size}x{size}" / "apps"
         d.mkdir(parents=True, exist_ok=True)
-        path = d / f"{NAME}.png"
-        icon.save(path, "PNG", optimize=True)
-        print(f"   {size:>3}x{size:<3} -> {path.relative_to(ROOT)}  ({path.stat().st_size} B)")
+        icon.save(d / f"{name}.png", "PNG", optimize=True)
+    print(f"   {name}: {len(SIZES)} sizes")
+
+
+def main() -> None:
+    if not SRC.exists():
+        sys.exit(f"E: missing source logo {SRC}")
+    art = build_rgba(SRC)
+    print(f"I: source {SRC.name}, artwork cropped to {art.size[0]}x{art.size[1]} square")
+
+    emit(art, NAME)
+    emit(add_glow(art), LAUNCHER)
 
     native = max(art.size)
     if native < 512:

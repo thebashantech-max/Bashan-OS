@@ -1,0 +1,12 @@
+#!/bin/sh
+# Bashan OS — root half of the Chrome installer. Invoked through pkexec by
+# /usr/bin/bashan-install-chrome; not meant to be run directly.
+set -eu
+
+# Remove our placeholder launcher first, so dpkg never has to overwrite an
+# unowned file and the real Chrome entry lands cleanly on the same dock pin.
+rm -f /usr/share/applications/google-chrome.desktop
+
+export DEBIAN_FRONTEND=noninteractive
+apt-get update
+apt-get install -y google-chrome-stable

@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Google Chrome
+GenericName=Web Browser
+Comment=Not installed yet — click to install Google Chrome
+# PLACEHOLDER. Bashan OS ships Google's apt repository but not the Chrome
+# package, so this entry holds the dock slot and installs Chrome on click.
+# It deliberately lives at the same path the real google-chrome.desktop uses:
+# the installer removes this file immediately before apt installs Chrome, so
+# the real entry takes over the same dock pin with no further action.
+Exec=/usr/bin/bashan-install-chrome
+Icon=google-chrome
+Terminal=false
+StartupNotify=true
+Categories=Network;WebBrowser;
+Keywords=chrome;browser;google;
