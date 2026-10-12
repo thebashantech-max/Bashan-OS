@@ -349,3 +349,54 @@ confirmed**, so:
   build** with an explanation. Tested: the build does refuse.
 * `INCLUDE_BOOT_SONG=no` omits the audio and still holds the splash, so a
   clean public build looks identical minus the sound.
+
+
+## Stage 7B — the Calamares installer
+
+Config lives in `installer/` and is copied into the ISO by
+`scripts/10-lb-config.sh`:
+
+| Source | Installed to |
+|---|---|
+| `installer/settings.conf` | `/etc/calamares/settings.conf` |
+| `installer/modules/*.conf` | `/etc/calamares/modules/` |
+| `installer/branding/bashan/` | `/usr/share/calamares/branding/bashan/` |
+
+All 14 YAML files are parse-checked in the container; the check also asserts
+the two safety settings below are what they claim to be.
+
+The installer is launched from the live desktop by
+`install-bashan-os.desktop`, which runs `pkexec calamares` — a graphical
+password prompt rather than a terminal. The `packages` module removes
+Calamares during install, so neither it nor that icon reaches the user's
+disk.
+
+### The four binding safety rules, and what implements each
+
+| Rule (docs/DESIGN.md) | Implementation |
+|---|---|
+| No disk wiped without a confirmation naming the drive and its contents | The `summary` page runs before any `exec` step. It names the device, its size, and the OS found on it, then lists every operation. On top of that, `prompt-install: true` raises a second "are you sure" dialog. Two confirmations, and nothing is written before both. |
+| Dual boot offered as a visible first-class option | Calamares shows "Install alongside" as a plain radio button on the main disk page whenever `os-prober` finds another OS. `allowManualPartitioning: true` keeps the expert route available, but it is a peer option, not the only way to avoid erasing. |
+| The destructive choice is never pre-selected | `initialPartitioningChoice: none`. This is the single most important line in the installer config: with any other value Calamares arrives with an option already chosen, and "erase" pre-selected is exactly how a disk gets wiped by somebody pressing Next. With `none`, Next stays disabled until a deliberate choice is made. |
+| os-prober used so GRUB finds Windows or Linux | `os-prober` is in both `base.list.chroot` and `installer.list.chroot`, and `grubcfg.conf` sets `GRUB_DISABLE_OS_PROBER: false` on the installed system. |
+
+### Secure Boot on the installed system
+
+`bootloader.conf` sets `efiBootLoader: grub` and `efiBootloaderId: Bashan`.
+Debian's `grub-install` installs the signed GRUB and the Microsoft-signed
+shim automatically when `grub-efi-amd64-signed` and `shim-signed` are
+present in the target — and they are, because they are in
+`base.list.chroot` and the target is an unpack of the live filesystem.
+
+`installEFIFallback: true` also writes the removable-media fallback path.
+Some firmware ignores NVRAM boot entries; without the fallback a disk can
+boot on the test machine and not on the target.
+
+### Readability
+
+`branding/bashan/stylesheet.qss` raises the base font above the Calamares
+default throughout, and makes the first screen's language list larger still
+(16 pt, 44 px rows) because that is the screen a non-technical user meets
+first. The destructive disk option is styled in red; it is also the only
+one whose description spells out, in words, that the change cannot be
+undone.

@@ -1,0 +1,17 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Install Bashan OS
+GenericName=System Installer
+Comment=Copy Bashan OS onto this computer
+# pkexec, not sudo: it shows a proper password window instead of needing a
+# terminal. The polkit rule comes from the calamares package itself.
+# This launcher exists only on the live ISO; the installed system removes
+# Calamares, and with it any reason for this icon to appear.
+Exec=pkexec calamares
+Icon=bashan-launcher
+Terminal=false
+StartupNotify=true
+Categories=System;
+NoDisplay=false
+Keywords=install;installer;setup;

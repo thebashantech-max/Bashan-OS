@@ -1,0 +1,40 @@
+# Bashan OS installer branding. Publisher: Bashan Tech LLC.
+---
+componentName: bashan
+
+welcomeStyleCalamares: false
+welcomeExpandingLogo:  true
+
+windowExpanding: normal
+windowSize:      920px,620px
+windowPlacement: center
+
+strings:
+    productName:            "Bashan OS"
+    shortProductName:       "Bashan"
+    version:                "1.0"
+    shortVersion:           "1.0"
+    versionedName:          "Bashan OS 1.0"
+    shortVersionedName:     "Bashan 1.0"
+    bootloaderEntryName:    "Bashan OS"
+    productUrl:             "https://bashan.app"
+    supportUrl:             "https://bashan.app"
+    knownIssuesUrl:         "https://bashan.app"
+    releaseNotesUrl:        "https://bashan.app"
+    donateUrl:              ""
+
+images:
+    productBanner:  "banner.png"
+    productIcon:    "logo.png"
+    productLogo:    "logo.png"
+    productWelcome: "welcome.png"
+
+slideshow:            "show.qml"
+slideshowAPI:         2
+
+style:
+   SidebarBackground:         "#0b1018"
+   SidebarText:               "#8aa0bd"
+   SidebarTextCurrentBackground: "#0e737b"
+   SidebarTextSelect:         "#e6f0fa"
+   SidebarTextHighlight:      "#22d3ee"

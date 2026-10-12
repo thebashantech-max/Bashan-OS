@@ -1,0 +1,20 @@
+## Bashan OS — the Calamares installer, present on the live ISO only.
+## The packages module removes Calamares from the installed system, so none
+## of this ends up on the user's disk.
+
+calamares
+
+# Calamares 3.3 is Qt6; its slideshow and pages need the Qt6 QML runtime.
+qml6-module-qtquick
+qml6-module-qtquick-controls
+qml6-module-qtquick-layouts
+qml6-module-qtquick-window
+qml6-module-qtqml
+
+# Copying the live filesystem onto the target disk
+squashfs-tools
+rsync
+
+# Detects an existing Windows or Linux so dual boot can be offered.
+# Also in base.list.chroot, because GRUB needs it after install too.
+os-prober

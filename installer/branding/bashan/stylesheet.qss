@@ -1,0 +1,104 @@
+/* Bashan OS installer styling.
+ *
+ * The point of this file is legibility. The intended user is not technical
+ * and may not have perfect eyesight, so the base font is larger than
+ * Calamares' default throughout, and the language list on the first screen
+ * is larger still with generously tall rows that are easy to hit.
+ */
+
+#mainApp {
+    background-color: #0b1018;
+    color: #e6f0fa;
+    font-size: 11pt;
+}
+
+QWidget {
+    color: #e6f0fa;
+    font-size: 11pt;
+}
+
+/* First screen: language choice. Deliberately oversized. */
+#welcomeText, #mainText {
+    font-size: 15pt;
+    color: #e6f0fa;
+}
+
+#languageWidget, #languageWidget QComboBox {
+    font-size: 16pt;
+    min-height: 44px;
+}
+
+QComboBox {
+    background-color: #121a28;
+    border: 1px solid #2a3a52;
+    border-radius: 8px;
+    padding: 8px 12px;
+    min-height: 34px;
+}
+QComboBox QAbstractItemView {
+    background-color: #121a28;
+    selection-background-color: #0e737b;
+    selection-color: #e6f0fa;
+    border: 1px solid #2a3a52;
+}
+
+QPushButton {
+    background-color: #182234;
+    border: 1px solid #2a3a52;
+    border-radius: 8px;
+    padding: 9px 20px;
+    min-height: 34px;
+    font-size: 11pt;
+}
+QPushButton:hover    { border-color: #3a4d6b; }
+QPushButton:default  { background-color: #0e737b; border-color: #22d3ee; }
+QPushButton:disabled { color: #5a6e8c; }
+
+QLineEdit {
+    background-color: #070b12;
+    border: 1px solid #2a3a52;
+    border-radius: 8px;
+    padding: 8px 10px;
+    min-height: 32px;
+}
+QLineEdit:focus { border-color: #22d3ee; }
+
+/* Disk choices. The destructive one is marked in red so it cannot be
+   mistaken for a safe default - it is never pre-selected either. */
+QRadioButton, QCheckBox {
+    font-size: 12pt;
+    padding: 6px 2px;
+    spacing: 10px;
+}
+QRadioButton::indicator, QCheckBox::indicator {
+    width: 20px;
+    height: 20px;
+}
+
+QGroupBox {
+    border: 1px solid #223049;
+    border-radius: 10px;
+    margin-top: 14px;
+    padding-top: 10px;
+}
+QGroupBox::title { color: #22d3ee; subcontrol-origin: margin; left: 12px; }
+
+QProgressBar {
+    background-color: #070b12;
+    border: 1px solid #2a3a52;
+    border-radius: 7px;
+    height: 14px;
+    text-align: center;
+}
+QProgressBar::chunk { background-color: #0e737b; border-radius: 6px; }
+
+QTreeView, QListView, QTableView {
+    background-color: #070b12;
+    alternate-background-color: #0b1018;
+    border: 1px solid #2a3a52;
+    border-radius: 8px;
+}
+QTreeView::item:selected, QListView::item:selected {
+    background-color: #0e737b;
+    color: #e6f0fa;
+}

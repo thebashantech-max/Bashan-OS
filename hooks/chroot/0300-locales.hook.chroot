@@ -1,0 +1,15 @@
+#!/bin/sh
+# Bashan OS — generate the 13 shipped locales into the image, so the
+# installer's language list is populated and a user can switch language
+# after install without a network connection.
+set -e
+
+if command -v locale-gen >/dev/null 2>&1; then
+    locale-gen
+    echo "I: generated $(locale -a 2>/dev/null | grep -c . ) locales"
+fi
+
+# System default until the installer or the user chooses otherwise.
+if command -v update-locale >/dev/null 2>&1; then
+    update-locale LANG=en_US.UTF-8
+fi

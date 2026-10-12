@@ -109,6 +109,24 @@ def main() -> None:
     art.resize((160, 160), Image.LANCZOS).save(sd / "logo.png", optimize=True)
     print("   sddm: background.png, logo.png")
 
+    # ---- Calamares installer --------------------------------------------
+    ins = ROOT / "installer/branding/bashan"
+    ins.mkdir(parents=True, exist_ok=True)
+    art.resize((160, 160), Image.LANCZOS).save(ins / "logo.png", optimize=True)
+    art.resize((300, 300), Image.LANCZOS).save(ins / "welcome.png", optimize=True)
+
+    banner = scene(920, 140, 0.7)
+    bl = art.resize((104, 104), Image.LANCZOS)
+    banner = banner.convert("RGBA")
+    banner.alpha_composite(bl, (28, 18))
+    d = ImageDraw.Draw(banner)
+    d.text((152, 48), "Bashan OS", fill=c("text"))
+    d.text((152, 74), "Bashan Tech LLC", fill=c("text_faint"))
+    banner.convert("RGB").save(ins / "banner.png", optimize=True)
+
+    scene(1024, 640, 0.80).save(ins / "slide-bg.png", optimize=True)
+    print("   installer: logo.png, welcome.png, banner.png, slide-bg.png")
+
     # ---- report the scaling behaviour ------------------------------------
     print("\n   Plymouth logo, by panel (artwork size excludes the glow halo):")
     for name, h in (("1366x768", 768), ("1920x1080", 1080),

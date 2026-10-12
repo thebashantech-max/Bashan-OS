@@ -161,6 +161,15 @@ else
   echo "I: boot song omitted (INCLUDE_BOOT_SONG=no); splash still holds"
 fi
 
+# --- Calamares installer -----------------------------------------------
+# Lives on the live ISO only: the packages module removes Calamares during
+# install, so none of this reaches the user's disk.
+echo "I: calamares installer"
+mkdir -p config/includes.chroot/etc/calamares/modules "$inc/calamares/branding"
+cp -a "$ROOT/installer/settings.conf" config/includes.chroot/etc/calamares/
+cp -a "$ROOT"/installer/modules/*.conf config/includes.chroot/etc/calamares/modules/
+cp -a "$ROOT/installer/branding/bashan" "$inc/calamares/branding/"
+
 variant="$ROOT/theme/icons/Bashan-${TRASH_VARIANT:-B}"
 if [ ! -d "$variant" ]; then
   echo "E: unknown TRASH_VARIANT '${TRASH_VARIANT:-}' (expected A or B)" >&2

@@ -4,6 +4,29 @@ All notable changes to the build pipeline. Newest first.
 
 ## [Unreleased]
 
+### Stage 7B — 2026-10-12
+- Added the Calamares installer: `settings.conf`, 12 module configs and the
+  Bashan branding (descriptor, four-slide QML slideshow, large-text
+  stylesheet, generated artwork). All 14 YAML files parse-checked.
+- Safety rules implemented and asserted: `initialPartitioningChoice: none`
+  so nothing destructive is pre-selected, `prompt-install: true` for a
+  second confirmation on top of the summary page, os-prober on for dual
+  boot, and the erase option styled in red with plain-words consequences.
+- Secure Boot carried through to the installed system via
+  `efiBootloaderId` plus the signed packages already in the base list;
+  `installEFIFallback: true` for firmware that ignores NVRAM entries.
+- Added `packages/installer.list.chroot` (Calamares plus the Qt6 QML
+  runtime it needs) and `install-bashan-os.desktop` launching via `pkexec`.
+- Added `/etc/locale.gen` with all 13 shipped languages and
+  `hooks/chroot/0300-locales.hook.chroot` to generate them. Every locale
+  verified against glibc SUPPORTED: `syr` and `ckb_IQ` both exist;
+  Kurmanji is `ku_TR` only; Persian is `fa_IR` with no `.UTF-8` form.
+- **Installer translation coverage verified from upstream Calamares
+  3.3.14:** 10 of 13 languages have an installer translation. Kurmanji,
+  Sorani and Syriac have none. Arabic, Greek and Persian are in upstream's
+  partial tier. System locale is unaffected — all 13 install fine. Table in
+  docs/I18N.md.
+
 ### Stage 7A — 2026-10-12
 - **Secure Boot fixed.** The build shipped no signed boot chain and would
   have failed to boot on any laptop with Secure Boot on. Added
