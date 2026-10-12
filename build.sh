@@ -69,7 +69,47 @@ cmd_in() {  # run a command inside the build container
 
 # --- build / test / clean --------------------------------------------------
 cmd_build() {
-  die "ISO build lands in Stage 9. Stages 3-8 must be approved first."
+  need podman
+  podman container exists "$CONTAINER_NAME" || die "no container; run: ./build.sh container"
+  podman start "$CONTAINER_NAME" >/dev/null
+
+  [ -d "$ROOT/build/work/lb/config" ] || die "no build tree; run: ./build.sh config"
+
+  log "starting ISO build"
+  log "free memory now: $(free -m | awk 'NR==2{print $7}') MB"
+
+  # Run live-build in its three stages rather than as one "lb build", so the
+  # chroot can be given real device nodes in between. A rootless container
+  # cannot mknod, so without this /dev/null in the chroot is an ordinary
+  # file and package configuration eventually fails. See
+  # scripts/51-chroot-devices.sh for the full explanation.
+  _stage() {
+    local what="$1" cmd="$2"
+    log "stage: $what"
+    if ! podman exec "$CONTAINER_NAME" sh -c "$cmd" >>"$LOG" 2>&1; then
+      log "stage '$what' FAILED - last 40 lines:"
+      tail -40 "$LOG"
+      podman exec "$CONTAINER_NAME" /work/scripts/51-chroot-devices.sh umount \
+        >>"$LOG" 2>&1 || true
+      die "build failed in '$what'; full log at $LOG"
+    fi
+  }
+
+  _stage "bootstrap"      'cd /work/build/work/lb && lb bootstrap'
+  _stage "device nodes"   '/work/scripts/51-chroot-devices.sh mount'
+  _stage "chroot"         'cd /work/build/work/lb && lb chroot'
+  _stage "release devices" '/work/scripts/51-chroot-devices.sh umount'
+  _stage "binary"         'cd /work/build/work/lb && lb binary'
+  log "live-build finished"
+
+  iso=$(find "$ROOT/build/work/lb" -maxdepth 1 -name '*.iso' -o -maxdepth 1 -name '*.hybrid.iso' | head -1)
+  [ -n "$iso" ] || die "build reported success but produced no .iso"
+
+  mv "$iso" "$ROOT/build/out/$ISO_NAME"
+  log "ISO: build/out/$ISO_NAME ($(du -h "$ROOT/build/out/$ISO_NAME" | cut -f1))"
+
+  ( cd "$ROOT/build/out" && sha256sum "$ISO_NAME" > "$ISO_NAME.sha256" )
+  log "SHA256: $(cut -d" " -f1 < "$ROOT/build/out/$ISO_NAME.sha256")"
 }
 
 cmd_test() {

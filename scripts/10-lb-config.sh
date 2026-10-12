@@ -40,6 +40,9 @@ lb config \
   --linux-packages linux-image \
   --memtest none \
   --apt-indices false \
+  --chroot-squashfs-compression-type zstd \
+  --chroot-squashfs-compression-level 15 \
+  --zsync false \
   --cache-packages true \
   --iso-application "$OS_NAME" \
   --iso-publisher "$OS_PUBLISHER" \
