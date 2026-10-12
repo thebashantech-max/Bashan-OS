@@ -1,0 +1,27 @@
+#!/bin/sh
+# Bashan OS — copy the Bashan desktop defaults into a freshly created
+# account. Run by Calamares with the username it actually created, passed
+# as $1 via its @@USERNAME@@ substitution, so nothing is guessed.
+set -u
+
+user="${1:-}"
+if [ -z "$user" ]; then
+    echo "E: no username given" >&2
+    exit 1
+fi
+
+home=$(getent passwd "$user" | cut -d: -f6)
+if [ -z "$home" ] || [ ! -d "$home" ]; then
+    echo "E: no home directory for user '$user'" >&2
+    exit 1
+fi
+
+group=$(id -gn "$user" 2>/dev/null) || group="$user"
+
+# -n: never clobber anything the user already has.
+if [ -d /etc/skel ]; then
+    cp -rn /etc/skel/. "$home/" 2>/dev/null || true
+fi
+chown -R "$user:$group" "$home"
+
+echo "I: seeded Bashan defaults into $home for $user"

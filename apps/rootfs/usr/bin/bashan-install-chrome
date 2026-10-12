@@ -3,7 +3,25 @@
 # Asks first, shows progress, and explains any failure in plain words.
 set -u
 
-TITLE="Install Google Chrome"
+# --- translations -------------------------------------------------------
+# Catalogues are generated from i18n/strings.json by scripts/40-i18n.py.
+# Fall back to English for any language we do not ship, and for any string
+# a catalogue is missing.
+I18N_DIR=/usr/share/bashan/i18n
+# shellcheck source=/dev/null
+[ -r "$I18N_DIR/en.sh" ] && . "$I18N_DIR/en.sh"
+_lang=${LC_ALL:-${LC_MESSAGES:-${LANG:-en}}}
+_lang=${_lang%%.*}
+_lang=${_lang%%@*}
+if [ -r "$I18N_DIR/$_lang.sh" ]; then
+    # shellcheck source=/dev/null
+    . "$I18N_DIR/$_lang.sh"
+elif [ -r "$I18N_DIR/${_lang%%_*}.sh" ]; then
+    # shellcheck source=/dev/null
+    . "$I18N_DIR/${_lang%%_*}.sh"
+fi
+
+TITLE="${BT_CHROME_TITLE:-Install Google Chrome}"
 
 if command -v kdialog >/dev/null 2>&1; then
     ask()  { kdialog --title "$TITLE" --yesno "$1"; }
@@ -18,40 +36,26 @@ else
 fi
 
 if [ -x /usr/bin/google-chrome-stable ]; then
-    note "Google Chrome is already installed."
+    note "$BT_CHROME_ALREADY"
     exec /usr/bin/google-chrome-stable
 fi
 
-ask "Google Chrome is not installed yet.
+ask "$BT_CHROME_ASK" || exit 0
 
-It will be downloaded from Google and installed on this computer. This needs
-about 400 MB of space and an internet connection, and usually takes a few
-minutes.
-
-You will be asked for your password.
-
-Install Google Chrome now?" || exit 0
-
-busy "Installing Google Chrome. This can take a few minutes — you can keep working."
+busy "$BT_CHROME_BUSY"
 
 err=$(pkexec /usr/libexec/bashan/chrome-install 2>&1)
 rc=$?
 
 if [ "$rc" -eq 0 ] && [ -x /usr/bin/google-chrome-stable ]; then
-    note "Google Chrome is installed and ready to use."
+    note "$BT_CHROME_OK"
     exec /usr/bin/google-chrome-stable
 fi
 
 case "$rc" in
-    126|127) oops "Installation was cancelled, or the password was not accepted.
+    126|127) oops "$BT_CHROME_CANCELLED" ;;
+    *)       oops "$BT_CHROME_FAILED
 
-Nothing has been changed. You can try again at any time." ;;
-    *)       oops "Google Chrome could not be installed.
-
-The most common reason is no internet connection. Please check your
-connection and try again.
-
-Technical detail:
 $err" ;;
 esac
 exit 1

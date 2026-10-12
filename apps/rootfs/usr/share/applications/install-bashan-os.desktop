@@ -2,8 +2,32 @@
 Type=Application
 Version=1.0
 Name=Install Bashan OS
+Name[es]=Instalar Bashan OS
+Name[de]=Bashan OS installieren
+Name[fr]=Installer Bashan OS
+Name[pt]=Instalar o Bashan OS
+Name[ru]=Установить Bashan OS
+Name[el]=Εγκατάσταση του Bashan OS
+Name[ar]=تثبيت نظام بشان
+Name[he]=התקנת Bashan OS
+Name[fa]=نصب بشان او‌اس
+Name[ku]=Bashan OS saz bike
+Name[ckb]=دامەزراندنی بەشان ئۆ ئێس
+Name[syr]=ܣܝܡ ܒܫܢ ܐܘ ܐܣ
 GenericName=System Installer
 Comment=Copy Bashan OS onto this computer
+Comment[es]=Copiar Bashan OS en este ordenador
+Comment[de]=Bashan OS auf diesen Computer kopieren
+Comment[fr]=Copier Bashan OS sur cet ordinateur
+Comment[pt]=Copiar o Bashan OS para este computador
+Comment[ru]=Скопировать Bashan OS на этот компьютер
+Comment[el]=Αντιγραφή του Bashan OS σε αυτόν τον υπολογιστή
+Comment[ar]=نسخ نظام بشان إلى هذا الحاسوب
+Comment[he]=העתקת Bashan OS אל המחשב הזה
+Comment[fa]=کپی بشان او‌اس روی این رایانه
+Comment[ku]=Bashan OS li ser vê komputerê kopî bike
+Comment[ckb]=لەبەرگرتنەوەی بەشان ئۆ ئێس بۆ ئەم کۆمپیوتەرە
+Comment[syr]=ܟܬܘܒ ܒܫܢ ܐܘ ܐܣ ܥܠ ܗܢܐ ܚܫܘܒܐ
 # pkexec, not sudo: it shows a proper password window instead of needing a
 # terminal. The polkit rule comes from the calamares package itself.
 # This launcher exists only on the live ISO; the installed system removes

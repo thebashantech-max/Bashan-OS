@@ -141,6 +141,21 @@ cat > config/includes.chroot/etc/motd <<EOF
 
 EOF
 
+# --- translation review status -----------------------------------------
+if [ -r "$ROOT/i18n/UNREVIEWED" ]; then
+  unreviewed=$(cat "$ROOT/i18n/UNREVIEWED")
+  if [ -n "$unreviewed" ]; then
+    echo "W: ----------------------------------------------------------------"
+    echo "W:  TRANSLATIONS NOT REVIEWED BY A NATIVE SPEAKER:"
+    echo "W:    $unreviewed"
+    echo "W:  Kurmanji (ku), Sorani (ckb) and Syriac (syr) are machine"
+    echo "W:  translations of LOW or VERY LOW confidence and should not be"
+    echo "W:  shown to users before review. i18n/REVIEW.csv is the file to"
+    echo "W:  hand a native speaker."
+    echo "W: ----------------------------------------------------------------"
+  fi
+fi
+
 # --- boot song ----------------------------------------------------------
 if [ "${INCLUDE_BOOT_SONG:-no}" = "yes" ]; then
   if [ "${PUBLIC_RELEASE:-no}" = "yes" ]; then

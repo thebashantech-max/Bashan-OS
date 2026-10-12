@@ -23,6 +23,10 @@ kscreen
 plasma-widgets-addons
 plasma-systemmonitor
 
+# Lets the first-login script talk to plasmashell's scripting interface,
+# which is how the Trash icon gets moved for right-to-left languages.
+qdbus-qt6
+
 # Portals: screen sharing, file pickers, and Flatpak integration
 xdg-desktop-portal-kde
 xdg-user-dirs

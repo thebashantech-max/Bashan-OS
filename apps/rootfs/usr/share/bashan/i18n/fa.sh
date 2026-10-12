@@ -1,0 +1,21 @@
+# Bashan OS - Persian (فارسی)
+# Translation confidence: good. Reviewed by a native speaker: NO.
+# Generated from i18n/strings.json - do not edit by hand.
+
+BT_CHROME_TITLE='نصب Google Chrome'
+BT_CHROME_ALREADY='‏Google Chrome از قبل نصب شده است.'
+BT_CHROME_ASK='‏Google Chrome هنوز نصب نشده است.
+
+از Google دانلود و روی این رایانه نصب می‌شود. حدود ۴۰۰ مگابایت فضا و اتصال اینترنت لازم دارد و معمولاً چند دقیقه طول می‌کشد.
+
+رمز عبور شما پرسیده خواهد شد.
+
+اکنون Google Chrome نصب شود؟'
+BT_CHROME_BUSY='در حال نصب Google Chrome. ممکن است چند دقیقه طول بکشد — می‌توانید به کارتان ادامه دهید.'
+BT_CHROME_OK='‏Google Chrome نصب شد و آمادهٔ استفاده است.'
+BT_CHROME_CANCELLED='نصب لغو شد یا رمز عبور پذیرفته نشد.
+
+هیچ چیزی تغییر نکرده است. هر زمان می‌توانید دوباره تلاش کنید.'
+BT_CHROME_FAILED='نصب Google Chrome ممکن نشد.
+
+رایج‌ترین دلیل، نبودِ اتصال اینترنت است. اتصال خود را بررسی کنید و دوباره تلاش کنید.'

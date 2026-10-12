@@ -4,6 +4,18 @@ Version=1.0
 Name=Bashan
 GenericName=Bashan App
 Comment=The Bashan web app in its own window
+Comment[es]=La aplicación web de Bashan en su propia ventana
+Comment[de]=Die Bashan-Web-App in einem eigenen Fenster
+Comment[fr]=L'application web Bashan dans sa propre fenêtre
+Comment[pt]=A aplicação web Bashan na sua própria janela
+Comment[ru]=Веб-приложение Bashan в отдельном окне
+Comment[el]=Η εφαρμογή ιστού Bashan σε δικό της παράθυρο
+Comment[ar]=تطبيق بشان على الويب في نافذة خاصة به
+Comment[he]=יישום האינטרנט של Bashan בחלון נפרד
+Comment[fa]=برنامهٔ وب بشان در پنجرهٔ خودش
+Comment[ku]=Sepana webê ya Bashan di pencereya xwe de
+Comment[ckb]=ئەپی وێبی بەشان لە پەنجەرەی خۆیدا
+Comment[syr]=ܦܪܘܓܪܡܐ ܕܒܫܢ ܒܟܘܬܐ ܕܝܠܢܝܬܐ
 # Brave in app mode: no tabs, no address bar, its own window.
 # IMPORTANT: the binary is brave-browser-stable. Brave's deb does NOT ship a
 # /usr/bin/brave-browser symlink, so that name would silently fail.

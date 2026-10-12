@@ -59,4 +59,14 @@ if (desk) {
 
     var notes = desk.addWidget("org.kde.plasma.notes");
     notes.geometry = Qt.rect(60, 600, 420, 300);
+
+    // Trash, bottom-right: correct for the eight left-to-right languages.
+    // For Arabic, Hebrew, Syriac, Sorani and Persian it is moved to the
+    // bottom-left at login by /usr/libexec/bashan/bashan-desktop-locale,
+    // which also handles the user changing language later.
+    var trash = desk.addWidget("org.kde.plasma.trash");
+    var sg = desk.screenGeometry;
+    if (sg) {
+        trash.geometry = Qt.rect(sg.width - 188, sg.height - 188, 128, 128);
+    }
 }

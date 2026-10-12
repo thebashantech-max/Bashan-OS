@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Bashan desktop language layout
+Comment=Places the Trash icon on the side that matches the reading direction
+Exec=/usr/libexec/bashan/bashan-desktop-locale
+Terminal=false
+NoDisplay=true
+X-KDE-autostart-phase=2
+OnlyShowIn=KDE;

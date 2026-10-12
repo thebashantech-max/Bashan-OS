@@ -4,6 +4,33 @@ All notable changes to the build pipeline. Newest first.
 
 ## [Unreleased]
 
+### Stage 8 — 2026-10-12
+- Added `i18n/strings.json`: 20 Bashan-specific strings in all 13 languages,
+  260 entries, each language carrying an honest confidence rating.
+- Added `scripts/40-i18n.py`, generating the `.desktop` translations, 13
+  shell catalogues for the Chrome installer, the slideshow's embedded
+  translation map, and `i18n/REVIEW.csv` (240 rows) for native-speaker
+  review.
+- `bashan-install-chrome` now speaks the user's language, falling back to
+  English per string.
+- **Every build warns** which languages are unreviewed. Kurmanji and Sorani
+  are LOW confidence, Syriac VERY LOW; none has been checked by a native
+  speaker and the docs say so plainly.
+- Added `/etc/fonts/conf.d/60-bashan-languages.conf`, 11 rules covering
+  Arabic, Persian, Sorani, Hebrew and Syriac. Family names read with
+  `fc-query` — trixie ships `Scheherazade`, not `Scheherazade New`.
+- Added `bashan-desktop-locale`: puts the Trash icon bottom-right for the
+  eight LTR languages and bottom-left for the five RTL ones, re-running on
+  a language change. Uses plasmashell's D-Bus scripting API rather than
+  editing Plasma's internal config format. Added `qdbus-qt6`.
+- Added the Trash widget to the desktop layout.
+- The installer's welcome image now carries the "installer not available in
+  your language" note in English, Kurmanji, Sorani and Syriac, rendered
+  through Pango so Arabic and Syriac are shaped and ordered correctly.
+- Replaced the post-install username guess with
+  `bashan-seed-user <username>`, called by Calamares with the account it
+  actually created.
+
 ### Stage 7B — 2026-10-12
 - Added the Calamares installer: `settings.conf`, 12 module configs and the
   Bashan branding (descriptor, four-slide QML slideshow, large-text

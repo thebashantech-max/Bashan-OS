@@ -1,0 +1,481 @@
+language,language_name,confidence,reviewed,key,where_it_appears,english_source,our_translation,CORRECTED_TRANSLATION,reviewer_notes
+es,Spanish (Español),high,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,La aplicación web de Bashan en su propia ventana,,
+es,Spanish (Español),high,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,Aún no instalado — haga clic para instalar Google Chrome,,
+es,Spanish (Español),high,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Instalar Bashan OS,,
+es,Spanish (Español),high,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,Copiar Bashan OS en este ordenador,,
+es,Spanish (Español),high,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,Instalar Google Chrome,,
+es,Spanish (Español),high,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,Google Chrome ya está instalado.,,
+es,Spanish (Español),high,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+
+It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
+
+You will be asked for your password.
+
+Install Google Chrome now?","Google Chrome aún no está instalado.
+
+Se descargará de Google y se instalará en este ordenador. Necesita unos 400 MB de espacio y una conexión a internet, y suele tardar unos minutos.
+
+Se le pedirá su contraseña.
+
+¿Instalar Google Chrome ahora?",,
+es,Spanish (Español),high,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,Instalando Google Chrome. Puede tardar unos minutos; puede seguir trabajando.,,
+es,Spanish (Español),high,NO,chrome.ok,Success message.,Google Chrome is installed and ready to use.,Google Chrome está instalado y listo para usar.,,
+es,Spanish (Español),high,NO,chrome.cancelled,Shown when the password prompt is dismissed.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed. You can try again at any time.","Se canceló la instalación o no se aceptó la contraseña.
+
+No se ha cambiado nada. Puede intentarlo de nuevo cuando quiera.",,
+es,Spanish (Español),high,NO,chrome.failed,"Failure message. Leads with the likeliest cause, not an error code.","Google Chrome could not be installed.
+
+The most common reason is no internet connection. Please check your connection and try again.","No se pudo instalar Google Chrome.
+
+La causa más común es la falta de conexión a internet. Compruebe su conexión e inténtelo de nuevo.",,
+es,Spanish (Español),high,NO,slide1.title,"Installer slideshow, slide 1 heading.",Welcome to Bashan OS,Bienvenido a Bashan OS,,
+es,Spanish (Español),high,NO,slide1.body,"Installer slideshow, slide 1 body.",Your computer is being set up. This usually takes about ten minutes. You can leave it running.,Se está configurando su ordenador. Esto suele tardar unos diez minutos. Puede dejarlo funcionando.,,
+es,Spanish (Español),high,NO,slide2.title,"Installer slideshow, slide 2 heading.","Everything you need, already installed","Todo lo que necesita, ya instalado",,
+es,Spanish (Español),high,NO,slide2.body,"Installer slideshow, slide 2 body.","Writer, spreadsheets and presentations. Email and calendar. A web browser. Photos, music and video. Nothing to download before you start.","Procesador de textos, hojas de cálculo y presentaciones. Correo y calendario. Un navegador web. Fotos, música y vídeo. Nada que descargar antes de empezar.",,
+es,Spanish (Español),high,NO,slide3.title,"Installer slideshow, slide 3 heading.","Thirteen languages, written the right way round","Trece idiomas, escritos en el sentido correcto",,
+es,Spanish (Español),high,NO,slide3.body,"Installer slideshow, slide 3 body.","Arabic, Hebrew, Syriac, Sorani and Persian read right to left, and Bashan OS lays itself out to match. You can change language at any time.","El árabe, el hebreo, el siríaco, el sorani y el persa se leen de derecha a izquierda, y Bashan OS se adapta. Puede cambiar de idioma cuando quiera.",,
+es,Spanish (Español),high,NO,slide4.title,"Installer slideshow, slide 4 heading.",Private by default,Privado por defecto,,
+es,Spanish (Español),high,NO,slide4.body,"Installer slideshow, slide 4 body.","Bashan OS collects nothing and reports nothing. No usage data, no accounts, no tracking. Published by Bashan Tech LLC.","Bashan OS no recopila ni envía nada. Sin datos de uso, sin cuentas, sin seguimiento. Publicado por Bashan Tech LLC.",,
+es,Spanish (Español),high,NO,installer.langnote,"Shown on the installer's first screen, for the three languages Calamares has no translation for.","The installer itself is not available in Kurmanji, Sorani or Syriac. Choose English or Arabic to install — you can still set the computer to your own language afterwards.","El instalador no está disponible en kurmanji, sorani ni siríaco. Elija inglés o árabe para instalar; después podrá poner el ordenador en su propio idioma.",,
+de,German (Deutsch),high,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,Die Bashan-Web-App in einem eigenen Fenster,,
+de,German (Deutsch),high,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,"Noch nicht installiert — klicken, um Google Chrome zu installieren",,
+de,German (Deutsch),high,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Bashan OS installieren,,
+de,German (Deutsch),high,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,Bashan OS auf diesen Computer kopieren,,
+de,German (Deutsch),high,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,Google Chrome installieren,,
+de,German (Deutsch),high,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,Google Chrome ist bereits installiert.,,
+de,German (Deutsch),high,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+
+It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
+
+You will be asked for your password.
+
+Install Google Chrome now?","Google Chrome ist noch nicht installiert.
+
+Es wird von Google heruntergeladen und auf diesem Computer installiert. Dafür werden etwa 400 MB Speicherplatz und eine Internetverbindung benötigt; es dauert meist einige Minuten.
+
+Sie werden nach Ihrem Passwort gefragt.
+
+Google Chrome jetzt installieren?",,
+de,German (Deutsch),high,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,Google Chrome wird installiert. Das kann einige Minuten dauern — Sie können weiterarbeiten.,,
+de,German (Deutsch),high,NO,chrome.ok,Success message.,Google Chrome is installed and ready to use.,Google Chrome ist installiert und einsatzbereit.,,
+de,German (Deutsch),high,NO,chrome.cancelled,Shown when the password prompt is dismissed.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed. You can try again at any time.","Die Installation wurde abgebrochen oder das Passwort wurde nicht akzeptiert.
+
+Es wurde nichts verändert. Sie können es jederzeit erneut versuchen.",,
+de,German (Deutsch),high,NO,chrome.failed,"Failure message. Leads with the likeliest cause, not an error code.","Google Chrome could not be installed.
+
+The most common reason is no internet connection. Please check your connection and try again.","Google Chrome konnte nicht installiert werden.
+
+Der häufigste Grund ist eine fehlende Internetverbindung. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",,
+de,German (Deutsch),high,NO,slide1.title,"Installer slideshow, slide 1 heading.",Welcome to Bashan OS,Willkommen bei Bashan OS,,
+de,German (Deutsch),high,NO,slide1.body,"Installer slideshow, slide 1 body.",Your computer is being set up. This usually takes about ten minutes. You can leave it running.,Ihr Computer wird eingerichtet. Das dauert meist etwa zehn Minuten. Sie können ihn laufen lassen.,,
+de,German (Deutsch),high,NO,slide2.title,"Installer slideshow, slide 2 heading.","Everything you need, already installed","Alles, was Sie brauchen, ist schon installiert",,
+de,German (Deutsch),high,NO,slide2.body,"Installer slideshow, slide 2 body.","Writer, spreadsheets and presentations. Email and calendar. A web browser. Photos, music and video. Nothing to download before you start.","Textverarbeitung, Tabellen und Präsentationen. E-Mail und Kalender. Ein Webbrowser. Fotos, Musik und Video. Nichts, was Sie vorher herunterladen müssten.",,
+de,German (Deutsch),high,NO,slide3.title,"Installer slideshow, slide 3 heading.","Thirteen languages, written the right way round","Dreizehn Sprachen, in der richtigen Schreibrichtung",,
+de,German (Deutsch),high,NO,slide3.body,"Installer slideshow, slide 3 body.","Arabic, Hebrew, Syriac, Sorani and Persian read right to left, and Bashan OS lays itself out to match. You can change language at any time.","Arabisch, Hebräisch, Syrisch, Sorani und Persisch werden von rechts nach links gelesen, und Bashan OS richtet sich danach aus. Sie können die Sprache jederzeit wechseln.",,
+de,German (Deutsch),high,NO,slide4.title,"Installer slideshow, slide 4 heading.",Private by default,Standardmäßig privat,,
+de,German (Deutsch),high,NO,slide4.body,"Installer slideshow, slide 4 body.","Bashan OS collects nothing and reports nothing. No usage data, no accounts, no tracking. Published by Bashan Tech LLC.","Bashan OS sammelt nichts und meldet nichts. Keine Nutzungsdaten, keine Konten, kein Tracking. Herausgegeben von Bashan Tech LLC.",,
+de,German (Deutsch),high,NO,installer.langnote,"Shown on the installer's first screen, for the three languages Calamares has no translation for.","The installer itself is not available in Kurmanji, Sorani or Syriac. Choose English or Arabic to install — you can still set the computer to your own language afterwards.","Das Installationsprogramm selbst gibt es nicht auf Kurmandschi, Sorani oder Syrisch. Wählen Sie zum Installieren Englisch oder Arabisch — den Computer können Sie danach trotzdem auf Ihre eigene Sprache einstellen.",,
+fr,French (Français),high,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,L'application web Bashan dans sa propre fenêtre,,
+fr,French (Français),high,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,Pas encore installé — cliquez pour installer Google Chrome,,
+fr,French (Français),high,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Installer Bashan OS,,
+fr,French (Français),high,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,Copier Bashan OS sur cet ordinateur,,
+fr,French (Français),high,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,Installer Google Chrome,,
+fr,French (Français),high,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,Google Chrome est déjà installé.,,
+fr,French (Français),high,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+
+It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
+
+You will be asked for your password.
+
+Install Google Chrome now?","Google Chrome n'est pas encore installé.
+
+Il sera téléchargé depuis Google et installé sur cet ordinateur. Cela nécessite environ 400 Mo d'espace et une connexion internet, et prend généralement quelques minutes.
+
+Votre mot de passe vous sera demandé.
+
+Installer Google Chrome maintenant ?",,
+fr,French (Français),high,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,Installation de Google Chrome. Cela peut prendre quelques minutes ; vous pouvez continuer à travailler.,,
+fr,French (Français),high,NO,chrome.ok,Success message.,Google Chrome is installed and ready to use.,Google Chrome est installé et prêt à l'emploi.,,
+fr,French (Français),high,NO,chrome.cancelled,Shown when the password prompt is dismissed.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed. You can try again at any time.","L'installation a été annulée ou le mot de passe n'a pas été accepté.
+
+Rien n'a été modifié. Vous pouvez réessayer à tout moment.",,
+fr,French (Français),high,NO,chrome.failed,"Failure message. Leads with the likeliest cause, not an error code.","Google Chrome could not be installed.
+
+The most common reason is no internet connection. Please check your connection and try again.","Google Chrome n'a pas pu être installé.
+
+La cause la plus fréquente est l'absence de connexion internet. Vérifiez votre connexion et réessayez.",,
+fr,French (Français),high,NO,slide1.title,"Installer slideshow, slide 1 heading.",Welcome to Bashan OS,Bienvenue dans Bashan OS,,
+fr,French (Français),high,NO,slide1.body,"Installer slideshow, slide 1 body.",Your computer is being set up. This usually takes about ten minutes. You can leave it running.,Votre ordinateur est en cours de configuration. Cela prend généralement une dizaine de minutes. Vous pouvez le laisser tourner.,,
+fr,French (Français),high,NO,slide2.title,"Installer slideshow, slide 2 heading.","Everything you need, already installed","Tout ce dont vous avez besoin, déjà installé",,
+fr,French (Français),high,NO,slide2.body,"Installer slideshow, slide 2 body.","Writer, spreadsheets and presentations. Email and calendar. A web browser. Photos, music and video. Nothing to download before you start.","Traitement de texte, tableurs et présentations. Courriel et agenda. Un navigateur web. Photos, musique et vidéo. Rien à télécharger avant de commencer.",,
+fr,French (Français),high,NO,slide3.title,"Installer slideshow, slide 3 heading.","Thirteen languages, written the right way round","Treize langues, écrites dans le bon sens",,
+fr,French (Français),high,NO,slide3.body,"Installer slideshow, slide 3 body.","Arabic, Hebrew, Syriac, Sorani and Persian read right to left, and Bashan OS lays itself out to match. You can change language at any time.","L'arabe, l'hébreu, le syriaque, le sorani et le persan se lisent de droite à gauche, et Bashan OS s'adapte. Vous pouvez changer de langue à tout moment.",,
+fr,French (Français),high,NO,slide4.title,"Installer slideshow, slide 4 heading.",Private by default,Confidentiel par défaut,,
+fr,French (Français),high,NO,slide4.body,"Installer slideshow, slide 4 body.","Bashan OS collects nothing and reports nothing. No usage data, no accounts, no tracking. Published by Bashan Tech LLC.","Bashan OS ne collecte rien et ne transmet rien. Aucune donnée d'usage, aucun compte, aucun suivi. Publié par Bashan Tech LLC.",,
+fr,French (Français),high,NO,installer.langnote,"Shown on the installer's first screen, for the three languages Calamares has no translation for.","The installer itself is not available in Kurmanji, Sorani or Syriac. Choose English or Arabic to install — you can still set the computer to your own language afterwards.","Le programme d'installation n'existe pas en kurmandji, sorani ni syriaque. Choisissez l'anglais ou l'arabe pour installer ; vous pourrez ensuite mettre l'ordinateur dans votre propre langue.",,
+pt,Portuguese (Português),high,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,A aplicação web Bashan na sua própria janela,,
+pt,Portuguese (Português),high,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,Ainda não instalado — clique para instalar o Google Chrome,,
+pt,Portuguese (Português),high,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Instalar o Bashan OS,,
+pt,Portuguese (Português),high,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,Copiar o Bashan OS para este computador,,
+pt,Portuguese (Português),high,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,Instalar o Google Chrome,,
+pt,Portuguese (Português),high,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,O Google Chrome já está instalado.,,
+pt,Portuguese (Português),high,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+
+It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
+
+You will be asked for your password.
+
+Install Google Chrome now?","O Google Chrome ainda não está instalado.
+
+Será descarregado da Google e instalado neste computador. Precisa de cerca de 400 MB de espaço e de uma ligação à internet, e demora normalmente alguns minutos.
+
+Ser-lhe-á pedida a sua palavra-passe.
+
+Instalar o Google Chrome agora?",,
+pt,Portuguese (Português),high,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,A instalar o Google Chrome. Pode demorar alguns minutos — pode continuar a trabalhar.,,
+pt,Portuguese (Português),high,NO,chrome.ok,Success message.,Google Chrome is installed and ready to use.,O Google Chrome está instalado e pronto a usar.,,
+pt,Portuguese (Português),high,NO,chrome.cancelled,Shown when the password prompt is dismissed.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed. You can try again at any time.","A instalação foi cancelada ou a palavra-passe não foi aceite.
+
+Nada foi alterado. Pode tentar novamente a qualquer momento.",,
+pt,Portuguese (Português),high,NO,chrome.failed,"Failure message. Leads with the likeliest cause, not an error code.","Google Chrome could not be installed.
+
+The most common reason is no internet connection. Please check your connection and try again.","Não foi possível instalar o Google Chrome.
+
+A causa mais comum é a falta de ligação à internet. Verifique a ligação e tente novamente.",,
+pt,Portuguese (Português),high,NO,slide1.title,"Installer slideshow, slide 1 heading.",Welcome to Bashan OS,Bem-vindo ao Bashan OS,,
+pt,Portuguese (Português),high,NO,slide1.body,"Installer slideshow, slide 1 body.",Your computer is being set up. This usually takes about ten minutes. You can leave it running.,O seu computador está a ser configurado. Normalmente demora cerca de dez minutos. Pode deixá-lo a trabalhar.,,
+pt,Portuguese (Português),high,NO,slide2.title,"Installer slideshow, slide 2 heading.","Everything you need, already installed","Tudo o que precisa, já instalado",,
+pt,Portuguese (Português),high,NO,slide2.body,"Installer slideshow, slide 2 body.","Writer, spreadsheets and presentations. Email and calendar. A web browser. Photos, music and video. Nothing to download before you start.","Processador de texto, folhas de cálculo e apresentações. Correio e calendário. Um navegador web. Fotografias, música e vídeo. Nada para descarregar antes de começar.",,
+pt,Portuguese (Português),high,NO,slide3.title,"Installer slideshow, slide 3 heading.","Thirteen languages, written the right way round","Treze idiomas, escritos no sentido certo",,
+pt,Portuguese (Português),high,NO,slide3.body,"Installer slideshow, slide 3 body.","Arabic, Hebrew, Syriac, Sorani and Persian read right to left, and Bashan OS lays itself out to match. You can change language at any time.","O árabe, o hebraico, o siríaco, o sorani e o persa leem-se da direita para a esquerda, e o Bashan OS adapta-se. Pode mudar de idioma a qualquer momento.",,
+pt,Portuguese (Português),high,NO,slide4.title,"Installer slideshow, slide 4 heading.",Private by default,Privado por predefinição,,
+pt,Portuguese (Português),high,NO,slide4.body,"Installer slideshow, slide 4 body.","Bashan OS collects nothing and reports nothing. No usage data, no accounts, no tracking. Published by Bashan Tech LLC.","O Bashan OS não recolhe nem comunica nada. Sem dados de utilização, sem contas, sem rastreio. Publicado pela Bashan Tech LLC.",,
+pt,Portuguese (Português),high,NO,installer.langnote,"Shown on the installer's first screen, for the three languages Calamares has no translation for.","The installer itself is not available in Kurmanji, Sorani or Syriac. Choose English or Arabic to install — you can still set the computer to your own language afterwards.","O instalador não está disponível em curmânji, sorani ou siríaco. Escolha inglês ou árabe para instalar — depois pode na mesma pôr o computador no seu idioma.",,
+ru,Russian (Русский),high,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,Веб-приложение Bashan в отдельном окне,,
+ru,Russian (Русский),high,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,"Ещё не установлен — нажмите, чтобы установить Google Chrome",,
+ru,Russian (Русский),high,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Установить Bashan OS,,
+ru,Russian (Русский),high,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,Скопировать Bashan OS на этот компьютер,,
+ru,Russian (Русский),high,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,Установка Google Chrome,,
+ru,Russian (Русский),high,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,Google Chrome уже установлен.,,
+ru,Russian (Русский),high,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+
+It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
+
+You will be asked for your password.
+
+Install Google Chrome now?","Google Chrome ещё не установлен.
+
+Он будет загружен с серверов Google и установлен на этот компьютер. Потребуется около 400 МБ места и подключение к интернету; обычно это занимает несколько минут.
+
+У вас будет запрошен пароль.
+
+Установить Google Chrome сейчас?",,
+ru,Russian (Русский),high,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,Устанавливается Google Chrome. Это может занять несколько минут — можно продолжать работу.,,
+ru,Russian (Русский),high,NO,chrome.ok,Success message.,Google Chrome is installed and ready to use.,Google Chrome установлен и готов к работе.,,
+ru,Russian (Русский),high,NO,chrome.cancelled,Shown when the password prompt is dismissed.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed. You can try again at any time.","Установка отменена или пароль не принят.
+
+Ничего не изменено. Вы можете повторить попытку в любое время.",,
+ru,Russian (Русский),high,NO,chrome.failed,"Failure message. Leads with the likeliest cause, not an error code.","Google Chrome could not be installed.
+
+The most common reason is no internet connection. Please check your connection and try again.","Не удалось установить Google Chrome.
+
+Чаще всего причина — отсутствие подключения к интернету. Проверьте подключение и повторите попытку.",,
+ru,Russian (Русский),high,NO,slide1.title,"Installer slideshow, slide 1 heading.",Welcome to Bashan OS,Добро пожаловать в Bashan OS,,
+ru,Russian (Русский),high,NO,slide1.body,"Installer slideshow, slide 1 body.",Your computer is being set up. This usually takes about ten minutes. You can leave it running.,Компьютер настраивается. Обычно это занимает около десяти минут. Можно оставить его работать.,,
+ru,Russian (Русский),high,NO,slide2.title,"Installer slideshow, slide 2 heading.","Everything you need, already installed",Всё необходимое уже установлено,,
+ru,Russian (Русский),high,NO,slide2.body,"Installer slideshow, slide 2 body.","Writer, spreadsheets and presentations. Email and calendar. A web browser. Photos, music and video. Nothing to download before you start.","Тексты, таблицы и презентации. Почта и календарь. Веб-браузер. Фотографии, музыка и видео. Ничего не нужно скачивать перед началом работы.",,
+ru,Russian (Русский),high,NO,slide3.title,"Installer slideshow, slide 3 heading.","Thirteen languages, written the right way round","Тринадцать языков, с правильным направлением письма",,
+ru,Russian (Русский),high,NO,slide3.body,"Installer slideshow, slide 3 body.","Arabic, Hebrew, Syriac, Sorani and Persian read right to left, and Bashan OS lays itself out to match. You can change language at any time.","Арабский, иврит, сирийский, сорани и персидский читаются справа налево, и Bashan OS перестраивает интерфейс соответственно. Язык можно сменить в любой момент.",,
+ru,Russian (Русский),high,NO,slide4.title,"Installer slideshow, slide 4 heading.",Private by default,Приватность по умолчанию,,
+ru,Russian (Русский),high,NO,slide4.body,"Installer slideshow, slide 4 body.","Bashan OS collects nothing and reports nothing. No usage data, no accounts, no tracking. Published by Bashan Tech LLC.","Bashan OS ничего не собирает и никуда не отправляет. Никаких данных об использовании, учётных записей и слежки. Издатель — Bashan Tech LLC.",,
+ru,Russian (Русский),high,NO,installer.langnote,"Shown on the installer's first screen, for the three languages Calamares has no translation for.","The installer itself is not available in Kurmanji, Sorani or Syriac. Choose English or Arabic to install — you can still set the computer to your own language afterwards.","Сама программа установки недоступна на курманджи, сорани и сирийском. Для установки выберите английский или арабский — язык самого компьютера вы сможете задать позже.",,
+el,Greek (Ελληνικά),good,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,Η εφαρμογή ιστού Bashan σε δικό της παράθυρο,,
+el,Greek (Ελληνικά),good,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,Δεν έχει εγκατασταθεί ακόμη — κάντε κλικ για εγκατάσταση του Google Chrome,,
+el,Greek (Ελληνικά),good,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Εγκατάσταση του Bashan OS,,
+el,Greek (Ελληνικά),good,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,Αντιγραφή του Bashan OS σε αυτόν τον υπολογιστή,,
+el,Greek (Ελληνικά),good,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,Εγκατάσταση του Google Chrome,,
+el,Greek (Ελληνικά),good,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,Το Google Chrome είναι ήδη εγκατεστημένο.,,
+el,Greek (Ελληνικά),good,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+
+It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
+
+You will be asked for your password.
+
+Install Google Chrome now?","Το Google Chrome δεν έχει εγκατασταθεί ακόμη.
+
+Θα ληφθεί από την Google και θα εγκατασταθεί σε αυτόν τον υπολογιστή. Χρειάζονται περίπου 400 MB χώρου και σύνδεση στο διαδίκτυο, και συνήθως διαρκεί μερικά λεπτά.
+
+Θα σας ζητηθεί ο κωδικός σας.
+
+Εγκατάσταση του Google Chrome τώρα;",,
+el,Greek (Ελληνικά),good,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,Γίνεται εγκατάσταση του Google Chrome. Μπορεί να διαρκέσει μερικά λεπτά — μπορείτε να συνεχίσετε να εργάζεστε.,,
+el,Greek (Ελληνικά),good,NO,chrome.ok,Success message.,Google Chrome is installed and ready to use.,Το Google Chrome εγκαταστάθηκε και είναι έτοιμο για χρήση.,,
+el,Greek (Ελληνικά),good,NO,chrome.cancelled,Shown when the password prompt is dismissed.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed. You can try again at any time.","Η εγκατάσταση ακυρώθηκε ή ο κωδικός δεν έγινε δεκτός.
+
+Δεν άλλαξε τίποτα. Μπορείτε να δοκιμάσετε ξανά οποτεδήποτε.",,
+el,Greek (Ελληνικά),good,NO,chrome.failed,"Failure message. Leads with the likeliest cause, not an error code.","Google Chrome could not be installed.
+
+The most common reason is no internet connection. Please check your connection and try again.","Δεν ήταν δυνατή η εγκατάσταση του Google Chrome.
+
+Η συνηθέστερη αιτία είναι η έλλειψη σύνδεσης στο διαδίκτυο. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",,
+el,Greek (Ελληνικά),good,NO,slide1.title,"Installer slideshow, slide 1 heading.",Welcome to Bashan OS,Καλώς ορίσατε στο Bashan OS,,
+el,Greek (Ελληνικά),good,NO,slide1.body,"Installer slideshow, slide 1 body.",Your computer is being set up. This usually takes about ten minutes. You can leave it running.,Ο υπολογιστής σας ρυθμίζεται. Αυτό συνήθως διαρκεί περίπου δέκα λεπτά. Μπορείτε να τον αφήσετε να δουλεύει.,,
+el,Greek (Ελληνικά),good,NO,slide2.title,"Installer slideshow, slide 2 heading.","Everything you need, already installed","Όλα όσα χρειάζεστε, ήδη εγκατεστημένα",,
+el,Greek (Ελληνικά),good,NO,slide2.body,"Installer slideshow, slide 2 body.","Writer, spreadsheets and presentations. Email and calendar. A web browser. Photos, music and video. Nothing to download before you start.","Κείμενα, υπολογιστικά φύλλα και παρουσιάσεις. Ηλεκτρονικό ταχυδρομείο και ημερολόγιο. Πρόγραμμα περιήγησης. Φωτογραφίες, μουσική και βίντεο. Τίποτα δεν χρειάζεται λήψη πριν ξεκινήσετε.",,
+el,Greek (Ελληνικά),good,NO,slide3.title,"Installer slideshow, slide 3 heading.","Thirteen languages, written the right way round","Δεκατρείς γλώσσες, γραμμένες προς τη σωστή κατεύθυνση",,
+el,Greek (Ελληνικά),good,NO,slide3.body,"Installer slideshow, slide 3 body.","Arabic, Hebrew, Syriac, Sorani and Persian read right to left, and Bashan OS lays itself out to match. You can change language at any time.","Τα αραβικά, τα εβραϊκά, τα συριακά, τα σορανί και τα περσικά διαβάζονται από δεξιά προς τα αριστερά, και το Bashan OS προσαρμόζεται. Μπορείτε να αλλάξετε γλώσσα οποτεδήποτε.",,
+el,Greek (Ελληνικά),good,NO,slide4.title,"Installer slideshow, slide 4 heading.",Private by default,Ιδιωτικό εξ ορισμού,,
+el,Greek (Ελληνικά),good,NO,slide4.body,"Installer slideshow, slide 4 body.","Bashan OS collects nothing and reports nothing. No usage data, no accounts, no tracking. Published by Bashan Tech LLC.","Το Bashan OS δεν συλλέγει και δεν αναφέρει τίποτα. Καθόλου δεδομένα χρήσης, λογαριασμοί ή παρακολούθηση. Εκδίδεται από την Bashan Tech LLC.",,
+el,Greek (Ελληνικά),good,NO,installer.langnote,"Shown on the installer's first screen, for the three languages Calamares has no translation for.","The installer itself is not available in Kurmanji, Sorani or Syriac. Choose English or Arabic to install — you can still set the computer to your own language afterwards.","Το ίδιο το πρόγραμμα εγκατάστασης δεν διατίθεται στα κουρμαντζί, σορανί ή συριακά. Επιλέξτε αγγλικά ή αραβικά για την εγκατάσταση — μπορείτε και πάλι να ρυθμίσετε τον υπολογιστή στη δική σας γλώσσα μετά.",,
+ar,Arabic (العربية),good,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,تطبيق بشان على الويب في نافذة خاصة به,,
+ar,Arabic (العربية),good,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,غير مُثبَّت بعد — انقر لتثبيت Google Chrome,,
+ar,Arabic (العربية),good,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,تثبيت نظام بشان,,
+ar,Arabic (العربية),good,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,نسخ نظام بشان إلى هذا الحاسوب,,
+ar,Arabic (العربية),good,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,تثبيت Google Chrome,,
+ar,Arabic (العربية),good,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,‏Google Chrome مُثبَّت بالفعل.,,
+ar,Arabic (العربية),good,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+
+It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
+
+You will be asked for your password.
+
+Install Google Chrome now?","‏Google Chrome غير مُثبَّت بعد.
+
+سيُنزَّل من Google ويُثبَّت على هذا الحاسوب. يحتاج نحو 400 ميغابايت من المساحة واتصالاً بالإنترنت، ويستغرق عادةً بضع دقائق.
+
+سيُطلب منك كلمة المرور.
+
+هل تريد تثبيت Google Chrome الآن؟",,
+ar,Arabic (العربية),good,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,جارٍ تثبيت Google Chrome. قد يستغرق بضع دقائق — يمكنك متابعة عملك.,,
+ar,Arabic (العربية),good,NO,chrome.ok,Success message.,Google Chrome is installed and ready to use.,تم تثبيت Google Chrome وهو جاهز للاستخدام.,,
+ar,Arabic (العربية),good,NO,chrome.cancelled,Shown when the password prompt is dismissed.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed. You can try again at any time.","أُلغي التثبيت أو لم تُقبل كلمة المرور.
+
+لم يتغيَّر أي شيء. يمكنك المحاولة مرة أخرى في أي وقت.",,
+ar,Arabic (العربية),good,NO,chrome.failed,"Failure message. Leads with the likeliest cause, not an error code.","Google Chrome could not be installed.
+
+The most common reason is no internet connection. Please check your connection and try again.","تعذَّر تثبيت Google Chrome.
+
+السبب الأكثر شيوعًا هو عدم وجود اتصال بالإنترنت. تحقَّق من اتصالك وحاول مرة أخرى.",,
+ar,Arabic (العربية),good,NO,slide1.title,"Installer slideshow, slide 1 heading.",Welcome to Bashan OS,مرحبًا بك في نظام بشان,,
+ar,Arabic (العربية),good,NO,slide1.body,"Installer slideshow, slide 1 body.",Your computer is being set up. This usually takes about ten minutes. You can leave it running.,يجري إعداد حاسوبك. يستغرق هذا عادةً نحو عشر دقائق. يمكنك تركه يعمل.,,
+ar,Arabic (العربية),good,NO,slide2.title,"Installer slideshow, slide 2 heading.","Everything you need, already installed",كل ما تحتاجه، مُثبَّت مسبقًا,,
+ar,Arabic (العربية),good,NO,slide2.body,"Installer slideshow, slide 2 body.","Writer, spreadsheets and presentations. Email and calendar. A web browser. Photos, music and video. Nothing to download before you start.",معالج نصوص وجداول بيانات وعروض تقديمية. بريد إلكتروني وتقويم. متصفح وِب. صور وموسيقى وفيديو. لا شيء تحتاج إلى تنزيله قبل البدء.,,
+ar,Arabic (العربية),good,NO,slide3.title,"Installer slideshow, slide 3 heading.","Thirteen languages, written the right way round",ثلاث عشرة لغة، مكتوبة في الاتجاه الصحيح,,
+ar,Arabic (العربية),good,NO,slide3.body,"Installer slideshow, slide 3 body.","Arabic, Hebrew, Syriac, Sorani and Persian read right to left, and Bashan OS lays itself out to match. You can change language at any time.",تُقرأ العربية والعبرية والسريانية والسورانية والفارسية من اليمين إلى اليسار، ونظام بشان يرتِّب واجهته تبعًا لذلك. يمكنك تغيير اللغة في أي وقت.,,
+ar,Arabic (العربية),good,NO,slide4.title,"Installer slideshow, slide 4 heading.",Private by default,الخصوصية افتراضيًا,,
+ar,Arabic (العربية),good,NO,slide4.body,"Installer slideshow, slide 4 body.","Bashan OS collects nothing and reports nothing. No usage data, no accounts, no tracking. Published by Bashan Tech LLC.",نظام بشان لا يجمع شيئًا ولا يرسل شيئًا. لا بيانات استخدام، ولا حسابات، ولا تتبُّع. تنشره شركة Bashan Tech LLC.,,
+ar,Arabic (العربية),good,NO,installer.langnote,"Shown on the installer's first screen, for the three languages Calamares has no translation for.","The installer itself is not available in Kurmanji, Sorani or Syriac. Choose English or Arabic to install — you can still set the computer to your own language afterwards.",برنامج التثبيت نفسه غير متوفِّر بالكرمانجية أو السورانية أو السريانية. اختر الإنجليزية أو العربية للتثبيت — وسيظل بإمكانك ضبط الحاسوب على لغتك بعد ذلك.,,
+he,Hebrew (עברית),good,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,יישום האינטרנט של Bashan בחלון נפרד,,
+he,Hebrew (עברית),good,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,עדיין לא מותקן — לחצו כדי להתקין את Google Chrome,,
+he,Hebrew (עברית),good,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,התקנת Bashan OS,,
+he,Hebrew (עברית),good,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,העתקת Bashan OS אל המחשב הזה,,
+he,Hebrew (עברית),good,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,התקנת Google Chrome,,
+he,Hebrew (עברית),good,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,‏Google Chrome כבר מותקן.,,
+he,Hebrew (עברית),good,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+
+It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
+
+You will be asked for your password.
+
+Install Google Chrome now?","‏Google Chrome עדיין לא מותקן.
+
+הוא יורד מ‏Google ויותקן במחשב הזה. נדרשים כ‏400 מ""ב מקום וחיבור לאינטרנט, וזה בדרך כלל אורך כמה דקות.
+
+תתבקשו להזין את הסיסמה שלכם.
+
+להתקין את Google Chrome עכשיו?",,
+he,Hebrew (עברית),good,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,מתקין את Google Chrome. זה עשוי לקחת כמה דקות — אפשר להמשיך לעבוד.,,
+he,Hebrew (עברית),good,NO,chrome.ok,Success message.,Google Chrome is installed and ready to use.,‏Google Chrome הותקן ומוכן לשימוש.,,
+he,Hebrew (עברית),good,NO,chrome.cancelled,Shown when the password prompt is dismissed.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed. You can try again at any time.","ההתקנה בוטלה, או שהסיסמה לא התקבלה.
+
+שום דבר לא שונה. אפשר לנסות שוב בכל עת.",,
+he,Hebrew (עברית),good,NO,chrome.failed,"Failure message. Leads with the likeliest cause, not an error code.","Google Chrome could not be installed.
+
+The most common reason is no internet connection. Please check your connection and try again.","לא ניתן היה להתקין את Google Chrome.
+
+הסיבה השכיחה ביותר היא היעדר חיבור לאינטרנט. בדקו את החיבור ונסו שוב.",,
+he,Hebrew (עברית),good,NO,slide1.title,"Installer slideshow, slide 1 heading.",Welcome to Bashan OS,ברוכים הבאים ל‏Bashan OS,,
+he,Hebrew (עברית),good,NO,slide1.body,"Installer slideshow, slide 1 body.",Your computer is being set up. This usually takes about ten minutes. You can leave it running.,המחשב שלכם מוגדר כעת. זה אורך בדרך כלל כעשר דקות. אפשר להשאיר אותו פועל.,,
+he,Hebrew (עברית),good,NO,slide2.title,"Installer slideshow, slide 2 heading.","Everything you need, already installed","כל מה שצריך, כבר מותקן",,
+he,Hebrew (עברית),good,NO,slide2.body,"Installer slideshow, slide 2 body.","Writer, spreadsheets and presentations. Email and calendar. A web browser. Photos, music and video. Nothing to download before you start.","מעבד תמלילים, גיליונות אלקטרוניים ומצגות. דואר אלקטרוני ולוח שנה. דפדפן. תמונות, מוזיקה ווידאו. אין מה להוריד לפני שמתחילים.",,
+he,Hebrew (עברית),good,NO,slide3.title,"Installer slideshow, slide 3 heading.","Thirteen languages, written the right way round","שלוש עשרה שפות, כתובות בכיוון הנכון",,
+he,Hebrew (עברית),good,NO,slide3.body,"Installer slideshow, slide 3 body.","Arabic, Hebrew, Syriac, Sorani and Persian read right to left, and Bashan OS lays itself out to match. You can change language at any time.","ערבית, עברית, סורית, סוראני ופרסית נקראות מימין לשמאל, ו‏Bashan OS מסדר את עצמו בהתאם. אפשר להחליף שפה בכל עת.",,
+he,Hebrew (עברית),good,NO,slide4.title,"Installer slideshow, slide 4 heading.",Private by default,פרטי כברירת מחדל,,
+he,Hebrew (עברית),good,NO,slide4.body,"Installer slideshow, slide 4 body.","Bashan OS collects nothing and reports nothing. No usage data, no accounts, no tracking. Published by Bashan Tech LLC.","‏Bashan OS לא אוסף דבר ולא מדווח על דבר. בלי נתוני שימוש, בלי חשבונות, בלי מעקב. מופץ על ידי Bashan Tech LLC.",,
+he,Hebrew (עברית),good,NO,installer.langnote,"Shown on the installer's first screen, for the three languages Calamares has no translation for.","The installer itself is not available in Kurmanji, Sorani or Syriac. Choose English or Arabic to install — you can still set the computer to your own language afterwards.","תוכנית ההתקנה עצמה אינה זמינה בכורמנג'י, סוראני או סורית. בחרו אנגלית או ערבית כדי להתקין — עדיין תוכלו להגדיר את המחשב לשפה שלכם לאחר מכן.",,
+fa,Persian (فارسی),good,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,برنامهٔ وب بشان در پنجرهٔ خودش,,
+fa,Persian (فارسی),good,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,هنوز نصب نشده — برای نصب Google Chrome کلیک کنید,,
+fa,Persian (فارسی),good,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,نصب بشان او‌اس,,
+fa,Persian (فارسی),good,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,کپی بشان او‌اس روی این رایانه,,
+fa,Persian (فارسی),good,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,نصب Google Chrome,,
+fa,Persian (فارسی),good,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,‏Google Chrome از قبل نصب شده است.,,
+fa,Persian (فارسی),good,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+
+It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
+
+You will be asked for your password.
+
+Install Google Chrome now?","‏Google Chrome هنوز نصب نشده است.
+
+از Google دانلود و روی این رایانه نصب می‌شود. حدود ۴۰۰ مگابایت فضا و اتصال اینترنت لازم دارد و معمولاً چند دقیقه طول می‌کشد.
+
+رمز عبور شما پرسیده خواهد شد.
+
+اکنون Google Chrome نصب شود؟",,
+fa,Persian (فارسی),good,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,در حال نصب Google Chrome. ممکن است چند دقیقه طول بکشد — می‌توانید به کارتان ادامه دهید.,,
+fa,Persian (فارسی),good,NO,chrome.ok,Success message.,Google Chrome is installed and ready to use.,‏Google Chrome نصب شد و آمادهٔ استفاده است.,,
+fa,Persian (فارسی),good,NO,chrome.cancelled,Shown when the password prompt is dismissed.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed. You can try again at any time.","نصب لغو شد یا رمز عبور پذیرفته نشد.
+
+هیچ چیزی تغییر نکرده است. هر زمان می‌توانید دوباره تلاش کنید.",,
+fa,Persian (فارسی),good,NO,chrome.failed,"Failure message. Leads with the likeliest cause, not an error code.","Google Chrome could not be installed.
+
+The most common reason is no internet connection. Please check your connection and try again.","نصب Google Chrome ممکن نشد.
+
+رایج‌ترین دلیل، نبودِ اتصال اینترنت است. اتصال خود را بررسی کنید و دوباره تلاش کنید.",,
+fa,Persian (فارسی),good,NO,slide1.title,"Installer slideshow, slide 1 heading.",Welcome to Bashan OS,به بشان او‌اس خوش آمدید,,
+fa,Persian (فارسی),good,NO,slide1.body,"Installer slideshow, slide 1 body.",Your computer is being set up. This usually takes about ten minutes. You can leave it running.,رایانهٔ شما در حال آماده‌سازی است. معمولاً حدود ده دقیقه طول می‌کشد. می‌توانید آن را روشن رها کنید.,,
+fa,Persian (فارسی),good,NO,slide2.title,"Installer slideshow, slide 2 heading.","Everything you need, already installed",هر چه لازم دارید، از پیش نصب شده,,
+fa,Persian (فارسی),good,NO,slide2.body,"Installer slideshow, slide 2 body.","Writer, spreadsheets and presentations. Email and calendar. A web browser. Photos, music and video. Nothing to download before you start.",واژه‌پرداز، صفحه‌گسترده و ارائه. ایمیل و تقویم. مرورگر وب. عکس، موسیقی و ویدئو. پیش از شروع چیزی برای دانلود نیست.,,
+fa,Persian (فارسی),good,NO,slide3.title,"Installer slideshow, slide 3 heading.","Thirteen languages, written the right way round",سیزده زبان، با جهت نوشتار درست,,
+fa,Persian (فارسی),good,NO,slide3.body,"Installer slideshow, slide 3 body.","Arabic, Hebrew, Syriac, Sorani and Persian read right to left, and Bashan OS lays itself out to match. You can change language at any time.",عربی، عبری، سریانی، سورانی و فارسی از راست به چپ خوانده می‌شوند و بشان او‌اس چیدمان خود را با آن هماهنگ می‌کند. هر زمان می‌توانید زبان را عوض کنید.,,
+fa,Persian (فارسی),good,NO,slide4.title,"Installer slideshow, slide 4 heading.",Private by default,به‌طور پیش‌فرض خصوصی,,
+fa,Persian (فارسی),good,NO,slide4.body,"Installer slideshow, slide 4 body.","Bashan OS collects nothing and reports nothing. No usage data, no accounts, no tracking. Published by Bashan Tech LLC.",بشان او‌اس هیچ چیزی جمع‌آوری و گزارش نمی‌کند. نه داده‌های استفاده، نه حساب کاربری، نه ردیابی. منتشرشده توسط Bashan Tech LLC.,,
+fa,Persian (فارسی),good,NO,installer.langnote,"Shown on the installer's first screen, for the three languages Calamares has no translation for.","The installer itself is not available in Kurmanji, Sorani or Syriac. Choose English or Arabic to install — you can still set the computer to your own language afterwards.",خودِ برنامهٔ نصب به کرمانجی، سورانی یا سریانی در دسترس نیست. برای نصب، انگلیسی یا عربی را انتخاب کنید — پس از آن همچنان می‌توانید رایانه را به زبان خودتان تنظیم کنید.,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,Sepana webê ya Bashan di pencereya xwe de,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,Hê nehatiye sazkirin — ji bo sazkirina Google Chrome bitikîne,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Bashan OS saz bike,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,Bashan OS li ser vê komputerê kopî bike,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,Google Chrome saz bike,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,Google Chrome jixwe hatiye sazkirin.,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+
+It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
+
+You will be asked for your password.
+
+Install Google Chrome now?","Google Chrome hê nehatiye sazkirin.
+
+Ew ê ji Google were daxistin û li ser vê komputerê were sazkirin. Nêzîkî 400 MB cih û girêdanek înternetê lazim e, û bi gelemperî çend deqîqe digire.
+
+Şîfreya te wê were xwestin.
+
+Google Chrome niha were sazkirin?",,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,Google Chrome tê sazkirin. Dibe çend deqîqe bigire — tu dikarî xebata xwe bidomînî.,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,chrome.ok,Success message.,Google Chrome is installed and ready to use.,Google Chrome hate sazkirin û amade ye.,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,chrome.cancelled,Shown when the password prompt is dismissed.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed. You can try again at any time.","Sazkirin hate betalkirin, an jî şîfre nehate qebûlkirin.
+
+Tu tişt nehate guhertin. Tu dikarî her dem dîsa biceribînî.",,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,chrome.failed,"Failure message. Leads with the likeliest cause, not an error code.","Google Chrome could not be installed.
+
+The most common reason is no internet connection. Please check your connection and try again.","Google Chrome nehate sazkirin.
+
+Sedema herî gelemperî nebûna girêdana înternetê ye. Ji kerema xwe girêdana xwe kontrol bike û dîsa biceribîne.",,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,slide1.title,"Installer slideshow, slide 1 heading.",Welcome to Bashan OS,Bi xêr hatî bo Bashan OS,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,slide1.body,"Installer slideshow, slide 1 body.",Your computer is being set up. This usually takes about ten minutes. You can leave it running.,Komputera te tê amadekirin. Ev bi gelemperî nêzîkî deh deqîqan digire. Tu dikarî wê bihêlî bixebite.,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,slide2.title,"Installer slideshow, slide 2 heading.","Everything you need, already installed","Her tiştê ku hewce ye, jixwe hatiye sazkirin",,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,slide2.body,"Installer slideshow, slide 2 body.","Writer, spreadsheets and presentations. Email and calendar. A web browser. Photos, music and video. Nothing to download before you start.","Nivîsar, tabloyên hesêb û pêşkêşî. E-name û salname. Geroka webê. Wêne, muzîk û vîdyo. Berî destpêkirinê tu tişt nayê daxistin.",,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,slide3.title,"Installer slideshow, slide 3 heading.","Thirteen languages, written the right way round","Sêzdeh ziman, bi arasteya rast hatine nivîsandin",,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,slide3.body,"Installer slideshow, slide 3 body.","Arabic, Hebrew, Syriac, Sorani and Persian read right to left, and Bashan OS lays itself out to match. You can change language at any time.","Erebî, Îbranî, Suryanî, Soranî û Farisî ji rastê ber bi çepê ve têne xwendin, û Bashan OS xwe li gorî wê rêz dike. Tu dikarî her dem zimên biguherînî.",,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,slide4.title,"Installer slideshow, slide 4 heading.",Private by default,Ji destpêkê ve nehênî,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,slide4.body,"Installer slideshow, slide 4 body.","Bashan OS collects nothing and reports nothing. No usage data, no accounts, no tracking. Published by Bashan Tech LLC.","Bashan OS tu tiştî berhev nake û tu tiştî ranagihîne. Ne daneyên bikaranînê, ne hesab, ne şopandin. Ji aliyê Bashan Tech LLC ve tê weşandin.",,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,installer.langnote,"Shown on the installer's first screen, for the three languages Calamares has no translation for.","The installer itself is not available in Kurmanji, Sorani or Syriac. Choose English or Arabic to install — you can still set the computer to your own language afterwards.","Bernameya sazkirinê bi xwe bi Kurmancî, Soranî an Suryanî tune ye. Ji bo sazkirinê Îngilîzî an Erebî hilbijêre — piştre tu hê jî dikarî komputerê bi zimanê xwe saz bikî.",,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,ئەپی وێبی بەشان لە پەنجەرەی خۆیدا,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,هێشتا دانەمەزراوە — کلیک بکە بۆ دامەزراندنی Google Chrome,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,دامەزراندنی بەشان ئۆ ئێس,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,لەبەرگرتنەوەی بەشان ئۆ ئێس بۆ ئەم کۆمپیوتەرە,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,دامەزراندنی Google Chrome,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,‏Google Chrome پێشتر دامەزراوە.,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+
+It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
+
+You will be asked for your password.
+
+Install Google Chrome now?","‏Google Chrome هێشتا دانەمەزراوە.
+
+لە Google داگیردەکرێت و لەم کۆمپیوتەرە دادەمەزرێت. نزیکەی ٤٠٠ مێگابایت شوێن و پەیوەندی ئینتەرنێتی پێویستە، و بە شێوەی ئاسایی چەند خولەکێک دەخایەنێت.
+
+داوای وشەی نهێنیت لێدەکرێت.
+
+ئێستا Google Chrome دابمەزرێت؟",,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,‏Google Chrome دادەمەزرێت. لەوانەیە چەند خولەکێک بخایەنێت — دەتوانیت بەردەوام بیت لە کارەکەت.,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,chrome.ok,Success message.,Google Chrome is installed and ready to use.,‏Google Chrome دامەزرا و ئامادەیە بۆ بەکارهێنان.,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,chrome.cancelled,Shown when the password prompt is dismissed.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed. You can try again at any time.","دامەزراندن هەڵوەشێنرایەوە، یان وشەی نهێنی وەرنەگیرا.
+
+هیچ شتێک نەگۆڕدراوە. دەتوانیت هەر کاتێک دووبارە هەوڵ بدەیتەوە.",,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,chrome.failed,"Failure message. Leads with the likeliest cause, not an error code.","Google Chrome could not be installed.
+
+The most common reason is no internet connection. Please check your connection and try again.","نەتوانرا Google Chrome دابمەزرێت.
+
+باوترین هۆکار نەبوونی پەیوەندی ئینتەرنێتە. تکایە پەیوەندییەکەت بپشکنە و دووبارە هەوڵ بدەرەوە.",,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,slide1.title,"Installer slideshow, slide 1 heading.",Welcome to Bashan OS,بەخێربێیت بۆ بەشان ئۆ ئێس,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,slide1.body,"Installer slideshow, slide 1 body.",Your computer is being set up. This usually takes about ten minutes. You can leave it running.,کۆمپیوتەرەکەت ئامادە دەکرێت. ئەمە بە شێوەی ئاسایی نزیکەی دە خولەک دەخایەنێت. دەتوانیت بەجێی بهێڵیت.,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,slide2.title,"Installer slideshow, slide 2 heading.","Everything you need, already installed",هەرچی پێویستت بێت، پێشتر دامەزراوە,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,slide2.body,"Installer slideshow, slide 2 body.","Writer, spreadsheets and presentations. Email and calendar. A web browser. Photos, music and video. Nothing to download before you start.",نووسین، خشتەی ژمێریاری و پێشکەشکردن. ئیمەیڵ و ڕۆژژمێر. وێبگەڕ. وێنە، مۆسیقا و ڤیدیۆ. پێش دەستپێکردن هیچ داگرتنێک پێویست نییە.,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,slide3.title,"Installer slideshow, slide 3 heading.","Thirteen languages, written the right way round",سێزدە زمان، بە ئاراستەی ڕاست نووسراون,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,slide3.body,"Installer slideshow, slide 3 body.","Arabic, Hebrew, Syriac, Sorani and Persian read right to left, and Bashan OS lays itself out to match. You can change language at any time.",عەرەبی، عیبری، سریانی، سۆرانی و فارسی لە ڕاستەوە بۆ چەپ دەخوێنرێنەوە، و بەشان ئۆ ئێس خۆی لەگەڵیان ڕێک دەخات. هەر کاتێک دەتوانیت زمان بگۆڕیت.,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,slide4.title,"Installer slideshow, slide 4 heading.",Private by default,بە بنەڕەت تایبەتە,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,slide4.body,"Installer slideshow, slide 4 body.","Bashan OS collects nothing and reports nothing. No usage data, no accounts, no tracking. Published by Bashan Tech LLC.",بەشان ئۆ ئێس هیچ شتێک کۆناکاتەوە و هیچ ڕاپۆرتێک ناکات. نە داتای بەکارهێنان، نە هەژمار، نە شوێنپێهەڵگرتن. بڵاوکراوەتەوە لەلایەن Bashan Tech LLC.,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,installer.langnote,"Shown on the installer's first screen, for the three languages Calamares has no translation for.","The installer itself is not available in Kurmanji, Sorani or Syriac. Choose English or Arabic to install — you can still set the computer to your own language afterwards.",خودی بەرنامەی دامەزراندن بە کورمانجی، سۆرانی یان سریانی بەردەست نییە. بۆ دامەزراندن ئینگلیزی یان عەرەبی هەڵبژێرە — دواتر هێشتا دەتوانیت کۆمپیوتەرەکە بە زمانی خۆت ڕێک بخەیت.,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,ܦܪܘܓܪܡܐ ܕܒܫܢ ܒܟܘܬܐ ܕܝܠܢܝܬܐ,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,ܠܐ ܐܬܬܣܝܡ ܥܕܟܝܠ — ܢܩܘܫ ܠܡܣܡ Google Chrome,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,ܣܝܡ ܒܫܢ ܐܘ ܐܣ,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,ܟܬܘܒ ܒܫܢ ܐܘ ܐܣ ܥܠ ܗܢܐ ܚܫܘܒܐ,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,ܣܝܡ Google Chrome,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,Google Chrome ܐܝܬܘܗܝ ܣܝܡܐ ܡܢ ܟܕܘ.,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+
+It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
+
+You will be asked for your password.
+
+Install Google Chrome now?","Google Chrome ܠܐ ܐܬܬܣܝܡ ܥܕܟܝܠ.
+
+ܢܬܢܚܬ ܡܢ Google ܘܢܬܬܣܝܡ ܥܠ ܗܢܐ ܚܫܘܒܐ. ܣܢܝܩ ܥܠ ܐܝܟ 400 MB ܕܐܬܪܐ ܘܥܠ ܩܘܛܪܐ ܕܐܢܛܪܢܛ.
+
+ܢܬܒܥܐ ܡܢܟ ܡܠܬܐ ܕܥܠܠܐ.
+
+ܬܣܝܡ Google Chrome ܗܫܐ؟",,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,Google Chrome ܡܬܬܣܝܡ ܗܫܐ. ܡܨܐ ܕܢܐܚܘܕ ܩܠܝܠ ܩܛܝܢܐ.,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,chrome.ok,Success message.,Google Chrome is installed and ready to use.,Google Chrome ܐܬܬܣܝܡ ܘܡܛܝܒ ܠܚܫܚܬܐ.,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,chrome.cancelled,Shown when the password prompt is dismissed.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed. You can try again at any time.","ܐܬܒܛܠ ܣܝܡܐ ܐܘ ܠܐ ܐܬܩܒܠܬ ܡܠܬܐ ܕܥܠܠܐ.
+
+ܠܐ ܐܫܬܚܠܦ ܡܕܡ.",,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,chrome.failed,"Failure message. Leads with the likeliest cause, not an error code.","Google Chrome could not be installed.
+
+The most common reason is no internet connection. Please check your connection and try again.","ܠܐ ܐܫܟܚ ܠܡܣܡ Google Chrome.
+
+ܥܠܬܐ ܪܒܬܐ ܐܝܬܝܗ ܚܣܝܪܘܬ ܩܘܛܪܐ ܕܐܢܛܪܢܛ.",,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,slide1.title,"Installer slideshow, slide 1 heading.",Welcome to Bashan OS,ܒܫܝܢܐ ܐܬܝܬܘܢ ܠܒܫܢ ܐܘ ܐܣ,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,slide1.body,"Installer slideshow, slide 1 body.",Your computer is being set up. This usually takes about ten minutes. You can leave it running.,ܡܬܛܝܒ ܚܫܘܒܟ ܗܫܐ. ܢܐܚܘܕ ܐܝܟ ܥܣܪܐ ܩܛܝܢܐ.,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,slide2.title,"Installer slideshow, slide 2 heading.","Everything you need, already installed",ܟܠ ܡܕܡ ܕܣܢܝܩ ܐܢܬ ܥܠܘܗܝ ܣܝܡ ܡܢ ܟܕܘ,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,slide2.body,"Installer slideshow, slide 2 body.","Writer, spreadsheets and presentations. Email and calendar. A web browser. Photos, music and video. Nothing to download before you start.",ܟܬܘܒܐ ܘܦܬܘܪܐ ܕܡܢܝܢܐ ܘܡܚܘܝܢܘܬܐ. ܐܓܪܬܐ ܘܣܝܡ ܝܘܡܐ. ܡܒܥܝܢܐ ܕܐܢܛܪܢܛ.,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,slide3.title,"Installer slideshow, slide 3 heading.","Thirteen languages, written the right way round",ܬܠܬܥܣܪ ܠܫܢܐ ܟܬܝܒܝܢ ܒܐܘܪܚܐ ܬܪܝܨܬܐ,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,slide3.body,"Installer slideshow, slide 3 body.","Arabic, Hebrew, Syriac, Sorani and Persian read right to left, and Bashan OS lays itself out to match. You can change language at any time.",ܥܪܒܝܐ ܘܥܒܪܝܐ ܘܣܘܪܝܝܐ ܘܣܘܪܢܝܐ ܘܦܪܣܝܐ ܡܬܩܪܝܢ ܡܢ ܝܡܝܢܐ ܠܣܡܠܐ.,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,slide4.title,"Installer slideshow, slide 4 heading.",Private by default,ܟܣܝܐ ܡܢ ܫܘܪܝܐ,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,slide4.body,"Installer slideshow, slide 4 body.","Bashan OS collects nothing and reports nothing. No usage data, no accounts, no tracking. Published by Bashan Tech LLC.",ܒܫܢ ܐܘ ܐܣ ܠܐ ܟܢܫ ܡܕܡ ܘܠܐ ܡܫܕܪ ܡܕܡ. ܠܝܬ ܢܛܘܪܘܬܐ.,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,installer.langnote,"Shown on the installer's first screen, for the three languages Calamares has no translation for.","The installer itself is not available in Kurmanji, Sorani or Syriac. Choose English or Arabic to install — you can still set the computer to your own language afterwards.",ܦܪܘܓܪܡܐ ܕܣܝܡܐ ܠܐ ܐܝܬܘܗܝ ܒܠܫܢܐ ܣܘܪܝܝܐ. ܓܒܝ ܐܢܓܠܝܐ ܐܘ ܥܪܒܝܐ ܠܡܣܡ.,,

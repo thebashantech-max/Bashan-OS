@@ -1,0 +1,21 @@
+# Bashan OS - Kurdish Sorani (کوردیی ناوەندی)
+# Translation confidence: LOW. Reviewed by a native speaker: NO.
+# Generated from i18n/strings.json - do not edit by hand.
+
+BT_CHROME_TITLE='دامەزراندنی Google Chrome'
+BT_CHROME_ALREADY='‏Google Chrome پێشتر دامەزراوە.'
+BT_CHROME_ASK='‏Google Chrome هێشتا دانەمەزراوە.
+
+لە Google داگیردەکرێت و لەم کۆمپیوتەرە دادەمەزرێت. نزیکەی ٤٠٠ مێگابایت شوێن و پەیوەندی ئینتەرنێتی پێویستە، و بە شێوەی ئاسایی چەند خولەکێک دەخایەنێت.
+
+داوای وشەی نهێنیت لێدەکرێت.
+
+ئێستا Google Chrome دابمەزرێت؟'
+BT_CHROME_BUSY='‏Google Chrome دادەمەزرێت. لەوانەیە چەند خولەکێک بخایەنێت — دەتوانیت بەردەوام بیت لە کارەکەت.'
+BT_CHROME_OK='‏Google Chrome دامەزرا و ئامادەیە بۆ بەکارهێنان.'
+BT_CHROME_CANCELLED='دامەزراندن هەڵوەشێنرایەوە، یان وشەی نهێنی وەرنەگیرا.
+
+هیچ شتێک نەگۆڕدراوە. دەتوانیت هەر کاتێک دووبارە هەوڵ بدەیتەوە.'
+BT_CHROME_FAILED='نەتوانرا Google Chrome دابمەزرێت.
+
+باوترین هۆکار نەبوونی پەیوەندی ئینتەرنێتە. تکایە پەیوەندییەکەت بپشکنە و دووبارە هەوڵ بدەرەوە.'

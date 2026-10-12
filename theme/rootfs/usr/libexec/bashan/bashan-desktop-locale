@@ -1,0 +1,76 @@
+#!/bin/sh
+# Bashan OS — put the desktop Trash icon in the corner that matches the
+# reading direction, and re-do it whenever the user changes language.
+#
+#   bottom RIGHT : English, Spanish, German, French, Portuguese,
+#                  Kurmanji, Russian, Greek
+#   bottom LEFT  : Arabic, Hebrew, Syriac, Sorani, Persian
+#
+# Everything else about right-to-left - the dock mirroring, the launcher
+# moving to the right edge, menus, Dolphin's panes - is handled by Qt
+# automatically from the locale. Only free-floating desktop widgets have
+# absolute coordinates, so only they need this.
+#
+# Driving plasmashell's own scripting interface over D-Bus rather than
+# editing plasma-org.kde.plasma.desktop-appletsrc by hand: the config file
+# format for widget geometry is internal and changes between releases,
+# whereas the scripting API is public and applies live with no restart.
+#
+# Fail-safe throughout. If anything is missing or unexpected the script
+# exits quietly and the icon simply stays where Plasma put it, which is
+# cosmetic, never broken.
+set -u
+
+STATE_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/bashan"
+STATE="$STATE_DIR/desktop-locale"
+MARGIN=60
+ICON=128
+
+RTL_LANGS="ar he syr ckb fa"
+
+lang=${LC_ALL:-${LC_MESSAGES:-${LANG:-en_US}}}
+lang=${lang%%.*}
+lang=${lang%%@*}
+base=${lang%%_*}
+
+side=right
+for r in $RTL_LANGS; do
+    [ "$base" = "$r" ] && side=left
+done
+
+# Nothing to do if the language has not changed since last time.
+if [ -r "$STATE" ] && [ "$(cat "$STATE" 2>/dev/null)" = "$lang:$side" ]; then
+    exit 0
+fi
+
+qdbus=$(command -v qdbus6 || command -v qdbus-qt6 || command -v qdbus || true)
+[ -n "$qdbus" ] || exit 0
+
+# Plasma scripting: find every Trash widget on every desktop and move it to
+# the chosen bottom corner of that desktop's own screen.
+script=$(cat <<JS
+var side = "$side";
+var margin = $MARGIN;
+var icon = $ICON;
+var ds = desktops();
+for (var i = 0; i < ds.length; i++) {
+    var d = ds[i];
+    var geo = d.screenGeometry;
+    if (!geo) { continue; }
+    var x = (side === "left") ? margin : (geo.width - icon - margin);
+    var y = geo.height - icon - margin;
+    var ws = d.widgets("org.kde.plasma.trash");
+    for (var j = 0; j < ws.length; j++) {
+        ws[j].geometry = Qt.rect(x, y, icon, icon);
+    }
+}
+JS
+)
+
+if "$qdbus" org.kde.plasmashell /PlasmaShell \
+        org.kde.PlasmaShell.evaluateScript "$script" >/dev/null 2>&1; then
+    mkdir -p "$STATE_DIR"
+    printf '%s:%s\n' "$lang" "$side" > "$STATE"
+fi
+
+exit 0

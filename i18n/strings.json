@@ -1,0 +1,470 @@
+{
+  "languages": {
+    "en": {
+      "name": "English",
+      "native": "English",
+      "rtl": false,
+      "locale": "en_US.UTF-8",
+      "confidence": "source",
+      "reviewed": true
+    },
+    "es": {
+      "name": "Spanish",
+      "native": "Español",
+      "rtl": false,
+      "locale": "es_ES.UTF-8",
+      "confidence": "high",
+      "reviewed": false
+    },
+    "de": {
+      "name": "German",
+      "native": "Deutsch",
+      "rtl": false,
+      "locale": "de_DE.UTF-8",
+      "confidence": "high",
+      "reviewed": false
+    },
+    "fr": {
+      "name": "French",
+      "native": "Français",
+      "rtl": false,
+      "locale": "fr_FR.UTF-8",
+      "confidence": "high",
+      "reviewed": false
+    },
+    "pt": {
+      "name": "Portuguese",
+      "native": "Português",
+      "rtl": false,
+      "locale": "pt_PT.UTF-8",
+      "confidence": "high",
+      "reviewed": false
+    },
+    "ru": {
+      "name": "Russian",
+      "native": "Русский",
+      "rtl": false,
+      "locale": "ru_RU.UTF-8",
+      "confidence": "high",
+      "reviewed": false
+    },
+    "el": {
+      "name": "Greek",
+      "native": "Ελληνικά",
+      "rtl": false,
+      "locale": "el_GR.UTF-8",
+      "confidence": "good",
+      "reviewed": false
+    },
+    "ar": {
+      "name": "Arabic",
+      "native": "العربية",
+      "rtl": true,
+      "locale": "ar_SY.UTF-8",
+      "confidence": "good",
+      "reviewed": false
+    },
+    "he": {
+      "name": "Hebrew",
+      "native": "עברית",
+      "rtl": true,
+      "locale": "he_IL.UTF-8",
+      "confidence": "good",
+      "reviewed": false
+    },
+    "fa": {
+      "name": "Persian",
+      "native": "فارسی",
+      "rtl": true,
+      "locale": "fa_IR",
+      "confidence": "good",
+      "reviewed": false
+    },
+    "ku": {
+      "name": "Kurdish Kurmanji",
+      "native": "Kurmancî",
+      "rtl": false,
+      "locale": "ku_TR.UTF-8",
+      "confidence": "LOW",
+      "reviewed": false
+    },
+    "ckb": {
+      "name": "Kurdish Sorani",
+      "native": "کوردیی ناوەندی",
+      "rtl": true,
+      "locale": "ckb_IQ",
+      "confidence": "LOW",
+      "reviewed": false
+    },
+    "syr": {
+      "name": "Syriac",
+      "native": "ܣܘܪܝܝܐ",
+      "rtl": true,
+      "locale": "syr",
+      "confidence": "VERY LOW",
+      "reviewed": false
+    }
+  },
+  "strings": {
+    "app.bashan.comment": {
+      "note": "Tooltip for the Bashan app launcher in the dock.",
+      "t": {
+        "en": "The Bashan web app in its own window",
+        "es": "La aplicación web de Bashan en su propia ventana",
+        "de": "Die Bashan-Web-App in einem eigenen Fenster",
+        "fr": "L'application web Bashan dans sa propre fenêtre",
+        "pt": "A aplicação web Bashan na sua própria janela",
+        "ru": "Веб-приложение Bashan в отдельном окне",
+        "el": "Η εφαρμογή ιστού Bashan σε δικό της παράθυρο",
+        "ar": "تطبيق بشان على الويب في نافذة خاصة به",
+        "he": "יישום האינטרנט של Bashan בחלון נפרד",
+        "fa": "برنامهٔ وب بشان در پنجرهٔ خودش",
+        "ku": "Sepana webê ya Bashan di pencereya xwe de",
+        "ckb": "ئەپی وێبی بەشان لە پەنجەرەی خۆیدا",
+        "syr": "ܦܪܘܓܪܡܐ ܕܒܫܢ ܒܟܘܬܐ ܕܝܠܢܝܬܐ"
+      }
+    },
+    "app.chrome.comment": {
+      "note": "Shown under the Chrome placeholder icon before Chrome is installed.",
+      "t": {
+        "en": "Not installed yet — click to install Google Chrome",
+        "es": "Aún no instalado — haga clic para instalar Google Chrome",
+        "de": "Noch nicht installiert — klicken, um Google Chrome zu installieren",
+        "fr": "Pas encore installé — cliquez pour installer Google Chrome",
+        "pt": "Ainda não instalado — clique para instalar o Google Chrome",
+        "ru": "Ещё не установлен — нажмите, чтобы установить Google Chrome",
+        "el": "Δεν έχει εγκατασταθεί ακόμη — κάντε κλικ για εγκατάσταση του Google Chrome",
+        "ar": "غير مُثبَّت بعد — انقر لتثبيت Google Chrome",
+        "he": "עדיין לא מותקן — לחצו כדי להתקין את Google Chrome",
+        "fa": "هنوز نصب نشده — برای نصب Google Chrome کلیک کنید",
+        "ku": "Hê nehatiye sazkirin — ji bo sazkirina Google Chrome bitikîne",
+        "ckb": "هێشتا دانەمەزراوە — کلیک بکە بۆ دامەزراندنی Google Chrome",
+        "syr": "ܠܐ ܐܬܬܣܝܡ ܥܕܟܝܠ — ܢܩܘܫ ܠܡܣܡ Google Chrome"
+      }
+    },
+    "app.installer.name": {
+      "note": "Desktop icon on the live ISO that starts the installer.",
+      "t": {
+        "en": "Install Bashan OS",
+        "es": "Instalar Bashan OS",
+        "de": "Bashan OS installieren",
+        "fr": "Installer Bashan OS",
+        "pt": "Instalar o Bashan OS",
+        "ru": "Установить Bashan OS",
+        "el": "Εγκατάσταση του Bashan OS",
+        "ar": "تثبيت نظام بشان",
+        "he": "התקנת Bashan OS",
+        "fa": "نصب بشان او‌اس",
+        "ku": "Bashan OS saz bike",
+        "ckb": "دامەزراندنی بەشان ئۆ ئێس",
+        "syr": "ܣܝܡ ܒܫܢ ܐܘ ܐܣ"
+      }
+    },
+    "app.installer.comment": {
+      "note": "Tooltip under the installer icon.",
+      "t": {
+        "en": "Copy Bashan OS onto this computer",
+        "es": "Copiar Bashan OS en este ordenador",
+        "de": "Bashan OS auf diesen Computer kopieren",
+        "fr": "Copier Bashan OS sur cet ordinateur",
+        "pt": "Copiar o Bashan OS para este computador",
+        "ru": "Скопировать Bashan OS на этот компьютер",
+        "el": "Αντιγραφή του Bashan OS σε αυτόν τον υπολογιστή",
+        "ar": "نسخ نظام بشان إلى هذا الحاسوب",
+        "he": "העתקת Bashan OS אל המחשב הזה",
+        "fa": "کپی بشان او‌اس روی این رایانه",
+        "ku": "Bashan OS li ser vê komputerê kopî bike",
+        "ckb": "لەبەرگرتنەوەی بەشان ئۆ ئێس بۆ ئەم کۆمپیوتەرە",
+        "syr": "ܟܬܘܒ ܒܫܢ ܐܘ ܐܣ ܥܠ ܗܢܐ ܚܫܘܒܐ"
+      }
+    },
+    "chrome.title": {
+      "note": "Title bar of every Chrome-installer dialog.",
+      "t": {
+        "en": "Install Google Chrome",
+        "es": "Instalar Google Chrome",
+        "de": "Google Chrome installieren",
+        "fr": "Installer Google Chrome",
+        "pt": "Instalar o Google Chrome",
+        "ru": "Установка Google Chrome",
+        "el": "Εγκατάσταση του Google Chrome",
+        "ar": "تثبيت Google Chrome",
+        "he": "התקנת Google Chrome",
+        "fa": "نصب Google Chrome",
+        "ku": "Google Chrome saz bike",
+        "ckb": "دامەزراندنی Google Chrome",
+        "syr": "ܣܝܡ Google Chrome"
+      }
+    },
+    "chrome.already": {
+      "note": "Shown if Chrome turns out to be installed already.",
+      "t": {
+        "en": "Google Chrome is already installed.",
+        "es": "Google Chrome ya está instalado.",
+        "de": "Google Chrome ist bereits installiert.",
+        "fr": "Google Chrome est déjà installé.",
+        "pt": "O Google Chrome já está instalado.",
+        "ru": "Google Chrome уже установлен.",
+        "el": "Το Google Chrome είναι ήδη εγκατεστημένο.",
+        "ar": "‏Google Chrome مُثبَّت بالفعل.",
+        "he": "‏Google Chrome כבר מותקן.",
+        "fa": "‏Google Chrome از قبل نصب شده است.",
+        "ku": "Google Chrome jixwe hatiye sazkirin.",
+        "ckb": "‏Google Chrome پێشتر دامەزراوە.",
+        "syr": "Google Chrome ܐܝܬܘܗܝ ܣܝܡܐ ܡܢ ܟܕܘ."
+      }
+    },
+    "chrome.ask": {
+      "note": "The confirmation question. Plain words, states cost and password.",
+      "t": {
+        "en": "Google Chrome is not installed yet.\n\nIt will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.\n\nYou will be asked for your password.\n\nInstall Google Chrome now?",
+        "es": "Google Chrome aún no está instalado.\n\nSe descargará de Google y se instalará en este ordenador. Necesita unos 400 MB de espacio y una conexión a internet, y suele tardar unos minutos.\n\nSe le pedirá su contraseña.\n\n¿Instalar Google Chrome ahora?",
+        "de": "Google Chrome ist noch nicht installiert.\n\nEs wird von Google heruntergeladen und auf diesem Computer installiert. Dafür werden etwa 400 MB Speicherplatz und eine Internetverbindung benötigt; es dauert meist einige Minuten.\n\nSie werden nach Ihrem Passwort gefragt.\n\nGoogle Chrome jetzt installieren?",
+        "fr": "Google Chrome n'est pas encore installé.\n\nIl sera téléchargé depuis Google et installé sur cet ordinateur. Cela nécessite environ 400 Mo d'espace et une connexion internet, et prend généralement quelques minutes.\n\nVotre mot de passe vous sera demandé.\n\nInstaller Google Chrome maintenant ?",
+        "pt": "O Google Chrome ainda não está instalado.\n\nSerá descarregado da Google e instalado neste computador. Precisa de cerca de 400 MB de espaço e de uma ligação à internet, e demora normalmente alguns minutos.\n\nSer-lhe-á pedida a sua palavra-passe.\n\nInstalar o Google Chrome agora?",
+        "ru": "Google Chrome ещё не установлен.\n\nОн будет загружен с серверов Google и установлен на этот компьютер. Потребуется около 400 МБ места и подключение к интернету; обычно это занимает несколько минут.\n\nУ вас будет запрошен пароль.\n\nУстановить Google Chrome сейчас?",
+        "el": "Το Google Chrome δεν έχει εγκατασταθεί ακόμη.\n\nΘα ληφθεί από την Google και θα εγκατασταθεί σε αυτόν τον υπολογιστή. Χρειάζονται περίπου 400 MB χώρου και σύνδεση στο διαδίκτυο, και συνήθως διαρκεί μερικά λεπτά.\n\nΘα σας ζητηθεί ο κωδικός σας.\n\nΕγκατάσταση του Google Chrome τώρα;",
+        "ar": "‏Google Chrome غير مُثبَّت بعد.\n\nسيُنزَّل من Google ويُثبَّت على هذا الحاسوب. يحتاج نحو 400 ميغابايت من المساحة واتصالاً بالإنترنت، ويستغرق عادةً بضع دقائق.\n\nسيُطلب منك كلمة المرور.\n\nهل تريد تثبيت Google Chrome الآن؟",
+        "he": "‏Google Chrome עדיין לא מותקן.\n\nהוא יורד מ‏Google ויותקן במחשב הזה. נדרשים כ‏400 מ\"ב מקום וחיבור לאינטרנט, וזה בדרך כלל אורך כמה דקות.\n\nתתבקשו להזין את הסיסמה שלכם.\n\nלהתקין את Google Chrome עכשיו?",
+        "fa": "‏Google Chrome هنوز نصب نشده است.\n\nاز Google دانلود و روی این رایانه نصب می‌شود. حدود ۴۰۰ مگابایت فضا و اتصال اینترنت لازم دارد و معمولاً چند دقیقه طول می‌کشد.\n\nرمز عبور شما پرسیده خواهد شد.\n\nاکنون Google Chrome نصب شود؟",
+        "ku": "Google Chrome hê nehatiye sazkirin.\n\nEw ê ji Google were daxistin û li ser vê komputerê were sazkirin. Nêzîkî 400 MB cih û girêdanek înternetê lazim e, û bi gelemperî çend deqîqe digire.\n\nŞîfreya te wê were xwestin.\n\nGoogle Chrome niha were sazkirin?",
+        "ckb": "‏Google Chrome هێشتا دانەمەزراوە.\n\nلە Google داگیردەکرێت و لەم کۆمپیوتەرە دادەمەزرێت. نزیکەی ٤٠٠ مێگابایت شوێن و پەیوەندی ئینتەرنێتی پێویستە، و بە شێوەی ئاسایی چەند خولەکێک دەخایەنێت.\n\nداوای وشەی نهێنیت لێدەکرێت.\n\nئێستا Google Chrome دابمەزرێت؟",
+        "syr": "Google Chrome ܠܐ ܐܬܬܣܝܡ ܥܕܟܝܠ.\n\nܢܬܢܚܬ ܡܢ Google ܘܢܬܬܣܝܡ ܥܠ ܗܢܐ ܚܫܘܒܐ. ܣܢܝܩ ܥܠ ܐܝܟ 400 MB ܕܐܬܪܐ ܘܥܠ ܩܘܛܪܐ ܕܐܢܛܪܢܛ.\n\nܢܬܒܥܐ ܡܢܟ ܡܠܬܐ ܕܥܠܠܐ.\n\nܬܣܝܡ Google Chrome ܗܫܐ؟"
+      }
+    },
+    "chrome.busy": {
+      "note": "Passive popup while the install runs.",
+      "t": {
+        "en": "Installing Google Chrome. This can take a few minutes — you can keep working.",
+        "es": "Instalando Google Chrome. Puede tardar unos minutos; puede seguir trabajando.",
+        "de": "Google Chrome wird installiert. Das kann einige Minuten dauern — Sie können weiterarbeiten.",
+        "fr": "Installation de Google Chrome. Cela peut prendre quelques minutes ; vous pouvez continuer à travailler.",
+        "pt": "A instalar o Google Chrome. Pode demorar alguns minutos — pode continuar a trabalhar.",
+        "ru": "Устанавливается Google Chrome. Это может занять несколько минут — можно продолжать работу.",
+        "el": "Γίνεται εγκατάσταση του Google Chrome. Μπορεί να διαρκέσει μερικά λεπτά — μπορείτε να συνεχίσετε να εργάζεστε.",
+        "ar": "جارٍ تثبيت Google Chrome. قد يستغرق بضع دقائق — يمكنك متابعة عملك.",
+        "he": "מתקין את Google Chrome. זה עשוי לקחת כמה דקות — אפשר להמשיך לעבוד.",
+        "fa": "در حال نصب Google Chrome. ممکن است چند دقیقه طول بکشد — می‌توانید به کارتان ادامه دهید.",
+        "ku": "Google Chrome tê sazkirin. Dibe çend deqîqe bigire — tu dikarî xebata xwe bidomînî.",
+        "ckb": "‏Google Chrome دادەمەزرێت. لەوانەیە چەند خولەکێک بخایەنێت — دەتوانیت بەردەوام بیت لە کارەکەت.",
+        "syr": "Google Chrome ܡܬܬܣܝܡ ܗܫܐ. ܡܨܐ ܕܢܐܚܘܕ ܩܠܝܠ ܩܛܝܢܐ."
+      }
+    },
+    "chrome.ok": {
+      "note": "Success message.",
+      "t": {
+        "en": "Google Chrome is installed and ready to use.",
+        "es": "Google Chrome está instalado y listo para usar.",
+        "de": "Google Chrome ist installiert und einsatzbereit.",
+        "fr": "Google Chrome est installé et prêt à l'emploi.",
+        "pt": "O Google Chrome está instalado e pronto a usar.",
+        "ru": "Google Chrome установлен и готов к работе.",
+        "el": "Το Google Chrome εγκαταστάθηκε και είναι έτοιμο για χρήση.",
+        "ar": "تم تثبيت Google Chrome وهو جاهز للاستخدام.",
+        "he": "‏Google Chrome הותקן ומוכן לשימוש.",
+        "fa": "‏Google Chrome نصب شد و آمادهٔ استفاده است.",
+        "ku": "Google Chrome hate sazkirin û amade ye.",
+        "ckb": "‏Google Chrome دامەزرا و ئامادەیە بۆ بەکارهێنان.",
+        "syr": "Google Chrome ܐܬܬܣܝܡ ܘܡܛܝܒ ܠܚܫܚܬܐ."
+      }
+    },
+    "chrome.cancelled": {
+      "note": "Shown when the password prompt is dismissed.",
+      "t": {
+        "en": "Installation was cancelled, or the password was not accepted.\n\nNothing has been changed. You can try again at any time.",
+        "es": "Se canceló la instalación o no se aceptó la contraseña.\n\nNo se ha cambiado nada. Puede intentarlo de nuevo cuando quiera.",
+        "de": "Die Installation wurde abgebrochen oder das Passwort wurde nicht akzeptiert.\n\nEs wurde nichts verändert. Sie können es jederzeit erneut versuchen.",
+        "fr": "L'installation a été annulée ou le mot de passe n'a pas été accepté.\n\nRien n'a été modifié. Vous pouvez réessayer à tout moment.",
+        "pt": "A instalação foi cancelada ou a palavra-passe não foi aceite.\n\nNada foi alterado. Pode tentar novamente a qualquer momento.",
+        "ru": "Установка отменена или пароль не принят.\n\nНичего не изменено. Вы можете повторить попытку в любое время.",
+        "el": "Η εγκατάσταση ακυρώθηκε ή ο κωδικός δεν έγινε δεκτός.\n\nΔεν άλλαξε τίποτα. Μπορείτε να δοκιμάσετε ξανά οποτεδήποτε.",
+        "ar": "أُلغي التثبيت أو لم تُقبل كلمة المرور.\n\nلم يتغيَّر أي شيء. يمكنك المحاولة مرة أخرى في أي وقت.",
+        "he": "ההתקנה בוטלה, או שהסיסמה לא התקבלה.\n\nשום דבר לא שונה. אפשר לנסות שוב בכל עת.",
+        "fa": "نصب لغو شد یا رمز عبور پذیرفته نشد.\n\nهیچ چیزی تغییر نکرده است. هر زمان می‌توانید دوباره تلاش کنید.",
+        "ku": "Sazkirin hate betalkirin, an jî şîfre nehate qebûlkirin.\n\nTu tişt nehate guhertin. Tu dikarî her dem dîsa biceribînî.",
+        "ckb": "دامەزراندن هەڵوەشێنرایەوە، یان وشەی نهێنی وەرنەگیرا.\n\nهیچ شتێک نەگۆڕدراوە. دەتوانیت هەر کاتێک دووبارە هەوڵ بدەیتەوە.",
+        "syr": "ܐܬܒܛܠ ܣܝܡܐ ܐܘ ܠܐ ܐܬܩܒܠܬ ܡܠܬܐ ܕܥܠܠܐ.\n\nܠܐ ܐܫܬܚܠܦ ܡܕܡ."
+      }
+    },
+    "chrome.failed": {
+      "note": "Failure message. Leads with the likeliest cause, not an error code.",
+      "t": {
+        "en": "Google Chrome could not be installed.\n\nThe most common reason is no internet connection. Please check your connection and try again.",
+        "es": "No se pudo instalar Google Chrome.\n\nLa causa más común es la falta de conexión a internet. Compruebe su conexión e inténtelo de nuevo.",
+        "de": "Google Chrome konnte nicht installiert werden.\n\nDer häufigste Grund ist eine fehlende Internetverbindung. Bitte prüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+        "fr": "Google Chrome n'a pas pu être installé.\n\nLa cause la plus fréquente est l'absence de connexion internet. Vérifiez votre connexion et réessayez.",
+        "pt": "Não foi possível instalar o Google Chrome.\n\nA causa mais comum é a falta de ligação à internet. Verifique a ligação e tente novamente.",
+        "ru": "Не удалось установить Google Chrome.\n\nЧаще всего причина — отсутствие подключения к интернету. Проверьте подключение и повторите попытку.",
+        "el": "Δεν ήταν δυνατή η εγκατάσταση του Google Chrome.\n\nΗ συνηθέστερη αιτία είναι η έλλειψη σύνδεσης στο διαδίκτυο. Ελέγξτε τη σύνδεσή σας και δοκιμάστε ξανά.",
+        "ar": "تعذَّر تثبيت Google Chrome.\n\nالسبب الأكثر شيوعًا هو عدم وجود اتصال بالإنترنت. تحقَّق من اتصالك وحاول مرة أخرى.",
+        "he": "לא ניתן היה להתקין את Google Chrome.\n\nהסיבה השכיחה ביותר היא היעדר חיבור לאינטרנט. בדקו את החיבור ונסו שוב.",
+        "fa": "نصب Google Chrome ممکن نشد.\n\nرایج‌ترین دلیل، نبودِ اتصال اینترنت است. اتصال خود را بررسی کنید و دوباره تلاش کنید.",
+        "ku": "Google Chrome nehate sazkirin.\n\nSedema herî gelemperî nebûna girêdana înternetê ye. Ji kerema xwe girêdana xwe kontrol bike û dîsa biceribîne.",
+        "ckb": "نەتوانرا Google Chrome دابمەزرێت.\n\nباوترین هۆکار نەبوونی پەیوەندی ئینتەرنێتە. تکایە پەیوەندییەکەت بپشکنە و دووبارە هەوڵ بدەرەوە.",
+        "syr": "ܠܐ ܐܫܟܚ ܠܡܣܡ Google Chrome.\n\nܥܠܬܐ ܪܒܬܐ ܐܝܬܝܗ ܚܣܝܪܘܬ ܩܘܛܪܐ ܕܐܢܛܪܢܛ."
+      }
+    },
+    "slide1.title": {
+      "note": "Installer slideshow, slide 1 heading.",
+      "t": {
+        "en": "Welcome to Bashan OS",
+        "es": "Bienvenido a Bashan OS",
+        "de": "Willkommen bei Bashan OS",
+        "fr": "Bienvenue dans Bashan OS",
+        "pt": "Bem-vindo ao Bashan OS",
+        "ru": "Добро пожаловать в Bashan OS",
+        "el": "Καλώς ορίσατε στο Bashan OS",
+        "ar": "مرحبًا بك في نظام بشان",
+        "he": "ברוכים הבאים ל‏Bashan OS",
+        "fa": "به بشان او‌اس خوش آمدید",
+        "ku": "Bi xêr hatî bo Bashan OS",
+        "ckb": "بەخێربێیت بۆ بەشان ئۆ ئێس",
+        "syr": "ܒܫܝܢܐ ܐܬܝܬܘܢ ܠܒܫܢ ܐܘ ܐܣ"
+      }
+    },
+    "slide1.body": {
+      "note": "Installer slideshow, slide 1 body.",
+      "t": {
+        "en": "Your computer is being set up. This usually takes about ten minutes. You can leave it running.",
+        "es": "Se está configurando su ordenador. Esto suele tardar unos diez minutos. Puede dejarlo funcionando.",
+        "de": "Ihr Computer wird eingerichtet. Das dauert meist etwa zehn Minuten. Sie können ihn laufen lassen.",
+        "fr": "Votre ordinateur est en cours de configuration. Cela prend généralement une dizaine de minutes. Vous pouvez le laisser tourner.",
+        "pt": "O seu computador está a ser configurado. Normalmente demora cerca de dez minutos. Pode deixá-lo a trabalhar.",
+        "ru": "Компьютер настраивается. Обычно это занимает около десяти минут. Можно оставить его работать.",
+        "el": "Ο υπολογιστής σας ρυθμίζεται. Αυτό συνήθως διαρκεί περίπου δέκα λεπτά. Μπορείτε να τον αφήσετε να δουλεύει.",
+        "ar": "يجري إعداد حاسوبك. يستغرق هذا عادةً نحو عشر دقائق. يمكنك تركه يعمل.",
+        "he": "המחשב שלכם מוגדר כעת. זה אורך בדרך כלל כעשר דקות. אפשר להשאיר אותו פועל.",
+        "fa": "رایانهٔ شما در حال آماده‌سازی است. معمولاً حدود ده دقیقه طول می‌کشد. می‌توانید آن را روشن رها کنید.",
+        "ku": "Komputera te tê amadekirin. Ev bi gelemperî nêzîkî deh deqîqan digire. Tu dikarî wê bihêlî bixebite.",
+        "ckb": "کۆمپیوتەرەکەت ئامادە دەکرێت. ئەمە بە شێوەی ئاسایی نزیکەی دە خولەک دەخایەنێت. دەتوانیت بەجێی بهێڵیت.",
+        "syr": "ܡܬܛܝܒ ܚܫܘܒܟ ܗܫܐ. ܢܐܚܘܕ ܐܝܟ ܥܣܪܐ ܩܛܝܢܐ."
+      }
+    },
+    "slide2.title": {
+      "note": "Installer slideshow, slide 2 heading.",
+      "t": {
+        "en": "Everything you need, already installed",
+        "es": "Todo lo que necesita, ya instalado",
+        "de": "Alles, was Sie brauchen, ist schon installiert",
+        "fr": "Tout ce dont vous avez besoin, déjà installé",
+        "pt": "Tudo o que precisa, já instalado",
+        "ru": "Всё необходимое уже установлено",
+        "el": "Όλα όσα χρειάζεστε, ήδη εγκατεστημένα",
+        "ar": "كل ما تحتاجه، مُثبَّت مسبقًا",
+        "he": "כל מה שצריך, כבר מותקן",
+        "fa": "هر چه لازم دارید، از پیش نصب شده",
+        "ku": "Her tiştê ku hewce ye, jixwe hatiye sazkirin",
+        "ckb": "هەرچی پێویستت بێت، پێشتر دامەزراوە",
+        "syr": "ܟܠ ܡܕܡ ܕܣܢܝܩ ܐܢܬ ܥܠܘܗܝ ܣܝܡ ܡܢ ܟܕܘ"
+      }
+    },
+    "slide2.body": {
+      "note": "Installer slideshow, slide 2 body.",
+      "t": {
+        "en": "Writer, spreadsheets and presentations. Email and calendar. A web browser. Photos, music and video. Nothing to download before you start.",
+        "es": "Procesador de textos, hojas de cálculo y presentaciones. Correo y calendario. Un navegador web. Fotos, música y vídeo. Nada que descargar antes de empezar.",
+        "de": "Textverarbeitung, Tabellen und Präsentationen. E-Mail und Kalender. Ein Webbrowser. Fotos, Musik und Video. Nichts, was Sie vorher herunterladen müssten.",
+        "fr": "Traitement de texte, tableurs et présentations. Courriel et agenda. Un navigateur web. Photos, musique et vidéo. Rien à télécharger avant de commencer.",
+        "pt": "Processador de texto, folhas de cálculo e apresentações. Correio e calendário. Um navegador web. Fotografias, música e vídeo. Nada para descarregar antes de começar.",
+        "ru": "Тексты, таблицы и презентации. Почта и календарь. Веб-браузер. Фотографии, музыка и видео. Ничего не нужно скачивать перед началом работы.",
+        "el": "Κείμενα, υπολογιστικά φύλλα και παρουσιάσεις. Ηλεκτρονικό ταχυδρομείο και ημερολόγιο. Πρόγραμμα περιήγησης. Φωτογραφίες, μουσική και βίντεο. Τίποτα δεν χρειάζεται λήψη πριν ξεκινήσετε.",
+        "ar": "معالج نصوص وجداول بيانات وعروض تقديمية. بريد إلكتروني وتقويم. متصفح وِب. صور وموسيقى وفيديو. لا شيء تحتاج إلى تنزيله قبل البدء.",
+        "he": "מעבד תמלילים, גיליונות אלקטרוניים ומצגות. דואר אלקטרוני ולוח שנה. דפדפן. תמונות, מוזיקה ווידאו. אין מה להוריד לפני שמתחילים.",
+        "fa": "واژه‌پرداز، صفحه‌گسترده و ارائه. ایمیل و تقویم. مرورگر وب. عکس، موسیقی و ویدئو. پیش از شروع چیزی برای دانلود نیست.",
+        "ku": "Nivîsar, tabloyên hesêb û pêşkêşî. E-name û salname. Geroka webê. Wêne, muzîk û vîdyo. Berî destpêkirinê tu tişt nayê daxistin.",
+        "ckb": "نووسین، خشتەی ژمێریاری و پێشکەشکردن. ئیمەیڵ و ڕۆژژمێر. وێبگەڕ. وێنە، مۆسیقا و ڤیدیۆ. پێش دەستپێکردن هیچ داگرتنێک پێویست نییە.",
+        "syr": "ܟܬܘܒܐ ܘܦܬܘܪܐ ܕܡܢܝܢܐ ܘܡܚܘܝܢܘܬܐ. ܐܓܪܬܐ ܘܣܝܡ ܝܘܡܐ. ܡܒܥܝܢܐ ܕܐܢܛܪܢܛ."
+      }
+    },
+    "slide3.title": {
+      "note": "Installer slideshow, slide 3 heading.",
+      "t": {
+        "en": "Thirteen languages, written the right way round",
+        "es": "Trece idiomas, escritos en el sentido correcto",
+        "de": "Dreizehn Sprachen, in der richtigen Schreibrichtung",
+        "fr": "Treize langues, écrites dans le bon sens",
+        "pt": "Treze idiomas, escritos no sentido certo",
+        "ru": "Тринадцать языков, с правильным направлением письма",
+        "el": "Δεκατρείς γλώσσες, γραμμένες προς τη σωστή κατεύθυνση",
+        "ar": "ثلاث عشرة لغة، مكتوبة في الاتجاه الصحيح",
+        "he": "שלוש עשרה שפות, כתובות בכיוון הנכון",
+        "fa": "سیزده زبان، با جهت نوشتار درست",
+        "ku": "Sêzdeh ziman, bi arasteya rast hatine nivîsandin",
+        "ckb": "سێزدە زمان، بە ئاراستەی ڕاست نووسراون",
+        "syr": "ܬܠܬܥܣܪ ܠܫܢܐ ܟܬܝܒܝܢ ܒܐܘܪܚܐ ܬܪܝܨܬܐ"
+      }
+    },
+    "slide3.body": {
+      "note": "Installer slideshow, slide 3 body.",
+      "t": {
+        "en": "Arabic, Hebrew, Syriac, Sorani and Persian read right to left, and Bashan OS lays itself out to match. You can change language at any time.",
+        "es": "El árabe, el hebreo, el siríaco, el sorani y el persa se leen de derecha a izquierda, y Bashan OS se adapta. Puede cambiar de idioma cuando quiera.",
+        "de": "Arabisch, Hebräisch, Syrisch, Sorani und Persisch werden von rechts nach links gelesen, und Bashan OS richtet sich danach aus. Sie können die Sprache jederzeit wechseln.",
+        "fr": "L'arabe, l'hébreu, le syriaque, le sorani et le persan se lisent de droite à gauche, et Bashan OS s'adapte. Vous pouvez changer de langue à tout moment.",
+        "pt": "O árabe, o hebraico, o siríaco, o sorani e o persa leem-se da direita para a esquerda, e o Bashan OS adapta-se. Pode mudar de idioma a qualquer momento.",
+        "ru": "Арабский, иврит, сирийский, сорани и персидский читаются справа налево, и Bashan OS перестраивает интерфейс соответственно. Язык можно сменить в любой момент.",
+        "el": "Τα αραβικά, τα εβραϊκά, τα συριακά, τα σορανί και τα περσικά διαβάζονται από δεξιά προς τα αριστερά, και το Bashan OS προσαρμόζεται. Μπορείτε να αλλάξετε γλώσσα οποτεδήποτε.",
+        "ar": "تُقرأ العربية والعبرية والسريانية والسورانية والفارسية من اليمين إلى اليسار، ونظام بشان يرتِّب واجهته تبعًا لذلك. يمكنك تغيير اللغة في أي وقت.",
+        "he": "ערבית, עברית, סורית, סוראני ופרסית נקראות מימין לשמאל, ו‏Bashan OS מסדר את עצמו בהתאם. אפשר להחליף שפה בכל עת.",
+        "fa": "عربی، عبری، سریانی، سورانی و فارسی از راست به چپ خوانده می‌شوند و بشان او‌اس چیدمان خود را با آن هماهنگ می‌کند. هر زمان می‌توانید زبان را عوض کنید.",
+        "ku": "Erebî, Îbranî, Suryanî, Soranî û Farisî ji rastê ber bi çepê ve têne xwendin, û Bashan OS xwe li gorî wê rêz dike. Tu dikarî her dem zimên biguherînî.",
+        "ckb": "عەرەبی، عیبری، سریانی، سۆرانی و فارسی لە ڕاستەوە بۆ چەپ دەخوێنرێنەوە، و بەشان ئۆ ئێس خۆی لەگەڵیان ڕێک دەخات. هەر کاتێک دەتوانیت زمان بگۆڕیت.",
+        "syr": "ܥܪܒܝܐ ܘܥܒܪܝܐ ܘܣܘܪܝܝܐ ܘܣܘܪܢܝܐ ܘܦܪܣܝܐ ܡܬܩܪܝܢ ܡܢ ܝܡܝܢܐ ܠܣܡܠܐ."
+      }
+    },
+    "slide4.title": {
+      "note": "Installer slideshow, slide 4 heading.",
+      "t": {
+        "en": "Private by default",
+        "es": "Privado por defecto",
+        "de": "Standardmäßig privat",
+        "fr": "Confidentiel par défaut",
+        "pt": "Privado por predefinição",
+        "ru": "Приватность по умолчанию",
+        "el": "Ιδιωτικό εξ ορισμού",
+        "ar": "الخصوصية افتراضيًا",
+        "he": "פרטי כברירת מחדל",
+        "fa": "به‌طور پیش‌فرض خصوصی",
+        "ku": "Ji destpêkê ve nehênî",
+        "ckb": "بە بنەڕەت تایبەتە",
+        "syr": "ܟܣܝܐ ܡܢ ܫܘܪܝܐ"
+      }
+    },
+    "slide4.body": {
+      "note": "Installer slideshow, slide 4 body.",
+      "t": {
+        "en": "Bashan OS collects nothing and reports nothing. No usage data, no accounts, no tracking. Published by Bashan Tech LLC.",
+        "es": "Bashan OS no recopila ni envía nada. Sin datos de uso, sin cuentas, sin seguimiento. Publicado por Bashan Tech LLC.",
+        "de": "Bashan OS sammelt nichts und meldet nichts. Keine Nutzungsdaten, keine Konten, kein Tracking. Herausgegeben von Bashan Tech LLC.",
+        "fr": "Bashan OS ne collecte rien et ne transmet rien. Aucune donnée d'usage, aucun compte, aucun suivi. Publié par Bashan Tech LLC.",
+        "pt": "O Bashan OS não recolhe nem comunica nada. Sem dados de utilização, sem contas, sem rastreio. Publicado pela Bashan Tech LLC.",
+        "ru": "Bashan OS ничего не собирает и никуда не отправляет. Никаких данных об использовании, учётных записей и слежки. Издатель — Bashan Tech LLC.",
+        "el": "Το Bashan OS δεν συλλέγει και δεν αναφέρει τίποτα. Καθόλου δεδομένα χρήσης, λογαριασμοί ή παρακολούθηση. Εκδίδεται από την Bashan Tech LLC.",
+        "ar": "نظام بشان لا يجمع شيئًا ولا يرسل شيئًا. لا بيانات استخدام، ولا حسابات، ولا تتبُّع. تنشره شركة Bashan Tech LLC.",
+        "he": "‏Bashan OS לא אוסף דבר ולא מדווח על דבר. בלי נתוני שימוש, בלי חשבונות, בלי מעקב. מופץ על ידי Bashan Tech LLC.",
+        "fa": "بشان او‌اس هیچ چیزی جمع‌آوری و گزارش نمی‌کند. نه داده‌های استفاده، نه حساب کاربری، نه ردیابی. منتشرشده توسط Bashan Tech LLC.",
+        "ku": "Bashan OS tu tiştî berhev nake û tu tiştî ranagihîne. Ne daneyên bikaranînê, ne hesab, ne şopandin. Ji aliyê Bashan Tech LLC ve tê weşandin.",
+        "ckb": "بەشان ئۆ ئێس هیچ شتێک کۆناکاتەوە و هیچ ڕاپۆرتێک ناکات. نە داتای بەکارهێنان، نە هەژمار، نە شوێنپێهەڵگرتن. بڵاوکراوەتەوە لەلایەن Bashan Tech LLC.",
+        "syr": "ܒܫܢ ܐܘ ܐܣ ܠܐ ܟܢܫ ܡܕܡ ܘܠܐ ܡܫܕܪ ܡܕܡ. ܠܝܬ ܢܛܘܪܘܬܐ."
+      }
+    },
+    "installer.langnote": {
+      "note": "Shown on the installer's first screen, for the three languages Calamares has no translation for.",
+      "t": {
+        "en": "The installer itself is not available in Kurmanji, Sorani or Syriac. Choose English or Arabic to install — you can still set the computer to your own language afterwards.",
+        "es": "El instalador no está disponible en kurmanji, sorani ni siríaco. Elija inglés o árabe para instalar; después podrá poner el ordenador en su propio idioma.",
+        "de": "Das Installationsprogramm selbst gibt es nicht auf Kurmandschi, Sorani oder Syrisch. Wählen Sie zum Installieren Englisch oder Arabisch — den Computer können Sie danach trotzdem auf Ihre eigene Sprache einstellen.",
+        "fr": "Le programme d'installation n'existe pas en kurmandji, sorani ni syriaque. Choisissez l'anglais ou l'arabe pour installer ; vous pourrez ensuite mettre l'ordinateur dans votre propre langue.",
+        "pt": "O instalador não está disponível em curmânji, sorani ou siríaco. Escolha inglês ou árabe para instalar — depois pode na mesma pôr o computador no seu idioma.",
+        "ru": "Сама программа установки недоступна на курманджи, сорани и сирийском. Для установки выберите английский или арабский — язык самого компьютера вы сможете задать позже.",
+        "el": "Το ίδιο το πρόγραμμα εγκατάστασης δεν διατίθεται στα κουρμαντζί, σορανί ή συριακά. Επιλέξτε αγγλικά ή αραβικά για την εγκατάσταση — μπορείτε και πάλι να ρυθμίσετε τον υπολογιστή στη δική σας γλώσσα μετά.",
+        "ar": "برنامج التثبيت نفسه غير متوفِّر بالكرمانجية أو السورانية أو السريانية. اختر الإنجليزية أو العربية للتثبيت — وسيظل بإمكانك ضبط الحاسوب على لغتك بعد ذلك.",
+        "he": "תוכנית ההתקנה עצמה אינה זמינה בכורמנג'י, סוראני או סורית. בחרו אנגלית או ערבית כדי להתקין — עדיין תוכלו להגדיר את המחשב לשפה שלכם לאחר מכן.",
+        "fa": "خودِ برنامهٔ نصب به کرمانجی، سورانی یا سریانی در دسترس نیست. برای نصب، انگلیسی یا عربی را انتخاب کنید — پس از آن همچنان می‌توانید رایانه را به زبان خودتان تنظیم کنید.",
+        "ku": "Bernameya sazkirinê bi xwe bi Kurmancî, Soranî an Suryanî tune ye. Ji bo sazkirinê Îngilîzî an Erebî hilbijêre — piştre tu hê jî dikarî komputerê bi zimanê xwe saz bikî.",
+        "ckb": "خودی بەرنامەی دامەزراندن بە کورمانجی، سۆرانی یان سریانی بەردەست نییە. بۆ دامەزراندن ئینگلیزی یان عەرەبی هەڵبژێرە — دواتر هێشتا دەتوانیت کۆمپیوتەرەکە بە زمانی خۆت ڕێک بخەیت.",
+        "syr": "ܦܪܘܓܪܡܐ ܕܣܝܡܐ ܠܐ ܐܝܬܘܗܝ ܒܠܫܢܐ ܣܘܪܝܝܐ. ܓܒܝ ܐܢܓܠܝܐ ܐܘ ܥܪܒܝܐ ܠܡܣܡ."
+      }
+    }
+  }
+}

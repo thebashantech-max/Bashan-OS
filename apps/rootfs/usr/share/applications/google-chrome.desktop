@@ -4,6 +4,18 @@ Version=1.0
 Name=Google Chrome
 GenericName=Web Browser
 Comment=Not installed yet — click to install Google Chrome
+Comment[es]=Aún no instalado — haga clic para instalar Google Chrome
+Comment[de]=Noch nicht installiert — klicken, um Google Chrome zu installieren
+Comment[fr]=Pas encore installé — cliquez pour installer Google Chrome
+Comment[pt]=Ainda não instalado — clique para instalar o Google Chrome
+Comment[ru]=Ещё не установлен — нажмите, чтобы установить Google Chrome
+Comment[el]=Δεν έχει εγκατασταθεί ακόμη — κάντε κλικ για εγκατάσταση του Google Chrome
+Comment[ar]=غير مُثبَّت بعد — انقر لتثبيت Google Chrome
+Comment[he]=עדיין לא מותקן — לחצו כדי להתקין את Google Chrome
+Comment[fa]=هنوز نصب نشده — برای نصب Google Chrome کلیک کنید
+Comment[ku]=Hê nehatiye sazkirin — ji bo sazkirina Google Chrome bitikîne
+Comment[ckb]=هێشتا دانەمەزراوە — کلیک بکە بۆ دامەزراندنی Google Chrome
+Comment[syr]=ܠܐ ܐܬܬܣܝܡ ܥܕܟܝܠ — ܢܩܘܫ ܠܡܣܡ Google Chrome
 # PLACEHOLDER. Bashan OS ships Google's apt repository but not the Chrome
 # package, so this entry holds the dock slot and installs Chrome on click.
 # It deliberately lives at the same path the real google-chrome.desktop uses:
