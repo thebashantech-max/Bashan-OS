@@ -95,7 +95,7 @@ host. An older laptop with a spinning disk will be several times slower.
 | # | Defect | Severity | Status |
 |---|---|---|---|
 | 1 | Build failed on `/dev/null` in the chroot | blocker | **fixed, rebuilt** |
-| 2 | Calamares refused to start: `bootloader-config` is not a real module | blocker | **fixed in source**, needs rebuild to confirm |
+| 2 | Calamares refused to start: `bootloader-config` is not a real module | blocker | **fixed and re-tested live — installer now runs** |
 | 3 | The ISO's own boot menu is stock Debian, not Bashan | cosmetic | **fix written**, needs rebuild |
 | 4 | Plasma's startup splash is stock KDE ("Plasma made by KDE") | cosmetic | not fixed |
 | 5 | KDE's Welcome Center opens on first boot | annoyance | not fixed |
@@ -103,6 +103,7 @@ host. An older laptop with a spinning disk will be several times slower.
 | 7 | Chrome placeholder shows a blank document icon | cosmetic | not fixed |
 | 8 | Only the system-monitor desktop widget appeared; weather and notes did not, and none honoured the positions set in the layout | real | not fixed |
 | 9 | The Trash widget never appeared on the desktop, so the RTL corner logic is untested | real | not fixed |
+| 10 | **The installer's disk page was unreadable** — light text on a light panel | serious | **fixed and re-tested live** |
 
 ### On defect 3
 
@@ -120,6 +121,44 @@ flagged as unverified when written, and they are indeed being ignored.
 Desktop widget placement needs a different approach. Until the Trash widget
 appears at all, the right-to-left corner switching in
 `bashan-desktop-locale` cannot be tested.
+
+### On defect 10 — the worst one found
+
+The partition page rendered its three options as near-invisible text. Cause:
+Calamares runs as **root**, so it does not inherit the user's Plasma colour
+scheme; Qt gave it a default **light** palette, and our stylesheet's light
+text sat on top of it. The fix sets an explicit dark background in the
+stylesheet instead of relying on the scheme, plus visible radio indicators.
+
+Verified by patching the stylesheet inside the running live session and
+relaunching the installer: the options are now legible, with "delete"
+still highlighted in red on the erase option.
+
+## The safety rules, tested on a real run
+
+With a 60 GB disk containing an existing GPT/ESP layout:
+
+| Rule | Result |
+|---|---|
+| Nothing destructive pre-selected | **PASS** — all three radio buttons empty on arrival |
+| Next disabled until a deliberate choice | **PASS** — Next greyed out |
+| Erase option clearly marked | **PASS** — "This will **delete** all data currently present on the selected storage device", delete in red |
+| Minimum storage enforced | **PASS** — on an 8 GB disk it refused outright: "There is not enough drive space. At least 20 GiB is required", Next disabled |
+| Dual boot offered | **NOT PROVEN** — see below |
+
+**Dual boot could not be confirmed.** "Install alongside" did not appear,
+but that is a limitation of the test fixture, not evidence of a fault: the
+fake Windows disk contains a text file where `bootmgfw.efi` should be and
+has no real filesystem on its data partition, so `os-prober` correctly
+found no operating system to install alongside. Proving this needs a disk
+with a genuine bootable OS on it.
+
+## Both firmware modes boot
+
+| Mode | Result |
+|---|---|
+| UEFI with **Secure Boot ON** | **PASS** — boots to desktop |
+| Legacy BIOS | **PASS** — boots to the same desktop, branding intact |
 
 ## Not yet tested
 

@@ -12,9 +12,26 @@
     font-size: 11pt;
 }
 
+/* Calamares runs as root, so it does NOT inherit the user's Plasma colour
+ * scheme: Qt gives it a default LIGHT palette. Without an explicit dark
+ * background here, our light text lands on that light palette and the disk
+ * options become invisible - verified on the first test build, where the
+ * partition page was unreadable. */
 QWidget {
+    background-color: #0b1018;
     color: #e6f0fa;
     font-size: 11pt;
+}
+
+/* The radio indicators need their own contrast against that dark fill. */
+QRadioButton::indicator, QCheckBox::indicator {
+    background-color: #070b12;
+    border: 2px solid #5a6e8c;
+    border-radius: 10px;
+}
+QRadioButton::indicator:checked, QCheckBox::indicator:checked {
+    background-color: #22d3ee;
+    border-color: #22d3ee;
 }
 
 /* First screen: language choice. Deliberately oversized. */
