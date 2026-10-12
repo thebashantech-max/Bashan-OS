@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Bashan
+Description=Bashan OS boot splash - glowing logo on black
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/bashan
+ScriptFile=/usr/share/plymouth/themes/bashan/bashan.script

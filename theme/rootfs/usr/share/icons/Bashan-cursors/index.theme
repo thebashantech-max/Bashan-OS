@@ -1,0 +1,8 @@
+[Icon Theme]
+Name=Bashan
+Comment=Bashan OS cursors
+# Alias only: this inherits Breeze's cursor set rather than shipping new
+# artwork. Drawing a full cursor theme means ~40 hand-drawn shapes plus
+# animation frames, which is not justified for 1.0. Declaring the theme now
+# means the name is already in place if bespoke art arrives later.
+Inherits=breeze_cursors

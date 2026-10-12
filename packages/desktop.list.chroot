@@ -37,7 +37,16 @@ kimageformat6-plugins
 kde-config-gtk-style
 kde-config-gtk-style-preview
 
-# Audio: PipeWire replaces PulseAudio and JACK
+# Boot splash
+plymouth
+plymouth-label
+plymouth-themes
+
+# Audio: PipeWire replaces PulseAudio and JACK.
+# alsa-utils is also what the boot-song service uses: at the point it runs,
+# no user session exists, so PipeWire is not running yet and only raw ALSA
+# is available.
+alsa-utils
 pipewire
 pipewire-audio
 pipewire-pulse

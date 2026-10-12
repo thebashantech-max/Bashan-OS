@@ -25,9 +25,10 @@ LAUNCHER = "bashan-launcher"
 SIZES = (16, 22, 24, 32, 48, 64, 128, 256, 512)
 # Extra cyan bloom behind the dock launcher button, from the palette accent.
 GLOW_RGB = (34, 211, 238)
-GLOW_RADIUS = 0.10
-GLOW_STRENGTH = 1.0
-GLOW_PASSES = 3
+GLOW_PAD = 1.34
+GLOW_RADIUS = 0.055
+GLOW_STRENGTH = 0.78
+GLOW_PASSES = 2
 
 # Below this brightness a pixel is background, not artwork.
 CONTENT_THRESHOLD = 8
@@ -68,20 +69,24 @@ def build_rgba(src: Path) -> Image.Image:
 
 def add_glow(art: Image.Image) -> Image.Image:
     """Cyan bloom behind the mark, for the dock launcher button."""
-    side = art.size[0]
-    halo = art.getchannel("A").filter(
+    # Pad first: a halo blurred right up to the canvas edge gets clipped and
+    # reads as a cyan square rather than a glow.
+    side = int(art.size[0] * GLOW_PAD)
+    padded = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+    off = (side - art.size[0]) // 2
+    padded.paste(art, (off, off))
+
+    halo = padded.getchannel("A").filter(
         ImageFilter.GaussianBlur(max(1, int(side * GLOW_RADIUS))))
-    if GLOW_STRENGTH < 1.0:
-        halo = ImageChops.multiply(
-            halo, Image.new("L", art.size, int(255 * GLOW_STRENGTH)))
-    glow = Image.new("RGBA", art.size, GLOW_RGB + (0,))
+    halo = ImageChops.multiply(
+        halo, Image.new("L", padded.size, int(255 * GLOW_STRENGTH)))
+    glow = Image.new("RGBA", padded.size, GLOW_RGB + (0,))
     glow.putalpha(halo)
-    # Stack the bloom so it still reads at 48 px on a dark dock; a single
-    # pass washes out completely at that size.
+    # Two passes so it still reads at 48 px on a dark dock.
     out = glow
     for _ in range(GLOW_PASSES - 1):
         out = Image.alpha_composite(out, glow)
-    return Image.alpha_composite(out, art)
+    return Image.alpha_composite(out, padded)
 
 
 def emit(art: Image.Image, name: str) -> None:

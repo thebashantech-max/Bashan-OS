@@ -1,0 +1,101 @@
+# Bashan OS boot splash.
+# Identical on UEFI and BIOS: Plymouth draws the same thing either way.
+#
+# Logo sizing: the artwork is 574 px native, 815 px once the glow halo is
+# included. We cap at 815 so the logo is only ever scaled DOWN and never
+# looks soft - the cost is that on a 4K panel it sits at 26.6% of screen
+# height instead of 28%, which is not a visible difference.
+
+Window.SetBackgroundTopColor(0.016, 0.024, 0.039);
+Window.SetBackgroundBottomColor(0.008, 0.012, 0.020);
+
+screen_width = Window.GetWidth(0);
+screen_height = Window.GetHeight(0);
+
+# 0.40 of screen height for the IMAGE, which puts the artwork itself at 28%
+# once the glow halo padding (x1.42) is accounted for. 815 is the native
+# padded size; capping there means we only ever scale down.
+target = screen_height * 0.40;
+if (target > 815) target = 815;
+
+if (target > 640)
+    asset = "logo-815.png";
+else if (target > 512)
+    asset = "logo-640.png";
+else if (target > 384)
+    asset = "logo-512.png";
+else if (target > 256)
+    asset = "logo-384.png";
+else
+    asset = "logo-256.png";
+
+logo.image = Image(asset).Scale(target, target);
+logo.sprite = Sprite(logo.image);
+logo.sprite.SetX(screen_width / 2 - target / 2);
+logo.sprite.SetY(screen_height / 2 - target / 2);
+logo.sprite.SetZ(10);
+logo.opacity = 1.0;
+
+# A slow, shallow breath on the glow. Deliberately subtle: this is meant to
+# look alive, not to animate at the user.
+progress = 0;
+fun refresh_callback() {
+    progress++;
+    pulse = 0.88 + 0.12 * Math.Cos(progress / 26);
+    logo.sprite.SetOpacity(pulse);
+}
+Plymouth.SetRefreshFunction(refresh_callback);
+
+# --- messages and the encrypted-disk password prompt ---------------------
+# Without these an encrypted install would hang at a black screen with no
+# way to type the passphrase.
+message.sprite = Sprite();
+message.sprite.SetZ(20);
+
+fun show_message(text) {
+    message.image = Image.Text(text, 0.85, 0.92, 0.98, 1, "Sans 11");
+    message.sprite.SetImage(message.image);
+    message.sprite.SetX(screen_width / 2 - message.image.GetWidth() / 2);
+    message.sprite.SetY(screen_height * 0.72);
+}
+
+fun display_message_callback(text) {
+    show_message(text);
+}
+Plymouth.SetMessageFunction(display_message_callback);
+
+prompt.sprite = Sprite();
+prompt.sprite.SetZ(20);
+bullets.sprite = Sprite();
+bullets.sprite.SetZ(20);
+
+fun display_password_callback(prompt_text, bullet_count) {
+    prompt.image = Image.Text(prompt_text, 0.85, 0.92, 0.98, 1, "Sans 11");
+    prompt.sprite.SetImage(prompt.image);
+    prompt.sprite.SetX(screen_width / 2 - prompt.image.GetWidth() / 2);
+    prompt.sprite.SetY(screen_height * 0.70);
+
+    dots = "";
+    i = 0;
+    while (i < bullet_count) {
+        dots += "*";
+        i++;
+    }
+    bullets.image = Image.Text(dots, 0.13, 0.83, 0.93, 1, "Sans 14");
+    bullets.sprite.SetImage(bullets.image);
+    bullets.sprite.SetX(screen_width / 2 - bullets.image.GetWidth() / 2);
+    bullets.sprite.SetY(screen_height * 0.75);
+}
+Plymouth.SetDisplayPasswordFunction(display_password_callback);
+
+fun display_normal_callback() {
+    prompt.sprite.SetImage(Image.Text("", 0, 0, 0, 0, "Sans 11"));
+    bullets.sprite.SetImage(Image.Text("", 0, 0, 0, 0, "Sans 11"));
+}
+Plymouth.SetDisplayNormalFunction(display_normal_callback);
+
+# Shutdown and reboot reuse the same splash.
+fun quit_callback() {
+    logo.sprite.SetOpacity(1.0);
+}
+Plymouth.SetQuitFunction(quit_callback);

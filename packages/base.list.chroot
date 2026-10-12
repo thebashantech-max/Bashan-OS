@@ -11,6 +11,15 @@ grub2-common
 efibootmgr
 os-prober
 
+# Secure Boot. Without these the machine simply refuses to boot when Secure
+# Boot is on, which is the factory default on every laptop since ~2012.
+# shim is the small Microsoft-signed loader the firmware will accept; it then
+# loads Debian's signed GRUB, which loads the signed kernel. The stock
+# linux-image-amd64 is already the signed build (source: linux-signed-amd64).
+shim-signed
+grub-efi-amd64-signed
+mokutil
+
 # Init and core plumbing
 systemd-sysv
 systemd-timesyncd

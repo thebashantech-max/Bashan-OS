@@ -1,0 +1,24 @@
+[Unit]
+Description=Bashan OS boot sound and splash hold
+Documentation=file:///usr/share/doc/bashan/boot-sound
+DefaultDependencies=no
+After=plymouth-start.service sound.target
+Before=plymouth-quit.service plymouth-quit-wait.service
+# Ordering only. Nothing Requires this unit, so if it fails or is killed the
+# boot continues untouched.
+ConditionVirtualization=!container
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/bashan/boot-sound
+# Keeps the unit active so the backgrounded aplay is not killed with the
+# cgroup the moment ExecStart returns; the song gets to finish.
+RemainAfterExit=yes
+TimeoutStartSec=12
+# A failure here is cosmetic, never fatal.
+SuccessExitStatus=0 1 2
+StandardOutput=null
+StandardError=null
+
+[Install]
+WantedBy=sysinit.target

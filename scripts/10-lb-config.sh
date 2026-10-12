@@ -33,6 +33,7 @@ lb config \
   --updates true \
   --binary-images iso-hybrid \
   --bootloaders "grub-efi,syslinux" \
+  --uefi-secure-boot enable \
   --debian-installer none \
   --firmware-binary true \
   --firmware-chroot true \
@@ -71,9 +72,12 @@ done
 
 # Overlay sources copied verbatim into the image:
 #   hooks/rootfs  - system tuning and defaults
-#   apps/rootfs   - the Bashan app wrapper, Chrome placeholder, icons
+#   apps/rootfs    - the Bashan app wrapper, Chrome placeholder, icons
+#   theme/rootfs   - Konsole, cursors, fastfetch, Plasma desktop theme
+#   branding/rootfs - os-release inputs, grub/sddm config, boot-sound service
 echo "I: rootfs overlays"
-for src in "$ROOT/hooks/rootfs" "$ROOT/apps/rootfs"; do
+for src in "$ROOT/hooks/rootfs" "$ROOT/apps/rootfs" \
+           "$ROOT/theme/rootfs" "$ROOT/branding/rootfs"; do
   [ -d "$src" ] || continue
   cp -a "$src/." config/includes.chroot/
 done
@@ -93,6 +97,69 @@ cp -a "$ROOT/theme/wallpapers/bashan-ridge-1920x1080.png" \
       "$inc/wallpapers/Bashan/contents/images/1920x1080.png"
 cp -a "$ROOT/theme/color-schemes/Bashan.colors" "$inc/color-schemes/"
 cp -a "$ROOT/theme/look-and-feel/com.bashan.desktop" "$inc/plasma/look-and-feel/"
+
+# --- boot-chain branding ------------------------------------------------
+echo "I: boot branding"
+mkdir -p "$inc/plymouth/themes" config/includes.chroot/boot/grub/themes \
+         "$inc/sddm/themes" "$inc/bashan"
+cp -a "$ROOT/branding/plymouth/bashan" "$inc/plymouth/themes/"
+cp -a "$ROOT/branding/grub/bashan" config/includes.chroot/boot/grub/themes/
+cp -a "$ROOT/branding/sddm/bashan" "$inc/sddm/themes/"
+
+# os-release and friends, generated so they can never drift from build.conf.
+mkdir -p config/includes.chroot/usr/lib config/includes.chroot/etc
+cat > config/includes.chroot/usr/lib/os-release <<EOF
+PRETTY_NAME="$OS_NAME $OS_VERSION"
+NAME="$OS_NAME"
+VERSION_ID="$OS_VERSION"
+VERSION="$OS_VERSION ($OS_CODENAME)"
+VERSION_CODENAME=$OS_ID
+ID=$OS_ID
+ID_LIKE=debian
+HOME_URL="$OS_HOME_URL"
+SUPPORT_URL="$OS_HOME_URL"
+BUG_REPORT_URL="$OS_HOME_URL"
+PRIVACY_POLICY_URL="$OS_HOME_URL"
+LOGO=bashan-launcher
+ANSI_COLOR="0;36"
+VENDOR_NAME="$OS_PUBLISHER"
+EOF
+# Debian ships /etc/os-release as a symlink into /usr/lib; keep that shape.
+ln -sf ../usr/lib/os-release config/includes.chroot/etc/os-release
+
+cat > config/includes.chroot/etc/issue <<EOF
+$OS_NAME $OS_VERSION \\n \\l
+
+EOF
+cat > config/includes.chroot/etc/issue.net <<EOF
+$OS_NAME $OS_VERSION
+EOF
+cat > config/includes.chroot/etc/motd <<EOF
+
+  $OS_NAME $OS_VERSION — $OS_PUBLISHER
+  $OS_HOME_URL
+
+EOF
+
+# --- boot song ----------------------------------------------------------
+if [ "${INCLUDE_BOOT_SONG:-no}" = "yes" ]; then
+  if [ "${PUBLIC_RELEASE:-no}" = "yes" ]; then
+    echo "E: INCLUDE_BOOT_SONG=yes with PUBLIC_RELEASE=yes." >&2
+    echo "E: The boot song's rights are unconfirmed. It must not ship in a" >&2
+    echo "E: public release. Set INCLUDE_BOOT_SONG=no, or confirm the rights" >&2
+    echo "E: and remove this guard deliberately." >&2
+    exit 1
+  fi
+  cp -a "$ROOT/branding/boot-song/boot-song.wav" "$inc/bashan/"
+  echo "W: ================================================================"
+  echo "W:  BOOT SONG INCLUDED - PRIVATE TEST BUILD ONLY"
+  echo "W:  Rights for this audio are not confirmed. Do not distribute"
+  echo "W:  this ISO publicly. Set INCLUDE_BOOT_SONG=no in config/build.conf"
+  echo "W:  to build without it."
+  echo "W: ================================================================"
+else
+  echo "I: boot song omitted (INCLUDE_BOOT_SONG=no); splash still holds"
+fi
 
 variant="$ROOT/theme/icons/Bashan-${TRASH_VARIANT:-B}"
 if [ ! -d "$variant" ]; then

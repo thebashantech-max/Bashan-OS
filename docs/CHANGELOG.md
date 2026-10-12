@@ -4,6 +4,32 @@ All notable changes to the build pipeline. Newest first.
 
 ## [Unreleased]
 
+### Stage 7A — 2026-10-12
+- **Secure Boot fixed.** The build shipped no signed boot chain and would
+  have failed to boot on any laptop with Secure Boot on. Added
+  `shim-signed`, `grub-efi-amd64-signed`, `mokutil`, and
+  `--uefi-secure-boot enable` so a missing signed binary fails the build
+  loudly instead of producing an unbootable ISO. Kernel signing verified.
+- Added the GRUB theme with two generated `.pf2` fonts, their internal
+  names read back to confirm they match `theme.txt`.
+- Added the Plymouth theme: resolution-aware logo that never upscales
+  (574 px artwork, 815 px with halo, capped), a subtle pulse, and message
+  and password callbacks so an encrypted install can be unlocked.
+- Added the SDDM theme in plain QtQuick, plus `/etc/sddm.conf.d`.
+- Added generated `os-release`, `issue`, `issue.net`, `motd` and
+  `/etc/default/grub` with os-prober on for dual boot.
+- Added `bashan-boot-sound.service`: raw ALSA, ordering-only so it can
+  never block boot, holds the splash for the *remainder* of 5.5 s, with an
+  on/off toggle and a documented way to swap the song.
+- Added the boot song rights guard: a loud warning on every build, and a
+  hard build failure if `PUBLIC_RELEASE=yes`. Tested — it does refuse.
+- Leftover theme pieces: Konsole profile, fastfetch config with ASCII logo,
+  cursor theme (alias of breeze_cursors), minimal Plasma desktop theme with
+  the dock pill SVG. **Kvantum dropped for 1.0** — every Kvantum theme
+  needs full SVG widget artwork; reasoning in docs/DESIGN.md.
+- Fixed the cyan glow being clipped into a hard square: the halo is now
+  padded before blurring, in both the icon and boot-logo generators.
+
 ### Stage 6 — 2026-10-12
 - Added `theme/palette.json`, 24 design tokens. Accent sampled from the
   logo's cyan glow (hue 189).

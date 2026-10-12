@@ -1,0 +1,43 @@
+#!/bin/sh
+# Bashan OS — boot sound, and the minimum splash hold.
+#
+# Two jobs, both deliberately failure-tolerant: nothing here may ever stop
+# the machine booting.
+#   1. Start the boot song through raw ALSA. At this point in boot there is
+#      no user session, so PipeWire does not exist yet and aplay is the only
+#      option. If there is no sound card, no song, or the card is muted, we
+#      simply carry on.
+#   2. Hold the splash until the machine has been up for HOLD seconds. The
+#      wait is only ever the REMAINDER, so on a slow boot it adds nothing at
+#      all; the splash was already up that long.
+set -u
+
+CONF=/etc/bashan/boot-sound.conf
+HOLD=5.5
+
+ENABLED=yes
+SONG=/usr/share/bashan/boot-song.wav
+# shellcheck source=/dev/null
+[ -r "$CONF" ] && . "$CONF"
+
+play() {
+    [ "${ENABLED:-yes}" = "yes" ] || return 0
+    command -v aplay >/dev/null 2>&1 || return 0
+    for candidate in "${SONG:-}" /etc/bashan/boot-song.wav \
+                     /usr/share/bashan/boot-song.wav; do
+        [ -n "$candidate" ] || continue
+        [ -r "$candidate" ] || continue
+        aplay -q -N "$candidate" >/dev/null 2>&1 &
+        return 0
+    done
+    return 0
+}
+
+remaining() {
+    up=$(cut -d' ' -f1 /proc/uptime 2>/dev/null || echo "$HOLD")
+    awk -v u="$up" -v h="$HOLD" 'BEGIN { r = h - u; if (r < 0) r = 0; printf "%.2f", r }'
+}
+
+play
+sleep "$(remaining)"
+exit 0

@@ -182,6 +182,33 @@ Needs `kdialog`, `pkexec` and `polkit-kde-agent-1`, all added to the
 system-tools list. Without the polkit agent there is no graphical password
 prompt at all.
 
+## Leftover theme pieces — Stage 7A
+
+| Piece | Status |
+|---|---|
+| Konsole profile + colour scheme | **done**, generated from the palette, set as default via `/etc/skel/.config/konsolerc` |
+| fastfetch config | **done**, with an ASCII logo derived from the source artwork |
+| Cursor theme | **done as an alias only** — `Bashan` inherits `breeze_cursors`. Real cursor art means ~40 hand-drawn shapes plus animation frames; declaring the theme now means the name is in place if art arrives later |
+| Plasma desktop theme | **done, minimal.** Plasma falls back per file, so the theme ships only `widgets/panel-background.svg` (the dock pill, nine-sliced) plus colours, and inherits Breeze for everything else |
+| Kvantum theme | **not done — see below** |
+
+### Why Kvantum was dropped for 1.0
+
+Every Kvantum theme in Debian ships a `.kvconfig` *and* a `.svg`; there is
+no config-only form. That SVG carries hand-drawn nine-slice artwork for
+every widget state — buttons, entries, tabs, scrollbars, menus — which runs
+to hundreds of named elements. Three options:
+
+1. Draw it. Real design work, days, not something to fake.
+2. Copy a GPL Kvantum theme's SVG and recolour it. Workable, but it puts
+   GPL artwork into a commercial product and brings licence obligations.
+3. Skip it. Breeze with the Bashan colour scheme and accent already themes
+   Qt applications consistently, and Plasma 6's Breeze honours our accent.
+
+Option 3 for 1.0, and the Kvantum engine is **not** installed, since
+shipping a style engine nothing uses is exactly the bloat this project is
+avoiding. Revisit when there is artwork.
+
 ## Open
 
 - Trash icon: variant A (faithful to reference, keeps baked-in Arabic text) vs

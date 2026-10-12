@@ -1,0 +1,19 @@
+# Bashan OS boot loader defaults. Publisher: Bashan Tech LLC.
+GRUB_DEFAULT=0
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="Bashan OS"
+
+# quiet + splash hand the screen to Plymouth instead of scrolling kernel log.
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash loglevel=3 rd.udev.log_level=3"
+GRUB_CMDLINE_LINUX=""
+
+GRUB_THEME="/boot/grub/themes/bashan/theme.txt"
+GRUB_GFXMODE="auto"
+# Keep the same mode into the kernel so there is no flicker or resolution
+# change between the GRUB menu and the Plymouth splash.
+GRUB_GFXPAYLOAD_LINUX="keep"
+
+# Detect an existing operating system and offer it in the menu. The target
+# machine dual-boots, so this must stay on. See docs/DESIGN.md.
+GRUB_DISABLE_OS_PROBER=false
+GRUB_DISABLE_RECOVERY=false
