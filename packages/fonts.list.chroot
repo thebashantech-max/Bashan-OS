@@ -1,0 +1,25 @@
+## Bashan OS — fonts, one entry per script we ship.
+## Covers Latin, Cyrillic, Greek, Arabic, Hebrew, Syriac and the Arabic-script
+## languages (Persian, Sorani, Kurmanji where written in Arabic script).
+
+# Broad coverage: Latin, Greek, Cyrillic, Hebrew, Arabic basics
+fonts-noto-core
+fonts-noto-ui-core
+fonts-noto-color-emoji
+fonts-dejavu
+
+# Arabic / Persian / Kurdish — proper Naskh shaping, not a fallback box
+fonts-sil-scheherazade
+fonts-sil-lateef
+fonts-hosny-amiri
+fonts-kacst-one
+fonts-farsiweb
+
+# Hebrew
+fonts-culmus
+
+# Syriac
+fonts-xfree86-nonfree-syriac
+
+# Terminal and code
+fonts-jetbrains-mono

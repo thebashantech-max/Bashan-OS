@@ -4,6 +4,29 @@ All notable changes to the build pipeline. Newest first.
 
 ## [Unreleased]
 
+### Stage 4 — 2026-10-12
+- Added eight package lists: desktop (Plasma 6 minimal), firmware, browsers,
+  apps, office, system-tools, fonts, i18n. 166 names total.
+- Every name verified to have a real **installation candidate** in trixie, not
+  merely to exist. Caught and fixed three that would have broken the build:
+  `plasma-workspace-wayland` (folded into `plasma-workspace` in trixie),
+  `fonts-kacst` (now `fonts-kacst-one`), `kimageformats` (now
+  `kimageformat6-plugins`).
+- Added Brave's official repo as a build-time **and** in-image archive, and
+  Google Chrome's repo as in-image only, so no Chrome `.deb` is baked into the
+  ISO. Vendor key fingerprints recorded in docs/BUILD.md.
+- Added `hooks/rootfs/etc/xdg/baloofilerc` disabling KDE's file indexer by
+  default.
+- Measured: 1914 packages / 6533 MB installed with recommends on. Recommends
+  account for 491 packages / 1911 MB. Trim candidates ranked in docs/APPS.md.
+- Verified Akonadi and MariaDB are entirely absent (the Thunderbird decision).
+- **I18N corrections from verification:** Persian *does* have spellcheck
+  (`myspell-fa`) and a translated LibreOffice UI, contradicting the Stage 1
+  note. Kurmanji has *no* LibreOffice-usable dictionary at all (`hunspell-ku`
+  does not exist; `aspell-ku` is unusable by LibreOffice), which Stage 1 did
+  not record. See docs/I18N.md.
+- No ISO built. No idle RAM or boot figures measured.
+
 ### Stage 3 — 2026-10-12
 - Added `packages/base.list.chroot` (42 packages; all names verified against
   the trixie archive inside the container).

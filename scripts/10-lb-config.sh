@@ -54,6 +54,15 @@ for f in "$ROOT"/packages/*.list.chroot; do
   cp -v "$f" config/package-lists/
 done
 
+echo "I: third-party archives (Brave build-time + in-image, Chrome in-image only)"
+if [ -d "$ROOT/config/archives" ]; then
+  mkdir -p config/archives
+  for f in "$ROOT"/config/archives/*; do
+    [ -e "$f" ] || continue
+    cp -v "$f" config/archives/
+  done
+fi
+
 echo "I: chroot hooks"
 for f in "$ROOT"/hooks/chroot/*.hook.chroot; do
   [ -e "$f" ] || continue

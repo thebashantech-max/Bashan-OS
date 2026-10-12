@@ -1,0 +1,35 @@
+## Bashan OS — system management and maintenance.
+
+# Software centre with Flatpak/Flathub
+plasma-discover
+plasma-discover-backend-flatpak
+flatpak
+
+# Information and monitoring
+kinfocenter
+
+# Disks
+partitionmanager
+filelight
+
+# Printing
+cups
+print-manager
+system-config-printer-common
+
+# Firewall: ufw engine with the KDE control-panel front end
+ufw
+plasma-firewall
+
+# Snapshots and rollback. Timeshift is GTK, which is why the desktop list
+# includes kde-config-gtk-style so it does not look foreign.
+timeshift
+
+# Drivers helper: reports which NVIDIA driver a card needs
+nvidia-detect
+
+# Passwords/keys used by the desktop
+kwalletmanager
+
+# System information banner
+fastfetch

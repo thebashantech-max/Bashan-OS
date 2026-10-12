@@ -143,3 +143,74 @@ no-telemetry promise cannot silently regress.
 
 Boot time, idle RAM and the real effect of this tuning are measured at Stage 9
 against a booted ISO. Nothing in this section has been benchmarked yet.
+
+
+## Stage 4 — desktop, firmware, apps
+
+### Package lists
+
+| List | Names | Covers |
+|---|---:|---|
+| `base.list.chroot` | 42 | kernel, bootloaders, systemd, NetworkManager, filesystems |
+| `desktop.list.chroot` | 29 | Plasma 6 minimal, SDDM, PipeWire, graphics stack |
+| `firmware.list.chroot` | 23 | Wi-Fi, Bluetooth, graphics, audio, CPU microcode |
+| `browsers.list.chroot` | 1 | Brave |
+| `apps.list.chroot` | 10 | Thunderbird, Dolphin, Konsole, Kate, Ark, Okular, Gwenview, Spectacle, KCalc, Kamoso |
+| `office.list.chroot` | 29 | LibreOffice + Qt6/KDE integration + translations + dictionaries |
+| `system-tools.list.chroot` | 15 | Discover/Flatpak, printing, firewall, partitioning, Timeshift, fastfetch |
+| `fonts.list.chroot` | 12 | one entry per shipped script |
+| `i18n.list.chroot` | 5 | locales and input methods |
+
+**All 166 names verified to have a real installation candidate in trixie.**
+Name existence alone is not enough: `apt-cache show` succeeds for transitional
+packages that cannot be installed. `plasma-workspace-wayland`, `fonts-kacst`
+and `hunspell-ku` all passed a name check and failed the candidate check.
+
+### Plasma 6 minimal
+
+`plasma-desktop`, not the `kde-plasma-desktop` or `kde-full` tasks, which drag
+in Kontact and the whole Akonadi stack. In trixie `plasma-workspace` ships
+**both** the Wayland and the X11 session — there is no separate
+`-wayland` package. X11 remaining available at the login screen is the safety
+net for older laptops where Wayland and nouveau misbehave.
+
+### Third-party repositories
+
+live-build treats archive files by suffix, and the difference matters:
+
+| File | Effect |
+|---|---|
+| `config/archives/brave-browser.list` (no suffix) | used **during the build** (Brave is baked into the ISO) **and** left in the installed system, so Brave keeps getting security updates |
+| `config/archives/brave-browser.key` | key, installed in both stages |
+| `config/archives/google-chrome.list.binary` | written into the finished image **only** — never used during the build, so no Chrome `.deb` is baked in |
+| `config/archives/google-chrome.key.binary` | key, final image only |
+
+A `.list.chroot` suffix would have been wrong for Brave: live-build **deletes**
+those from the final image, so Brave would have installed but never updated.
+
+Both keys were downloaded from the vendors and their fingerprints recorded:
+
+- Brave `DBF1A116C220B8C7164F98230686B78420038257`
+- Google `EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796`
+
+Verified: with these repos configured, `brave-browser` and
+`google-chrome-stable` both resolve and apt validates their signatures. Chrome
+is confirmed **absent** from the resolved install set.
+
+Caveat: live-build installs repo keys into `/etc/apt/trusted.gpg.d/`, which is
+system-wide trust. The `signed-by=` option in each list scopes which key
+validates which repo, but the keys remain globally trusted. Moving them to
+`/usr/share/keyrings/` would need an extra hook; not done for 1.0.
+
+### Firmware for the target laptop
+
+The target is an older laptop installed from USB, so firmware must be on the
+stick, not downloaded. `firmware-b43-installer` and `firmware-b43legacy-installer`
+are deliberately **excluded**: they fetch firmware from the network at install
+time and fail offline. Broadcom cards are covered by `firmware-brcm80211`
+instead. CPU microcode for both Intel and AMD is included.
+
+### Sizes and indexers
+
+See `docs/APPS.md` for the measured per-group sizes, what Recommends cost, the
+ranked trim candidates, and the Akonadi/Baloo findings.

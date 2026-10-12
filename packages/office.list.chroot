@@ -1,0 +1,49 @@
+## Bashan OS — LibreOffice with Qt6/KDE integration.
+## Verified in trixie: there is NO LibreOffice UI translation for Kurmanji,
+## Sorani or Syriac, so those three get the English office UI (documented in
+## docs/I18N.md and stated in the installer).
+
+libreoffice-writer
+libreoffice-calc
+libreoffice-impress
+libreoffice-draw
+libreoffice-base
+libreoffice-math
+
+# Native Qt6 + KDE file dialogs and theming
+libreoffice-qt6
+libreoffice-kf6
+
+# Metric-compatible substitutes for Arial/Times/Courier, so documents from
+# Word open with the right line breaks
+fonts-liberation2
+
+# UI translations that exist upstream
+libreoffice-l10n-es
+libreoffice-l10n-de
+libreoffice-l10n-fr
+libreoffice-l10n-pt
+libreoffice-l10n-ru
+libreoffice-l10n-el
+libreoffice-l10n-ar
+libreoffice-l10n-he
+libreoffice-l10n-fa
+
+# Spellcheck. Verified in trixie by installation candidate, not just by name:
+#   - Persian DOES have one, as myspell-fa (LibreOffice reads myspell
+#     dictionaries through dictionaries-common). This corrects the Stage 1
+#     assumption that Persian had no dictionary.
+#   - Kurmanji has NO LibreOffice-usable dictionary. hunspell-ku does not
+#     exist; only aspell-ku does, and LibreOffice does not use aspell.
+#   - Sorani and Syriac have no dictionary of any kind.
+hunspell-en-us
+hunspell-es
+hunspell-de-de
+hunspell-fr
+hunspell-pt-pt
+hunspell-pt-br
+hunspell-ru
+hunspell-el
+hunspell-ar
+hunspell-he
+myspell-fa

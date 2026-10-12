@@ -1,0 +1,5 @@
+# Brave, from Brave Software's official apt repository.
+# No .chroot/.binary suffix: live-build uses this during the build (so Brave
+# is baked into the ISO) AND leaves it in the installed system (so Brave keeps
+# receiving security updates on the user's machine).
+deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/brave-browser.key.asc] https://brave-browser-apt-release.s3.brave.com/ stable main

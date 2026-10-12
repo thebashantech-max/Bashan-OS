@@ -1,0 +1,6 @@
+## Bashan OS — browsers.
+## Brave is baked in from Brave's official apt repo (see config/archives/).
+## Google Chrome is NOT baked in: its repo and key are preconfigured in the
+## image (hooks/rootfs/etc/apt/) so the user installs it on first boot or
+## through Discover. The dock keeps its Chrome slot either way.
+brave-browser

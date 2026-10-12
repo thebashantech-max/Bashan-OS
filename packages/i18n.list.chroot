@@ -1,0 +1,16 @@
+## Bashan OS — localization support.
+## The 13 shipped languages are listed in docs/I18N.md. Per-language gaps
+## (missing LibreOffice UI, missing spellcheck) are recorded there and must
+## not be papered over.
+
+# Locale generation
+locales
+
+# Input methods, needed for Arabic/Hebrew/Syriac/Persian keyboards and for
+# anyone typing a script their keyboard does not have
+ibus
+ibus-m17n
+im-config
+
+# KDE's own translations for the shipped languages
+plasma-workspace-data

@@ -1,0 +1,7 @@
+# Bashan OS — KDE's file-content indexer is OFF by default.
+# Baloo re-reads and indexes the whole home directory in the background. On an
+# older laptop with a spinning disk that means minutes of disk thrashing and
+# tens to hundreds of MB resident, in exchange for faster search most users
+# never use. Users who want it can switch it on in System Settings > Search.
+[Basic Settings]
+Indexing-Enabled=false

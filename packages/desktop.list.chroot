@@ -1,0 +1,52 @@
+## Bashan OS — KDE Plasma 6 desktop, deliberately minimal.
+## NOT the kde-plasma-desktop or kde-full tasks: those drag in Kontact,
+## Akonadi and dozens of apps we do not ship.
+
+# Core workspace. In trixie plasma-workspace ships BOTH the Wayland and the
+# X11 session (there is no separate -wayland package), and X11 is the
+# safety net on older laptops where Wayland + nouveau misbehaves.
+plasma-desktop
+qt6-wayland
+
+# Login manager
+sddm
+kde-config-sddm
+
+# Applets the desktop is unusable without
+plasma-nm
+plasma-pa
+powerdevil
+bluedevil
+kscreen
+
+# Widgets: weather, notes, and friends (clock and media are built in)
+plasma-widgets-addons
+plasma-systemmonitor
+
+# Portals: screen sharing, file pickers, and Flatpak integration
+xdg-desktop-portal-kde
+xdg-user-dirs
+xdg-user-dirs-gtk
+
+# File manager extras: thumbnails, network shares, archive previews
+kio-extras
+ffmpegthumbs
+kimageformat6-plugins
+
+# Make GTK apps (Thunderbird, Timeshift) follow the Bashan theme
+kde-config-gtk-style
+kde-config-gtk-style-preview
+
+# Audio: PipeWire replaces PulseAudio and JACK
+pipewire
+pipewire-audio
+pipewire-pulse
+pipewire-alsa
+wireplumber
+
+# Graphics stack
+mesa-vulkan-drivers
+libgl1-mesa-dri
+xserver-xorg-video-amdgpu
+xserver-xorg-video-nouveau
+xserver-xorg-video-vesa

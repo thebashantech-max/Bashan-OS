@@ -1,0 +1,39 @@
+## Bashan OS — firmware. Target is an older laptop installed from USB, so
+## Wi-Fi, Bluetooth and graphics must work offline, straight off the stick.
+## NOTE: firmware-b43-installer and -b43legacy-installer are deliberately
+## excluded: they DOWNLOAD firmware at install time, which fails offline.
+
+# Broad base set (free + non-free metapackages)
+firmware-linux
+
+# CPU microcode: stability and security fixes on old hardware
+intel-microcode
+amd64-microcode
+
+# Wi-Fi — the chips actually found in 2008-2020 laptops
+firmware-iwlwifi
+firmware-realtek
+firmware-atheros
+firmware-brcm80211
+firmware-mediatek
+firmware-ti-connectivity
+firmware-libertas
+firmware-ipw2x00
+firmware-ath9k-htc
+firmware-carl9170
+firmware-zd1211
+
+# Bluetooth lives in these alongside the Wi-Fi blobs
+firmware-intel-misc
+firmware-misc-nonfree
+
+# Graphics
+firmware-amd-graphics
+firmware-intel-graphics
+firmware-nvidia-graphics
+firmware-ast
+
+# Audio DSPs: SOF for 2019+ Intel, Cirrus and Realtek codecs
+firmware-sof-signed
+firmware-intel-sound
+firmware-cirrus

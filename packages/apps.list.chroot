@@ -1,0 +1,21 @@
+## Bashan OS — everyday applications.
+## Mail/calendar/contacts is Thunderbird. No Evolution, no Kontact, and
+## therefore no Akonadi.
+
+# Mail, calendar, contacts
+thunderbird
+
+# Files, terminal, text
+dolphin
+konsole
+kate
+ark
+
+# Viewing
+okular
+gwenview
+kde-spectacle
+
+# Small utilities
+kcalc
+kamoso
