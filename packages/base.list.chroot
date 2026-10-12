@@ -1,0 +1,62 @@
+## Bashan OS — core operating system.
+## Desktop, firmware, browsers, office and fonts live in Stage 4 lists.
+
+# Kernel (stock Debian, tuned via sysctl/udev rather than a custom build)
+linux-image-amd64
+
+# Boot chain, both firmware types
+grub-efi-amd64-bin
+grub-pc-bin
+grub2-common
+efibootmgr
+os-prober
+
+# Init and core plumbing
+systemd-sysv
+systemd-timesyncd
+systemd-resolved
+dbus-user-session
+polkitd
+udisks2
+util-linux
+zstd
+
+# Compressed RAM swap
+systemd-zram-generator
+
+# Networking
+network-manager
+iproute2
+iputils-ping
+ca-certificates
+curl
+wget
+openssh-client
+
+# Filesystems
+e2fsprogs
+dosfstools
+exfatprogs
+ntfs-3g
+btrfs-progs
+xfsprogs
+gdisk
+parted
+
+# Archive / package plumbing
+gnupg
+apt-utils
+
+# Locale and console
+locales
+console-setup
+keyboard-configuration
+tzdata
+
+# Minimal console tools (a usable rescue shell without a desktop)
+bash-completion
+less
+nano
+pciutils
+usbutils
+sudo

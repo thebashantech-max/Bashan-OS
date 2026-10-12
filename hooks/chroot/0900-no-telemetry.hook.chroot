@@ -1,0 +1,28 @@
+#!/bin/sh
+# Bashan OS — no telemetry, enforced at build time.
+# Purges anything that reports usage upstream, then fails the build if
+# any of it survived, so this can never silently regress.
+set -e
+
+TELEMETRY="popularity-contest apport whoopsie ubuntu-report reportbug"
+
+for pkg in $TELEMETRY; do
+    if dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "install ok installed"; then
+        echo "I: purging telemetry package $pkg"
+        apt-get purge -y "$pkg"
+    fi
+done
+
+found=""
+for pkg in $TELEMETRY; do
+    if dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "install ok installed"; then
+        found="$found $pkg"
+    fi
+done
+
+if [ -n "$found" ]; then
+    echo "E: telemetry package(s) still installed:$found" >&2
+    exit 1
+fi
+
+echo "I: no telemetry packages present"

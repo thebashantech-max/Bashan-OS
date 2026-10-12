@@ -1,0 +1,19 @@
+#!/bin/sh
+# Bashan OS — disable services that cost boot time or RAM and give a
+# desktop user nothing back. Deliberately conservative: anything that
+# could break networking, printing or Bluetooth is left alone.
+set -e
+
+# The single biggest cause of a slow desktop boot. These units exist to
+# make the boot wait for a usable network, which only a server needs.
+for unit in NetworkManager-wait-online.service systemd-networkd-wait-online.service; do
+    systemctl mask "$unit" 2>/dev/null || true
+done
+
+# NetworkManager owns the network. systemd-networkd running alongside it
+# fights over the same interfaces.
+for unit in systemd-networkd.service systemd-networkd.socket; do
+    systemctl disable "$unit" 2>/dev/null || true
+done
+
+echo "I: trimmed boot-blocking and conflicting network units"

@@ -1,0 +1,7 @@
+# Bashan OS — pick the right I/O scheduler per disk type.
+# NVMe is fast and deeply parallel: any scheduler only adds latency.
+ACTION=="add|change", KERNEL=="nvme[0-9]*n[0-9]*", ATTR{queue/scheduler}="none"
+# SATA/USB solid state: mq-deadline is light and keeps reads prompt.
+ACTION=="add|change", KERNEL=="sd[a-z]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="mq-deadline"
+# Spinning rust: BFQ, which is what makes a slow laptop feel usable.
+ACTION=="add|change", KERNEL=="sd[a-z]*", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"

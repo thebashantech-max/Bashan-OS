@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Bashan OS 1.0 build driver. Publisher: Bashan Tech LLC.
-# Usage: ./build.sh {container|build|test|clean|status}
+# Usage: ./build.sh {container|config|build|test|clean|status}
 set -Eeuo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -40,7 +40,24 @@ cmd_container() {
   podman exec "$CONTAINER_NAME" sh -c '. /etc/os-release; echo "inside: $PRETTY_NAME"; id -u' 2>&1 | tee -a "$LOG"
   podman exec "$CONTAINER_NAME" sh -c 'test -d /work/config' \
     || die "project not mounted at /work inside container"
+
+  log "ensuring build tools inside container"
+  podman exec "$CONTAINER_NAME" sh -c '
+    set -e
+    command -v lb >/dev/null 2>&1 && exit 0
+    apt-get update -qq
+    apt-get install -y -qq live-build debian-archive-keyring xorriso squashfs-tools
+  ' 2>&1 | tee -a "$LOG"
+  podman exec "$CONTAINER_NAME" lb --version 2>&1 | tee -a "$LOG"
   log "container OK"
+}
+
+# Regenerate the live-build tree from packages/ hooks/ config/.
+cmd_config() {
+  need podman
+  podman container exists "$CONTAINER_NAME" || die "no container; run: ./build.sh container"
+  podman start "$CONTAINER_NAME" >/dev/null
+  podman exec "$CONTAINER_NAME" bash /work/scripts/10-lb-config.sh 2>&1 | tee -a "$LOG"
 }
 
 cmd_in() {  # run a command inside the build container
@@ -82,10 +99,11 @@ cmd_status() {
 
 case "${1:-status}" in
   container) cmd_container ;;
+  config)    cmd_config ;;
   in)        shift; cmd_in "$@" ;;
   build)     cmd_build ;;
   test)      cmd_test ;;
   clean)     cmd_clean ;;
   status)    cmd_status ;;
-  *)         die "unknown target '$1' (container|in|build|test|clean|status)" ;;
+  *)         die "unknown target '$1' (container|config|in|build|test|clean|status)" ;;
 esac
