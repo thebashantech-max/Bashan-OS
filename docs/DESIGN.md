@@ -33,6 +33,24 @@ UEFI and BIOS. An early systemd service plays the boot song through ALSA: it
 never blocks boot, fails silently, holds the splash at least 5.5 s, and has an
 on/off toggle. Real boot-time impact to be measured and reported.
 
+## Installer safety — owner requirement, binding on Stage 7
+
+The target machine is the owner's father's laptop, installed from a USB stick,
+and it has an existing operating system on it.
+
+1. **No disk is ever wiped without an explicit confirmation screen** that names
+   the drive, its size and its current contents in plain language, and requires
+   a deliberate action to proceed. "Next" is not enough.
+2. **Dual boot must be offered as a first-class choice**, not hidden behind a
+   "manual partitioning" expert path. Calamares must run `os-prober`, detect the
+   existing OS by name, and present "Install alongside <existing OS>" as a
+   visible option.
+3. The default highlighted option must never be the destructive one.
+4. GRUB must list the existing OS after installation; this is verified at
+   Stage 9 in QEMU with a second OS present on the virtual disk.
+
+`os-prober` is already in `packages/base.list.chroot` for this reason.
+
 ## Open
 
 - Trash icon: variant A (faithful to reference, keeps baked-in Arabic text) vs
