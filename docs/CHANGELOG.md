@@ -4,6 +4,36 @@ All notable changes to the build pipeline. Newest first.
 
 ## [Unreleased]
 
+### Hardware record for Dad's laptop — 2026-10-13
+- Added `docs/HARDWARE-TEST-DAD-LAPTOP.md`, with every field marked TO FILL
+  and a standing warning that the results come from the OLD Zorin-based
+  prototype and are **hardware evidence only, not a test of Bashan OS**.
+- Added `docs/HARDWARE-COLLECT.md`: copy-paste, read-only commands that
+  write one text file. Nothing writes to a disk or changes a setting.
+- Added `docs/PRE-INSTALL-CHECKLIST.md`, which flags that **"Install
+  alongside" has not been proven to work** in this build, so a dual-boot
+  machine must not be the place it is first tried.
+
+### Part F — privacy and proxy tools — 2026-10-13
+- Added `packages/privacy.list.chroot`: `torbrowser-launcher`, `tor`,
+  `proxychains4`, `wireguard-tools`, `openvpn`, `network-manager-openvpn`.
+  **69.2 MB, 33 packages, zero idle cost.** All verified in trixie.
+- `hooks/chroot/0320-tor-disabled.hook.chroot` disables and masks the tor
+  daemon and **fails the build if it is enabled**, so it costs no idle RAM
+  and opens no socket. Tor Browser carries its own tor and is unaffected.
+- Verified NetworkManager 1.52 speaks WireGuard natively (no plugin) and
+  that `wireguard.ko.xz` ships with the stock Debian kernel, so a `.conf`
+  imports from the Plasma network applet with no terminal.
+- Added a 7th welcome-app page in all 13 languages: what a VPN is, that it
+  needs a server Bashan OS does not provide, that free VPN services often
+  log and sell, that Tor is slower and that some sites block it.
+  REVIEW.csv is now 828 rows.
+- Added `docs/PRIVACY-TOOLS.md` (exactly what torbrowser-launcher downloads
+  and from where) and `docs/WIREGUARD-HOME-SERVER.md` (a full guide to
+  running a WireGuard server at home, including the CGNAT case and the
+  honest warning that it opens a port).
+- **No VPN service, no bundled server list, nothing needing registration.**
+
 ### Part E — security and performance — 2026-10-12
 
 **Approved corrections first**

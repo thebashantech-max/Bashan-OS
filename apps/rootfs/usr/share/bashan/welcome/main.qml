@@ -35,7 +35,7 @@ ApplicationWindow {
     property string lang: "en"
     property bool rtl: false
     property int page: 0
-    readonly property int lastPage: 5
+    readonly property int lastPage: 6
 
     Settings {
         id: cfg
@@ -376,6 +376,27 @@ ApplicationWindow {
                         // Discover registers the appstream: scheme itself.
                         onClicked: Qt.openUrlExternally("appstream:")
                     }
+                }
+            }
+        }
+
+        // 7 - privacy tools (Part F). Placed before the legal page so the
+        // legal summary stays last.
+        ScrollView {
+            clip: true
+            ColumnLayout {
+                width: stack.width - 120
+                x: 60; y: 36
+                spacing: 12
+                Title { text: win.tr("w.p7.title") }
+                Body  { text: win.tr("w.p7.intro"); font.pixelSize: 19 }
+                Card {
+                    CardTitle { text: win.tr("w.p7.vpn.h") }
+                    Body { text: win.tr("w.p7.vpn.b"); font.pixelSize: 18 }
+                }
+                Card {
+                    CardTitle { text: win.tr("w.p7.tor.h") }
+                    Body { text: win.tr("w.p7.tor.b"); font.pixelSize: 18 }
                 }
             }
         }

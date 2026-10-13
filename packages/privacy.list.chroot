@@ -1,0 +1,40 @@
+## Bashan OS — privacy and proxy tools.
+##
+## All free software from Debian main. None needs an account, a sign-up, a
+## credit card or a login. NO VPN service is bundled, no server list ships,
+## and nothing here connects anywhere on its own.
+##
+## Measured marginal cost against the built image: 69.2 MB, 33 packages.
+
+# --- Tor Browser ---------------------------------------------------------
+# The LAUNCHER only, 60.0 MB. Tor Browser itself is NOT in the ISO: the
+# launcher downloads it from the Tor Project on first run, verifies the
+# developers' signature, and installs it into the user's home folder.
+# That means Tor Browser needs an internet connection the first time, and
+# that it updates itself afterwards without us shipping a browser we would
+# then have to keep patched.
+torbrowser-launcher
+
+# --- the tor daemon ------------------------------------------------------
+# 31.9 MB. Installed but DISABLED: hooks/chroot/0320-tor-disabled.hook.chroot
+# turns the service off and fails the build if it is enabled, so it costs no
+# idle RAM and opens no port unless the user deliberately starts it.
+# Tor Browser does NOT need this - it carries its own tor.
+tor
+
+# 0.1 MB. Routes a chosen command through a proxy. Its shipped default
+# points at 127.0.0.1:9050, which is where the tor daemon above would listen
+# IF the user started it. Useless, and harmless, until then.
+proxychains4
+
+# --- VPN clients, no VPN service -----------------------------------------
+# NetworkManager 1.52 speaks WireGuard natively - there is no plugin to
+# install - and the kernel module ships with the stock Debian kernel
+# (verified: wireguard.ko.xz in 6.12.111+deb13-amd64). wireguard-tools is
+# what reads a .conf file.
+wireguard-tools
+
+# OpenVPN needs its NetworkManager plugin to appear in the Plasma network
+# applet, so an .ovpn file can be imported with no terminal.
+openvpn
+network-manager-openvpn

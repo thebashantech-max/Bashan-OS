@@ -1239,6 +1239,114 @@
         "ckb": "ئێستا وشەی نهێنی بنووسە و لە شوێنێکی پارێزراو، دوور لەم کۆمپیوتەرە، هەڵیبگرە. نە ڕێکخستنەوە هەیە، نە گەڕاندنەوە، نە دەرگای پشتەوە. ئەگەر لەبیرت بچێت، هەرچی لەم دیسکەدایە بۆ هەمیشە لەدەست دەچێت — تەنانەت ئێمەش ناتوانین بیگەڕێنینەوە.",
         "syr": "ܟܬܘܒ ܡܠܬܐ ܕܥܠܠܬܐ ܗܫܐ ܘܢܛܪܝܗ ܒܐܬܪܐ ܫܪܝܪܐ, ܪܚܝܩܐ ܡܢ ܗܢܐ ܡܚܫܒܬܐ. ܠܝܬ ܬܘܪܨܐ, ܠܝܬ ܦܘܪܩܢܐ, ܠܝܬ ܬܪܥܐ ܟܣܝܐ. ܐܢ ܛܥܝܬ ܠܗ, ܟܠ ܡܐ ܕܐܝܬ ܥܠ ܗܢܐ ܦܠܚܐ ܐܒܝܕ ܠܥܠܡ — ܐܦܠܐ ܚܢܢ ܡܨܝܢܢ ܠܡܗܦܟܘܬܗ."
       }
+    },
+    "w.p7.title": {
+      "note": "Welcome app, page 7 heading: privacy tools.",
+      "t": {
+        "en": "Private browsing tools",
+        "es": "Herramientas de navegación privada",
+        "de": "Werkzeuge für privates Surfen",
+        "fr": "Outils de navigation privée",
+        "pt": "Ferramentas de navegação privada",
+        "ru": "Инструменты приватного доступа",
+        "el": "Εργαλεία ιδιωτικής περιήγησης",
+        "ar": "أدوات التصفح الخاص",
+        "he": "כלים לגלישה פרטית",
+        "fa": "ابزارهای مرور خصوصی",
+        "ku": "Amûrên gerîna taybet",
+        "ckb": "ئامرازەکانی گەڕانی تایبەت",
+        "syr": "ܡܐܢܐ ܕܥܒܪܐ ܟܣܝܐ"
+      }
+    },
+    "w.p7.intro": {
+      "note": "Welcome app, page 7 body. States that nothing is on by default.",
+      "t": {
+        "en": "Bashan OS includes two tools for when you do not want your internet connection watched. Neither is switched on, and neither does anything until you set it up. There is no account to make and nothing to pay.",
+        "es": "Bashan OS incluye dos herramientas para cuando no quiere que vigilen su conexión a internet. Ninguna está activada, y ninguna hace nada hasta que usted la configure. No hay que crear cuentas ni pagar nada.",
+        "de": "Bashan OS enthält zwei Werkzeuge für den Fall, dass Ihre Internetverbindung nicht beobachtet werden soll. Keines ist eingeschaltet, und keines tut etwas, bevor Sie es einrichten. Es gibt kein Konto anzulegen und nichts zu bezahlen.",
+        "fr": "Bashan OS comprend deux outils pour quand vous ne voulez pas que votre connexion internet soit surveillée. Aucun n'est activé, et aucun ne fait quoi que ce soit avant que vous ne le configuriez. Aucun compte à créer, rien à payer.",
+        "pt": "O Bashan OS inclui duas ferramentas para quando não quer que a sua ligação à internet seja vigiada. Nenhuma está ligada, e nenhuma faz nada até que a configure. Não há conta para criar nem nada a pagar.",
+        "ru": "В Bashan OS есть два средства на случай, если вы не хотите, чтобы за вашим подключением следили. Ни одно не включено, и ни одно ничего не делает, пока вы его не настроите. Учётную запись создавать не нужно, платить не нужно.",
+        "el": "Το Bashan OS περιλαμβάνει δύο εργαλεία για όταν δεν θέλετε να παρακολουθείται η σύνδεσή σας. Κανένα δεν είναι ενεργοποιημένο και κανένα δεν κάνει τίποτα μέχρι να το ρυθμίσετε. Δεν χρειάζεται λογαριασμός ούτε πληρωμή.",
+        "ar": "يتضمن نظام بشان أداتين لحين لا ترغب في أن يُراقَب اتصالك بالإنترنت. ولا واحدة منهما مُشغَّلة، ولا تفعل أي شيء حتى تضبطها بنفسك. لا حساب تُنشئه ولا شيء تدفعه.",
+        "he": "ב-Bashan OS יש שני כלים למקרה שאינך רוצה שיעקבו אחרי החיבור שלך לאינטרנט. אף אחד מהם אינו מופעל, ואף אחד אינו עושה דבר עד שתגדיר אותו. אין חשבון ליצור ואין מה לשלם.",
+        "fa": "سیستم‌عامل بشان دو ابزار دارد برای وقتی که نمی‌خواهید اتصال اینترنتتان زیر نظر باشد. هیچ‌کدام روشن نیستند و تا وقتی خودتان تنظیمشان نکنید کاری نمی‌کنند. نه حسابی باید بسازید و نه پولی بدهید.",
+        "ku": "Bashan OS du amûran dihewîne ji bo dema ku tu naxwazî girêdana te ya înternetê were temaşekirin. Yek ji wan jî venekirî ye, û yek ji wan tiştekî nake heta ku tu wê saz nekî. Ne hesabek tê çêkirin ne jî tiştek tê dayîn.",
+        "ckb": "سیستەمی بەشان دوو ئامرازی تێدایە بۆ کاتێک نەتەوێت پەیوەندی ئینتەرنێتەکەت چاودێری بکرێت. هیچیان کارا نەکراون، و هیچیان هیچ ناکەن تا خۆت ڕێکیان نەخەیت. نە هەژمارێک دروست دەکەیت نە پارەیەک دەدەیت.",
+        "syr": "ܒܫܢ ܐܝܬ ܒܗ ܬܪܝܢ ܡܐܢܐ ܠܐܡܬܝ ܕܠܐ ܨܒܐ ܐܢܬ ܕܢܬܚܙܐ ܩܘܛܪܟ ܕܐܝܢܬܪܢܬ. ܠܐ ܚܕ ܡܢܗܘܢ ܦܬܝܚܐ, ܘܠܐ ܚܕ ܥܒܕ ܡܕܡ ܥܕܡܐ ܕܡܬܩܢ ܐܢܬ ܠܗ. ܠܝܬ ܚܘܫܒܢܐ ܠܡܥܒܕ ܘܠܝܬ ܡܕܡ ܠܡܦܪܥ."
+      }
+    },
+    "w.p7.vpn.h": {
+      "note": "Page 7: VPN card heading.",
+      "t": {
+        "en": "A VPN",
+        "es": "Una VPN",
+        "de": "Ein VPN",
+        "fr": "Un VPN",
+        "pt": "Uma VPN",
+        "ru": "VPN",
+        "el": "Ένα VPN",
+        "ar": "شبكة خاصة افتراضية (VPN)",
+        "he": "VPN",
+        "fa": "وی‌پی‌ان",
+        "ku": "VPN",
+        "ckb": "ڤی‌پی‌ئێن",
+        "syr": "VPN"
+      }
+    },
+    "w.p7.vpn.b": {
+      "note": "Page 7: VPN card body. Must say a VPN needs a server and warn about free services.",
+      "t": {
+        "en": "A VPN sends your internet traffic through another computer first. Bashan OS can connect to one, but it does not come with one: a VPN needs a server, either your own or a company's. Be careful with free VPN services — many of them keep records of what you do and sell them, which is the opposite of what you wanted.",
+        "es": "Una VPN envía su tráfico de internet a través de otro ordenador primero. Bashan OS puede conectarse a una, pero no trae ninguna: una VPN necesita un servidor, propio o de una empresa. Cuidado con los servicios de VPN gratuitos: muchos guardan registros de lo que hace y los venden, que es justo lo contrario de lo que buscaba.",
+        "de": "Ein VPN schickt Ihren Internetverkehr zuerst über einen anderen Rechner. Bashan OS kann sich mit einem verbinden, bringt aber keines mit: ein VPN braucht einen Server, entweder Ihren eigenen oder den einer Firma. Vorsicht bei kostenlosen VPN-Diensten — viele führen Protokoll über das, was Sie tun, und verkaufen es, also genau das Gegenteil dessen, was Sie wollten.",
+        "fr": "Un VPN fait passer votre trafic internet par un autre ordinateur d'abord. Bashan OS peut s'y connecter, mais n'en fournit aucun : un VPN a besoin d'un serveur, le vôtre ou celui d'une entreprise. Méfiez-vous des services VPN gratuits — beaucoup conservent des traces de ce que vous faites et les vendent, soit l'inverse de ce que vous cherchiez.",
+        "pt": "Uma VPN envia o seu tráfego de internet primeiro através de outro computador. O Bashan OS pode ligar-se a uma, mas não traz nenhuma: uma VPN precisa de um servidor, seu ou de uma empresa. Cuidado com os serviços de VPN gratuitos — muitos guardam registos do que faz e vendem-nos, que é o contrário do que pretendia.",
+        "ru": "VPN пропускает ваш интернет-трафик сначала через другой компьютер. Bashan OS умеет подключаться к VPN, но своего не предоставляет: нужен сервер — ваш собственный или компании. Осторожнее с бесплатными VPN-сервисами: многие ведут записи о том, что вы делаете, и продают их, то есть делают ровно обратное тому, чего вы хотели.",
+        "el": "Ένα VPN στέλνει την κίνησή σας πρώτα μέσα από έναν άλλο υπολογιστή. Το Bashan OS μπορεί να συνδεθεί σε ένα, αλλά δεν συνοδεύεται από κανένα: ένα VPN χρειάζεται διακομιστή, δικό σας ή μιας εταιρείας. Προσοχή στις δωρεάν υπηρεσίες VPN — πολλές κρατούν αρχείο όσων κάνετε και το πουλούν, δηλαδή ακριβώς το αντίθετο από αυτό που θέλατε.",
+        "ar": "الشبكة الخاصة الافتراضية تمرّر حركة الإنترنت عبر حاسوب آخر أولًا. يستطيع نظام بشان الاتصال بواحدة، لكنه لا يأتي بواحدة: فالـVPN تحتاج خادمًا، إما خادمك أنت أو خادم شركة. احذر من خدمات الـVPN المجانية — كثير منها يحتفظ بسجلات لما تفعله ويبيعها، وهو عكس ما أردته تمامًا.",
+        "he": "VPN מעביר את תעבורת האינטרנט שלך קודם דרך מחשב אחר. Bashan OS יכולה להתחבר לאחד, אבל אינה מגיעה עם אחד: VPN צריך שרת, שלך או של חברה. היזהר משירותי VPN חינמיים — רבים מהם שומרים תיעוד של מה שאתה עושה ומוכרים אותו, בדיוק ההפך ממה שרצית.",
+        "fa": "وی‌پی‌ان ترافیک اینترنت شما را اول از رایانه‌ای دیگر عبور می‌دهد. سیستم‌عامل بشان می‌تواند به یکی وصل شود، اما خودش هیچ‌کدام را ندارد: وی‌پی‌ان به یک سرور نیاز دارد، چه مال خودتان چه مال یک شرکت. مراقب سرویس‌های رایگان وی‌پی‌ان باشید — بسیاری از آن‌ها سابقهٔ کارهای شما را نگه می‌دارند و می‌فروشند، یعنی درست برعکس آنچه می‌خواستید.",
+        "ku": "VPN pêşî trafîka te ya înternetê bi komputereke din re dişîne. Bashan OS dikare bi yekê ve were girêdan, lê bi yekê re nayê: VPN hewceyî serverekê ye, an ya te an ya pargîdaniyekê. Ji xizmetên VPN ên belaş hay ji xwe hebe — gelek ji wan tomarên tiştên ku tu dikî dihêlin û difiroşin, ku berevajiya tiştê ku te dixwest e.",
+        "ckb": "ڤی‌پی‌ئێن سەرەتا هاتوچۆی ئینتەرنێتەکەت بە کۆمپیوتەرێکی تردا دەنێرێت. سیستەمی بەشان دەتوانێت بە یەکێکەوە ببەستێت، بەڵام بە هیچێکەوە نایەت: ڤی‌پی‌ئێن پێویستی بە ڕاژەکارێکە، یان هی خۆت یان هی کۆمپانیایەک. ئاگاداری خزمەتگوزارییە خۆڕاییەکانی ڤی‌پی‌ئێن بە — زۆرێکیان تۆماری ئەوەی دەیکەیت هەڵدەگرن و دەیفرۆشن، کە پێچەوانەی ئەوەیە کە دەتویست.",
+        "syr": "VPN ܡܫܕܪ ܠܘܩܕܡ ܪܕܝܐ ܕܐܝܢܬܪܢܬ ܕܝܠܟ ܒܡܚܫܒܬܐ ܐܚܪܬܐ. ܒܫܢ ܡܨܐ ܕܢܬܩܛܪ ܒܚܕ, ܐܠܐ ܠܐ ܐܬܐ ܥܡ ܚܕ: VPN ܣܢܝܩ ܥܠ ܫܡܫܐ, ܐܘ ܕܝܠܟ ܐܘ ܕܫܘܬܦܘܬܐ. ܐܙܕܗܪ ܡܢ ܬܫܡܫܬܐ ܕVPN ܡܓܢܐ — ܣܓܝܐܐ ܡܢܗܘܢ ܢܛܪܝܢ ܪܫܡܐ ܕܡܐ ܕܥܒܕ ܐܢܬ ܘܡܙܒܢܝܢ ܠܗܘܢ, ܕܐܝܬܘܗܝ ܗܦܟܐ ܕܡܐ ܕܒܥܝܬ."
+      }
+    },
+    "w.p7.tor.h": {
+      "note": "Page 7: Tor card heading.",
+      "t": {
+        "en": "Tor Browser",
+        "es": "Navegador Tor",
+        "de": "Tor Browser",
+        "fr": "Navigateur Tor",
+        "pt": "Navegador Tor",
+        "ru": "Браузер Tor",
+        "el": "Περιηγητής Tor",
+        "ar": "متصفح تور",
+        "he": "דפדפן Tor",
+        "fa": "مرورگر تور",
+        "ku": "Geroka Tor",
+        "ckb": "وێبگەڕی تۆر",
+        "syr": "ܡܥܒܪܢܐ ܕܬܘܪ"
+      }
+    },
+    "w.p7.tor.b": {
+      "note": "Page 7: Tor card body. Must say it downloads on first run, is slower, and some sites block it.",
+      "t": {
+        "en": "Tor hides which websites you visit by passing your traffic through several computers around the world. Opening it the first time downloads the browser from the Tor Project, so you need an internet connection. Two honest warnings: it is noticeably slower than normal browsing, and some websites and banks block it outright.",
+        "es": "Tor oculta qué sitios web visita pasando su tráfico por varios ordenadores repartidos por el mundo. Al abrirlo la primera vez se descarga el navegador desde el Proyecto Tor, así que necesita conexión a internet. Dos advertencias honestas: es bastante más lento que navegar normalmente, y algunos sitios y bancos lo bloquean directamente.",
+        "de": "Tor verbirgt, welche Webseiten Sie besuchen, indem es Ihren Verkehr über mehrere Rechner weltweit leitet. Beim ersten Öffnen wird der Browser vom Tor-Projekt heruntergeladen, Sie brauchen also eine Internetverbindung. Zwei ehrliche Warnungen: er ist spürbar langsamer als normales Surfen, und manche Webseiten und Banken sperren ihn ganz aus.",
+        "fr": "Tor cache les sites que vous visitez en faisant passer votre trafic par plusieurs ordinateurs dans le monde. À la première ouverture, le navigateur est téléchargé depuis le projet Tor : il vous faut donc une connexion internet. Deux avertissements honnêtes : c'est nettement plus lent que la navigation normale, et certains sites et banques le bloquent purement et simplement.",
+        "pt": "O Tor esconde que sítios visita, passando o seu tráfego por vários computadores pelo mundo. Ao abri-lo pela primeira vez, o navegador é descarregado do Projeto Tor, por isso precisa de ligação à internet. Dois avisos honestos: é bastante mais lento do que navegar normalmente, e alguns sítios e bancos bloqueiam-no por completo.",
+        "ru": "Tor скрывает, какие сайты вы посещаете, пропуская трафик через несколько компьютеров по всему миру. При первом запуске браузер скачивается с сайта Tor Project, поэтому нужен интернет. Два честных предупреждения: он заметно медленнее обычного браузера, и некоторые сайты и банки его попросту блокируют.",
+        "el": "Το Tor κρύβει ποιες ιστοσελίδες επισκέπτεστε, περνώντας την κίνησή σας από αρκετούς υπολογιστές σε όλο τον κόσμο. Την πρώτη φορά κατεβάζει τον περιηγητή από το Tor Project, οπότε χρειάζεστε σύνδεση. Δύο ειλικρινείς προειδοποιήσεις: είναι αισθητά πιο αργό και ορισμένες ιστοσελίδες και τράπεζες το μπλοκάρουν εντελώς.",
+        "ar": "يخفي تور المواقع التي تزورها بتمرير حركتك عبر عدة حواسيب حول العالم. وعند فتحه أول مرة يُنزَّل المتصفح من مشروع تور، فتحتاج إلى اتصال بالإنترنت. تحذيران صادقان: إنه أبطأ بوضوح من التصفح العادي، وبعض المواقع والمصارف تحجبه تمامًا.",
+        "he": "Tor מסתיר אילו אתרים אתה מבקר בהם, בכך שהוא מעביר את התעבורה שלך דרך כמה מחשבים ברחבי העולם. בפתיחה הראשונה הדפדפן יורד מפרויקט Tor, ולכן דרוש חיבור לאינטרנט. שתי אזהרות כנות: הוא איטי משמעותית מגלישה רגילה, וחלק מהאתרים והבנקים חוסמים אותו לגמרי.",
+        "fa": "تور با عبور دادن ترافیک شما از چند رایانه در سراسر جهان پنهان می‌کند که چه سایت‌هایی را می‌بینید. بار اول که بازش کنید مرورگر از پروژهٔ تور دانلود می‌شود، پس به اینترنت نیاز دارید. دو هشدار صادقانه: محسوساً از مرور عادی کندتر است، و بعضی سایت‌ها و بانک‌ها آن را کامل مسدود می‌کنند.",
+        "ku": "Tor bi şandina trafîka te bi çend komputeran li çar aliyê cîhanê vedişêre ka tu diçî kîjan malperan. Cara yekem ku tu wê vedikî, gerok ji Proje ya Tor tê daxistin, loma hewceyî girêdana înternetê ye. Du hişyariyên rast: ew ji gerîna asayî gelek hêdîtir e, û hin malper û bank wê bi tevahî asteng dikin.",
+        "ckb": "تۆر بە ناردنی هاتوچۆکەت بە چەند کۆمپیوتەرێکدا لە سەرانسەری جیهان، دەشارێتەوە سەردانی چ ماڵپەڕێک دەکەیت. یەکەم جار کە دەیکەیتەوە، وێبگەڕەکە لە پڕۆژەی تۆرەوە دادەبەزێنرێت، بۆیە پێویستت بە ئینتەرنێتە. دوو ئاگاداری ڕاستگۆیانە: بە ڕوونی لە گەڕانی ئاسایی خاوترە، و هەندێک ماڵپەڕ و بانق بە تەواوی ڕێگەی لێدەگرن.",
+        "syr": "ܬܘܪ ܡܛܫܐ ܐܝܠܝܢ ܕܘܟܝܬܐ ܕܣܥܪ ܐܢܬ, ܒܕܡܥܒܪ ܪܕܝܟ ܥܠ ܟܡܐ ܡܚܫܒܬܐ ܒܟܠܗ ܥܠܡܐ. ܒܙܒܢܬܐ ܩܕܡܝܬܐ ܡܬܢܚܬ ܡܥܒܪܢܐ ܡܢ ܦܘܠܚܢܐ ܕܬܘܪ, ܡܛܠ ܗܕܐ ܣܢܝܩ ܐܢܬ ܥܠ ܐܝܢܬܪܢܬ. ܬܪܝܢ ܙܘܗܪܐ ܫܪܝܪܐ: ܡܗܠܐ ܗܘ ܛܒ ܡܢ ܥܒܪܐ ܫܚܝܡܐ, ܘܡܢ ܕܘܟܝܬܐ ܘܒܝܬ ܓܙܐ ܐܝܬ ܕܟܠܝܢ ܠܗ ܓܡܝܪܐܝܬ."
+      }
     }
   }
 }

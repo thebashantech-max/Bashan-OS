@@ -1,0 +1,37 @@
+#!/bin/sh
+# Bashan OS — the tor daemon is installed but OFF.
+#
+# Debian enables tor.service on install. A daemon nobody asked for that
+# holds a circuit open to the Tor network is both idle RAM and a listening
+# socket, so it is switched off here and the build fails if it is not.
+#
+# This does NOT affect Tor Browser. Tor Browser carries its own tor and
+# never uses the system daemon.
+set -e
+
+if ! dpkg-query -W -f='${Status}' tor 2>/dev/null | grep -q "install ok installed"; then
+    echo "E: tor is not installed; packages/privacy.list.chroot expects it" >&2
+    exit 1
+fi
+
+systemctl disable tor.service 2>/dev/null || true
+systemctl disable tor@default.service 2>/dev/null || true
+systemctl mask tor.service 2>/dev/null || true
+
+state=$(systemctl is-enabled tor.service 2>/dev/null || true)
+case "$state" in
+    masked|disabled|"") ;;
+    *) echo "E: tor.service is '$state'; it must be masked or disabled." >&2
+       echo "E: An always-on tor daemon costs idle RAM and opens a socket" >&2
+       echo "E: that nobody asked for." >&2
+       exit 1 ;;
+esac
+
+# Tor Browser's launcher must be in the menu, or the whole point is lost.
+if [ ! -f /usr/share/applications/torbrowser.desktop ] \
+   && [ ! -f /usr/share/applications/torbrowser-launcher.desktop ]; then
+    echo "E: no Tor Browser launcher entry found in /usr/share/applications" >&2
+    exit 1
+fi
+
+echo "I: tor daemon $state; Tor Browser launcher present"
