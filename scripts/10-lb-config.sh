@@ -134,6 +134,13 @@ cp -a "$ROOT/theme/palette.json" "$ROOT/theme/palette-light.json" \
       "$inc/bashan/welcome/"
 cp -a "$ROOT"/theme/look-and-feel/com.bashan.desktop* "$inc/plasma/look-and-feel/"
 
+# --- legal documents ----------------------------------------------------
+# Page 6 of the welcome app opens NOTICE.md, TERMS.md and PRIVACY.md from
+# this exact path, so the two must not drift apart.
+echo "I: legal documents"
+mkdir -p "config/includes.chroot/usr/share/doc/bashan/legal"
+cp -a "$ROOT"/docs/legal/*.md "config/includes.chroot/usr/share/doc/bashan/legal/"
+
 # --- boot-chain branding ------------------------------------------------
 echo "I: boot branding"
 mkdir -p "$inc/plymouth/themes" config/includes.chroot/boot/grub/themes \

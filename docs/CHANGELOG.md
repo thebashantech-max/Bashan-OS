@@ -4,6 +4,34 @@ All notable changes to the build pipeline. Newest first.
 
 ## [Unreleased]
 
+### Part D — legal drafts — 2026-10-12
+- Added `docs/legal/`: NOTICE.md, TERMS.md, PRIVACY.md,
+  BLOCKS-PUBLIC-RELEASE.md, COOKIES.md. Each marked "DRAFT - not legal
+  advice". Nothing published.
+- Written from **measured facts**, not boilerplate. The built image has
+  2,106 packages; 3 from contrib, 4 from non-free, 36 non-free-firmware,
+  all enumerated by name.
+- **Found: `firmware-b43-installer`, `firmware-b43legacy-installer` and
+  `b43-fwcutter` are in the image** although `firmware.list.chroot` says in
+  a comment they are deliberately excluded. They download Broadcom firmware
+  from the internet at install time, which fails on the stated target (a
+  laptop installed from USB, offline), and nothing depends on them.
+- **Found: `libfishcamp1t64` and `libsbig4t64`** (non-free astronomy camera
+  libraries) are installed with nothing depending on them.
+- **Found: Syriac renders in a non-free font by our own choice.** The Meltho
+  licence permits redistribution but forbids modification, which is why
+  Debian classes it non-free. `fonts-noto-extra` is already installed and
+  provides Noto Sans Syriac under OFL-1.1; only one fontconfig line makes
+  the non-free font win. A one-line decision either way.
+- **Found: `dl.google.com` is contacted on every update check** because
+  Google's repository is preconfigured, even though Chrome is never
+  installed. Documented prominently in PRIVACY.md.
+- Only 14 of the 36 non-free-firmware packages were asked for; 22 arrived
+  via the `firmware-linux` metapackage.
+- Legal documents are installed to `/usr/share/doc/bashan/legal/`, the exact
+  path the welcome app's page 6 opens, and the welcome hook now fails the
+  build if any of the three is missing.
+
 ### Part C — the welcome app — 2026-10-12
 - Added "Get to Know Bashan OS": plain QML, six pages, run by the `qml`
   runner from `qml-qt6`. **Total cost 0.1 MB**, because QtQuick, Controls,

@@ -19,8 +19,14 @@ if dpkg-query -W -f='${Status}' plasma-welcome 2>/dev/null | grep -q "install ok
 fi
 
 # Our own welcome app must be there in its place.
+# The last three are what page 6's buttons open. A missing file there is a
+# button that does nothing, which is exactly the kind of defect that only
+# shows up in front of a user.
 for f in /usr/bin/bashan-welcome /usr/share/bashan/welcome/main.qml \
-         /usr/share/bashan/welcome/i18n.json /usr/lib/qt6/bin/qml; do
+         /usr/share/bashan/welcome/i18n.json /usr/lib/qt6/bin/qml \
+         /usr/share/doc/bashan/legal/NOTICE.md \
+         /usr/share/doc/bashan/legal/TERMS.md \
+         /usr/share/doc/bashan/legal/PRIVACY.md; do
     if [ ! -e "$f" ]; then
         echo "E: welcome app incomplete, missing $f" >&2
         exit 1
