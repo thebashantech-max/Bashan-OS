@@ -159,10 +159,14 @@ menu is within Brave's trademark policy.
 **Google Chrome is deliberately NOT included.** The Chrome Terms of Service
 state that without a separate written agreement you may not "reproduce,
 duplicate, copy, sell, trade or resell the Services", and those terms cover
-the executable build. Only Google's apt repository address and signing key
-are preconfigured, so the user installs Chrome themselves from Google. No
-Chrome binary is in the ISO. See `BLOCKS-PUBLIC-RELEASE.md` for the
-remaining question about preconfiguring the repository at all.
+the executable build. No Chrome binary is in the ISO.
+
+**Google's repository is shipped disabled**, as `google-chrome.list.disabled`
+— apt reads only `.list` files, so an untouched machine never contacts
+`dl.google.com`. Only the signing key is preinstalled, which contacts
+nothing by itself. The repository is switched on only by the user accepting
+a dialog that explains the consequence, and is switched off again
+automatically if Chrome is later removed.
 
 ## 5. Applications added in Part A
 

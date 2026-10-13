@@ -10,6 +10,8 @@ Ew ê ji Google were daxistin û li ser vê komputerê were sazkirin. Nêzîkî 
 
 Şîfreya te wê were xwestin.
 
+Sazkirina Chrome çavkaniya nermalava Google jî vedike, da ku Chrome nûkirinên ewlehiyê bistîne. Ji wê gavê pê ve ev komputer bi rêkûpêk bi Google re têkilî datîne, tevî ku tu Chrome bikar naynî jî. Heta ku tu erê nebêjî, ew tu carî wiya nake. Ger paşê Chrome rakî, ew çavkanî dîsa tê girtin.
+
 Google Chrome niha were sazkirin?'
 BT_CHROME_BUSY='Google Chrome tê sazkirin. Dibe çend deqîqe bigire — tu dikarî xebata xwe bidomînî.'
 BT_CHROME_OK='Google Chrome hate sazkirin û amade ye.'

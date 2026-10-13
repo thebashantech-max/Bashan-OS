@@ -4,6 +4,54 @@ All notable changes to the build pipeline. Newest first.
 
 ## [Unreleased]
 
+### Part E — security and performance — 2026-10-12
+
+**Approved corrections first**
+- Pinned 6 packages to priority -1 and added
+  `hooks/chroot/0920-excluded-packages.hook.chroot`, which **fails the
+  build** if any reappears: the three b43 packages that download firmware
+  over the internet at install time, two unused non-free astronomy camera
+  libraries, and the non-free Meltho Syriac fonts.
+- **Syriac now renders in Noto Sans Syriac** (OFL-1.1, `fonts-noto-extra`).
+  The hook fails the build if that font is missing, so Syriac can never
+  silently become boxes.
+- **Google's apt repository now ships disabled** as
+  `google-chrome.list.disabled`. An untouched machine never contacts
+  `dl.google.com`. The installer enables it only after a dialog that
+  explains the consequence in the user's own language, disables it again if
+  the install fails, and `chrome-placeholder-sync` disables it and restores
+  the one-click launcher if Chrome is later removed.
+- **Firmware trimmed by 283.2 MB**, 13 packages, all datacenter, telephony
+  or television hardware. Each verified to arrive via a Recommends, never a
+  Depends. The hook asserts the 15 packages a laptop needs survived.
+
+**Found and fixed: the installer slideshow was broken**
+- `scripts/40-i18n.py` appended its generated block on every run instead of
+  replacing it. `show.qml` had reached **six** `readonly property var tr`
+  declarations in one QML object — a syntax error; the slideshow would not
+  have loaded. Four of the six predate this session. The generator now uses
+  explicit BEGIN/END markers and is idempotent (proved by running it three
+  times). 974 lines down to 268.
+
+**Part E proper**
+- Firewall on, `DROP` inbound, `ACCEPT` outbound, GUI present.
+- Automatic updates from the **security archive only**, which **cannot
+  reboot the machine** — the build fails if that is ever changed. A user
+  timer sends one plain-words notification instead.
+- Pre-update Timeshift snapshots, which no-op safely until the user sets
+  Timeshift up (it cannot be preconfigured without a target disk).
+  `docs/ROLLBACK.md` explains both in plain words.
+- Disk-encryption warning added as a 5th slideshow slide in 13 languages;
+  Calamares has no supported way to put custom text on its partition page.
+- Hardening: root locked, no SSH server (build fails if one appears), sudo
+  `use_pty`/`env_reset`/`secure_path`, 10-minute screen lock, and 20
+  desktop-safe kernel sysctls. Three hardening settings deliberately NOT
+  applied, each with its reason recorded.
+- Brave telemetry, crash reporting and stats pings off by policy.
+- **Measured: 0 pending security updates**, 0 upgradable. Only
+  `avahi-daemon` listens on the network; CUPS is localhost-only.
+- `docs/SECURITY.md` and `docs/LAPTOP-TEST.md` added.
+
 ### Part D — legal drafts — 2026-10-12
 - Added `docs/legal/`: NOTICE.md, TERMS.md, PRIVACY.md,
   BLOCKS-PUBLIC-RELEASE.md, COOKIES.md. Each marked "DRAFT - not legal

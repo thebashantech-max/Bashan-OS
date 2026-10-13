@@ -1,0 +1,10 @@
+// Bashan OS — restore the Chrome placeholder, and switch Google's apt
+// repository back off, whenever Google Chrome stops being installed.
+//
+// Without this, removing Chrome leaves a dead dock icon and leaves the
+// machine contacting dl.google.com on every update check for a browser that
+// is no longer there.
+//
+// The script exits 0 in every case; `|| true` is belt and braces, because a
+// Post-Invoke that fails aborts someone else's package operation.
+DPkg::Post-Invoke { "[ -x /usr/libexec/bashan/chrome-placeholder-sync ] && /usr/libexec/bashan/chrome-placeholder-sync || true"; };

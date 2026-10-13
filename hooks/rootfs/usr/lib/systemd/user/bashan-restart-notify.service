@@ -1,0 +1,7 @@
+[Unit]
+Description=Bashan OS: say when a security update needs a restart
+Documentation=file:///usr/share/doc/bashan/legal/PRIVACY.md
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/bashan/restart-notify

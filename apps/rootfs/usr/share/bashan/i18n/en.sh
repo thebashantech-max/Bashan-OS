@@ -10,6 +10,8 @@ It will be downloaded from Google and installed on this computer. This needs abo
 
 You will be asked for your password.
 
+Installing Chrome also switches on Google'\''s software source, so that Chrome keeps receiving security updates. From then on this computer will contact Google regularly, even when you are not using Chrome. Until you say yes, it never does. If you remove Chrome later, the source is switched off again.
+
 Install Google Chrome now?'
 BT_CHROME_BUSY='Installing Google Chrome. This can take a few minutes — you can keep working.'
 BT_CHROME_OK='Google Chrome is installed and ready to use.'

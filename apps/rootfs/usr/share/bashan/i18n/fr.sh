@@ -10,6 +10,8 @@ Il sera téléchargé depuis Google et installé sur cet ordinateur. Cela néces
 
 Votre mot de passe vous sera demandé.
 
+Installer Chrome active aussi la source de logiciels de Google, afin que Chrome continue de recevoir les mises à jour de sécurité. À partir de là, cet ordinateur contactera Google régulièrement, même lorsque vous n'\''utilisez pas Chrome. Tant que vous n'\''avez pas accepté, il ne le fait jamais. Si vous retirez Chrome plus tard, la source est de nouveau désactivée.
+
 Installer Google Chrome maintenant ?'
 BT_CHROME_BUSY='Installation de Google Chrome. Cela peut prendre quelques minutes ; vous pouvez continuer à travailler.'
 BT_CHROME_OK='Google Chrome est installé et prêt à l'\''emploi.'

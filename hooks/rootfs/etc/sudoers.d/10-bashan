@@ -1,0 +1,26 @@
+# Bashan OS — sudo defaults.
+#
+# Installed with mode 0440 by 0310-hardening.hook.chroot; sudo refuses to
+# read a file in sudoers.d that is group- or world-writable.
+
+# Run sudo in its own pseudo-terminal. Without this, a program already
+# running as the user can inject keystrokes into a sudo session that is
+# waiting for a password.
+Defaults use_pty
+
+# Keep a record of what was run as root, separate from the system journal.
+Defaults logfile="/var/log/sudo.log"
+
+# Re-ask for the password after 15 minutes rather than the default 15 of
+# an inherited terminal, and never carry the timestamp across terminals.
+Defaults timestamp_timeout=15
+Defaults timestamp_type=tty
+
+# Show stars while typing. Not security, but non-technical users routinely
+# think the keyboard is dead when nothing appears at all.
+Defaults pwfeedback
+
+# Do not leak the user's environment into root's. Keeps a poisoned
+# LD_PRELOAD or PATH out of a root process.
+Defaults env_reset
+Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"

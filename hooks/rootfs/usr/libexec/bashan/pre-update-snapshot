@@ -1,0 +1,37 @@
+#!/bin/sh
+# Bashan OS — take a Timeshift snapshot before security updates install.
+#
+# Why this is not simply `timeshift --create`:
+#
+# Timeshift cannot be configured at build time. It has to be told which
+# disk to keep snapshots on, and that disk does not exist until the user
+# has installed the system. So on a machine where the user has never opened
+# Timeshift, there is nothing to snapshot to.
+#
+# This therefore does nothing at all unless Timeshift has been set up, and
+# it NEVER fails: it runs as ExecStartPre of the update job, and a
+# non-zero exit here would stop security updates from installing. A missing
+# snapshot is a smaller problem than an unpatched machine.
+set -u
+
+command -v timeshift >/dev/null 2>&1 || exit 0
+[ -r /etc/timeshift/timeshift.json ] || exit 0
+
+# An unconfigured Timeshift has an empty backup device UUID.
+grep -q '"backup_device_uuid"[[:space:]]*:[[:space:]]*""' /etc/timeshift/timeshift.json && exit 0
+
+# One snapshot a day is plenty; without this an interrupted run could stack
+# them up and fill the disk, which would be its own failure.
+STAMP=/var/lib/bashan/last-pre-update-snapshot
+mkdir -p /var/lib/bashan 2>/dev/null || exit 0
+if [ -f "$STAMP" ]; then
+    last=$(cat "$STAMP" 2>/dev/null || echo 0)
+    now=$(date +%s)
+    [ $((now - last)) -lt 72000 ] && exit 0   # 20 hours
+fi
+
+timeout 600 timeshift --create --comments "Before Bashan OS security updates" --scripted \
+    >/dev/null 2>&1 || exit 0
+
+date +%s > "$STAMP" 2>/dev/null || true
+exit 0

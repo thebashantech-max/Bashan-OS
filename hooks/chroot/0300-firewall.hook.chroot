@@ -1,0 +1,30 @@
+#!/bin/sh
+# Bashan OS — firewall on by default, denying everything coming in.
+#
+# A laptop has no reason to accept connections from the network it is
+# sitting on. Outgoing traffic is untouched, so nothing the user does
+# breaks. plasma-firewall puts this in System Settings with a GUI.
+#
+# The configuration is written directly rather than by running `ufw enable`,
+# because inside a build chroot ufw cannot talk to the running kernel's
+# netfilter and would fail. The files below are exactly what `ufw enable`
+# would have written; the rules are applied by the ufw unit at first boot.
+set -e
+
+[ -f /etc/ufw/ufw.conf ] || { echo "E: ufw is not installed" >&2; exit 1; }
+
+sed -i 's/^ENABLED=.*/ENABLED=yes/' /etc/ufw/ufw.conf
+grep -q '^ENABLED=yes' /etc/ufw/ufw.conf || { echo "E: could not enable ufw" >&2; exit 1; }
+
+sed -i 's/^DEFAULT_INPUT_POLICY=.*/DEFAULT_INPUT_POLICY="DROP"/'     /etc/default/ufw
+sed -i 's/^DEFAULT_OUTPUT_POLICY=.*/DEFAULT_OUTPUT_POLICY="ACCEPT"/' /etc/default/ufw
+sed -i 's/^DEFAULT_FORWARD_POLICY=.*/DEFAULT_FORWARD_POLICY="DROP"/' /etc/default/ufw
+
+for k in 'DEFAULT_INPUT_POLICY="DROP"' 'DEFAULT_OUTPUT_POLICY="ACCEPT"' \
+         'DEFAULT_FORWARD_POLICY="DROP"'; do
+    grep -q "^$k" /etc/default/ufw || { echo "E: /etc/default/ufw missing $k" >&2; exit 1; }
+done
+
+systemctl enable ufw 2>/dev/null || true
+
+echo "I: firewall enabled, incoming denied, outgoing allowed"

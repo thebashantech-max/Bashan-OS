@@ -10,6 +10,8 @@ Será descarregado da Google e instalado neste computador. Precisa de cerca de 4
 
 Ser-lhe-á pedida a sua palavra-passe.
 
+Instalar o Chrome também liga a fonte de software da Google, para que o Chrome continue a receber atualizações de segurança. A partir daí este computador contactará a Google regularmente, mesmo quando não estiver a usar o Chrome. Até dizer que sim, nunca o faz. Se remover o Chrome mais tarde, a fonte é desligada outra vez.
+
 Instalar o Google Chrome agora?'
 BT_CHROME_BUSY='A instalar o Google Chrome. Pode demorar alguns minutos — pode continuar a trabalhar.'
 BT_CHROME_OK='O Google Chrome está instalado e pronto a usar.'

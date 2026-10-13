@@ -1,0 +1,13 @@
+# Bashan OS — lock the screen when the laptop is left alone.
+#
+# Ten minutes to lock, with a five-second grace period so that brushing the
+# trackpad on the way past does not demand a password. A laptop is carried
+# into places its owner does not control; this is the difference between
+# losing a laptop and losing everything on it.
+#
+# System-wide default only: the user can change it in System Settings.
+[Daemon]
+Autolock=true
+LockGrace=5
+Timeout=10
+LockOnResume=true

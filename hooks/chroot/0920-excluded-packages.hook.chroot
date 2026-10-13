@@ -1,0 +1,72 @@
+#!/bin/sh
+# Bashan OS — packages that must not be in the image.
+#
+# They are already pinned to priority -1 in
+# config/archives/bashan-exclusions.pref.chroot and
+# bashan-firmware-trim.pref.chroot, so apt should never install them. This is the second line: a pin that silently stops working would
+# otherwise go unnoticed until someone audited the image again.
+#
+# Purge first (in case an earlier chroot stage pulled one in), then FAIL the
+# build if any survives. A build that cannot keep these out is a build whose
+# package set we cannot describe accurately in docs/legal/.
+set -e
+
+EXCLUDED="firmware-b43-installer firmware-b43legacy-installer b43-fwcutter
+          libfishcamp1t64 libsbig4t64 fonts-xfree86-nonfree-syriac
+          firmware-netronome firmware-nvidia-tesla-535-gsp
+          firmware-marvell-prestera firmware-cavium firmware-qlogic
+          firmware-myricom firmware-bnx2x firmware-netxen firmware-bnx2
+          dahdi-firmware-nonfree firmware-siano firmware-ivtv
+          atmel-firmware"
+
+for pkg in $EXCLUDED; do
+    if dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "install ok installed"; then
+        echo "I: purging excluded package $pkg"
+        apt-get purge -y "$pkg"
+    fi
+done
+
+found=""
+for pkg in $EXCLUDED; do
+    if dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "install ok installed"; then
+        found="$found $pkg"
+    fi
+done
+
+if [ -n "$found" ]; then
+    echo "E: excluded package(s) still installed:$found" >&2
+    echo "E: see config/archives/bashan-exclusions.pref.chroot for why each" >&2
+    echo "E: one is excluded. Do not silence this by deleting the hook." >&2
+    exit 1
+fi
+
+# Syriac now depends on the free Noto font rather than the non-free Meltho
+# fonts, so prove it is actually there before the Meltho ones are gone.
+if ! fc-list 2>/dev/null | grep -qi "NotoSansSyriac"; then
+    echo "E: Noto Sans Syriac is missing. Syriac would render as boxes." >&2
+    echo "E: fonts-noto-extra must be installed (packages/fonts.list.chroot)." >&2
+    exit 1
+fi
+
+# Trimming firmware is the change most likely to break a real laptop, so
+# prove the ones that matter survived rather than assuming the pins were
+# precise enough.
+NEEDED="firmware-iwlwifi firmware-atheros firmware-realtek firmware-mediatek
+        firmware-brcm80211 firmware-intel-misc firmware-misc-nonfree
+        firmware-amd-graphics firmware-intel-graphics firmware-nvidia-graphics
+        firmware-sof-signed firmware-cirrus firmware-intel-sound
+        intel-microcode amd64-microcode"
+missing=""
+for pkg in $NEEDED; do
+    if ! dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "install ok installed"; then
+        missing="$missing $pkg"
+    fi
+done
+if [ -n "$missing" ]; then
+    echo "E: firmware a laptop needs is missing:$missing" >&2
+    echo "E: the firmware trim has gone too far. Wi-Fi, Bluetooth, graphics" >&2
+    echo "E: or audio will not work on real hardware." >&2
+    exit 1
+fi
+
+echo "I: no excluded packages present; laptop firmware intact; Noto Sans Syriac in place"

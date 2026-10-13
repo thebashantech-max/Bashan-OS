@@ -1,0 +1,86 @@
+# Bashan OS — firmware for hardware this OS will never meet.
+#
+# Measured: the image carried 862.0 MB of firmware across 41 packages, and
+# only 14 of them were asked for in packages/firmware.list.chroot. The rest
+# arrived as Recommends of the firmware-linux metapackage.
+#
+# The target is a laptop. Everything below is for datacenter, telephony or
+# television hardware. Each was verified to be pulled in by a *Recommends*,
+# never a Depends, so pinning cannot break a dependency chain -
+# `apt-get remove -s` on the whole set reported exactly these 13 packages
+# and nothing else.
+#
+# Total saved: 283.2 MB installed.
+#
+# EVERYTHING a laptop needs is kept: Intel/Atheros/Realtek/MediaTek/Broadcom/
+# Marvell/TI Wi-Fi and Bluetooth, AMD/Intel/NVIDIA graphics, SOF/Cirrus/Intel
+# audio, and both CPU microcodes.
+
+# 140.6 MB. Netronome Agilio SmartNICs - datacenter network accelerators.
+Package: firmware-netronome
+Pin: release *
+Pin-Priority: -1
+
+# 59.4 MB. GSP firmware for NVIDIA *Tesla* datacenter cards. Laptop and
+# desktop GeForce cards are served by firmware-nvidia-graphics, which stays.
+Package: firmware-nvidia-tesla-535-gsp
+Pin: release *
+Pin-Priority: -1
+
+# 59.0 MB. Marvell Prestera datacenter switching ASICs.
+# Recommended by firmware-libertas, which we keep for older laptop Wi-Fi;
+# verified a Recommends, so libertas is unaffected.
+Package: firmware-marvell-prestera
+Pin: release *
+Pin-Priority: -1
+
+# 5.2 MB. Cavium/Marvell OCTEON server networking.
+Package: firmware-cavium
+Pin: release *
+Pin-Priority: -1
+
+# 4.6 MB. QLogic Fibre Channel host bus adapters - server storage fabric.
+Package: firmware-qlogic
+Pin: release *
+Pin-Priority: -1
+
+# 3.9 MB. Myricom 10-gigabit server NICs.
+Package: firmware-myricom
+Pin: release *
+Pin-Priority: -1
+
+# 2.3 MB. Broadcom NetXtreme II 10G server NICs.
+Package: firmware-bnx2x
+Pin: release *
+Pin-Priority: -1
+
+# 2.1 MB. QLogic NetXen server NICs.
+Package: firmware-netxen
+Pin: release *
+Pin-Priority: -1
+
+# 0.6 MB. Broadcom NetXtreme II server NICs.
+Package: firmware-bnx2
+Pin: release *
+Pin-Priority: -1
+
+# 2.2 MB. DAHDI telephony cards - PSTN/ISDN interface boards.
+Package: dahdi-firmware-nonfree
+Pin: release *
+Pin-Priority: -1
+
+# 1.3 MB. Siano DVB digital television tuners.
+Package: firmware-siano
+Pin: release *
+Pin-Priority: -1
+
+# 1.2 MB. Hauppauge PVR analogue TV capture cards.
+Package: firmware-ivtv
+Pin: release *
+Pin-Priority: -1
+
+# 0.8 MB. Atmel at76c50x USB Wi-Fi, circa 2003. Superseded long before any
+# machine this OS targets.
+Package: atmel-firmware
+Pin: release *
+Pin-Priority: -1

@@ -1,0 +1,25 @@
+#!/bin/sh
+# Bashan OS — keep the Chrome dock slot working when Chrome is removed.
+#
+# Run after every dpkg operation (see /etc/apt/apt.conf.d/99bashan-chrome).
+# If Google Chrome is not installed, this puts our placeholder launcher back
+# so the dock pin still works and the user can reinstall with one click, and
+# switches Google's apt repository off again so the machine stops contacting
+# dl.google.com once the reason for it is gone.
+#
+# Deliberately silent and never fatal: it runs inside other people's package
+# operations and must not be able to break one.
+set -u
+
+KEEP=/usr/share/bashan/google-chrome-placeholder.desktop
+PLACEHOLDER=/usr/share/applications/google-chrome.desktop
+SRC=/etc/apt/sources.list.d/google-chrome.list
+
+if [ -x /usr/bin/google-chrome-stable ]; then
+    exit 0
+fi
+
+[ -f "$KEEP" ] && [ ! -f "$PLACEHOLDER" ] && cp -a "$KEEP" "$PLACEHOLDER" 2>/dev/null
+[ -f "$SRC" ] && rm -f "$SRC" 2>/dev/null
+
+exit 0

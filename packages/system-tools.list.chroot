@@ -17,9 +17,16 @@ cups
 print-manager
 system-config-printer-common
 
-# Firewall: ufw engine with the KDE control-panel front end
+# Firewall: ufw engine with the KDE control-panel front end.
+# Switched ON with a deny-incoming default by
+# hooks/chroot/0300-firewall.hook.chroot.
 ufw
 plasma-firewall
+
+# Automatic SECURITY updates only, configured in
+# hooks/rootfs/etc/apt/apt.conf.d/51bashan-unattended. It can never reboot
+# the machine; a user-visible notification handles that instead.
+unattended-upgrades
 
 # Snapshots and rollback. Timeshift is GTK, which is why the desktop list
 # includes kde-config-gtk-style so it does not look foreign.

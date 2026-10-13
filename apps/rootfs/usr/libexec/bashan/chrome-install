@@ -1,12 +1,45 @@
 #!/bin/sh
 # Bashan OS — root half of the Chrome installer. Invoked through pkexec by
 # /usr/bin/bashan-install-chrome; not meant to be run directly.
+#
+# Google's apt repository ships DISABLED. This is the only thing that turns
+# it on, and it does so only after the user has agreed to a dialog that says
+# what enabling it means. Before that point nothing on the system contacts
+# dl.google.com.
 set -eu
 
-# Remove our placeholder launcher first, so dpkg never has to overwrite an
-# unowned file and the real Chrome entry lands cleanly on the same dock pin.
-rm -f /usr/share/applications/google-chrome.desktop
+SRC=/etc/apt/sources.list.d/google-chrome.list
+DISABLED=/etc/apt/sources.list.d/google-chrome.list.disabled
+PLACEHOLDER=/usr/share/applications/google-chrome.desktop
+KEEP=/usr/share/bashan/google-chrome-placeholder.desktop
+
+# If anything below fails, leave the machine as we found it rather than with
+# Google's repository switched on and no Chrome to show for it.
+enabled_here=no
+cleanup() {
+    [ "$enabled_here" = yes ] && rm -f "$SRC"
+    [ -f "$PLACEHOLDER" ] || [ ! -f "$KEEP" ] || cp -a "$KEEP" "$PLACEHOLDER"
+}
+trap 'cleanup' EXIT
+
+# Keep a copy of the placeholder so it can come back if Chrome is ever
+# removed. /usr/libexec/bashan/chrome-placeholder-sync restores it.
+[ -f "$PLACEHOLDER" ] && cp -a "$PLACEHOLDER" "$KEEP"
+
+if [ ! -f "$SRC" ]; then
+    [ -f "$DISABLED" ] || { echo "E: $DISABLED is missing" >&2; exit 1; }
+    cp -a "$DISABLED" "$SRC"
+    enabled_here=yes
+fi
+
+# Our placeholder sits at the path Chrome's own .desktop uses, so that the
+# dock pin carries over untouched. Move it aside before dpkg unpacks.
+rm -f "$PLACEHOLDER"
 
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
 apt-get install -y google-chrome-stable
+
+# Success: keep the repository, so Chrome keeps getting security updates.
+enabled_here=no
+trap - EXIT

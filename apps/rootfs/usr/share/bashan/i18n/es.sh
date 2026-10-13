@@ -10,6 +10,8 @@ Se descargará de Google y se instalará en este ordenador. Necesita unos 400 MB
 
 Se le pedirá su contraseña.
 
+Instalar Chrome también activa la fuente de software de Google, para que Chrome siga recibiendo actualizaciones de seguridad. A partir de entonces este ordenador contactará con Google con regularidad, incluso cuando no esté usando Chrome. Hasta que diga que sí, nunca lo hace. Si más adelante desinstala Chrome, la fuente se desactiva de nuevo.
+
 ¿Instalar Google Chrome ahora?'
 BT_CHROME_BUSY='Instalando Google Chrome. Puede tardar unos minutos; puede seguir trabajando.'
 BT_CHROME_OK='Google Chrome está instalado y listo para usar.'

@@ -1,0 +1,17 @@
+# Google Chrome repository — SHIPPED DISABLED ON PURPOSE.
+#
+# apt only reads files ending in .list, so while this file is named
+# .disabled nothing here contacts Google. That is deliberate: with the
+# repository enabled, EVERY update check would contact dl.google.com even
+# for a user who never installs Chrome and never wants it.
+#
+# /usr/libexec/bashan/chrome-install enables it by copying this file to
+# google-chrome.list, but only after the user has said yes to a dialog that
+# explains what enabling it means.
+#
+# To enable it by hand:
+#   sudo cp /etc/apt/sources.list.d/google-chrome.list.disabled \
+#           /etc/apt/sources.list.d/google-chrome.list
+# To go back to never contacting Google:
+#   sudo rm /etc/apt/sources.list.d/google-chrome.list
+deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/google-chrome.key.binary.asc] https://dl.google.com/linux/chrome/deb/ stable main

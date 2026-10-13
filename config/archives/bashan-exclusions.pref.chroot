@@ -1,0 +1,44 @@
+# Bashan OS — packages that must never be installed.
+#
+# Pinned rather than merely purged: every one of these arrived through a
+# Recommends rather than through packages/*.list.chroot, so purging alone
+# would let the next dependency resolution bring them straight back.
+# Priority -1 means apt will not install them even to satisfy a Recommends.
+#
+# Verified before pinning: nothing in the image Depends on any of them
+# (`apt-cache rdepends --installed` reported no reverse dependencies), so
+# this cannot break a dependency chain.
+
+# These three DOWNLOAD Broadcom firmware from the internet at install time
+# rather than containing it. The target is a laptop installed from USB with
+# no network, where they simply fail; and they fetch material whose terms we
+# have not reviewed. packages/firmware.list.chroot already said they were
+# excluded - they were not.
+Package: firmware-b43-installer
+Pin: release *
+Pin-Priority: -1
+
+Package: firmware-b43legacy-installer
+Pin: release *
+Pin-Priority: -1
+
+Package: b43-fwcutter
+Pin: release *
+Pin-Priority: -1
+
+# Non-free astronomy camera libraries. Nothing uses them.
+Package: libfishcamp1t64
+Pin: release *
+Pin-Priority: -1
+
+Package: libsbig4t64
+Pin: release *
+Pin-Priority: -1
+
+# The Meltho Syriac fonts. Their licence permits redistribution but forbids
+# modification, which is why Debian classes them non-free. Noto Sans Syriac
+# (fonts-noto-extra, OFL-1.1) covers the same script and is unambiguously
+# free, so the non-free package buys nothing but a legal question.
+Package: fonts-xfree86-nonfree-syriac
+Pin: release *
+Pin-Priority: -1

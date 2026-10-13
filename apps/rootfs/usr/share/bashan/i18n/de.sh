@@ -10,6 +10,8 @@ Es wird von Google heruntergeladen und auf diesem Computer installiert. Dafür w
 
 Sie werden nach Ihrem Passwort gefragt.
 
+Mit Chrome wird auch Googles Softwarequelle eingeschaltet, damit Chrome weiterhin Sicherheitsaktualisierungen erhält. Von da an nimmt dieser Rechner regelmäßig Kontakt zu Google auf, auch wenn Sie Chrome gerade nicht benutzen. Bis Sie zustimmen, tut er das nie. Wenn Sie Chrome später entfernen, wird die Quelle wieder abgeschaltet.
+
 Google Chrome jetzt installieren?'
 BT_CHROME_BUSY='Google Chrome wird installiert. Das kann einige Minuten dauern — Sie können weiterarbeiten.'
 BT_CHROME_OK='Google Chrome ist installiert und einsatzbereit.'

@@ -1,0 +1,28 @@
+{
+  "_comment": [
+    "Bashan OS - Brave defaults. Chromium enterprise policy, which Brave",
+    "reads from /etc/brave/policies/managed/.",
+    "",
+    "These switch OFF everything that reports back. Shields are Brave's",
+    "own default and are left alone: there is no policy key that forces",
+    "them on, so claiming we enforce it would be false. Part G verifies",
+    "the actual state in brave://settings and brave://policy."
+  ],
+
+  "MetricsReportingEnabled": false,
+  "BraveP3AEnabled": false,
+  "BraveStatsPingEnabled": false,
+
+  "SafeBrowsingExtendedReportingEnabled": false,
+  "UrlKeyedAnonymizedDataCollectionEnabled": false,
+
+  "SearchSuggestEnabled": false,
+  "SpellCheckServiceEnabled": false,
+  "AlternateErrorPagesEnabled": false,
+
+  "BackgroundModeEnabled": false,
+  "PasswordLeakDetectionEnabled": false,
+
+  "DefaultBrowserSettingEnabled": false,
+  "PromotionalTabsEnabled": false
+}

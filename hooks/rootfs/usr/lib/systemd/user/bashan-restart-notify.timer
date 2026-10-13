@@ -1,0 +1,11 @@
+[Unit]
+Description=Bashan OS: check hourly whether a restart is pending
+
+[Timer]
+# Not at login: a notification competing with the desktop drawing itself is
+# missed. Twenty minutes in, then hourly.
+OnStartupSec=20min
+OnUnitActiveSec=1h
+
+[Install]
+WantedBy=timers.target

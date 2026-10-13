@@ -1,0 +1,24 @@
+#!/bin/sh
+# Bashan OS — tell the user, once, when a security update needs a restart.
+#
+# unattended-upgrades never reboots (see 51bashan-unattended). It leaves
+# /run/reboot-required behind instead. This turns that into one plain-words
+# desktop notification, and does not nag: a stamp file stops it repeating
+# for the same set of packages.
+set -u
+
+FLAG=/run/reboot-required
+STAMP="${XDG_RUNTIME_DIR:-/run/user/$(id -u)}/bashan-restart-notified"
+
+[ -e "$FLAG" ] || exit 0
+[ -e "$STAMP" ] && exit 0
+
+command -v notify-send >/dev/null 2>&1 || exit 0
+
+notify-send --app-name="Bashan OS" --icon=system-software-update \
+    --urgency=normal \
+    "Security updates are installed" \
+    "A restart will finish applying them. There is no hurry — restart whenever it suits you." \
+    2>/dev/null || exit 0
+
+: > "$STAMP" 2>/dev/null || true

@@ -1,0 +1,60 @@
+#!/bin/sh
+# Bashan OS — apply and then PROVE the hardening settings.
+#
+# Each item below is written as a file by hooks/rootfs. This hook fixes the
+# permissions that must be exact, and then checks the result, because a
+# hardening setting that silently did not apply is worse than none: it is a
+# false belief.
+set -e
+
+# sudo refuses to read a sudoers.d file that is group- or world-writable,
+# and says nothing about it at the time.
+if [ -f /etc/sudoers.d/10-bashan ]; then
+    chown root:root /etc/sudoers.d/10-bashan
+    chmod 0440 /etc/sudoers.d/10-bashan
+    if command -v visudo >/dev/null 2>&1; then
+        visudo -cf /etc/sudoers.d/10-bashan >/dev/null \
+            || { echo "E: /etc/sudoers.d/10-bashan is not valid sudoers syntax" >&2; exit 1; }
+    fi
+else
+    echo "E: /etc/sudoers.d/10-bashan is missing" >&2; exit 1
+fi
+
+# Root has no password (Calamares sets setRootPassword: false), so root
+# cannot log in. Make that true in the image as well as on the installed
+# system, so the live session matches.
+passwd -l root 2>/dev/null || true
+
+# No SSH server is installed, so there is no remote login to harden. Prove
+# it rather than assume it: a Recommends could pull one in.
+if dpkg-query -W -f='${Status}' openssh-server 2>/dev/null | grep -q "install ok installed"; then
+    echo "E: openssh-server is installed. A desktop image must not accept" >&2
+    echo "E: remote logins by default." >&2
+    exit 1
+fi
+
+for f in /etc/sysctl.d/98-bashan-hardening.conf \
+         /etc/xdg/kscreenlockerrc \
+         /etc/brave/policies/managed/bashan-privacy.json \
+         /etc/apt/apt.conf.d/51bashan-unattended \
+         /etc/apt/apt.conf.d/20auto-upgrades; do
+    [ -f "$f" ] || { echo "E: missing $f" >&2; exit 1; }
+done
+
+# unattended-upgrades must actually be installed, or the two apt.conf
+# fragments above are decoration.
+dpkg-query -W -f='${Status}' unattended-upgrades 2>/dev/null \
+    | grep -q "install ok installed" \
+    || { echo "E: unattended-upgrades is not installed" >&2; exit 1; }
+
+# And it must be switched on.
+systemctl enable unattended-upgrades 2>/dev/null || true
+systemctl enable apt-daily.timer apt-daily-upgrade.timer 2>/dev/null || true
+
+# The one setting most likely to be got wrong: an automatic reboot would
+# throw away a user's unsaved work.
+grep -q 'Automatic-Reboot "false"' /etc/apt/apt.conf.d/51bashan-unattended \
+    || { echo "E: automatic reboot is not disabled" >&2; exit 1; }
+
+echo "I: hardening applied: sudo, root locked, no sshd, sysctls, screen lock,"
+echo "I: Brave telemetry off, security updates on without forced reboots"

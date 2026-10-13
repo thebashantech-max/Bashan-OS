@@ -18,8 +18,11 @@ fonts-farsiweb
 # Hebrew
 fonts-culmus
 
-# Syriac
-fonts-xfree86-nonfree-syriac
+# Syriac. fonts-noto-extra carries Noto Sans Syriac under OFL-1.1.
+# It was already being installed as a dependency, but Syriac now depends on
+# it, so it is listed explicitly rather than left to chance.
+# NOT fonts-xfree86-nonfree-syriac: see config/archives/bashan-exclusions.pref.chroot
+fonts-noto-extra
 
 # Terminal and code
 fonts-jetbrains-mono

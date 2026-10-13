@@ -16,11 +16,16 @@ Comment[fa]=هنوز نصب نشده — برای نصب Google Chrome کلیک 
 Comment[ku]=Hê nehatiye sazkirin — ji bo sazkirina Google Chrome bitikîne
 Comment[ckb]=هێشتا دانەمەزراوە — کلیک بکە بۆ دامەزراندنی Google Chrome
 Comment[syr]=ܠܐ ܐܬܬܣܝܡ ܥܕܟܝܠ — ܢܩܘܫ ܠܡܣܡ Google Chrome
-# PLACEHOLDER. Bashan OS ships Google's apt repository but not the Chrome
-# package, so this entry holds the dock slot and installs Chrome on click.
-# It deliberately lives at the same path the real google-chrome.desktop uses:
-# the installer removes this file immediately before apt installs Chrome, so
-# the real entry takes over the same dock pin with no further action.
+# PLACEHOLDER. Bashan OS ships NEITHER the Chrome package nor an enabled
+# Google repository: the repository file is shipped as .disabled, so nothing
+# contacts dl.google.com until the user asks for Chrome.
+# This entry holds the dock slot and installs Chrome on click. It lives at
+# the same path the real google-chrome.desktop uses, so the dock pin carries
+# over untouched; the installer copies it to
+# /usr/share/bashan/google-chrome-placeholder.desktop and moves it aside
+# before dpkg unpacks. If Chrome is later removed,
+# /usr/libexec/bashan/chrome-placeholder-sync puts it back and switches the
+# repository off again.
 Exec=/usr/bin/bashan-install-chrome
 Icon=google-chrome
 Terminal=false

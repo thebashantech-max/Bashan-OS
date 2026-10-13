@@ -1,6 +1,0 @@
-# Google Chrome repository, PRECONFIGURED ONLY.
-# The .binary suffix means live-build writes this into the finished image but
-# never uses it during the build, so no Chrome .deb is baked into the ISO.
-# The user installs Chrome on first boot or through Discover; the dock keeps
-# its Chrome slot either way.
-deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/google-chrome.key.binary.asc] https://dl.google.com/linux/chrome/deb/ stable main

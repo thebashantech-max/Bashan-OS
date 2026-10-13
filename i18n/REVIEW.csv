@@ -5,17 +5,21 @@ es,Spanish (Español),high,NO,app.installer.name,Desktop icon on the live ISO th
 es,Spanish (Español),high,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,Copiar Bashan OS en este ordenador,,
 es,Spanish (Español),high,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,Instalar Google Chrome,,
 es,Spanish (Español),high,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,Google Chrome ya está instalado.,,
-es,Spanish (Español),high,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+es,Spanish (Español),high,NO,chrome.ask,"The confirmation question. Plain words, states cost and password. Now also states that installing Chrome switches on Google's apt source and what that means.","Google Chrome is not installed yet.
 
 It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
 
 You will be asked for your password.
+
+Installing Chrome also switches on Google's software source, so that Chrome keeps receiving security updates. From then on this computer will contact Google regularly, even when you are not using Chrome. Until you say yes, it never does. If you remove Chrome later, the source is switched off again.
 
 Install Google Chrome now?","Google Chrome aún no está instalado.
 
 Se descargará de Google y se instalará en este ordenador. Necesita unos 400 MB de espacio y una conexión a internet, y suele tardar unos minutos.
 
 Se le pedirá su contraseña.
+
+Instalar Chrome también activa la fuente de software de Google, para que Chrome siga recibiendo actualizaciones de seguridad. A partir de entonces este ordenador contactará con Google con regularidad, incluso cuando no esté usando Chrome. Hasta que diga que sí, nunca lo hace. Si más adelante desinstala Chrome, la fuente se desactiva de nuevo.
 
 ¿Instalar Google Chrome ahora?",,
 es,Spanish (Español),high,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,Instalando Google Chrome. Puede tardar unos minutos; puede seguir trabajando.,,
@@ -80,23 +84,29 @@ es,Spanish (Español),high,NO,w.showatstart,Welcome app: the show-at-startup che
 es,Spanish (Español),high,NO,w.mute,Welcome app: mute button for the welcome music.,Mute,Silenciar,,
 es,Spanish (Español),high,NO,w.unmute,Welcome app: unmute button.,Sound on,Con sonido,,
 es,Spanish (Español),high,NO,w.reopen,Welcome app: closing note on the last page.,You can open this guide again from the Bashan menu at any time.,Puedes volver a abrir esta guía desde el menú Bashan cuando quieras.,,
+es,Spanish (Español),high,NO,slide5.title,"Installer slideshow, slide 5 heading. Shown only to warn about disk encryption.",If you chose to encrypt this disk,Si eligió cifrar este disco,,
+es,Spanish (Español),high,NO,slide5.body,"Installer slideshow, slide 5 body. The plain-words warning that a lost encryption password means lost data. Must stay blunt in every language.","Write the password down now and keep it somewhere safe, away from this computer. There is no reset, no recovery and no back door. If you forget it, everything on this disk is gone for good — not even we can get it back.","Anote la contraseña ahora y guárdela en un lugar seguro, lejos de este ordenador. No hay restablecimiento, ni recuperación, ni puerta trasera. Si la olvida, todo lo que hay en este disco se pierde para siempre: ni siquiera nosotros podemos recuperarlo.",,
 de,German (Deutsch),high,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,Die Bashan-Web-App in einem eigenen Fenster,,
 de,German (Deutsch),high,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,"Noch nicht installiert — klicken, um Google Chrome zu installieren",,
 de,German (Deutsch),high,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Bashan OS installieren,,
 de,German (Deutsch),high,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,Bashan OS auf diesen Computer kopieren,,
 de,German (Deutsch),high,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,Google Chrome installieren,,
 de,German (Deutsch),high,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,Google Chrome ist bereits installiert.,,
-de,German (Deutsch),high,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+de,German (Deutsch),high,NO,chrome.ask,"The confirmation question. Plain words, states cost and password. Now also states that installing Chrome switches on Google's apt source and what that means.","Google Chrome is not installed yet.
 
 It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
 
 You will be asked for your password.
+
+Installing Chrome also switches on Google's software source, so that Chrome keeps receiving security updates. From then on this computer will contact Google regularly, even when you are not using Chrome. Until you say yes, it never does. If you remove Chrome later, the source is switched off again.
 
 Install Google Chrome now?","Google Chrome ist noch nicht installiert.
 
 Es wird von Google heruntergeladen und auf diesem Computer installiert. Dafür werden etwa 400 MB Speicherplatz und eine Internetverbindung benötigt; es dauert meist einige Minuten.
 
 Sie werden nach Ihrem Passwort gefragt.
+
+Mit Chrome wird auch Googles Softwarequelle eingeschaltet, damit Chrome weiterhin Sicherheitsaktualisierungen erhält. Von da an nimmt dieser Rechner regelmäßig Kontakt zu Google auf, auch wenn Sie Chrome gerade nicht benutzen. Bis Sie zustimmen, tut er das nie. Wenn Sie Chrome später entfernen, wird die Quelle wieder abgeschaltet.
 
 Google Chrome jetzt installieren?",,
 de,German (Deutsch),high,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,Google Chrome wird installiert. Das kann einige Minuten dauern — Sie können weiterarbeiten.,,
@@ -161,23 +171,29 @@ de,German (Deutsch),high,NO,w.showatstart,Welcome app: the show-at-startup check
 de,German (Deutsch),high,NO,w.mute,Welcome app: mute button for the welcome music.,Mute,Stumm,,
 de,German (Deutsch),high,NO,w.unmute,Welcome app: unmute button.,Sound on,Ton an,,
 de,German (Deutsch),high,NO,w.reopen,Welcome app: closing note on the last page.,You can open this guide again from the Bashan menu at any time.,Sie können diese Einführung jederzeit wieder über das Bashan-Menü öffnen.,,
+de,German (Deutsch),high,NO,slide5.title,"Installer slideshow, slide 5 heading. Shown only to warn about disk encryption.",If you chose to encrypt this disk,Wenn Sie diese Festplatte verschlüsselt haben,,
+de,German (Deutsch),high,NO,slide5.body,"Installer slideshow, slide 5 body. The plain-words warning that a lost encryption password means lost data. Must stay blunt in every language.","Write the password down now and keep it somewhere safe, away from this computer. There is no reset, no recovery and no back door. If you forget it, everything on this disk is gone for good — not even we can get it back.","Schreiben Sie das Passwort jetzt auf und bewahren Sie es sicher auf, nicht an diesem Computer. Es gibt kein Zurücksetzen, keine Wiederherstellung und keine Hintertür. Wenn Sie es vergessen, ist alles auf dieser Festplatte endgültig verloren — auch wir können es nicht zurückholen.",,
 fr,French (Français),high,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,L'application web Bashan dans sa propre fenêtre,,
 fr,French (Français),high,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,Pas encore installé — cliquez pour installer Google Chrome,,
 fr,French (Français),high,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Installer Bashan OS,,
 fr,French (Français),high,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,Copier Bashan OS sur cet ordinateur,,
 fr,French (Français),high,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,Installer Google Chrome,,
 fr,French (Français),high,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,Google Chrome est déjà installé.,,
-fr,French (Français),high,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+fr,French (Français),high,NO,chrome.ask,"The confirmation question. Plain words, states cost and password. Now also states that installing Chrome switches on Google's apt source and what that means.","Google Chrome is not installed yet.
 
 It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
 
 You will be asked for your password.
+
+Installing Chrome also switches on Google's software source, so that Chrome keeps receiving security updates. From then on this computer will contact Google regularly, even when you are not using Chrome. Until you say yes, it never does. If you remove Chrome later, the source is switched off again.
 
 Install Google Chrome now?","Google Chrome n'est pas encore installé.
 
 Il sera téléchargé depuis Google et installé sur cet ordinateur. Cela nécessite environ 400 Mo d'espace et une connexion internet, et prend généralement quelques minutes.
 
 Votre mot de passe vous sera demandé.
+
+Installer Chrome active aussi la source de logiciels de Google, afin que Chrome continue de recevoir les mises à jour de sécurité. À partir de là, cet ordinateur contactera Google régulièrement, même lorsque vous n'utilisez pas Chrome. Tant que vous n'avez pas accepté, il ne le fait jamais. Si vous retirez Chrome plus tard, la source est de nouveau désactivée.
 
 Installer Google Chrome maintenant ?",,
 fr,French (Français),high,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,Installation de Google Chrome. Cela peut prendre quelques minutes ; vous pouvez continuer à travailler.,,
@@ -242,23 +258,29 @@ fr,French (Français),high,NO,w.showatstart,Welcome app: the show-at-startup che
 fr,French (Français),high,NO,w.mute,Welcome app: mute button for the welcome music.,Mute,Couper le son,,
 fr,French (Français),high,NO,w.unmute,Welcome app: unmute button.,Sound on,Activer le son,,
 fr,French (Français),high,NO,w.reopen,Welcome app: closing note on the last page.,You can open this guide again from the Bashan menu at any time.,Vous pouvez rouvrir ce guide à tout moment depuis le menu Bashan.,,
+fr,French (Français),high,NO,slide5.title,"Installer slideshow, slide 5 heading. Shown only to warn about disk encryption.",If you chose to encrypt this disk,Si vous avez choisi de chiffrer ce disque,,
+fr,French (Français),high,NO,slide5.body,"Installer slideshow, slide 5 body. The plain-words warning that a lost encryption password means lost data. Must stay blunt in every language.","Write the password down now and keep it somewhere safe, away from this computer. There is no reset, no recovery and no back door. If you forget it, everything on this disk is gone for good — not even we can get it back.","Notez le mot de passe maintenant et gardez-le en lieu sûr, loin de cet ordinateur. Il n'y a ni réinitialisation, ni récupération, ni porte dérobée. Si vous l'oubliez, tout ce qui se trouve sur ce disque est perdu définitivement — même nous ne pouvons pas le récupérer.",,
 pt,Portuguese (Português),high,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,A aplicação web Bashan na sua própria janela,,
 pt,Portuguese (Português),high,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,Ainda não instalado — clique para instalar o Google Chrome,,
 pt,Portuguese (Português),high,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Instalar o Bashan OS,,
 pt,Portuguese (Português),high,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,Copiar o Bashan OS para este computador,,
 pt,Portuguese (Português),high,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,Instalar o Google Chrome,,
 pt,Portuguese (Português),high,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,O Google Chrome já está instalado.,,
-pt,Portuguese (Português),high,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+pt,Portuguese (Português),high,NO,chrome.ask,"The confirmation question. Plain words, states cost and password. Now also states that installing Chrome switches on Google's apt source and what that means.","Google Chrome is not installed yet.
 
 It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
 
 You will be asked for your password.
+
+Installing Chrome also switches on Google's software source, so that Chrome keeps receiving security updates. From then on this computer will contact Google regularly, even when you are not using Chrome. Until you say yes, it never does. If you remove Chrome later, the source is switched off again.
 
 Install Google Chrome now?","O Google Chrome ainda não está instalado.
 
 Será descarregado da Google e instalado neste computador. Precisa de cerca de 400 MB de espaço e de uma ligação à internet, e demora normalmente alguns minutos.
 
 Ser-lhe-á pedida a sua palavra-passe.
+
+Instalar o Chrome também liga a fonte de software da Google, para que o Chrome continue a receber atualizações de segurança. A partir daí este computador contactará a Google regularmente, mesmo quando não estiver a usar o Chrome. Até dizer que sim, nunca o faz. Se remover o Chrome mais tarde, a fonte é desligada outra vez.
 
 Instalar o Google Chrome agora?",,
 pt,Portuguese (Português),high,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,A instalar o Google Chrome. Pode demorar alguns minutos — pode continuar a trabalhar.,,
@@ -323,23 +345,29 @@ pt,Portuguese (Português),high,NO,w.showatstart,Welcome app: the show-at-startu
 pt,Portuguese (Português),high,NO,w.mute,Welcome app: mute button for the welcome music.,Mute,Silenciar,,
 pt,Portuguese (Português),high,NO,w.unmute,Welcome app: unmute button.,Sound on,Com som,,
 pt,Portuguese (Português),high,NO,w.reopen,Welcome app: closing note on the last page.,You can open this guide again from the Bashan menu at any time.,Pode voltar a abrir este guia a partir do menu Bashan quando quiser.,,
+pt,Portuguese (Português),high,NO,slide5.title,"Installer slideshow, slide 5 heading. Shown only to warn about disk encryption.",If you chose to encrypt this disk,Se escolheu cifrar este disco,,
+pt,Portuguese (Português),high,NO,slide5.body,"Installer slideshow, slide 5 body. The plain-words warning that a lost encryption password means lost data. Must stay blunt in every language.","Write the password down now and keep it somewhere safe, away from this computer. There is no reset, no recovery and no back door. If you forget it, everything on this disk is gone for good — not even we can get it back.","Escreva a palavra-passe agora e guarde-a em lugar seguro, longe deste computador. Não há reposição, nem recuperação, nem porta das traseiras. Se a esquecer, tudo o que está neste disco perde-se para sempre — nem nós o conseguimos recuperar.",,
 ru,Russian (Русский),high,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,Веб-приложение Bashan в отдельном окне,,
 ru,Russian (Русский),high,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,"Ещё не установлен — нажмите, чтобы установить Google Chrome",,
 ru,Russian (Русский),high,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Установить Bashan OS,,
 ru,Russian (Русский),high,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,Скопировать Bashan OS на этот компьютер,,
 ru,Russian (Русский),high,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,Установка Google Chrome,,
 ru,Russian (Русский),high,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,Google Chrome уже установлен.,,
-ru,Russian (Русский),high,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+ru,Russian (Русский),high,NO,chrome.ask,"The confirmation question. Plain words, states cost and password. Now also states that installing Chrome switches on Google's apt source and what that means.","Google Chrome is not installed yet.
 
 It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
 
 You will be asked for your password.
+
+Installing Chrome also switches on Google's software source, so that Chrome keeps receiving security updates. From then on this computer will contact Google regularly, even when you are not using Chrome. Until you say yes, it never does. If you remove Chrome later, the source is switched off again.
 
 Install Google Chrome now?","Google Chrome ещё не установлен.
 
 Он будет загружен с серверов Google и установлен на этот компьютер. Потребуется около 400 МБ места и подключение к интернету; обычно это занимает несколько минут.
 
 У вас будет запрошен пароль.
+
+Установка Chrome также включает источник программ Google, чтобы Chrome продолжал получать обновления безопасности. После этого компьютер будет регулярно связываться с Google, даже когда вы не пользуетесь Chrome. Пока вы не согласились, он этого не делает. Если позже удалить Chrome, источник снова отключается.
 
 Установить Google Chrome сейчас?",,
 ru,Russian (Русский),high,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,Устанавливается Google Chrome. Это может занять несколько минут — можно продолжать работу.,,
@@ -404,23 +432,29 @@ ru,Russian (Русский),high,NO,w.showatstart,Welcome app: the show-at-start
 ru,Russian (Русский),high,NO,w.mute,Welcome app: mute button for the welcome music.,Mute,Выключить звук,,
 ru,Russian (Русский),high,NO,w.unmute,Welcome app: unmute button.,Sound on,Включить звук,,
 ru,Russian (Русский),high,NO,w.reopen,Welcome app: closing note on the last page.,You can open this guide again from the Bashan menu at any time.,Это руководство всегда можно снова открыть из меню Bashan.,,
+ru,Russian (Русский),high,NO,slide5.title,"Installer slideshow, slide 5 heading. Shown only to warn about disk encryption.",If you chose to encrypt this disk,Если вы выбрали шифрование этого диска,,
+ru,Russian (Русский),high,NO,slide5.body,"Installer slideshow, slide 5 body. The plain-words warning that a lost encryption password means lost data. Must stay blunt in every language.","Write the password down now and keep it somewhere safe, away from this computer. There is no reset, no recovery and no back door. If you forget it, everything on this disk is gone for good — not even we can get it back.","Запишите пароль сейчас и храните его в надёжном месте, отдельно от компьютера. Нет ни сброса, ни восстановления, ни чёрного хода. Если вы его забудете, всё на этом диске пропадёт навсегда — даже мы не сможем это вернуть.",,
 el,Greek (Ελληνικά),good,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,Η εφαρμογή ιστού Bashan σε δικό της παράθυρο,,
 el,Greek (Ελληνικά),good,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,Δεν έχει εγκατασταθεί ακόμη — κάντε κλικ για εγκατάσταση του Google Chrome,,
 el,Greek (Ελληνικά),good,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Εγκατάσταση του Bashan OS,,
 el,Greek (Ελληνικά),good,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,Αντιγραφή του Bashan OS σε αυτόν τον υπολογιστή,,
 el,Greek (Ελληνικά),good,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,Εγκατάσταση του Google Chrome,,
 el,Greek (Ελληνικά),good,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,Το Google Chrome είναι ήδη εγκατεστημένο.,,
-el,Greek (Ελληνικά),good,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+el,Greek (Ελληνικά),good,NO,chrome.ask,"The confirmation question. Plain words, states cost and password. Now also states that installing Chrome switches on Google's apt source and what that means.","Google Chrome is not installed yet.
 
 It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
 
 You will be asked for your password.
+
+Installing Chrome also switches on Google's software source, so that Chrome keeps receiving security updates. From then on this computer will contact Google regularly, even when you are not using Chrome. Until you say yes, it never does. If you remove Chrome later, the source is switched off again.
 
 Install Google Chrome now?","Το Google Chrome δεν έχει εγκατασταθεί ακόμη.
 
 Θα ληφθεί από την Google και θα εγκατασταθεί σε αυτόν τον υπολογιστή. Χρειάζονται περίπου 400 MB χώρου και σύνδεση στο διαδίκτυο, και συνήθως διαρκεί μερικά λεπτά.
 
 Θα σας ζητηθεί ο κωδικός σας.
+
+Η εγκατάσταση του Chrome ενεργοποιεί επίσης την πηγή λογισμικού της Google, ώστε το Chrome να συνεχίσει να λαμβάνει ενημερώσεις ασφαλείας. Από εκεί και πέρα ο υπολογιστής θα επικοινωνεί τακτικά με την Google, ακόμη κι όταν δεν χρησιμοποιείτε το Chrome. Μέχρι να πείτε ναι, δεν το κάνει ποτέ. Αν αφαιρέσετε το Chrome αργότερα, η πηγή απενεργοποιείται ξανά.
 
 Εγκατάσταση του Google Chrome τώρα;",,
 el,Greek (Ελληνικά),good,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,Γίνεται εγκατάσταση του Google Chrome. Μπορεί να διαρκέσει μερικά λεπτά — μπορείτε να συνεχίσετε να εργάζεστε.,,
@@ -485,23 +519,29 @@ el,Greek (Ελληνικά),good,NO,w.showatstart,Welcome app: the show-at-start
 el,Greek (Ελληνικά),good,NO,w.mute,Welcome app: mute button for the welcome music.,Mute,Σίγαση,,
 el,Greek (Ελληνικά),good,NO,w.unmute,Welcome app: unmute button.,Sound on,Ήχος ενεργός,,
 el,Greek (Ελληνικά),good,NO,w.reopen,Welcome app: closing note on the last page.,You can open this guide again from the Bashan menu at any time.,Μπορείτε να ανοίξετε ξανά αυτόν τον οδηγό από το μενού Bashan όποτε θέλετε.,,
+el,Greek (Ελληνικά),good,NO,slide5.title,"Installer slideshow, slide 5 heading. Shown only to warn about disk encryption.",If you chose to encrypt this disk,Αν επιλέξατε κρυπτογράφηση αυτού του δίσκου,,
+el,Greek (Ελληνικά),good,NO,slide5.body,"Installer slideshow, slide 5 body. The plain-words warning that a lost encryption password means lost data. Must stay blunt in every language.","Write the password down now and keep it somewhere safe, away from this computer. There is no reset, no recovery and no back door. If you forget it, everything on this disk is gone for good — not even we can get it back.","Γράψτε τον κωδικό τώρα και φυλάξτε τον σε ασφαλές μέρος, μακριά από αυτόν τον υπολογιστή. Δεν υπάρχει επαναφορά, ούτε ανάκτηση, ούτε κερκόπορτα. Αν τον ξεχάσετε, ό,τι υπάρχει σε αυτόν τον δίσκο χάνεται οριστικά — ούτε εμείς μπορούμε να το επαναφέρουμε.",,
 ar,Arabic (العربية),good,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,تطبيق بشان على الويب في نافذة خاصة به,,
 ar,Arabic (العربية),good,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,غير مُثبَّت بعد — انقر لتثبيت Google Chrome,,
 ar,Arabic (العربية),good,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,تثبيت نظام بشان,,
 ar,Arabic (العربية),good,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,نسخ نظام بشان إلى هذا الحاسوب,,
 ar,Arabic (العربية),good,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,تثبيت Google Chrome,,
 ar,Arabic (العربية),good,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,‏Google Chrome مُثبَّت بالفعل.,,
-ar,Arabic (العربية),good,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+ar,Arabic (العربية),good,NO,chrome.ask,"The confirmation question. Plain words, states cost and password. Now also states that installing Chrome switches on Google's apt source and what that means.","Google Chrome is not installed yet.
 
 It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
 
 You will be asked for your password.
+
+Installing Chrome also switches on Google's software source, so that Chrome keeps receiving security updates. From then on this computer will contact Google regularly, even when you are not using Chrome. Until you say yes, it never does. If you remove Chrome later, the source is switched off again.
 
 Install Google Chrome now?","‏Google Chrome غير مُثبَّت بعد.
 
 سيُنزَّل من Google ويُثبَّت على هذا الحاسوب. يحتاج نحو 400 ميغابايت من المساحة واتصالاً بالإنترنت، ويستغرق عادةً بضع دقائق.
 
 سيُطلب منك كلمة المرور.
+
+تثبيت كروم يُفعِّل أيضًا مصدر برمجيات جوجل، كي يستمر كروم في تلقي التحديثات الأمنية. ومنذ ذلك الحين سيتصل هذا الحاسوب بجوجل بانتظام، حتى حين لا تستخدم كروم. وما لم توافق، فإنه لا يفعل ذلك أبدًا. وإذا أزلت كروم لاحقًا، يُعطَّل المصدر من جديد.
 
 هل تريد تثبيت Google Chrome الآن؟",,
 ar,Arabic (العربية),good,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,جارٍ تثبيت Google Chrome. قد يستغرق بضع دقائق — يمكنك متابعة عملك.,,
@@ -566,23 +606,29 @@ ar,Arabic (العربية),good,NO,w.showatstart,Welcome app: the show-at-startu
 ar,Arabic (العربية),good,NO,w.mute,Welcome app: mute button for the welcome music.,Mute,كتم الصوت,,
 ar,Arabic (العربية),good,NO,w.unmute,Welcome app: unmute button.,Sound on,تشغيل الصوت,,
 ar,Arabic (العربية),good,NO,w.reopen,Welcome app: closing note on the last page.,You can open this guide again from the Bashan menu at any time.,يمكنك فتح هذا الدليل مرة أخرى من قائمة بشان في أي وقت.,,
+ar,Arabic (العربية),good,NO,slide5.title,"Installer slideshow, slide 5 heading. Shown only to warn about disk encryption.",If you chose to encrypt this disk,إذا اخترت تشفير هذا القرص,,
+ar,Arabic (العربية),good,NO,slide5.body,"Installer slideshow, slide 5 body. The plain-words warning that a lost encryption password means lost data. Must stay blunt in every language.","Write the password down now and keep it somewhere safe, away from this computer. There is no reset, no recovery and no back door. If you forget it, everything on this disk is gone for good — not even we can get it back.",اكتب كلمة السر الآن واحفظها في مكان آمن بعيدًا عن هذا الحاسوب. لا توجد إعادة تعيين ولا استرجاع ولا باب خلفي. إن نسيتها، فكل ما على هذا القرص يضيع إلى الأبد — ولا نستطيع نحن أنفسنا استعادته.,,
 he,Hebrew (עברית),good,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,יישום האינטרנט של Bashan בחלון נפרד,,
 he,Hebrew (עברית),good,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,עדיין לא מותקן — לחצו כדי להתקין את Google Chrome,,
 he,Hebrew (עברית),good,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,התקנת Bashan OS,,
 he,Hebrew (עברית),good,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,העתקת Bashan OS אל המחשב הזה,,
 he,Hebrew (עברית),good,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,התקנת Google Chrome,,
 he,Hebrew (עברית),good,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,‏Google Chrome כבר מותקן.,,
-he,Hebrew (עברית),good,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+he,Hebrew (עברית),good,NO,chrome.ask,"The confirmation question. Plain words, states cost and password. Now also states that installing Chrome switches on Google's apt source and what that means.","Google Chrome is not installed yet.
 
 It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
 
 You will be asked for your password.
+
+Installing Chrome also switches on Google's software source, so that Chrome keeps receiving security updates. From then on this computer will contact Google regularly, even when you are not using Chrome. Until you say yes, it never does. If you remove Chrome later, the source is switched off again.
 
 Install Google Chrome now?","‏Google Chrome עדיין לא מותקן.
 
 הוא יורד מ‏Google ויותקן במחשב הזה. נדרשים כ‏400 מ""ב מקום וחיבור לאינטרנט, וזה בדרך כלל אורך כמה דקות.
 
 תתבקשו להזין את הסיסמה שלכם.
+
+התקנת Chrome מפעילה גם את מקור התוכנה של גוגל, כדי ש-Chrome ימשיך לקבל עדכוני אבטחה. מאותו רגע המחשב הזה ייצור קשר עם גוגל באופן קבוע, גם כשאינך משתמש ב-Chrome. עד שתאשר, הוא לעולם לא עושה זאת. אם תסיר את Chrome בהמשך, המקור יכובה שוב.
 
 להתקין את Google Chrome עכשיו?",,
 he,Hebrew (עברית),good,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,מתקין את Google Chrome. זה עשוי לקחת כמה דקות — אפשר להמשיך לעבוד.,,
@@ -647,23 +693,29 @@ he,Hebrew (עברית),good,NO,w.showatstart,Welcome app: the show-at-startup ch
 he,Hebrew (עברית),good,NO,w.mute,Welcome app: mute button for the welcome music.,Mute,השתק,,
 he,Hebrew (עברית),good,NO,w.unmute,Welcome app: unmute button.,Sound on,הפעל צליל,,
 he,Hebrew (עברית),good,NO,w.reopen,Welcome app: closing note on the last page.,You can open this guide again from the Bashan menu at any time.,אפשר לפתוח מדריך זה שוב מתפריט Bashan בכל עת.,,
+he,Hebrew (עברית),good,NO,slide5.title,"Installer slideshow, slide 5 heading. Shown only to warn about disk encryption.",If you chose to encrypt this disk,אם בחרת להצפין את הדיסק הזה,,
+he,Hebrew (עברית),good,NO,slide5.body,"Installer slideshow, slide 5 body. The plain-words warning that a lost encryption password means lost data. Must stay blunt in every language.","Write the password down now and keep it somewhere safe, away from this computer. There is no reset, no recovery and no back door. If you forget it, everything on this disk is gone for good — not even we can get it back.","רשום את הסיסמה עכשיו ושמור אותה במקום בטוח, הרחק מהמחשב הזה. אין איפוס, אין שחזור ואין דלת אחורית. אם תשכח אותה, כל מה שבדיסק הזה אבוד לתמיד — גם אנחנו לא נוכל להחזיר אותו.",,
 fa,Persian (فارسی),good,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,برنامهٔ وب بشان در پنجرهٔ خودش,,
 fa,Persian (فارسی),good,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,هنوز نصب نشده — برای نصب Google Chrome کلیک کنید,,
 fa,Persian (فارسی),good,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,نصب بشان او‌اس,,
 fa,Persian (فارسی),good,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,کپی بشان او‌اس روی این رایانه,,
 fa,Persian (فارسی),good,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,نصب Google Chrome,,
 fa,Persian (فارسی),good,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,‏Google Chrome از قبل نصب شده است.,,
-fa,Persian (فارسی),good,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+fa,Persian (فارسی),good,NO,chrome.ask,"The confirmation question. Plain words, states cost and password. Now also states that installing Chrome switches on Google's apt source and what that means.","Google Chrome is not installed yet.
 
 It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
 
 You will be asked for your password.
+
+Installing Chrome also switches on Google's software source, so that Chrome keeps receiving security updates. From then on this computer will contact Google regularly, even when you are not using Chrome. Until you say yes, it never does. If you remove Chrome later, the source is switched off again.
 
 Install Google Chrome now?","‏Google Chrome هنوز نصب نشده است.
 
 از Google دانلود و روی این رایانه نصب می‌شود. حدود ۴۰۰ مگابایت فضا و اتصال اینترنت لازم دارد و معمولاً چند دقیقه طول می‌کشد.
 
 رمز عبور شما پرسیده خواهد شد.
+
+نصب کروم منبع نرم‌افزاری گوگل را هم روشن می‌کند تا کروم به‌روزرسانی‌های امنیتی بگیرد. از آن پس این رایانه مرتب با گوگل تماس می‌گیرد، حتی وقتی از کروم استفاده نمی‌کنید. تا وقتی شما نپذیرید، هرگز این کار را نمی‌کند. اگر بعداً کروم را بردارید، آن منبع دوباره خاموش می‌شود.
 
 اکنون Google Chrome نصب شود؟",,
 fa,Persian (فارسی),good,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,در حال نصب Google Chrome. ممکن است چند دقیقه طول بکشد — می‌توانید به کارتان ادامه دهید.,,
@@ -728,23 +780,29 @@ fa,Persian (فارسی),good,NO,w.showatstart,Welcome app: the show-at-startup c
 fa,Persian (فارسی),good,NO,w.mute,Welcome app: mute button for the welcome music.,Mute,بی‌صدا,,
 fa,Persian (فارسی),good,NO,w.unmute,Welcome app: unmute button.,Sound on,باصدا,,
 fa,Persian (فارسی),good,NO,w.reopen,Welcome app: closing note on the last page.,You can open this guide again from the Bashan menu at any time.,هر وقت خواستید می‌توانید این راهنما را دوباره از منوی بشان باز کنید.,,
+fa,Persian (فارسی),good,NO,slide5.title,"Installer slideshow, slide 5 heading. Shown only to warn about disk encryption.",If you chose to encrypt this disk,اگر رمزگذاری این دیسک را انتخاب کردید,,
+fa,Persian (فارسی),good,NO,slide5.body,"Installer slideshow, slide 5 body. The plain-words warning that a lost encryption password means lost data. Must stay blunt in every language.","Write the password down now and keep it somewhere safe, away from this computer. There is no reset, no recovery and no back door. If you forget it, everything on this disk is gone for good — not even we can get it back.",رمز را همین حالا بنویسید و جایی امن، دور از این رایانه، نگه دارید. نه بازنشانی هست، نه بازیابی، نه در پشتی. اگر فراموشش کنید، هر چه روی این دیسک است برای همیشه از دست می‌رود — حتی ما هم نمی‌توانیم برش گردانیم.,,
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,Sepana webê ya Bashan di pencereya xwe de,,
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,Hê nehatiye sazkirin — ji bo sazkirina Google Chrome bitikîne,,
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Bashan OS saz bike,,
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,Bashan OS li ser vê komputerê kopî bike,,
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,Google Chrome saz bike,,
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,Google Chrome jixwe hatiye sazkirin.,,
-ku,Kurdish Kurmanji (Kurmancî),LOW,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,chrome.ask,"The confirmation question. Plain words, states cost and password. Now also states that installing Chrome switches on Google's apt source and what that means.","Google Chrome is not installed yet.
 
 It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
 
 You will be asked for your password.
+
+Installing Chrome also switches on Google's software source, so that Chrome keeps receiving security updates. From then on this computer will contact Google regularly, even when you are not using Chrome. Until you say yes, it never does. If you remove Chrome later, the source is switched off again.
 
 Install Google Chrome now?","Google Chrome hê nehatiye sazkirin.
 
 Ew ê ji Google were daxistin û li ser vê komputerê were sazkirin. Nêzîkî 400 MB cih û girêdanek înternetê lazim e, û bi gelemperî çend deqîqe digire.
 
 Şîfreya te wê were xwestin.
+
+Sazkirina Chrome çavkaniya nermalava Google jî vedike, da ku Chrome nûkirinên ewlehiyê bistîne. Ji wê gavê pê ve ev komputer bi rêkûpêk bi Google re têkilî datîne, tevî ku tu Chrome bikar naynî jî. Heta ku tu erê nebêjî, ew tu carî wiya nake. Ger paşê Chrome rakî, ew çavkanî dîsa tê girtin.
 
 Google Chrome niha were sazkirin?",,
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,Google Chrome tê sazkirin. Dibe çend deqîqe bigire — tu dikarî xebata xwe bidomînî.,,
@@ -809,23 +867,29 @@ ku,Kurdish Kurmanji (Kurmancî),LOW,NO,w.showatstart,Welcome app: the show-at-st
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,w.mute,Welcome app: mute button for the welcome music.,Mute,Bêdeng,,
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,w.unmute,Welcome app: unmute button.,Sound on,Bi deng,,
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,w.reopen,Welcome app: closing note on the last page.,You can open this guide again from the Bashan menu at any time.,Tu dikarî vê rêbernameyê her dem ji menuya Bashan ve vekî.,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,slide5.title,"Installer slideshow, slide 5 heading. Shown only to warn about disk encryption.",If you chose to encrypt this disk,Ger te hilbijart ku ev dîsk şîfre bikî,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,slide5.body,"Installer slideshow, slide 5 body. The plain-words warning that a lost encryption password means lost data. Must stay blunt in every language.","Write the password down now and keep it somewhere safe, away from this computer. There is no reset, no recovery and no back door. If you forget it, everything on this disk is gone for good — not even we can get it back.","Nuha şîfreyê binivîse û li cihekî ewle, dûrî vê komputerê, biparêze. Ne vegerandin heye, ne vejandin, ne derîyê paşî. Ger tu wê ji bîr bikî, her tiştê li ser vê dîskê her û her winda dibe — tewra em jî nikarin wê vegerînin.",,
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,ئەپی وێبی بەشان لە پەنجەرەی خۆیدا,,
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,هێشتا دانەمەزراوە — کلیک بکە بۆ دامەزراندنی Google Chrome,,
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,دامەزراندنی بەشان ئۆ ئێس,,
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,لەبەرگرتنەوەی بەشان ئۆ ئێس بۆ ئەم کۆمپیوتەرە,,
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,دامەزراندنی Google Chrome,,
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,‏Google Chrome پێشتر دامەزراوە.,,
-ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,chrome.ask,"The confirmation question. Plain words, states cost and password. Now also states that installing Chrome switches on Google's apt source and what that means.","Google Chrome is not installed yet.
 
 It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
 
 You will be asked for your password.
+
+Installing Chrome also switches on Google's software source, so that Chrome keeps receiving security updates. From then on this computer will contact Google regularly, even when you are not using Chrome. Until you say yes, it never does. If you remove Chrome later, the source is switched off again.
 
 Install Google Chrome now?","‏Google Chrome هێشتا دانەمەزراوە.
 
 لە Google داگیردەکرێت و لەم کۆمپیوتەرە دادەمەزرێت. نزیکەی ٤٠٠ مێگابایت شوێن و پەیوەندی ئینتەرنێتی پێویستە، و بە شێوەی ئاسایی چەند خولەکێک دەخایەنێت.
 
 داوای وشەی نهێنیت لێدەکرێت.
+
+دامەزراندنی کرۆم سەرچاوەی نەرمەکاڵای گووگڵیش دەکاتەوە، تاکو کرۆم نوێکاری ئاسایشی وەربگرێت. لەو کاتەوە ئەم کۆمپیوتەرە بە بەردەوامی پەیوەندی بە گووگڵەوە دەکات، تەنانەت کاتێک کرۆم بەکارناهێنیت. تاکو تۆ بەڵێ نەڵێیت، هەرگیز ئەوە ناکات. ئەگەر دواتر کرۆم لابەیت، سەرچاوەکە دیسان دەکوژێتەوە.
 
 ئێستا Google Chrome دابمەزرێت؟",,
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,‏Google Chrome دادەمەزرێت. لەوانەیە چەند خولەکێک بخایەنێت — دەتوانیت بەردەوام بیت لە کارەکەت.,,
@@ -890,23 +954,29 @@ ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,w.showatstart,Welcome ap
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,w.mute,Welcome app: mute button for the welcome music.,Mute,بێدەنگ,,
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,w.unmute,Welcome app: unmute button.,Sound on,بە دەنگ,,
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,w.reopen,Welcome app: closing note on the last page.,You can open this guide again from the Bashan menu at any time.,دەتوانیت هەر کاتێک ئەم ڕێنمایییە لە لیستی بەشانەوە بکەیتەوە.,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,slide5.title,"Installer slideshow, slide 5 heading. Shown only to warn about disk encryption.",If you chose to encrypt this disk,ئەگەر هەڵتبژاردووە ئەم دیسکە بشێوێنیت,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,slide5.body,"Installer slideshow, slide 5 body. The plain-words warning that a lost encryption password means lost data. Must stay blunt in every language.","Write the password down now and keep it somewhere safe, away from this computer. There is no reset, no recovery and no back door. If you forget it, everything on this disk is gone for good — not even we can get it back.",ئێستا وشەی نهێنی بنووسە و لە شوێنێکی پارێزراو، دوور لەم کۆمپیوتەرە، هەڵیبگرە. نە ڕێکخستنەوە هەیە، نە گەڕاندنەوە، نە دەرگای پشتەوە. ئەگەر لەبیرت بچێت، هەرچی لەم دیسکەدایە بۆ هەمیشە لەدەست دەچێت — تەنانەت ئێمەش ناتوانین بیگەڕێنینەوە.,,
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,ܦܪܘܓܪܡܐ ܕܒܫܢ ܒܟܘܬܐ ܕܝܠܢܝܬܐ,,
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,ܠܐ ܐܬܬܣܝܡ ܥܕܟܝܠ — ܢܩܘܫ ܠܡܣܡ Google Chrome,,
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,ܣܝܡ ܒܫܢ ܐܘ ܐܣ,,
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,app.installer.comment,Tooltip under the installer icon.,Copy Bashan OS onto this computer,ܟܬܘܒ ܒܫܢ ܐܘ ܐܣ ܥܠ ܗܢܐ ܚܫܘܒܐ,,
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,chrome.title,Title bar of every Chrome-installer dialog.,Install Google Chrome,ܣܝܡ Google Chrome,,
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,chrome.already,Shown if Chrome turns out to be installed already.,Google Chrome is already installed.,Google Chrome ܐܝܬܘܗܝ ܣܝܡܐ ܡܢ ܟܕܘ.,,
-syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,chrome.ask,"The confirmation question. Plain words, states cost and password.","Google Chrome is not installed yet.
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,chrome.ask,"The confirmation question. Plain words, states cost and password. Now also states that installing Chrome switches on Google's apt source and what that means.","Google Chrome is not installed yet.
 
 It will be downloaded from Google and installed on this computer. This needs about 400 MB of space and an internet connection, and usually takes a few minutes.
 
 You will be asked for your password.
+
+Installing Chrome also switches on Google's software source, so that Chrome keeps receiving security updates. From then on this computer will contact Google regularly, even when you are not using Chrome. Until you say yes, it never does. If you remove Chrome later, the source is switched off again.
 
 Install Google Chrome now?","Google Chrome ܠܐ ܐܬܬܣܝܡ ܥܕܟܝܠ.
 
 ܢܬܢܚܬ ܡܢ Google ܘܢܬܬܣܝܡ ܥܠ ܗܢܐ ܚܫܘܒܐ. ܣܢܝܩ ܥܠ ܐܝܟ 400 MB ܕܐܬܪܐ ܘܥܠ ܩܘܛܪܐ ܕܐܢܛܪܢܛ.
 
 ܢܬܒܥܐ ܡܢܟ ܡܠܬܐ ܕܥܠܠܐ.
+
+ܣܝܡܬܐ ܕܟܪܘܡ ܦܬܚܐ ܐܦ ܡܒܘܥܐ ܕܪܟܝܟܐ ܕܓܘܓܠ, ܕܢܣܒ ܟܪܘܡ ܚܘܕܬܐ ܕܙܗܝܪܘܬܐ. ܡܢ ܗܝ ܫܥܬܐ ܗܢܐ ܡܚܫܒܬܐ ܢܩܦ ܠܓܘܓܠ ܐܡܝܢܐܝܬ, ܐܦ ܟܕ ܠܐ ܡܬܚܫܚ ܐܢܬ ܒܟܪܘܡ. ܥܕܡܐ ܕܐܡܪ ܐܢܬ ܐܝܢ, ܠܐ ܥܒܕ ܗܕܐ ܡܡܬܘܡ. ܐܢ ܒܬܪܟܢ ܬܥܒܪ ܟܪܘܡ, ܡܒܘܥܐ ܬܘܒ ܡܬܛܦܐ.
 
 ܬܣܝܡ Google Chrome ܗܫܐ؟",,
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,chrome.busy,Passive popup while the install runs.,Installing Google Chrome. This can take a few minutes — you can keep working.,Google Chrome ܡܬܬܣܝܡ ܗܫܐ. ܡܨܐ ܕܢܐܚܘܕ ܩܠܝܠ ܩܛܝܢܐ.,,
@@ -971,3 +1041,5 @@ syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,w.showatstart,Welcome app: the show-at-sta
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,w.mute,Welcome app: mute button for the welcome music.,Mute,ܫܠܝ ܩܠܐ,,
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,w.unmute,Welcome app: unmute button.,Sound on,ܦܬܚ ܩܠܐ,,
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,w.reopen,Welcome app: closing note on the last page.,You can open this guide again from the Bashan menu at any time.,ܡܨܐ ܐܢܬ ܠܡܦܬܚ ܗܢܐ ܡܕܒܪܢܐ ܬܘܒ ܡܢ ܣܕܪܐ ܕܒܫܢ ܒܟܠ ܥܕܢ.,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,slide5.title,"Installer slideshow, slide 5 heading. Shown only to warn about disk encryption.",If you chose to encrypt this disk,ܐܢ ܓܒܝܬ ܕܬܛܫܐ ܗܢܐ ܦܠܚܐ,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,slide5.body,"Installer slideshow, slide 5 body. The plain-words warning that a lost encryption password means lost data. Must stay blunt in every language.","Write the password down now and keep it somewhere safe, away from this computer. There is no reset, no recovery and no back door. If you forget it, everything on this disk is gone for good — not even we can get it back.","ܟܬܘܒ ܡܠܬܐ ܕܥܠܠܬܐ ܗܫܐ ܘܢܛܪܝܗ ܒܐܬܪܐ ܫܪܝܪܐ, ܪܚܝܩܐ ܡܢ ܗܢܐ ܡܚܫܒܬܐ. ܠܝܬ ܬܘܪܨܐ, ܠܝܬ ܦܘܪܩܢܐ, ܠܝܬ ܬܪܥܐ ܟܣܝܐ. ܐܢ ܛܥܝܬ ܠܗ, ܟܠ ܡܐ ܕܐܝܬ ܥܠ ܗܢܐ ܦܠܚܐ ܐܒܝܕ ܠܥܠܡ — ܐܦܠܐ ܚܢܢ ܡܨܝܢܢ ܠܡܗܦܟܘܬܗ.",,

@@ -1,0 +1,31 @@
+// Bashan OS — automatic SECURITY updates only.
+//
+// Security fixes install themselves, because a machine that waits for a
+// non-technical user to notice an update is a machine that stays
+// vulnerable. Everything else waits for the user, so the system does not
+// change under them.
+//
+// Nothing here can reboot the machine. Ever.
+
+Unattended-Upgrade::Origins-Pattern {
+        // The Debian security archive, and nothing else.
+        "origin=Debian,codename=${distro_codename}-security,label=Debian-Security";
+};
+
+// Never reboot by itself. If a reboot is needed, the user is told and
+// decides when - losing unsaved work to an automatic restart is worse than
+// waiting a few hours for a kernel fix.
+Unattended-Upgrade::Automatic-Reboot "false";
+Unattended-Upgrade::Automatic-Reboot-WithUsers "false";
+
+// Do not email anyone; there is no mail server and no address.
+Unattended-Upgrade::Mail "";
+
+// Clean up after itself so /var does not grow without bound.
+Unattended-Upgrade::Remove-Unused-Kernel-Packages "true";
+Unattended-Upgrade::Remove-Unused-Dependencies "false";
+Unattended-Upgrade::AutoFixInterruptedDpkg "true";
+Unattended-Upgrade::MinimalSteps "true";
+
+// Leave a record the notifier can read.
+Unattended-Upgrade::SyslogEnable "true";

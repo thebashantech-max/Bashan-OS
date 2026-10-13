@@ -32,24 +32,28 @@ are pinned to level 0 — send nothing — system-wide.
 |---|---|---|---|
 | **System updates** (`apt`) | `deb.debian.org`, `security.debian.org` | fetch security fixes | Yes, but you should not. Your IP address is visible to the mirror, as with any download. |
 | **Brave's update channel** | `brave-browser-apt-release.s3.brave.com` | keeps the browser patched | Yes, by removing the repository — not recommended. |
-| **Google's repository** | `dl.google.com` | **see the warning below** | Yes, by deleting one file. |
+| ~~Google's repository~~ | — | **Nothing. Shipped disabled.** See below. | n/a |
 | **Clock** | `*.debian.pool.ntp.org` | sets the time | Yes, in System Settings. |
 
-> ### ⚠ About `dl.google.com`
+> ### About `dl.google.com` — nothing, unless you ask
 >
-> Google Chrome is **not** installed, but Google's software repository **is
-> preconfigured** so that installing Chrome is one click. The side effect is
-> that **every time the system checks for updates, it contacts
-> `dl.google.com` — even if you never install Chrome and never want it.**
-> Google therefore sees your computer's IP address on a regular schedule.
+> Google Chrome is not installed, and **Google's software repository is
+> shipped switched off**. The file is there, named
+> `google-chrome.list.disabled`, and apt only reads files ending in `.list`.
+> **So a machine that never installs Chrome never contacts Google at all.**
 >
-> This is an honest trade and you should know about it. Deleting
-> `/etc/apt/sources.list.d/google-chrome.list` stops it completely; Chrome
-> can still be installed later by hand.
+> This changed in Part E. Earlier builds preconfigured the repository
+> enabled, which meant every update check contacted `dl.google.com` even for
+> users who never wanted Chrome.
 >
-> *A lawyer should decide whether preconfiguring this repository is
-> acceptable at all, given that it causes contact with a third party without
-> the user having asked for that third party's software.*
+> If you choose to install Chrome, the installer first shows you a dialog
+> that says, in your own language, that doing so switches on Google's
+> software source, that your computer will then contact Google regularly
+> even when you are not using Chrome, and that removing Chrome switches it
+> off again. **Only after you agree does anything change.**
+>
+> If you later remove Chrome, the repository is switched off again
+> automatically and the one-click installer comes back.
 
 ### Only when you use the thing
 
