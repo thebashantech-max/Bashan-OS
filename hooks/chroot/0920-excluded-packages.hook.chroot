@@ -17,7 +17,8 @@ EXCLUDED="firmware-b43-installer firmware-b43legacy-installer b43-fwcutter
           firmware-marvell-prestera firmware-cavium firmware-qlogic
           firmware-myricom firmware-bnx2x firmware-netxen firmware-bnx2
           dahdi-firmware-nonfree firmware-siano firmware-ivtv
-          atmel-firmware"
+          atmel-firmware
+          fonts-noto-cjk-extra cups-browsed"
 
 for pkg in $EXCLUDED; do
     if dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "install ok installed"; then
@@ -51,7 +52,8 @@ fi
 # Trimming firmware is the change most likely to break a real laptop, so
 # prove the ones that matter survived rather than assuming the pins were
 # precise enough.
-NEEDED="firmware-iwlwifi firmware-atheros firmware-realtek firmware-mediatek
+NEEDED="fonts-noto-cjk smartmontools avahi-daemon
+        firmware-iwlwifi firmware-atheros firmware-realtek firmware-mediatek
         firmware-brcm80211 firmware-intel-misc firmware-misc-nonfree
         firmware-amd-graphics firmware-intel-graphics firmware-nvidia-graphics
         firmware-sof-signed firmware-cirrus firmware-intel-sound

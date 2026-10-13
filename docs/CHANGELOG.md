@@ -4,6 +4,20 @@ All notable changes to the build pipeline. Newest first.
 
 ## [Unreleased]
 
+### Approved trims applied — 2026-10-13
+- `fonts-noto-cjk-extra` pinned out: **209.8 MB**, the extra CJK weights.
+  `fonts-noto-cjk` (89.1 MB) is **kept** so CJK text on a web page still
+  renders as characters rather than empty boxes.
+- `cups-browsed` pinned out: 0.4 MB, but it is a **listening daemon** for
+  discovering remote CUPS print servers and the component behind the 2024
+  remote-code-execution family. Driverless IPP through avahi still finds
+  modern printers. The saving is attack surface, not disk.
+- Both verified a Recommends, not a Depends: `apt-get remove -s` reported
+  exactly one package each.
+- `fonts-noto-cjk`, `smartmontools` and `avahi-daemon` added to the hook's
+  KEEP assertions, so a future over-eager trim fails the build instead of
+  silently removing them.
+
 ### Hardware record for Dad's laptop — 2026-10-13
 - Added `docs/HARDWARE-TEST-DAD-LAPTOP.md`, with every field marked TO FILL
   and a standing warning that the results come from the OLD Zorin-based

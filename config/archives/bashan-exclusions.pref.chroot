@@ -42,3 +42,22 @@ Pin-Priority: -1
 Package: fonts-xfree86-nonfree-syriac
 Pin: release *
 Pin-Priority: -1
+
+# --- approved trims, 2026-10-13 -----------------------------------------
+
+# 209.8 MB. The extra CJK weights. None of the 13 shipped languages is
+# Chinese, Japanese or Korean. fonts-noto-cjk (89.1 MB) is KEPT so that CJK
+# text on a web page still renders as characters rather than empty boxes.
+# Verified a Recommends of fonts-noto / fonts-noto-cjk, not a Depends:
+# `apt-get remove -s` reported exactly one package removed.
+Package: fonts-noto-cjk-extra
+Pin: release *
+Pin-Priority: -1
+
+# 0.4 MB, but it is a LISTENING DAEMON for discovering remote CUPS print
+# servers, and the component behind the 2024 remote-code-execution family.
+# Modern printers are found by driverless IPP through avahi, which stays.
+# The saving is attack surface, not disk. A Recommends of cups-daemon.
+Package: cups-browsed
+Pin: release *
+Pin-Priority: -1
