@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Get to Know Bashan OS
+Comment=Shown once, on the first login
+Exec=bashan-welcome --autostart
+Icon=bashan-launcher
+Terminal=false
+NoDisplay=true
+X-KDE-autostart-after=panel
+X-GNOME-Autostart-enabled=true

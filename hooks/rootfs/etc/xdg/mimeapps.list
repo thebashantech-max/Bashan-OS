@@ -17,6 +17,11 @@
 # launcher entry — so using it here would do nothing.
 
 [Default Applications]
+# -- the welcome app's action handler ----------------------------------
+# QML cannot start a process, so the welcome app opens a bashan-action:
+# URL and /usr/bin/bashan-action carries it out.
+x-scheme-handler/bashan-action=bashan-action.desktop
+
 # -- photos: Gwenview ---------------------------------------------------
 image/jpeg=org.kde.gwenview.desktop
 image/png=org.kde.gwenview.desktop

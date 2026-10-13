@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Bashan OS action handler
+Comment=Carries out actions requested by the Bashan OS welcome app
+Exec=bashan-action %u
+Icon=bashan-launcher
+Terminal=false
+NoDisplay=true
+MimeType=x-scheme-handler/bashan-action;

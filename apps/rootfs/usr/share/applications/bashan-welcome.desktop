@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Get to Know Bashan OS
+GenericName=Welcome
+Comment=A short tour of your new system
+Exec=bashan-welcome
+Icon=bashan-launcher
+Terminal=false
+Categories=System;Documentation;Qt;KDE;
+Keywords=welcome;help;guide;tour;start;
+StartupNotify=true

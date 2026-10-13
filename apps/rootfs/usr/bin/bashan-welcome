@@ -1,0 +1,38 @@
+#!/bin/sh
+# Bashan OS — launch "Get to Know Bashan OS".
+#
+#   bashan-welcome              open it now (launcher / menu)
+#   bashan-welcome --autostart  open it only if it is due at login
+#
+# The --autostart path must never hold up a login. It does no work beyond
+# reading two small files and exits in milliseconds when there is nothing to
+# do; when there is, it starts the app and returns immediately. Plasma does
+# not wait for autostart entries, and nothing here blocks even if it did.
+set -eu
+
+QML=/usr/lib/qt6/bin/qml
+APP=/usr/share/bashan/welcome/main.qml
+CONF="${XDG_CONFIG_HOME:-$HOME/.config}/bashan-welcome.conf"
+SEEN="${XDG_CONFIG_HOME:-$HOME/.config}/bashan-welcome.seen"
+
+if [ "${1:-}" = "--autostart" ]; then
+    if [ -e "$SEEN" ]; then
+        # Not the first login. Only continue if the user ticked the box.
+        grep -qi '^showAtStartup=true' "$CONF" 2>/dev/null || exit 0
+    else
+        mkdir -p "$(dirname "$SEEN")"
+        : > "$SEEN"
+    fi
+    # Let the desktop finish drawing before a window appears over it.
+    sleep 4
+fi
+
+# Qt 6 blocks XMLHttpRequest on file:// URLs unless this is set, which is
+# how the app loads its own translation catalogue and palette. Without it
+# every string renders as its key - found by screenshotting the real app,
+# not by reading the code.
+export QML_XHR_ALLOW_FILE_READ=1
+
+[ -x "$QML" ] || { echo "E: $QML missing (package qml-qt6)" >&2; exit 1; }
+[ -r "$APP" ] || { echo "E: $APP missing" >&2; exit 1; }
+exec "$QML" "$APP"

@@ -49,3 +49,12 @@ handbrake
 # NOTE on codecs: gstreamer good/bad/ugly/libav are already installed and
 # vlc brings vlc-plugin-base, so H.264/H.265/VP9/AV1/AAC/MP3/FLAC all play
 # without libavcodec-extra. Patent questions are logged in docs/legal/.
+
+# --- the welcome app ---------------------------------------------------
+# "Get to Know Bashan OS" is plain QML run by the `qml` runner, which lives
+# in qml-qt6 and NOT in qt6-declarative-dev-tools (that ships qmllint,
+# qmlformat and friends, but no runtime). Everything else the app imports -
+# QtQuick, Controls, Layouts, QtCore, QtMultimedia - was already in the
+# image for Calamares and Plasma, so the entire application costs 0.1 MB.
+# PySide6 would have cost 86.4 MB and PyQt6 17.9 MB for the same thing.
+qml-qt6

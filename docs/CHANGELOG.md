@@ -4,6 +4,36 @@ All notable changes to the build pipeline. Newest first.
 
 ## [Unreleased]
 
+### Part C — the welcome app — 2026-10-12
+- Added "Get to Know Bashan OS": plain QML, six pages, run by the `qml`
+  runner from `qml-qt6`. **Total cost 0.1 MB**, because QtQuick, Controls,
+  Layouts, QtCore and QtMultimedia were already in the image. PyQt6 would
+  have cost 17.9 MB and PySide6 86.4 MB.
+- Recorded a trap: the `qml` runner is **not** in
+  `qt6-declarative-dev-tools` (that has qmllint/qmlformat and no runtime).
+  It is in `qml-qt6`, found via Debian's Contents index.
+- Opens on **first login only** by default; the "Show this when I start the
+  computer" box is an opt-in and starts unticked. Reopenable from the
+  launcher. The autostart path cannot hold up a login.
+- **Purges `plasma-welcome`** (Stage 9 defect 5) rather than guessing at its
+  autostart trigger. Verified a Recommends, not a Depends: exactly one
+  package removed. The hook fails the build if it survives.
+- 41 new strings x 13 languages = 533 translations. `i18n/REVIEW.csv` is now
+  732 rows. The app **displays the current language's confidence on screen**
+  when it has not been reviewed by a native speaker.
+- QML cannot start a process, so three buttons open a `bashan-action:` URL
+  handled by `/usr/bin/bashan-action`. The startup-sound switch goes through
+  `pkexec` because `/etc/bashan/boot-sound.conf` is root-owned.
+- Welcome music plays once on page 1, never loops, visible mute button,
+  under the same rights guard as the boot song. Swappable at
+  `/etc/bashan/welcome-song.wav`, which survives updates.
+- **Screenshotted for real under Xvfb**, every page, English and Arabic,
+  dark and light. That found three defects reading the code would not have:
+  Qt 6 blocks `file://` XHR so every string rendered as its key; the Basic
+  style's checkbox indicators were invisible on dark; and all controls used
+  the stock palette. All three fixed. `qmllint`: 0 errors.
+- Arabic RTL mirroring verified by screenshot, not assumed.
+
 ### Part B — dark and light — 2026-10-12
 - Added `theme/palette-light.json`, the same 37 token names as the dark
   palette so every generator reads either file with no special case.

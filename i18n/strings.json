@@ -465,6 +465,744 @@
         "ckb": "خودی بەرنامەی دامەزراندن بە کورمانجی، سۆرانی یان سریانی بەردەست نییە. بۆ دامەزراندن ئینگلیزی یان عەرەبی هەڵبژێرە — دواتر هێشتا دەتوانیت کۆمپیوتەرەکە بە زمانی خۆت ڕێک بخەیت.",
         "syr": "ܦܪܘܓܪܡܐ ܕܣܝܡܐ ܠܐ ܐܝܬܘܗܝ ܒܠܫܢܐ ܣܘܪܝܝܐ. ܓܒܝ ܐܢܓܠܝܐ ܐܘ ܥܪܒܝܐ ܠܡܣܡ."
       }
+    },
+    "w.p1.title": {
+      "note": "Welcome app, page 1 heading.",
+      "t": {
+        "en": "Welcome to Bashan OS",
+        "es": "Bienvenido a Bashan OS",
+        "de": "Willkommen bei Bashan OS",
+        "fr": "Bienvenue dans Bashan OS",
+        "pt": "Bem-vindo ao Bashan OS",
+        "ru": "Добро пожаловать в Bashan OS",
+        "el": "Καλώς ορίσατε στο Bashan OS",
+        "ar": "مرحبًا بك في نظام بشان",
+        "he": "ברוכים הבאים ל-Bashan OS",
+        "fa": "به سیستم‌عامل بشان خوش آمدید",
+        "ku": "Bi xêr hatî bo Bashan OS",
+        "ckb": "بەخێربێیت بۆ سیستەمی بەشان",
+        "syr": "ܒܪܝܟ ܐܬܝܬ ܠܒܫܢ"
+      }
+    },
+    "w.p1.sub": {
+      "note": "Welcome app, page 1 subtitle: the publisher.",
+      "t": {
+        "en": "Made by Bashan Tech LLC",
+        "es": "Creado por Bashan Tech LLC",
+        "de": "Von Bashan Tech LLC",
+        "fr": "Créé par Bashan Tech LLC",
+        "pt": "Criado por Bashan Tech LLC",
+        "ru": "Создано Bashan Tech LLC",
+        "el": "Από την Bashan Tech LLC",
+        "ar": "من إنتاج شركة بشان تِك",
+        "he": "נוצר על ידי Bashan Tech LLC",
+        "fa": "ساختهٔ شرکت بشان تک",
+        "ku": "Ji aliyê Bashan Tech LLC ve",
+        "ckb": "دروستکراوی کۆمپانیای بەشان تێک",
+        "syr": "ܥܒܝܕܐ ܡܢ ܒܫܢ ܬܟ"
+      }
+    },
+    "w.p1.greeting": {
+      "note": "Welcome app, page 1 body. Friendly, short.",
+      "t": {
+        "en": "Let us take two minutes to show you around.",
+        "es": "Vamos a dedicar dos minutos a enseñarte lo básico.",
+        "de": "Nehmen wir uns zwei Minuten für einen kurzen Rundgang.",
+        "fr": "Prenons deux minutes pour vous faire visiter.",
+        "pt": "Vamos levar dois minutos para lhe mostrar o essencial.",
+        "ru": "Давайте за две минуты покажем вам основное.",
+        "el": "Ας αφιερώσουμε δύο λεπτά για μια σύντομη ξενάγηση.",
+        "ar": "لنأخذ دقيقتين لنريك الأساسيات.",
+        "he": "ניקח שתי דקות כדי להראות לך את הבסיס.",
+        "fa": "دو دقیقه وقت بگذاریم تا شما را راهنمایی کنیم.",
+        "ku": "Em du deqeyan bigirin da ku cihê te nîşanî te bidin.",
+        "ckb": "با دوو خولەک کات تەرخان بکەین بۆ ئەوەی ڕێنماییت بکەین.",
+        "syr": "ܢܣܒ ܬܪܝܢ ܩܛܝܢܐ ܕܢܚܘܝܟ."
+      }
+    },
+    "w.p2.title": {
+      "note": "Welcome app, page 2 heading.",
+      "t": {
+        "en": "What Bashan OS is",
+        "es": "Qué es Bashan OS",
+        "de": "Was Bashan OS ist",
+        "fr": "Qu'est-ce que Bashan OS",
+        "pt": "O que é o Bashan OS",
+        "ru": "Что такое Bashan OS",
+        "el": "Τι είναι το Bashan OS",
+        "ar": "ما هو نظام بشان",
+        "he": "מהו Bashan OS",
+        "fa": "سیستم‌عامل بشان چیست",
+        "ku": "Bashan OS çi ye",
+        "ckb": "سیستەمی بەشان چییە",
+        "syr": "ܡܢܘ ܒܫܢ"
+      }
+    },
+    "w.p2.body": {
+      "note": "Welcome app, page 2 body. Plain words, no jargon.",
+      "t": {
+        "en": "Bashan OS is a complete desktop system. It is yours: there are no accounts to create, no advertising, and nothing is sent anywhere about what you do. It arrives ready for everyday work — writing, email, photographs, video and the web.",
+        "es": "Bashan OS es un sistema de escritorio completo. Es tuyo: no hay cuentas que crear, no hay publicidad y no se envía a ningún sitio información sobre lo que haces. Viene listo para el trabajo diario: escribir, correo, fotografías, vídeo y la web.",
+        "de": "Bashan OS ist ein vollständiges Desktop-System. Es gehört Ihnen: Es gibt keine Konten anzulegen, keine Werbung, und es wird nichts darüber verschickt, was Sie tun. Es kommt fertig für die tägliche Arbeit — Schreiben, E-Mail, Fotos, Video und das Internet.",
+        "fr": "Bashan OS est un système de bureau complet. Il est à vous : aucun compte à créer, aucune publicité, et rien n'est envoyé nulle part sur ce que vous faites. Il arrive prêt pour le travail quotidien : écriture, courrier, photographies, vidéo et le web.",
+        "pt": "O Bashan OS é um sistema de ambiente de trabalho completo. É seu: não há contas para criar, não há publicidade e nada é enviado para lado nenhum sobre o que faz. Chega pronto para o trabalho do dia a dia — escrever, correio, fotografias, vídeo e a web.",
+        "ru": "Bashan OS — это полноценная настольная система. Она ваша: не нужно создавать учётные записи, нет рекламы, и никуда не отправляется информация о том, что вы делаете. Она готова к повседневной работе: тексты, почта, фотографии, видео и интернет.",
+        "el": "Το Bashan OS είναι ένα πλήρες σύστημα επιφάνειας εργασίας. Είναι δικό σας: δεν υπάρχουν λογαριασμοί να δημιουργήσετε, δεν υπάρχουν διαφημίσεις και δεν στέλνεται πουθενά τίποτα για το τι κάνετε. Έρχεται έτοιμο για την καθημερινή εργασία: γραφή, αλληλογραφία, φωτογραφίες, βίντεο και το διαδίκτυο.",
+        "ar": "نظام بشان هو نظام مكتبي متكامل. إنه ملكك: لا حسابات تُنشأ، ولا إعلانات، ولا يُرسل أي شيء عما تفعله إلى أي جهة. يصلك جاهزًا للعمل اليومي: الكتابة والبريد والصور والفيديو والويب.",
+        "he": "Bashan OS היא מערכת שולחן עבודה שלמה. היא שלך: אין חשבונות ליצור, אין פרסומות, ולא נשלח לשום מקום דבר על מה שאתה עושה. היא מגיעה מוכנה לעבודה היומיומית: כתיבה, דואר, תמונות, וידאו והאינטרנט.",
+        "fa": "سیستم‌عامل بشان یک سیستم رومیزی کامل است. مال شماست: نیازی به ساختن حساب کاربری نیست، تبلیغاتی وجود ندارد و هیچ چیزی دربارهٔ کارهای شما به جایی فرستاده نمی‌شود. آماده برای کار روزمره می‌رسد: نوشتن، ایمیل، عکس، ویدئو و وب.",
+        "ku": "Bashan OS pergalek sermaseyê ya temam e. Ya te ye: tu hesab nayê çêkirin, reklam tune ye, û tiştek derbarê tiştên ku tu dikî de li tu derê nayê şandin. Ji bo karê rojane amade tê: nivîsandin, e-peyam, wêne, vîdyo û web.",
+        "ckb": "سیستەمی بەشان سیستەمێکی تەواوی ڕوومێزە. هی تۆیە: هیچ هەژمارێک دروست ناکرێت، هیچ ڕیکلامێک نییە، و هیچ شتێک دەربارەی ئەوەی تۆ دەیکەیت بۆ هیچ شوێنێک نانێردرێت. ئامادە دێت بۆ کاری ڕۆژانە: نووسین، ئیمەیڵ، وێنە، ڤیدیۆ و وێب.",
+        "syr": "ܒܫܢ ܐܝܬܘܗܝ ܣܕܪܐ ܫܠܡܐ ܕܦܬܘܪܐ. ܕܝܠܟ ܗܘ: ܠܝܬ ܚܘܫܒܢܐ ܠܡܥܒܕ, ܠܝܬ ܡܘܕܥܢܘܬܐ, ܘܠܐ ܡܫܬܕܪ ܡܕܡ ܥܠ ܡܐ ܕܥܒܕ ܐܢܬ. ܐܬܐ ܡܛܝܒܐ ܠܥܒܕܐ ܕܟܠܝܘܡ: ܟܬܒܬܐ, ܐܓܪܬܐ, ܨܘܪܬܐ, ܚܙܘܢܐ ܘܐܝܢܬܪܢܬ."
+      }
+    },
+    "w.p3.title": {
+      "note": "Welcome app, page 3 heading: the tour.",
+      "t": {
+        "en": "Finding your way around",
+        "es": "Cómo moverte por el sistema",
+        "de": "Sich zurechtfinden",
+        "fr": "Se repérer",
+        "pt": "Como se orientar",
+        "ru": "Как здесь всё устроено",
+        "el": "Πώς να βρίσκετε τον δρόμο σας",
+        "ar": "كيف تتنقل في النظام",
+        "he": "איך מתמצאים",
+        "fa": "راه‌یابی در سیستم",
+        "ku": "Rêya xwe dîtin",
+        "ckb": "ڕێگەی خۆت بدۆزەرەوە",
+        "syr": "ܐܝܟܢ ܡܫܟܚ ܐܢܬ ܐܘܪܚܟ"
+      }
+    },
+    "w.p3.dock.h": {
+      "note": "Welcome app, page 3: the dock, heading then body. Heading.",
+      "t": {
+        "en": "The dock",
+        "es": "La barra inferior",
+        "de": "Die Leiste unten",
+        "fr": "La barre du bas",
+        "pt": "A barra inferior",
+        "ru": "Панель снизу",
+        "el": "Η μπάρα κάτω",
+        "ar": "الشريط السفلي",
+        "he": "הסרגל התחתון",
+        "fa": "نوار پایین",
+        "ku": "Darika jêrîn",
+        "ckb": "شریتی خوارەوە",
+        "syr": "ܫܪܝܛܐ ܬܚܬܝܐ"
+      }
+    },
+    "w.p3.dock.b": {
+      "note": "Welcome app, page 3: the dock, heading then body. Body.",
+      "t": {
+        "en": "The bar along the bottom holds the programs you use most. Click an icon once to open it. A small glowing line appears underneath a program that is running.",
+        "es": "La barra de abajo contiene los programas que más usas. Haz clic una vez en un icono para abrirlo. Aparece una pequeña línea brillante debajo de un programa que está abierto.",
+        "de": "Die Leiste am unteren Rand enthält die Programme, die Sie am häufigsten benutzen. Ein Klick auf ein Symbol öffnet es. Unter einem laufenden Programm erscheint ein kleiner leuchtender Strich.",
+        "fr": "La barre en bas contient les programmes que vous utilisez le plus. Cliquez une fois sur une icône pour l'ouvrir. Un petit trait lumineux apparaît sous un programme en cours.",
+        "pt": "A barra em baixo tem os programas que usa mais. Clique uma vez num ícone para o abrir. Aparece uma pequena linha luminosa por baixo de um programa que está aberto.",
+        "ru": "На панели внизу находятся программы, которыми вы пользуетесь чаще всего. Нажмите на значок один раз, чтобы открыть. Под работающей программой появляется небольшая светящаяся черта.",
+        "el": "Η μπάρα στο κάτω μέρος έχει τα προγράμματα που χρησιμοποιείτε περισσότερο. Κάντε ένα κλικ σε ένα εικονίδιο για να το ανοίξετε. Μια μικρή φωτεινή γραμμή εμφανίζεται κάτω από ένα πρόγραμμα που εκτελείται.",
+        "ar": "الشريط في الأسفل يحتوي على البرامج التي تستخدمها أكثر. انقر على الأيقونة مرة واحدة لفتحها. يظهر خط صغير مضيء تحت البرنامج المفتوح.",
+        "he": "הסרגל בתחתית מכיל את התוכניות שאתה משתמש בהן הכי הרבה. לחץ פעם אחת על סמל כדי לפתוח אותו. קו זוהר קטן מופיע מתחת לתוכנית שפועלת.",
+        "fa": "نوار پایین صفحه برنامه‌هایی را دارد که بیشتر استفاده می‌کنید. یک بار روی نماد کلیک کنید تا باز شود. خط کوچک درخشانی زیر برنامه‌ای که باز است دیده می‌شود.",
+        "ku": "Darika li jêr bernameyên ku tu herî zêde bikar tînî dihewîne. Carekê li îkonekê bitikîne da ku vebe. Xêzeke biçûk a biriqok li bin bernameya ku dixebite xuya dibe.",
+        "ckb": "شریتی خوارەوە ئەو بەرنامانەی تێدایە کە زۆرترین جار بەکاریان دەهێنیت. جارێک کلیک لە وێنۆچکەیەک بکە بۆ کردنەوەی. هێڵێکی بچووکی درەوشاوە لە ژێر ئەو بەرنامەیەی کە کاردەکات دەردەکەوێت.",
+        "syr": "ܫܪܝܛܐ ܕܠܬܚܬ ܐܝܬ ܒܗ ܒܪܢܡܐ ܕܣܓܝ ܡܬܚܫܚ ܐܢܬ ܒܗܘܢ. ܢܩܘܫ ܚܕܐ ܙܒܢܬܐ ܥܠ ܨܘܪܬܐ ܕܢܬܦܬܚ. ܣܪܛܐ ܙܥܘܪܐ ܢܗܝܪܐ ܡܬܚܙܐ ܬܚܘܬ ܒܪܢܡܐ ܕܦܠܚ."
+      }
+    },
+    "w.p3.launcher.h": {
+      "note": "Welcome app, page 3: the Bashan launcher button. Heading.",
+      "t": {
+        "en": "The Bashan button",
+        "es": "El botón Bashan",
+        "de": "Die Bashan-Schaltfläche",
+        "fr": "Le bouton Bashan",
+        "pt": "O botão Bashan",
+        "ru": "Кнопка Bashan",
+        "el": "Το κουμπί Bashan",
+        "ar": "زر بشان",
+        "he": "כפתור Bashan",
+        "fa": "دکمهٔ بشان",
+        "ku": "Bişkoka Bashan",
+        "ckb": "دوگمەی بەشان",
+        "syr": "ܙܪܐ ܕܒܫܢ"
+      }
+    },
+    "w.p3.launcher.b": {
+      "note": "Welcome app, page 3: the Bashan launcher button. Body.",
+      "t": {
+        "en": "The hand logo at the end of the dock opens the menu. Everything installed on the computer is in there, along with the buttons to shut down or restart.",
+        "es": "El logotipo de la mano al final de la barra abre el menú. Allí está todo lo instalado en el ordenador, junto con los botones para apagar o reiniciar.",
+        "de": "Das Hand-Logo am Ende der Leiste öffnet das Menü. Dort finden Sie alles, was auf dem Rechner installiert ist, sowie die Schaltflächen zum Herunterfahren oder Neustarten.",
+        "fr": "Le logo en forme de main au bout de la barre ouvre le menu. Tout ce qui est installé sur l'ordinateur s'y trouve, ainsi que les boutons pour éteindre ou redémarrer.",
+        "pt": "O logótipo da mão no fim da barra abre o menu. Tudo o que está instalado no computador está lá, bem como os botões para desligar ou reiniciar.",
+        "ru": "Логотип с ладонью в конце панели открывает меню. Там находится всё, что установлено на компьютере, а также кнопки выключения и перезагрузки.",
+        "el": "Το λογότυπο με το χέρι στην άκρη της μπάρας ανοίγει το μενού. Εκεί βρίσκονται όλα όσα είναι εγκατεστημένα στον υπολογιστή, μαζί με τα κουμπιά για τερματισμό ή επανεκκίνηση.",
+        "ar": "شعار اليد في طرف الشريط يفتح القائمة. كل ما هو مثبت على الحاسوب موجود هناك، مع أزرار إيقاف التشغيل وإعادة التشغيل.",
+        "he": "סמל היד בקצה הסרגל פותח את התפריט. כל מה שמותקן במחשב נמצא שם, יחד עם הכפתורים לכיבוי או הפעלה מחדש.",
+        "fa": "نشان دست در انتهای نوار، منو را باز می‌کند. هر چه روی رایانه نصب شده آنجاست، همراه با دکمه‌های خاموش کردن یا راه‌اندازی دوباره.",
+        "ku": "Logoya destî ya li dawiya darikê menuyê vedike. Her tiştê ku li ser komputerê hatiye sazkirin li wir e, digel bişkokên girtin û ji nû ve destpêkirinê.",
+        "ckb": "لۆگۆی دەست لە کۆتایی شریتەکە لیستەکە دەکاتەوە. هەموو ئەوەی لەسەر کۆمپیوتەرەکە دامەزراوە لەوێیە، لەگەڵ دوگمەکانی کوژاندنەوە و دەستپێکردنەوە.",
+        "syr": "ܐܬܐ ܕܐܝܕܐ ܒܣܘܦ ܫܪܝܛܐ ܦܬܚ ܠܣܕܪܐ. ܟܠ ܡܕܡ ܕܐܝܬ ܥܠ ܡܚܫܒܬܐ ܬܡܢ ܗܘ, ܥܡ ܙܪܐ ܕܛܦܝܬܐ ܘܕܫܘܪܝܐ ܚܕܬܐ."
+      }
+    },
+    "w.p3.widgets.h": {
+      "note": "Welcome app, page 3: the desktop widgets. Heading.",
+      "t": {
+        "en": "The panels on the desktop",
+        "es": "Los paneles del escritorio",
+        "de": "Die Felder auf dem Schreibtisch",
+        "fr": "Les panneaux du bureau",
+        "pt": "Os painéis no ambiente de trabalho",
+        "ru": "Панельки на рабочем столе",
+        "el": "Τα πλαίσια στην επιφάνεια εργασίας",
+        "ar": "اللوحات على سطح المكتب",
+        "he": "הלוחות על שולחן העבודה",
+        "fa": "تابلوهای روی میز کار",
+        "ku": "Panelên li ser sermaseyê",
+        "ckb": "پانێلەکانی سەر ڕوومێز",
+        "syr": "ܠܘܚܐ ܕܥܠ ܦܬܘܪܐ"
+      }
+    },
+    "w.p3.widgets.b": {
+      "note": "Welcome app, page 3: the desktop widgets. Body.",
+      "t": {
+        "en": "They show how the computer is doing, the weather, and your notes. Drag any of them somewhere else, or remove the ones you do not want.",
+        "es": "Muestran cómo va el ordenador, el tiempo y tus notas. Arrastra cualquiera a otro sitio o quita los que no quieras.",
+        "de": "Sie zeigen den Zustand des Rechners, das Wetter und Ihre Notizen. Ziehen Sie sie an eine andere Stelle oder entfernen Sie die, die Sie nicht möchten.",
+        "fr": "Ils montrent l'état de l'ordinateur, la météo et vos notes. Faites-les glisser ailleurs, ou retirez ceux dont vous ne voulez pas.",
+        "pt": "Mostram como está o computador, o tempo e as suas notas. Arraste qualquer um para outro sítio, ou remova os que não quiser.",
+        "ru": "Они показывают состояние компьютера, погоду и ваши заметки. Перетащите любую в другое место или уберите ненужные.",
+        "el": "Δείχνουν πώς πάει ο υπολογιστής, τον καιρό και τις σημειώσεις σας. Σύρετε όποιο θέλετε αλλού, ή αφαιρέστε όσα δεν θέλετε.",
+        "ar": "تعرض حالة الحاسوب والطقس وملاحظاتك. اسحب أيًا منها إلى مكان آخر، أو أزل ما لا تريده.",
+        "he": "הם מראים את מצב המחשב, מזג האוויר והפתקים שלך. גרור כל אחד למקום אחר, או הסר את אלה שאינך רוצה.",
+        "fa": "وضعیت رایانه، آب‌وهوا و یادداشت‌های شما را نشان می‌دهند. هر کدام را به جای دیگری بکشید، یا آن‌هایی را که نمی‌خواهید بردارید.",
+        "ku": "Ew rewşa komputerê, hewayê û nîşeyên te nîşan didin. Her yekê bikişîne cihekî din, an jî yên ku naxwazî rake.",
+        "ckb": "دۆخی کۆمپیوتەر، کەشوهەوا و تێبینییەکانت پیشان دەدەن. هەر یەکێکیان بۆ شوێنێکی تر ڕابکێشە، یان ئەوانەی ناتەوێت لایانبە.",
+        "syr": "ܡܚܘܝܢ ܐܝܟܢܝܘܬܐ ܕܡܚܫܒܬܐ, ܐܐܪ ܘܪܫܡܬܟ. ܓܪܘܫ ܚܕ ܡܢܗܘܢ ܠܐܬܪܐ ܐܚܪܢܐ, ܐܘ ܐܥܒܪ ܐܝܠܝܢ ܕܠܐ ܨܒܐ ܐܢܬ."
+      }
+    },
+    "w.p3.trash.h": {
+      "note": "Welcome app, page 3: the Trash. Heading.",
+      "t": {
+        "en": "The Trash",
+        "es": "La Papelera",
+        "de": "Der Papierkorb",
+        "fr": "La Corbeille",
+        "pt": "O Lixo",
+        "ru": "Корзина",
+        "el": "Ο Κάδος",
+        "ar": "سلة المهملات",
+        "he": "האשפה",
+        "fa": "سطل زباله",
+        "ku": "Çop",
+        "ckb": "تەنەکەی خۆڵ",
+        "syr": "ܙܒܠܐ"
+      }
+    },
+    "w.p3.trash.b": {
+      "note": "Welcome app, page 3: the Trash. Body.",
+      "t": {
+        "en": "Files you delete wait in the Trash in the corner of the desktop. They are not really gone until you empty it, so a mistake can be undone.",
+        "es": "Los archivos que borras esperan en la Papelera, en la esquina del escritorio. No desaparecen de verdad hasta que la vacías, así que un error se puede deshacer.",
+        "de": "Gelöschte Dateien warten im Papierkorb in der Ecke des Schreibtisches. Sie sind erst wirklich weg, wenn Sie ihn leeren — ein Versehen lässt sich also rückgängig machen.",
+        "fr": "Les fichiers que vous supprimez attendent dans la Corbeille, dans le coin du bureau. Ils ne disparaissent vraiment qu'une fois la Corbeille vidée : une erreur peut donc être annulée.",
+        "pt": "Os ficheiros que apaga ficam à espera no Lixo, ao canto do ambiente de trabalho. Só desaparecem mesmo quando o esvaziar, por isso um engano pode ser desfeito.",
+        "ru": "Удалённые файлы ждут в Корзине в углу рабочего стола. По-настоящему они исчезают, только когда вы её очистите, так что ошибку можно исправить.",
+        "el": "Τα αρχεία που διαγράφετε περιμένουν στον Κάδο, στη γωνία της επιφάνειας εργασίας. Δεν χάνονται στ' αλήθεια μέχρι να τον αδειάσετε, οπότε ένα λάθος διορθώνεται.",
+        "ar": "الملفات التي تحذفها تنتظر في سلة المهملات في زاوية سطح المكتب. لا تختفي فعليًا حتى تفرغها، فيمكن التراجع عن الخطأ.",
+        "he": "קבצים שאתה מוחק ממתינים באשפה בפינת שולחן העבודה. הם לא נעלמים באמת עד שתרוקן אותה, כך שאפשר לתקן טעות.",
+        "fa": "پرونده‌هایی که پاک می‌کنید در سطل زباله گوشهٔ میز کار می‌مانند. تا وقتی آن را خالی نکنید واقعاً از بین نمی‌روند، پس اشتباه را می‌شود جبران کرد.",
+        "ku": "Pelên ku jê dibî di Çopê de li quncika sermaseyê dimînin. Ew bi rastî wenda nabin heta ku tu wê vala nekî, loma şaşiyek tê vegerandin.",
+        "ckb": "ئەو پەڕگانەی دەیانسڕیتەوە لە تەنەکەی خۆڵ لە گۆشەی ڕوومێزەکە چاوەڕێ دەکەن. بەڕاستی نافەوتێن تا بەتاڵی نەکەیتەوە، بۆیە هەڵەیەک دەکرێت بگەڕێنرێتەوە.",
+        "syr": "ܐܕܫܐ ܕܡܚܝܬ ܠܗܘܢ ܡܟܬܪܝܢ ܒܙܒܠܐ ܒܙܘܝܬܐ ܕܦܬܘܪܐ. ܠܐ ܐܙܠܝܢ ܫܪܝܪܐܝܬ ܥܕܡܐ ܕܡܣܪܩ ܐܢܬ ܠܗ, ܡܛܠ ܗܕܐ ܡܨܐ ܐܢܬ ܠܡܗܦܟܘ ܛܥܝܘܬܐ."
+      }
+    },
+    "w.p3.apps.h": {
+      "note": "Welcome app, page 3: the preinstalled apps. Heading.",
+      "t": {
+        "en": "Your programs",
+        "es": "Tus programas",
+        "de": "Ihre Programme",
+        "fr": "Vos programmes",
+        "pt": "Os seus programas",
+        "ru": "Ваши программы",
+        "el": "Τα προγράμματά σας",
+        "ar": "برامجك",
+        "he": "התוכניות שלך",
+        "fa": "برنامه‌های شما",
+        "ku": "Bernameyên te",
+        "ckb": "بەرنامەکانت",
+        "syr": "ܒܪܢܡܐ ܕܝܠܟ"
+      }
+    },
+    "w.p3.apps.b": {
+      "note": "Welcome app, page 3: the preinstalled apps. Body.",
+      "t": {
+        "en": "LibreOffice for documents and spreadsheets, Thunderbird for email, Gwenview for photographs, VLC for video and music, Brave for the web.",
+        "es": "LibreOffice para documentos y hojas de cálculo, Thunderbird para el correo, Gwenview para las fotos, VLC para vídeo y música, Brave para la web.",
+        "de": "LibreOffice für Dokumente und Tabellen, Thunderbird für E-Mail, Gwenview für Fotos, VLC für Video und Musik, Brave für das Internet.",
+        "fr": "LibreOffice pour les documents et les tableaux, Thunderbird pour le courrier, Gwenview pour les photos, VLC pour la vidéo et la musique, Brave pour le web.",
+        "pt": "LibreOffice para documentos e folhas de cálculo, Thunderbird para o correio, Gwenview para fotografias, VLC para vídeo e música, Brave para a web.",
+        "ru": "LibreOffice для документов и таблиц, Thunderbird для почты, Gwenview для фотографий, VLC для видео и музыки, Brave для интернета.",
+        "el": "LibreOffice για έγγραφα και λογιστικά φύλλα, Thunderbird για αλληλογραφία, Gwenview για φωτογραφίες, VLC για βίντεο και μουσική, Brave για το διαδίκτυο.",
+        "ar": "ليبر أوفيس للمستندات والجداول، وثندربيرد للبريد، وجوينفيو للصور، وVLC للفيديو والموسيقى، وبريف للويب.",
+        "he": "LibreOffice למסמכים וגיליונות, Thunderbird לדואר, Gwenview לתמונות, VLC לווידאו ומוזיקה, Brave לאינטרנט.",
+        "fa": "لیبره‌آفیس برای سندها و صفحه‌گسترده‌ها، تاندربرد برای ایمیل، گوئن‌ویو برای عکس، VLC برای ویدئو و موسیقی، بریو برای وب.",
+        "ku": "LibreOffice ji bo belge û tabloyan, Thunderbird ji bo e-peyaman, Gwenview ji bo wêneyan, VLC ji bo vîdyo û muzîkê, Brave ji bo webê.",
+        "ckb": "لیبرەئۆفیس بۆ بەڵگەنامە و خشتەکان، ساندەربێرد بۆ ئیمەیڵ، گوێنڤیو بۆ وێنەکان، VLC بۆ ڤیدیۆ و مۆسیقا، برەیڤ بۆ وێب.",
+        "syr": "LibreOffice ܠܟܬܒܐ ܘܠܘܚܐ, Thunderbird ܠܐܓܪܬܐ, Gwenview ܠܨܘܪܬܐ, VLC ܠܚܙܘܢܐ ܘܙܡܪܐ, Brave ܠܐܝܢܬܪܢܬ."
+      }
+    },
+    "w.p4.title": {
+      "note": "Welcome app, page 4 heading: settings.",
+      "t": {
+        "en": "Make it yours",
+        "es": "Hazlo tuyo",
+        "de": "Machen Sie es zu Ihrem",
+        "fr": "Personnalisez-le",
+        "pt": "Torne-o seu",
+        "ru": "Настройте под себя",
+        "el": "Κάντε το δικό σας",
+        "ar": "اجعله ملكك",
+        "he": "התאם אותו לעצמך",
+        "fa": "آن را از آنِ خود کنید",
+        "ku": "Wê bike ya xwe",
+        "ckb": "بیکە بە هی خۆت",
+        "syr": "ܥܒܕܝܗܝ ܕܝܠܟ"
+      }
+    },
+    "w.p4.lang.h": {
+      "note": "Page 4: language setting heading.",
+      "t": {
+        "en": "Language",
+        "es": "Idioma",
+        "de": "Sprache",
+        "fr": "Langue",
+        "pt": "Idioma",
+        "ru": "Язык",
+        "el": "Γλώσσα",
+        "ar": "اللغة",
+        "he": "שפה",
+        "fa": "زبان",
+        "ku": "Ziman",
+        "ckb": "زمان",
+        "syr": "ܠܫܢܐ"
+      }
+    },
+    "w.p4.lang.b": {
+      "note": "Page 4: language setting body. Mentions RTL mirroring.",
+      "t": {
+        "en": "Bashan OS speaks thirteen languages. Change it in System Settings. For Arabic, Hebrew, Syriac, Sorani and Persian the whole desktop turns around to read right to left.",
+        "es": "Bashan OS habla trece idiomas. Cámbialo en la Configuración del sistema. Para el árabe, el hebreo, el siríaco, el sorani y el persa, todo el escritorio se invierte para leerse de derecha a izquierda.",
+        "de": "Bashan OS spricht dreizehn Sprachen. Ändern Sie sie in den Systemeinstellungen. Für Arabisch, Hebräisch, Syrisch, Sorani und Persisch dreht sich der gesamte Schreibtisch um und liest sich von rechts nach links.",
+        "fr": "Bashan OS parle treize langues. Changez-la dans la Configuration du système. Pour l'arabe, l'hébreu, le syriaque, le sorani et le persan, tout le bureau se retourne pour se lire de droite à gauche.",
+        "pt": "O Bashan OS fala treze idiomas. Mude-o na Configuração do sistema. Para árabe, hebraico, siríaco, sorani e persa, todo o ambiente de trabalho se inverte para ler da direita para a esquerda.",
+        "ru": "Bashan OS говорит на тринадцати языках. Измените его в Параметрах системы. Для арабского, иврита, сирийского, сорани и персидского весь рабочий стол разворачивается для чтения справа налево.",
+        "el": "Το Bashan OS μιλάει δεκατρείς γλώσσες. Αλλάξτε τη στις Ρυθμίσεις συστήματος. Για τα αραβικά, τα εβραϊκά, τα συριακά, τα σορανί και τα περσικά όλη η επιφάνεια εργασίας αντιστρέφεται για να διαβάζεται από δεξιά προς τα αριστερά.",
+        "ar": "نظام بشان يتحدث ثلاث عشرة لغة. غيّرها من إعدادات النظام. في العربية والعبرية والسريانية والسورانية والفارسية ينقلب سطح المكتب كله ليُقرأ من اليمين إلى اليسار.",
+        "he": "Bashan OS מדברת שלוש עשרה שפות. שנה אותה בהגדרות המערכת. בערבית, עברית, סורית, סוראני ופרסית כל שולחן העבודה מתהפך לקריאה מימין לשמאל.",
+        "fa": "سیستم‌عامل بشان سیزده زبان را می‌داند. آن را در تنظیمات سیستم عوض کنید. برای عربی، عبری، سریانی، سورانی و فارسی تمام میز کار برمی‌گردد تا از راست به چپ خوانده شود.",
+        "ku": "Bashan OS sêzdeh zimanan diaxive. Wê di Mîhengên Pergalê de biguherîne. Ji bo Erebî, Îbranî, Suryanî, Soranî û Farsî hemû sermase vedigere da ku ji rastê ber bi çepê ve bê xwendin.",
+        "ckb": "سیستەمی بەشان سێزدە زمان دەزانێت. لە ڕێکخستنەکانی سیستەم بیگۆڕە. بۆ عەرەبی، عیبری، سریانی، سۆرانی و فارسی هەموو ڕوومێزەکە دەگەڕێتەوە بۆ ئەوەی لە ڕاستەوە بۆ چەپ بخوێنرێتەوە.",
+        "syr": "ܒܫܢ ܡܡܠܠ ܬܠܬܥܣܪ ܠܫܢܐ. ܫܚܠܦ ܠܗ ܒܛܘܟܣܐ ܕܣܕܪܐ. ܠܥܪܒܝܐ, ܥܒܪܝܐ, ܣܘܪܝܝܐ, ܣܘܪܢܝܐ ܘܦܪܣܝܐ ܟܠܗ ܦܬܘܪܐ ܡܬܗܦܟ ܕܢܬܩܪܐ ܡܢ ܝܡܝܢܐ ܠܣܡܠܐ."
+      }
+    },
+    "w.p4.theme.h": {
+      "note": "Page 4: theme setting heading.",
+      "t": {
+        "en": "Dark or light",
+        "es": "Oscuro o claro",
+        "de": "Dunkel oder hell",
+        "fr": "Sombre ou clair",
+        "pt": "Escuro ou claro",
+        "ru": "Тёмная или светлая",
+        "el": "Σκούρο ή ανοιχτό",
+        "ar": "داكن أم فاتح",
+        "he": "כהה או בהיר",
+        "fa": "تیره یا روشن",
+        "ku": "Tarî an ronî",
+        "ckb": "تاریک یان ڕووناک",
+        "syr": "ܚܫܘܟܐ ܐܘ ܢܗܝܪܐ"
+      }
+    },
+    "w.p4.theme.b": {
+      "note": "Page 4: theme setting body.",
+      "t": {
+        "en": "Bashan OS starts dark. Press the button to try the light look; press it again to come back.",
+        "es": "Bashan OS empieza en oscuro. Pulsa el botón para probar el aspecto claro; púlsalo otra vez para volver.",
+        "de": "Bashan OS startet dunkel. Drücken Sie die Schaltfläche, um das helle Aussehen auszuprobieren; drücken Sie sie erneut, um zurückzukehren.",
+        "fr": "Bashan OS démarre en sombre. Appuyez sur le bouton pour essayer l'aspect clair ; appuyez à nouveau pour revenir.",
+        "pt": "O Bashan OS começa escuro. Carregue no botão para experimentar o aspeto claro; carregue outra vez para voltar.",
+        "ru": "Bashan OS запускается в тёмном виде. Нажмите кнопку, чтобы попробовать светлый; нажмите ещё раз, чтобы вернуться.",
+        "el": "Το Bashan OS ξεκινά σκούρο. Πατήστε το κουμπί για να δοκιμάσετε την ανοιχτή εμφάνιση· πατήστε το ξανά για να επιστρέψετε.",
+        "ar": "يبدأ نظام بشان داكنًا. اضغط الزر لتجربة المظهر الفاتح، واضغطه مرة أخرى للعودة.",
+        "he": "Bashan OS מתחילה כהה. לחץ על הכפתור כדי לנסות את המראה הבהיר; לחץ שוב כדי לחזור.",
+        "fa": "سیستم‌عامل بشان تیره شروع می‌شود. دکمه را بزنید تا ظاهر روشن را ببینید؛ دوباره بزنید تا برگردید.",
+        "ku": "Bashan OS tarî dest pê dike. Bişkokê bitikîne da ku dîmena ronî biceribînî; dîsa bitikîne da ku vegerî.",
+        "ckb": "سیستەمی بەشان بە تاریکی دەست پێدەکات. دوگمەکە دابگرە بۆ تاقیکردنەوەی ڕووخساری ڕووناک؛ دووبارە دابگرە بۆ گەڕانەوە.",
+        "syr": "ܒܫܢ ܫܪܐ ܚܫܘܟܐ. ܕܚܘܩ ܙܪܐ ܕܬܢܣܐ ܚܙܘܐ ܢܗܝܪܐ; ܕܚܘܩ ܬܘܒ ܕܬܗܦܘܟ."
+      }
+    },
+    "w.p4.theme.btn": {
+      "note": "Page 4: button that switches dark/light.",
+      "t": {
+        "en": "Switch the look",
+        "es": "Cambiar el aspecto",
+        "de": "Aussehen wechseln",
+        "fr": "Changer l'aspect",
+        "pt": "Mudar o aspeto",
+        "ru": "Сменить вид",
+        "el": "Αλλαγή εμφάνισης",
+        "ar": "تبديل المظهر",
+        "he": "החלף מראה",
+        "fa": "تغییر ظاهر",
+        "ku": "Dîmenê biguherîne",
+        "ckb": "ڕووخسار بگۆڕە",
+        "syr": "ܫܚܠܦ ܚܙܘܐ"
+      }
+    },
+    "w.p4.song.h": {
+      "note": "Page 4: startup sound heading.",
+      "t": {
+        "en": "The startup sound",
+        "es": "El sonido de inicio",
+        "de": "Der Startklang",
+        "fr": "Le son de démarrage",
+        "pt": "O som de arranque",
+        "ru": "Звук при запуске",
+        "el": "Ο ήχος εκκίνησης",
+        "ar": "صوت البدء",
+        "he": "צליל ההפעלה",
+        "fa": "صدای راه‌اندازی",
+        "ku": "Dengê destpêkê",
+        "ckb": "دەنگی دەستپێکردن",
+        "syr": "ܩܠܐ ܕܫܘܪܝܐ"
+      }
+    },
+    "w.p4.song.b": {
+      "note": "Page 4: startup sound body.",
+      "t": {
+        "en": "A short piece of music plays while the computer starts. Turn it off here if you would rather have quiet.",
+        "es": "Una breve pieza de música suena mientras arranca el ordenador. Desactívala aquí si prefieres silencio.",
+        "de": "Beim Start des Rechners erklingt ein kurzes Musikstück. Schalten Sie es hier aus, wenn Sie lieber Ruhe haben.",
+        "fr": "Un court morceau de musique se joue au démarrage de l'ordinateur. Désactivez-le ici si vous préférez le silence.",
+        "pt": "Toca uma pequena peça de música enquanto o computador arranca. Desligue-a aqui se preferir silêncio.",
+        "ru": "При запуске компьютера звучит короткая музыка. Выключите её здесь, если предпочитаете тишину.",
+        "el": "Ένα σύντομο μουσικό κομμάτι παίζει καθώς ξεκινά ο υπολογιστής. Απενεργοποιήστε το εδώ αν προτιμάτε ησυχία.",
+        "ar": "تُعزف مقطوعة موسيقية قصيرة أثناء بدء تشغيل الحاسوب. أوقفها من هنا إن كنت تفضّل الهدوء.",
+        "he": "קטע מוזיקה קצר מתנגן בזמן שהמחשב מופעל. כבה אותו כאן אם אתה מעדיף שקט.",
+        "fa": "هنگام راه‌اندازی رایانه قطعه‌ای کوتاه موسیقی پخش می‌شود. اگر سکوت را ترجیح می‌دهید، اینجا خاموشش کنید.",
+        "ku": "Dema komputer dest pê dike parçeyek muzîkê ya kurt tê lêxistin. Ger bêdengiyê tercîh dikî, li vir wê bigire.",
+        "ckb": "پارچە مۆسیقایەکی کورت کاتێک کۆمپیوتەرەکە دەستپێدەکات لێدەدرێت. لێرە بیکوژێنەوە ئەگەر بێدەنگیت پێ باشترە.",
+        "syr": "ܩܛܥܐ ܟܪܝܐ ܕܙܡܪܐ ܡܬܢܓܢ ܟܕ ܫܪܐ ܡܚܫܒܬܐ. ܛܦܝ ܠܗ ܗܪܟܐ ܐܢ ܨܒܐ ܐܢܬ ܫܠܝܐ."
+      }
+    },
+    "w.p4.song.toggle": {
+      "note": "Page 4: checkbox label for the boot song.",
+      "t": {
+        "en": "Play the startup sound",
+        "es": "Reproducir el sonido de inicio",
+        "de": "Startklang abspielen",
+        "fr": "Jouer le son de démarrage",
+        "pt": "Reproduzir o som de arranque",
+        "ru": "Воспроизводить звук при запуске",
+        "el": "Αναπαραγωγή ήχου εκκίνησης",
+        "ar": "تشغيل صوت البدء",
+        "he": "נגן את צליל ההפעלה",
+        "fa": "پخش صدای راه‌اندازی",
+        "ku": "Dengê destpêkê lê bide",
+        "ckb": "دەنگی دەستپێکردن لێبدە",
+        "syr": "ܢܓܢ ܩܠܐ ܕܫܘܪܝܐ"
+      }
+    },
+    "w.p5.title": {
+      "note": "Welcome app, page 5 heading: more software.",
+      "t": {
+        "en": "Adding more programs",
+        "es": "Añadir más programas",
+        "de": "Weitere Programme hinzufügen",
+        "fr": "Ajouter d'autres programmes",
+        "pt": "Adicionar mais programas",
+        "ru": "Как добавить программы",
+        "el": "Προσθήκη κι άλλων προγραμμάτων",
+        "ar": "إضافة المزيد من البرامج",
+        "he": "הוספת תוכניות נוספות",
+        "fa": "افزودن برنامه‌های بیشتر",
+        "ku": "Bernameyên din zêde bike",
+        "ckb": "زیادکردنی بەرنامەی زیاتر",
+        "syr": "ܬܘܣܦܬܐ ܕܒܪܢܡܐ ܐܚܪܢܐ"
+      }
+    },
+    "w.p5.chrome.h": {
+      "note": "Page 5: Chrome heading.",
+      "t": {
+        "en": "Google Chrome",
+        "es": "Google Chrome",
+        "de": "Google Chrome",
+        "fr": "Google Chrome",
+        "pt": "Google Chrome",
+        "ru": "Google Chrome",
+        "el": "Google Chrome",
+        "ar": "جوجل كروم",
+        "he": "Google Chrome",
+        "fa": "گوگل کروم",
+        "ku": "Google Chrome",
+        "ckb": "گووگڵ کرۆم",
+        "syr": "ܓܘܓܠ ܟܪܘܡ"
+      }
+    },
+    "w.p5.chrome.b": {
+      "note": "Page 5: Chrome body. Explains why it is not preinstalled.",
+      "t": {
+        "en": "Chrome is not included in Bashan OS, because its licence does not let us pass it on to you. One click installs it straight from Google. You will need to be online.",
+        "es": "Chrome no viene incluido en Bashan OS porque su licencia no nos permite distribuirlo. Un clic lo instala directamente desde Google. Necesitarás conexión a internet.",
+        "de": "Chrome ist in Bashan OS nicht enthalten, weil seine Lizenz uns nicht erlaubt, es weiterzugeben. Ein Klick installiert es direkt von Google. Sie brauchen dafür eine Internetverbindung.",
+        "fr": "Chrome n'est pas inclus dans Bashan OS, car sa licence ne nous permet pas de vous le transmettre. Un clic l'installe directement depuis Google. Vous devrez être connecté à internet.",
+        "pt": "O Chrome não vem incluído no Bashan OS porque a sua licença não nos permite distribuí-lo. Um clique instala-o diretamente a partir da Google. Vai precisar de ligação à internet.",
+        "ru": "Chrome не входит в Bashan OS, потому что его лицензия не позволяет нам его передавать. Один щелчок установит его прямо от Google. Понадобится интернет.",
+        "el": "Το Chrome δεν περιλαμβάνεται στο Bashan OS, επειδή η άδειά του δεν μας επιτρέπει να σας το δώσουμε. Ένα κλικ το εγκαθιστά απευθείας από την Google. Θα χρειαστείτε σύνδεση στο διαδίκτυο.",
+        "ar": "كروم غير مضمَّن في نظام بشان لأن رخصته لا تسمح لنا بتمريره إليك. نقرة واحدة تثبّته مباشرة من جوجل. ستحتاج إلى اتصال بالإنترنت.",
+        "he": "Chrome אינו כלול ב-Bashan OS משום שהרישיון שלו אינו מתיר לנו להעביר אותו אליך. לחיצה אחת מתקינה אותו ישירות מגוגל. תזדקק לחיבור לאינטרנט.",
+        "fa": "کروم در سیستم‌عامل بشان گنجانده نشده، چون پروانه‌اش به ما اجازه نمی‌دهد آن را به شما بدهیم. یک کلیک آن را مستقیم از گوگل نصب می‌کند. به اینترنت نیاز دارید.",
+        "ku": "Chrome di Bashan OS de nîne, ji ber ku lîsansa wê destûrê nade me ku em wê bidin te. Bi tikandinek ew rasterast ji Google tê sazkirin. Divê tu bi înternetê ve girêdayî bî.",
+        "ckb": "کرۆم لە سیستەمی بەشاندا نییە، چونکە مۆڵەتەکەی ڕێگەمان پێنادات بۆ تۆی بنێرین. بە کلیکێک ڕاستەوخۆ لە گووگڵەوە دادەمەزرێت. پێویستت بە ئینتەرنێت دەبێت.",
+        "syr": "ܟܪܘܡ ܠܝܬ ܒܒܫܢ, ܡܛܠ ܕܫܘܠܛܢܗ ܠܐ ܫܒܩ ܠܢ ܕܢܬܠܝܘܗܝ ܠܟ. ܒܚܕܐ ܢܩܫܬܐ ܡܬܬܣܝܡ ܬܪܝܨܐܝܬ ܡܢ ܓܘܓܠ. ܣܢܝܩ ܐܢܬ ܥܠ ܐܝܢܬܪܢܬ."
+      }
+    },
+    "w.p5.discover.h": {
+      "note": "Page 5: software centre heading.",
+      "t": {
+        "en": "The software centre",
+        "es": "El centro de software",
+        "de": "Das Software-Zentrum",
+        "fr": "La logithèque",
+        "pt": "O centro de software",
+        "ru": "Центр программ",
+        "el": "Το κέντρο λογισμικού",
+        "ar": "مركز البرمجيات",
+        "he": "מרכז התוכנה",
+        "fa": "مرکز نرم‌افزار",
+        "ku": "Navenda nermalavê",
+        "ckb": "ناوەندی نەرمەکاڵا",
+        "syr": "ܡܪܟܙܐ ܕܪܟܝܟܐ"
+      }
+    },
+    "w.p5.discover.b": {
+      "note": "Page 5: software centre body.",
+      "t": {
+        "en": "Thousands more free programs are a click away, including Krita for drawing, Audacity for sound and OBS Studio for recording your screen.",
+        "es": "Miles de programas gratuitos más están a un clic, entre ellos Krita para dibujar, Audacity para el sonido y OBS Studio para grabar la pantalla.",
+        "de": "Tausende weitere kostenlose Programme sind einen Klick entfernt, darunter Krita zum Zeichnen, Audacity für Ton und OBS Studio zur Bildschirmaufnahme.",
+        "fr": "Des milliers d'autres programmes gratuits sont à un clic, dont Krita pour le dessin, Audacity pour le son et OBS Studio pour enregistrer votre écran.",
+        "pt": "Milhares de outros programas gratuitos estão a um clique, incluindo o Krita para desenhar, o Audacity para som e o OBS Studio para gravar o ecrã.",
+        "ru": "Тысячи других бесплатных программ в одном щелчке, среди них Krita для рисования, Audacity для звука и OBS Studio для записи экрана.",
+        "el": "Χιλιάδες ακόμη δωρεάν προγράμματα απέχουν ένα κλικ, όπως το Krita για σχέδιο, το Audacity για ήχο και το OBS Studio για εγγραφή οθόνης.",
+        "ar": "آلاف البرامج المجانية الأخرى على بُعد نقرة، منها كريتا للرسم وأوداسيتي للصوت وOBS Studio لتسجيل الشاشة.",
+        "he": "אלפי תוכניות חינמיות נוספות במרחק לחיצה, ובהן Krita לציור, Audacity לצליל ו-OBS Studio להקלטת המסך.",
+        "fa": "هزاران برنامهٔ رایگان دیگر یک کلیک فاصله دارند، از جمله کریتا برای نقاشی، اوداسیتی برای صدا و OBS Studio برای ضبط صفحه.",
+        "ku": "Hezaran bernameyên din ên belaş bi tikandinek dûr in, di nav wan de Krita ji bo xêzkirinê, Audacity ji bo dengê û OBS Studio ji bo tomarkirina ekranê.",
+        "ckb": "هەزاران بەرنامەی خۆڕایی تر بە کلیکێک دوورن، لەوانە کریتا بۆ وێنەکێشان، ئۆداسیتی بۆ دەنگ و OBS Studio بۆ تۆمارکردنی شاشە.",
+        "syr": "ܐܠܦܐ ܕܒܪܢܡܐ ܐܚܪܢܐ ܡܓܢܐ ܒܚܕܐ ܢܩܫܬܐ, ܐܝܟ Krita ܠܨܝܪܘܬܐ, Audacity ܠܩܠܐ ܘOBS Studio ܠܪܫܡ ܦܪܣܘܦܐ."
+      }
+    },
+    "w.p5.discover.btn": {
+      "note": "Page 5: button that opens Discover.",
+      "t": {
+        "en": "Open the software centre",
+        "es": "Abrir el centro de software",
+        "de": "Software-Zentrum öffnen",
+        "fr": "Ouvrir la logithèque",
+        "pt": "Abrir o centro de software",
+        "ru": "Открыть центр программ",
+        "el": "Άνοιγμα κέντρου λογισμικού",
+        "ar": "افتح مركز البرمجيات",
+        "he": "פתח את מרכז התוכנה",
+        "fa": "باز کردن مرکز نرم‌افزار",
+        "ku": "Navenda nermalavê veke",
+        "ckb": "ناوەندی نەرمەکاڵا بکەرەوە",
+        "syr": "ܦܬܚ ܡܪܟܙܐ ܕܪܟܝܟܐ"
+      }
+    },
+    "w.p6.title": {
+      "note": "Welcome app, page 6 heading: privacy and legal.",
+      "t": {
+        "en": "Privacy and legal",
+        "es": "Privacidad y aspectos legales",
+        "de": "Datenschutz und Rechtliches",
+        "fr": "Vie privée et mentions légales",
+        "pt": "Privacidade e aspetos legais",
+        "ru": "Приватность и правовая информация",
+        "el": "Απόρρητο και νομικά",
+        "ar": "الخصوصية والشؤون القانونية",
+        "he": "פרטיות ומשפט",
+        "fa": "حریم خصوصی و حقوقی",
+        "ku": "Nepenîtî û hiqûq",
+        "ckb": "تایبەتمەندی و یاسایی",
+        "syr": "ܟܣܝܘܬܐ ܘܕܝܢܐ"
+      }
+    },
+    "w.p6.body": {
+      "note": "Welcome app, page 6 body. Must be accurate about what connects out.",
+      "t": {
+        "en": "Bashan OS itself collects nothing about you. Some of the programs on it do reach the internet to do their job: your web browser, the software centre, and the system updates that keep the computer safe. The documents below list every one of them.",
+        "es": "Bashan OS en sí no recopila nada sobre ti. Algunos de los programas sí se conectan a internet para hacer su trabajo: tu navegador, el centro de software y las actualizaciones del sistema que mantienen seguro el ordenador. Los documentos de abajo los enumeran todos.",
+        "de": "Bashan OS selbst erhebt nichts über Sie. Einige der Programme darauf gehen für ihre Arbeit ins Internet: Ihr Webbrowser, das Software-Zentrum und die Systemaktualisierungen, die den Rechner sicher halten. Die Dokumente unten führen sie alle auf.",
+        "fr": "Bashan OS lui-même ne recueille rien sur vous. Certains des programmes qu'il contient se connectent à internet pour faire leur travail : votre navigateur, la logithèque et les mises à jour qui gardent l'ordinateur sûr. Les documents ci-dessous les énumèrent tous.",
+        "pt": "O próprio Bashan OS não recolhe nada sobre si. Alguns dos programas nele ligam-se à internet para fazer o seu trabalho: o seu navegador, o centro de software e as atualizações do sistema que mantêm o computador seguro. Os documentos abaixo enumeram-nos todos.",
+        "ru": "Сама Bashan OS ничего о вас не собирает. Некоторые программы в ней выходят в интернет, чтобы делать свою работу: ваш браузер, центр программ и обновления системы, которые держат компьютер в безопасности. Документы ниже перечисляют их все.",
+        "el": "Το ίδιο το Bashan OS δεν συλλέγει τίποτα για εσάς. Μερικά από τα προγράμματα σε αυτό συνδέονται στο διαδίκτυο για τη δουλειά τους: ο φυλλομετρητής σας, το κέντρο λογισμικού και οι ενημερώσεις που κρατούν τον υπολογιστή ασφαλή. Τα παρακάτω έγγραφα τα απαριθμούν όλα.",
+        "ar": "نظام بشان نفسه لا يجمع عنك شيئًا. بعض البرامج فيه تتصل بالإنترنت لتؤدي عملها: متصفحك ومركز البرمجيات وتحديثات النظام التي تحافظ على أمان الحاسوب. المستندات أدناه تسردها جميعًا.",
+        "he": "Bashan OS עצמה אינה אוספת עליך דבר. חלק מהתוכניות שבה כן מתחברות לאינטרנט כדי לעשות את עבודתן: הדפדפן שלך, מרכז התוכנה, ועדכוני המערכת ששומרים על בטיחות המחשב. המסמכים שלהלן מפרטים את כולם.",
+        "fa": "خودِ سیستم‌عامل بشان هیچ چیزی دربارهٔ شما جمع نمی‌کند. برخی از برنامه‌های روی آن برای انجام کارشان به اینترنت وصل می‌شوند: مرورگر شما، مرکز نرم‌افزار، و به‌روزرسانی‌های سیستم که رایانه را ایمن نگه می‌دارند. سندهای زیر همهٔ آن‌ها را فهرست می‌کنند.",
+        "ku": "Bashan OS bi xwe tiştekî derbarê te de kom nake. Hin ji bernameyên li ser wê ji bo karê xwe digihîjin înternetê: geroka te ya webê, navenda nermalavê, û nûkirinên pergalê yên ku komputerê ewle dihêlin. Belgeyên jêrîn hemûyan rêz dikin.",
+        "ckb": "خودی سیستەمی بەشان هیچ شتێک دەربارەی تۆ کۆناکاتەوە. هەندێک لە بەرنامەکانی سەری بۆ ئەنجامدانی کارەکەیان دەگەنە ئینتەرنێت: وێبگەڕەکەت، ناوەندی نەرمەکاڵا، و نوێکارییەکانی سیستەم کە کۆمپیوتەرەکە پارێزراو دەهێڵنەوە. بەڵگەنامەکانی خوارەوە هەموویان لیست دەکەن.",
+        "syr": "ܒܫܢ ܗܘ ܠܐ ܟܢܫ ܡܕܡ ܥܠܝܟ. ܡܢ ܒܪܢܡܐ ܕܥܠܘܗܝ ܐܝܬ ܕܡܛܝܢ ܠܐܝܢܬܪܢܬ ܕܢܥܒܕܘܢ ܥܒܕܗܘܢ: ܡܥܒܪܢܐ ܕܝܠܟ, ܡܪܟܙܐ ܕܪܟܝܟܐ, ܘܚܘܕܬܐ ܕܣܕܪܐ ܕܢܛܪܝܢ ܡܚܫܒܬܐ. ܟܬܒܐ ܕܠܬܚܬ ܡܢܝܢ ܠܟܠܗܘܢ."
+      }
+    },
+    "w.p6.draft": {
+      "note": "Welcome app, page 6: warning that the legal documents are drafts.",
+      "t": {
+        "en": "These documents are drafts awaiting review by a lawyer. They are not legal advice.",
+        "es": "Estos documentos son borradores pendientes de revisión por un abogado. No constituyen asesoramiento legal.",
+        "de": "Diese Dokumente sind Entwürfe und warten auf die Prüfung durch einen Anwalt. Sie sind keine Rechtsberatung.",
+        "fr": "Ces documents sont des brouillons en attente de relecture par un avocat. Ils ne constituent pas un avis juridique.",
+        "pt": "Estes documentos são rascunhos à espera de revisão por um advogado. Não constituem aconselhamento jurídico.",
+        "ru": "Эти документы — черновики, ожидающие проверки юристом. Они не являются юридической консультацией.",
+        "el": "Αυτά τα έγγραφα είναι προσχέδια που αναμένουν έλεγχο από δικηγόρο. Δεν αποτελούν νομική συμβουλή.",
+        "ar": "هذه المستندات مسودات بانتظار مراجعة محامٍ. وهي ليست استشارة قانونية.",
+        "he": "מסמכים אלה הם טיוטות הממתינות לבדיקת עורך דין. אין בהם ייעוץ משפטי.",
+        "fa": "این سندها پیش‌نویس‌هایی هستند که در انتظار بررسی وکیل‌اند. مشاورهٔ حقوقی نیستند.",
+        "ku": "Ev belge pêşnûme ne û li benda nirxandina parêzerekî ne. Ew şîreta hiqûqî nînin.",
+        "ckb": "ئەم بەڵگەنامانە ڕەشنووسن و چاوەڕێی پێداچوونەوەی پارێزەرێکن. ڕاوێژی یاسایی نین.",
+        "syr": "ܟܬܒܐ ܗܠܝܢ ܪܫܡܐ ܐܢܘܢ ܕܡܟܬܪܝܢ ܠܒܘܚܪܢܐ ܕܣܦܪ ܕܝܢܐ. ܠܐ ܐܢܘܢ ܡܠܟܐ ܕܕܝܢܐ."
+      }
+    },
+    "w.nav.back": {
+      "note": "Welcome app: back button.",
+      "t": {
+        "en": "Back",
+        "es": "Atrás",
+        "de": "Zurück",
+        "fr": "Retour",
+        "pt": "Voltar",
+        "ru": "Назад",
+        "el": "Πίσω",
+        "ar": "رجوع",
+        "he": "חזרה",
+        "fa": "بازگشت",
+        "ku": "Paş",
+        "ckb": "گەڕانەوە",
+        "syr": "ܠܒܣܬܪܐ"
+      }
+    },
+    "w.nav.next": {
+      "note": "Welcome app: next button.",
+      "t": {
+        "en": "Next",
+        "es": "Siguiente",
+        "de": "Weiter",
+        "fr": "Suivant",
+        "pt": "Seguinte",
+        "ru": "Далее",
+        "el": "Επόμενο",
+        "ar": "التالي",
+        "he": "הבא",
+        "fa": "بعدی",
+        "ku": "Pêş",
+        "ckb": "دواتر",
+        "syr": "ܕܐܬܐ"
+      }
+    },
+    "w.nav.done": {
+      "note": "Welcome app: finish button.",
+      "t": {
+        "en": "Finish",
+        "es": "Terminar",
+        "de": "Fertig",
+        "fr": "Terminer",
+        "pt": "Terminar",
+        "ru": "Готово",
+        "el": "Τέλος",
+        "ar": "إنهاء",
+        "he": "סיום",
+        "fa": "پایان",
+        "ku": "Biqedîne",
+        "ckb": "تەواو",
+        "syr": "ܫܠܡ"
+      }
+    },
+    "w.showatstart": {
+      "note": "Welcome app: the show-at-startup checkbox.",
+      "t": {
+        "en": "Show this when I start the computer",
+        "es": "Mostrar esto al encender el ordenador",
+        "de": "Dies beim Start des Rechners anzeigen",
+        "fr": "Afficher ceci au démarrage de l'ordinateur",
+        "pt": "Mostrar isto ao ligar o computador",
+        "ru": "Показывать это при запуске компьютера",
+        "el": "Εμφάνιση αυτού κατά την εκκίνηση",
+        "ar": "أظهر هذا عند تشغيل الحاسوب",
+        "he": "הצג זאת בהפעלת המחשב",
+        "fa": "این را هنگام روشن کردن رایانه نشان بده",
+        "ku": "Dema komputer vedibe vê nîşan bide",
+        "ckb": "ئەمە پیشان بدە کاتێک کۆمپیوتەر دەکەمەوە",
+        "syr": "ܚܘܐ ܗܕܐ ܟܕ ܫܪܐ ܡܚܫܒܬܐ"
+      }
+    },
+    "w.mute": {
+      "note": "Welcome app: mute button for the welcome music.",
+      "t": {
+        "en": "Mute",
+        "es": "Silenciar",
+        "de": "Stumm",
+        "fr": "Couper le son",
+        "pt": "Silenciar",
+        "ru": "Выключить звук",
+        "el": "Σίγαση",
+        "ar": "كتم الصوت",
+        "he": "השתק",
+        "fa": "بی‌صدا",
+        "ku": "Bêdeng",
+        "ckb": "بێدەنگ",
+        "syr": "ܫܠܝ ܩܠܐ"
+      }
+    },
+    "w.unmute": {
+      "note": "Welcome app: unmute button.",
+      "t": {
+        "en": "Sound on",
+        "es": "Con sonido",
+        "de": "Ton an",
+        "fr": "Activer le son",
+        "pt": "Com som",
+        "ru": "Включить звук",
+        "el": "Ήχος ενεργός",
+        "ar": "تشغيل الصوت",
+        "he": "הפעל צליל",
+        "fa": "باصدا",
+        "ku": "Bi deng",
+        "ckb": "بە دەنگ",
+        "syr": "ܦܬܚ ܩܠܐ"
+      }
+    },
+    "w.reopen": {
+      "note": "Welcome app: closing note on the last page.",
+      "t": {
+        "en": "You can open this guide again from the Bashan menu at any time.",
+        "es": "Puedes volver a abrir esta guía desde el menú Bashan cuando quieras.",
+        "de": "Sie können diese Einführung jederzeit wieder über das Bashan-Menü öffnen.",
+        "fr": "Vous pouvez rouvrir ce guide à tout moment depuis le menu Bashan.",
+        "pt": "Pode voltar a abrir este guia a partir do menu Bashan quando quiser.",
+        "ru": "Это руководство всегда можно снова открыть из меню Bashan.",
+        "el": "Μπορείτε να ανοίξετε ξανά αυτόν τον οδηγό από το μενού Bashan όποτε θέλετε.",
+        "ar": "يمكنك فتح هذا الدليل مرة أخرى من قائمة بشان في أي وقت.",
+        "he": "אפשר לפתוח מדריך זה שוב מתפריט Bashan בכל עת.",
+        "fa": "هر وقت خواستید می‌توانید این راهنما را دوباره از منوی بشان باز کنید.",
+        "ku": "Tu dikarî vê rêbernameyê her dem ji menuya Bashan ve vekî.",
+        "ckb": "دەتوانیت هەر کاتێک ئەم ڕێنمایییە لە لیستی بەشانەوە بکەیتەوە.",
+        "syr": "ܡܨܐ ܐܢܬ ܠܡܦܬܚ ܗܢܐ ܡܕܒܪܢܐ ܬܘܒ ܡܢ ܣܕܪܐ ܕܒܫܢ ܒܟܠ ܥܕܢ."
+      }
     }
   }
 }

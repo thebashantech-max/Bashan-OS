@@ -126,6 +126,12 @@ cp -a "$ROOT/theme/wallpapers/bashan-ridge-1920x1080.png" \
 # look-and-feel is what puts "Bashan Light" in System Settings > Global
 # Theme, so the user gets a one-click switch with no code of ours running.
 cp -a "$ROOT"/theme/color-schemes/*.colors "$inc/color-schemes/"
+# The welcome app reads these to colour itself, picking one according to
+# ~/.config/bashan-theme. Shipping the palettes beats generating a third
+# copy of the same colours.
+mkdir -p "$inc/bashan/welcome"
+cp -a "$ROOT/theme/palette.json" "$ROOT/theme/palette-light.json" \
+      "$inc/bashan/welcome/"
 cp -a "$ROOT"/theme/look-and-feel/com.bashan.desktop* "$inc/plasma/look-and-feel/"
 
 # --- boot-chain branding ------------------------------------------------
@@ -198,6 +204,7 @@ if [ "${INCLUDE_BOOT_SONG:-no}" = "yes" ]; then
   cp -a "$ROOT/branding/boot-song/boot-song.wav" "$inc/bashan/"
   echo "W: ================================================================"
   echo "W:  BOOT SONG INCLUDED - PRIVATE TEST BUILD ONLY"
+  echo "W:  The welcome app plays this same file on its first page."
   echo "W:  Rights for this audio are not confirmed. Do not distribute"
   echo "W:  this ISO publicly. Set INCLUDE_BOOT_SONG=no in config/build.conf"
   echo "W:  to build without it."

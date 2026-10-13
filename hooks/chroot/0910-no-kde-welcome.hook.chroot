@@ -1,0 +1,30 @@
+#!/bin/sh
+# Bashan OS — remove KDE's Welcome Center.
+#
+# Stage 9 defect 5: plasma-welcome opened on first boot alongside our own
+# welcome app. Suppressing its autostart would be guesswork about how Plasma
+# triggers it; removing the package cannot be got wrong. It is a Recommends
+# of plasma-desktop, not a Depends, so nothing else goes with it - verified
+# with `apt-get remove -s`, which reported exactly one package removed.
+set -e
+
+if dpkg-query -W -f='${Status}' plasma-welcome 2>/dev/null | grep -q "install ok installed"; then
+    echo "I: removing plasma-welcome (replaced by bashan-welcome)"
+    apt-get purge -y plasma-welcome
+fi
+
+if dpkg-query -W -f='${Status}' plasma-welcome 2>/dev/null | grep -q "install ok installed"; then
+    echo "E: plasma-welcome is still installed" >&2
+    exit 1
+fi
+
+# Our own welcome app must be there in its place.
+for f in /usr/bin/bashan-welcome /usr/share/bashan/welcome/main.qml \
+         /usr/share/bashan/welcome/i18n.json /usr/lib/qt6/bin/qml; do
+    if [ ! -e "$f" ]; then
+        echo "E: welcome app incomplete, missing $f" >&2
+        exit 1
+    fi
+done
+
+echo "I: KDE Welcome Center removed; bashan-welcome in place"

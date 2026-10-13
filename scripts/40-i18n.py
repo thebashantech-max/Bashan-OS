@@ -110,6 +110,29 @@ def slideshow():
     print(f"   show.qml: {len(SLIDE_KEYS)} strings x {len(LANGS)} languages embedded")
 
 
+def welcome_catalogue():
+    """Emit the welcome app's strings as JSON it reads at runtime.
+
+    The Calamares slideshow embeds its four strings directly into show.qml,
+    which is fine for four. The welcome app has 41 in 13 languages, so it
+    reads a catalogue instead - and the catalogue carries the per-language
+    confidence and the rtl flag, so the app can both mirror itself and say
+    out loud when the translation it is showing has not been reviewed.
+    """
+    keys = sorted(k for k in S if k.startswith("w."))
+    out = {
+        "languages": {l: {"native": META[l]["native"], "rtl": META[l]["rtl"],
+                          "confidence": META[l]["confidence"],
+                          "reviewed": META[l]["reviewed"]} for l in LANGS},
+        "strings": {l: {k: S[k]["t"][l] for k in keys} for l in LANGS},
+    }
+    d = ROOT / "apps/rootfs/usr/share/bashan/welcome"
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "i18n.json").write_text(
+        json.dumps(out, ensure_ascii=False, indent=1) + "\n")
+    print(f"   welcome/i18n.json: {len(keys)} strings x {len(LANGS)} languages")
+
+
 def review_csv():
     out = ROOT / "i18n/REVIEW.csv"
     with out.open("w", newline="", encoding="utf-8") as fh:
@@ -198,6 +221,7 @@ def main():
     desktop_files()
     shell_catalogues()
     slideshow()
+    welcome_catalogue()
     review_csv()
     welcome_image()
     unreviewed = [l for l in LANGS if not META[l]["reviewed"]]

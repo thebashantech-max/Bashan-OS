@@ -1,0 +1,33 @@
+#!/bin/sh
+# Bashan OS — handler for bashan-action: URLs.
+#
+# QML cannot start a process, so the welcome app's three buttons that must
+# run a command open a URL instead and this script carries it out. Opening
+# documents and the software centre needs nothing from here: file:// and
+# appstream: are already handled by the system.
+#
+# Registered by /usr/share/applications/bashan-action.desktop.
+set -eu
+
+url="${1:-}"
+action="${url#bashan-action:}"
+action="${action#//}"
+
+case "$action" in
+    theme-toggle)
+        exec bashan-theme-toggle toggle
+        ;;
+    install-chrome)
+        exec bashan-install-chrome
+        ;;
+    boot-sound-on)
+        exec pkexec /usr/libexec/bashan/bashan-set-boot-sound yes
+        ;;
+    boot-sound-off)
+        exec pkexec /usr/libexec/bashan/bashan-set-boot-sound no
+        ;;
+    *)
+        echo "E: unknown action '$action'" >&2
+        exit 2
+        ;;
+esac

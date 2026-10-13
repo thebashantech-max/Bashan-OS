@@ -1,0 +1,28 @@
+#!/bin/sh
+# Bashan OS — turn the startup sound on or off.
+#
+# Run through pkexec: /etc/bashan/boot-sound.conf is root-owned, because it
+# controls something that happens before any user logs in. The polkit agent
+# (polkit-kde-agent-1) draws the password prompt.
+#
+# Only ENABLED is touched. The SONG line and the comments above it are left
+# exactly as they are, so a user who pointed it at their own file keeps it.
+set -eu
+
+CONF=/etc/bashan/boot-sound.conf
+
+case "${1:-}" in
+    yes|no) want="$1" ;;
+    *) echo "usage: ${0##*/} yes|no" >&2; exit 2 ;;
+esac
+
+[ -w "$CONF" ] || { echo "E: cannot write $CONF" >&2; exit 1; }
+
+tmp=$(mktemp "${CONF}.XXXXXX")
+trap 'rm -f "$tmp"' EXIT
+sed "s/^ENABLED=.*/ENABLED=$want/" "$CONF" > "$tmp"
+grep -q "^ENABLED=$want$" "$tmp" || { echo "E: no ENABLED line in $CONF" >&2; exit 1; }
+chmod --reference="$CONF" "$tmp"
+mv "$tmp" "$CONF"
+trap - EXIT
+echo "boot sound: $want"

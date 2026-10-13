@@ -26,6 +26,10 @@ for f in /tmp/dl/*.deb; do
   [ -e "$f" ] || continue
   dpkg -c "$f" 2>/dev/null | sed -n 's|.*/usr/share/applications/\(.*\.desktop\)$|\1|p'
 done >> "$AVAIL"
+# ...and the .desktop files this project ships itself, which are not in the
+# chroot until a build has run.
+find /work/apps/rootfs /work/theme/rootfs -path '*/usr/share/applications/*.desktop' \
+  -printf '%f\n' 2>/dev/null >> "$AVAIL"
 sort -u -o "$AVAIL" "$AVAIL"
 
 grep -oE 'mime-type type="[^"]+"' "$C/usr/share/mime/packages/freedesktop.org.xml" 2>/dev/null \
@@ -35,10 +39,14 @@ bad=0
 while IFS='=' read -r mime desktop; do
   case "$mime" in ''|'#'*|'['*) continue ;; esac
   grep -qxF "$desktop" "$AVAIL" || { echo "E: no such .desktop: $desktop (for $mime)"; bad=$((bad+1)); }
-  grep -qxF "$mime" "$MIMES"    || echo "W: MIME type not in freedesktop.org.xml: $mime"
+  case "$mime" in
+    x-scheme-handler/*) ;;   # URL schemes are not MIME types; nothing to check
+    *) grep -qxF "$mime" "$MIMES" ||
+         echo "W: MIME type not in freedesktop.org.xml: $mime" ;;
+  esac
 done < "$M"
 
-n=$(grep -cE '^[a-z]+/[^=]+=' "$M")
+n=$(grep -cE '^[a-z-]+/[^=]+=' "$M")
 if [ "$bad" -gt 0 ]; then
   echo "E: $bad broken association(s) in mimeapps.list" >&2; exit 1
 fi
