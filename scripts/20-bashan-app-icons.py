@@ -17,17 +17,23 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageChops, ImageFilter
 
-ROOT = Path(__file__).resolve().parent.parent
+from _palette import ROOT, VARIANTS, rgb_tuple
+
 SRC = ROOT / "assets/branding/logo-source.jpg"
 OUT = ROOT / "apps/rootfs/usr/share/icons/hicolor"
+# The light launcher goes into its own tree, which 10-lb-config.sh lays over
+# a copy of the icon theme to build "Bashan-Light". Same icon NAME, different
+# artwork per theme - that is what lets plasma-changeicons swap the launcher
+# glow without touching the dock's applet configuration.
+OUT_LIGHT = ROOT / "theme/icons/_launcher-light"
 NAME = "bashan-app"
 LAUNCHER = "bashan-launcher"
 SIZES = (16, 22, 24, 32, 48, 64, 128, 256, 512)
-# Extra cyan bloom behind the dock launcher button, from the palette accent.
-GLOW_RGB = (34, 211, 238)
+# Bloom behind the dock launcher button. Colour and strength come from the
+# palette: on a dark pill a bright cyan halo reads, on a light pill the same
+# halo is invisible, so the light variant uses a darker, weaker glow.
 GLOW_PAD = 1.34
 GLOW_RADIUS = 0.055
-GLOW_STRENGTH = 0.78
 GLOW_PASSES = 2
 
 # Below this brightness a pixel is background, not artwork.
@@ -67,8 +73,10 @@ def build_rgba(src: Path) -> Image.Image:
     return canvas
 
 
-def add_glow(art: Image.Image) -> Image.Image:
-    """Cyan bloom behind the mark, for the dock launcher button."""
+def add_glow(art: Image.Image, v) -> Image.Image:
+    """Bloom behind the mark, for the dock launcher button."""
+    glow_rgb = rgb_tuple(v.pal["glow_rgb"])
+    glow_strength = float(v.pal["glow_strength"])
     # Pad first: a halo blurred right up to the canvas edge gets clipped and
     # reads as a cyan square rather than a glow.
     side = int(art.size[0] * GLOW_PAD)
@@ -79,8 +87,8 @@ def add_glow(art: Image.Image) -> Image.Image:
     halo = padded.getchannel("A").filter(
         ImageFilter.GaussianBlur(max(1, int(side * GLOW_RADIUS))))
     halo = ImageChops.multiply(
-        halo, Image.new("L", padded.size, int(255 * GLOW_STRENGTH)))
-    glow = Image.new("RGBA", padded.size, GLOW_RGB + (0,))
+        halo, Image.new("L", padded.size, int(255 * glow_strength)))
+    glow = Image.new("RGBA", padded.size, glow_rgb + (0,))
     glow.putalpha(halo)
     # Two passes so it still reads at 48 px on a dark dock.
     out = glow
@@ -89,14 +97,15 @@ def add_glow(art: Image.Image) -> Image.Image:
     return Image.alpha_composite(out, padded)
 
 
-def emit(art: Image.Image, name: str) -> None:
+def emit(art: Image.Image, name: str, root: Path = None) -> None:
+    root = OUT if root is None else root
     for size in SIZES:
         icon = art.resize((size, size), Image.LANCZOS)
         # Detail is lost below ~48px; a light sharpen keeps the silhouette
         # readable instead of a blurry smudge.
         if size <= 48:
             icon = icon.filter(ImageFilter.UnsharpMask(radius=1, percent=80, threshold=2))
-        d = OUT / f"{size}x{size}" / "apps"
+        d = root / f"{size}x{size}" / "apps"
         d.mkdir(parents=True, exist_ok=True)
         icon.save(d / f"{name}.png", "PNG", optimize=True)
     print(f"   {name}: {len(SIZES)} sizes")
@@ -109,7 +118,9 @@ def main() -> None:
     print(f"I: source {SRC.name}, artwork cropped to {art.size[0]}x{art.size[1]} square")
 
     emit(art, NAME)
-    emit(add_glow(art), LAUNCHER)
+    emit(add_glow(art, VARIANTS["dark"]), LAUNCHER)
+    # Same icon name, light-tuned artwork, in the overlay tree.
+    emit(add_glow(art, VARIANTS["light"]), LAUNCHER, OUT_LIGHT)
 
     native = max(art.size)
     if native < 512:

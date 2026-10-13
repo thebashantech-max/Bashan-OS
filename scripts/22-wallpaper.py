@@ -18,8 +18,8 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-ROOT = Path(__file__).resolve().parent.parent
-PAL = json.loads((ROOT / "theme/palette.json").read_text())
+from _palette import ROOT, VARIANTS
+
 OUT = ROOT / "theme/wallpapers"
 SEED = 20261012
 
@@ -71,7 +71,8 @@ def fbm(width: int, octaves: int, rough: float, rng, ridged: float = 0.0) -> np.
     return total / norm
 
 
-def render(w: int, h: int, login: bool) -> Image.Image:
+def render(v, w: int, h: int, login: bool) -> Image.Image:
+    PAL = v.pal
     rng = np.random.default_rng(SEED)
     yy = np.arange(h, dtype=np.float32)[:, None]
 
@@ -84,7 +85,8 @@ def render(w: int, h: int, login: bool) -> Image.Image:
     gx = np.linspace(-1, 1, w, dtype=np.float32)[None, :]
     gy = (np.arange(h, dtype=np.float32)[:, None] / h - 0.62) * 3.4
     glow = np.exp(-(gx * gx) * 1.6) * np.exp(-(gy * gy) * 2.2)
-    img += hexrgb(PAL["accent_deep"])[None, None, :] * glow[:, :, None] * (0.16 if login else 0.30)
+    img += (hexrgb(PAL["wall_glow_rgb"])[None, None, :] * glow[:, :, None]
+            * (PAL["wall_glow_login"] if login else PAL["wall_glow"]))
 
     # Ridges, far to near. Each is a filled silhouette with a 1 px soft edge
     # and a touch of haze so distance reads.
@@ -98,16 +100,17 @@ def render(w: int, h: int, login: bool) -> Image.Image:
         # Faint cyan rim light along the crest of the distant ridges only.
         if haze > 0.25:
             rim = np.clip(1.0 - np.abs(yy - line[None, :]) / 2.5, 0.0, 1.0)[:, :, None]
-            img += hexrgb(PAL["accent"])[None, None, :] * rim * 0.05
+            img += hexrgb(PAL["accent"])[None, None, :] * rim * PAL["wall_rim"]
 
     # Vignette: stronger on the login wallpaper so the form stays legible.
     vx = np.linspace(-1, 1, w, dtype=np.float32)[None, :]
     vy = np.linspace(-1, 1, h, dtype=np.float32)[:, None]
-    vig = 1.0 - (vx * vx + vy * vy) * (0.34 if login else 0.18)
+    vig = 1.0 - (vx * vx + vy * vy) * (PAL["wall_vignette_login"]
+                                      if login else PAL["wall_vignette"])
     img *= np.clip(vig, 0.0, 1.0)[:, :, None]
 
     if login:
-        img *= 0.72
+        img *= PAL["wall_login_dim"]
 
     # Dither before the 8-bit quantise. Without this, a dark smooth gradient
     # bands into visible stripes on exactly the kind of panel this ships on.
@@ -117,13 +120,15 @@ def render(w: int, h: int, login: bool) -> Image.Image:
 
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
-    jobs = [("bashan-ridge-3840x2160.png", 3840, 2160, False),
-            ("bashan-ridge-1920x1080.png", 1920, 1080, False),
-            ("bashan-ridge-login-1920x1080.png", 1920, 1080, True)]
-    for name, w, h, login in jobs:
-        render(w, h, login).save(OUT / name, "PNG", optimize=True)
-        mb = (OUT / name).stat().st_size / 1e6
-        print(f"   {name:<36} {w}x{h}  {mb:.1f} MB")
+    for v in VARIANTS.values():
+        s = v.suffix
+        jobs = [(f"bashan-ridge{s}-3840x2160.png", 3840, 2160, False),
+                (f"bashan-ridge{s}-1920x1080.png", 1920, 1080, False),
+                (f"bashan-ridge{s}-login-1920x1080.png", 1920, 1080, True)]
+        for name, w, h, login in jobs:
+            render(v, w, h, login).save(OUT / name, "PNG", optimize=True)
+            mb = (OUT / name).stat().st_size / 1e6
+            print(f"   {name:<42} {w}x{h}  {mb:.1f} MB")
 
 
 if __name__ == "__main__":

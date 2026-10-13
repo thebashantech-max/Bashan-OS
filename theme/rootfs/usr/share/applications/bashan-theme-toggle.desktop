@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Dark / Light Theme
+Comment=Switch Bashan OS between the dark and light themes
+Exec=bashan-theme-toggle toggle
+Icon=preferences-desktop-theme
+Terminal=false
+Categories=Settings;DesktopSettings;Qt;KDE;
+Keywords=theme;dark;light;appearance;colour;color;

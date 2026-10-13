@@ -18,6 +18,23 @@ command -v lb >/dev/null 2>&1 || {
 }
 
 echo "I: regenerating live-build tree at $LB_DIR"
+
+# live-build's downloaded .debs live in build/work/lb/cache, inside the tree
+# we are about to delete. Moving the cache aside is the difference between a
+# rebuild that costs minutes and one that re-downloads ~2.3 GB.
+#
+# Only the cache is kept. The chroot and live-build's .build stamps are
+# deliberately NOT preserved: `lb chroot` reads those stamps and skips
+# stages it thinks are done, so keeping them would make a rebuild silently
+# ignore any package added to packages/*.list.chroot. The chroot is rebuilt
+# every time; the cache is what makes that cheap.
+KEEP="$ROOT/build/work/cache-keep"
+if [ -e "$LB_DIR/cache" ]; then
+  rm -rf "${KEEP:?}"
+  mv "$LB_DIR/cache" "$KEEP"
+  echo "I: preserving package cache ($(du -sh "$KEEP" | cut -f1))"
+fi
+
 rm -rf "$LB_DIR"
 mkdir -p "$LB_DIR"
 cd "$LB_DIR"
@@ -48,6 +65,13 @@ lb config \
   --iso-publisher "$OS_PUBLISHER" \
   --iso-volume "$OS_NAME $OS_VERSION" \
   --iso-preparer "$OS_PUBLISHER"
+
+# --- put the preserved package cache back ---------------------------------
+if [ -e "$KEEP" ]; then
+  rm -rf "${LB_DIR:?}/cache"
+  mv "$KEEP" "$LB_DIR/cache"
+  echo "I: restored package cache"
+fi
 
 # --- graft this repository's sources into the live-build tree -------------
 mkdir -p config/package-lists config/hooks/normal config/includes.chroot
@@ -98,8 +122,11 @@ cp -a "$ROOT/theme/wallpapers/bashan-ridge-3840x2160.png" \
       "$inc/wallpapers/Bashan/contents/images/3840x2160.png"
 cp -a "$ROOT/theme/wallpapers/bashan-ridge-1920x1080.png" \
       "$inc/wallpapers/Bashan/contents/images/1920x1080.png"
-cp -a "$ROOT/theme/color-schemes/Bashan.colors" "$inc/color-schemes/"
-cp -a "$ROOT/theme/look-and-feel/com.bashan.desktop" "$inc/plasma/look-and-feel/"
+# Both colour schemes and both look-and-feel packages. Shipping the light
+# look-and-feel is what puts "Bashan Light" in System Settings > Global
+# Theme, so the user gets a one-click switch with no code of ours running.
+cp -a "$ROOT"/theme/color-schemes/*.colors "$inc/color-schemes/"
+cp -a "$ROOT"/theme/look-and-feel/com.bashan.desktop* "$inc/plasma/look-and-feel/"
 
 # --- boot-chain branding ------------------------------------------------
 echo "I: boot branding"
@@ -193,8 +220,18 @@ if [ ! -d "$variant" ]; then
   echo "E: unknown TRASH_VARIANT '${TRASH_VARIANT:-}' (expected A or B)" >&2
   exit 1
 fi
-rm -rf "$inc/icons/Bashan"
+rm -rf "${inc:?}/icons/Bashan"
 cp -a "$variant" "$inc/icons/Bashan"
+
+# Bashan-Light: the same trash artwork (the glass icons read on either
+# background), a different inherit chain, and the light-tuned launcher glow
+# laid over the top. Same icon NAME, different artwork, so switching the
+# icon theme switches the dock launcher without touching the dock's own
+# configuration.
+rm -rf "${inc:?}/icons/Bashan-Light"
+cp -a "$variant" "$inc/icons/Bashan-Light"
+cp -a "$ROOT/theme/icons/_light/index.theme" "$inc/icons/Bashan-Light/index.theme"
+cp -a "$ROOT/theme/icons/_launcher-light/." "$inc/icons/Bashan-Light/"
 find config/includes.chroot -type f | sed 's|^config/includes.chroot|  /|' | sort
 
 echo "I: live-build tree ready"

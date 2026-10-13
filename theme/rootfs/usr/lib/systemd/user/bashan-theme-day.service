@@ -1,0 +1,7 @@
+[Unit]
+Description=Bashan OS: switch to the light theme for the day
+Documentation=man:bashan-theme-toggle
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bashan-theme-toggle light

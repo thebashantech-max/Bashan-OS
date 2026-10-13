@@ -11,20 +11,29 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFilter
 
-ROOT = Path(__file__).resolve().parent.parent
-PAL = json.loads((ROOT / "theme/palette.json").read_text())
+from _palette import ROOT, VARIANTS
+
 OUT = ROOT / "build/previews"
 WALL = ROOT / "theme/wallpapers"
 ICON = ROOT / "apps/rootfs/usr/share/icons/hicolor"
+ICON_LIGHT = ROOT / "theme/icons/_launcher-light"
+
+# Which variant is being drawn. main() swaps this and redraws everything,
+# which is cheaper than threading a palette through every drawing helper.
+CUR = VARIANTS["dark"]
+PAL = CUR.pal
 
 
 def c(tok, alpha=255):
-    h = PAL[tok].lstrip("#")
+    h = str(PAL[tok]).lstrip("#")
     v = tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
     return v + (int(h[6:8], 16) if len(h) == 8 else alpha,)
 
 
 def icon(name, size):
+    # The launcher has light-tuned artwork under the same name.
+    if CUR.is_light and name == "bashan-launcher":
+        return Image.open(ICON_LIGHT / f"{size}x{size}" / "apps" / f"{name}.png")
     return Image.open(ICON / f"{size}x{size}" / "apps" / f"{name}.png")
 
 
@@ -49,7 +58,7 @@ def glass_card(w, h, title, lines):
 
 
 def desktop_mockup():
-    bg = Image.open(WALL / "bashan-ridge-1920x1080.png").convert("RGBA")
+    bg = Image.open(WALL / f"bashan-ridge{CUR.suffix}-1920x1080.png").convert("RGBA")
     W, H = bg.size
     d = ImageDraw.Draw(bg)
 
@@ -111,7 +120,7 @@ def desktop_mockup():
     d.text((40, H - 36), "MOCKUP - drawn from the real palette, wallpaper and generated "
                          "icons. Lettered tiles stand in for Brave / Chrome / Dolphin / "
                          "Konsole / camera.", fill=c("text_faint"))
-    bg.convert("RGB").save(OUT / "02-desktop-mockup.png")
+    bg.convert("RGB").save(OUT / f"02-desktop-mockup{CUR.suffix}.png")
 
 
 def palette_sheet():
@@ -138,11 +147,11 @@ def palette_sheet():
             d.text((x + 10, y + 78), PAL[t], fill=c("text_faint"))
             x += 156
         y += 108
-    im.save(OUT / "03-palette.png")
+    im.save(OUT / f"03-palette{CUR.suffix}.png")
 
 
 def login_mockup():
-    bg = Image.open(WALL / "bashan-ridge-login-1920x1080.png").convert("RGBA")
+    bg = Image.open(WALL / f"bashan-ridge{CUR.suffix}-login-1920x1080.png").convert("RGBA")
     W, H = bg.size
     d = ImageDraw.Draw(bg)
     bg.alpha_composite(icon("bashan-launcher", 128), (W // 2 - 64, H // 2 - 230))
@@ -159,14 +168,17 @@ def login_mockup():
     bg.alpha_composite(card, (W // 2 - 210, H // 2 - 60))
     d.text((40, H - 36), "MOCKUP of the login screen wallpaper. The SDDM theme itself "
                          "is built in Stage 7.", fill=c("text_faint"))
-    bg.convert("RGB").save(OUT / "04-login-mockup.png")
+    bg.convert("RGB").save(OUT / f"04-login-mockup{CUR.suffix}.png")
 
 
 def main():
+    global CUR, PAL
     OUT.mkdir(parents=True, exist_ok=True)
-    desktop_mockup(); print("   build/previews/02-desktop-mockup.png")
-    palette_sheet();  print("   build/previews/03-palette.png")
-    login_mockup();   print("   build/previews/04-login-mockup.png")
+    for v in VARIANTS.values():
+        CUR, PAL = v, v.pal
+        desktop_mockup(); print(f"   build/previews/02-desktop-mockup{v.suffix}.png")
+        palette_sheet();  print(f"   build/previews/03-palette{v.suffix}.png")
+        login_mockup();   print(f"   build/previews/04-login-mockup{v.suffix}.png")
 
 
 if __name__ == "__main__":

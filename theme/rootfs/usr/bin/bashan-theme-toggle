@@ -1,0 +1,62 @@
+#!/bin/sh
+# Bashan OS — switch the desktop between the Bashan dark and light themes.
+#
+#   bashan-theme-toggle           flip to the other one
+#   bashan-theme-toggle dark      force dark
+#   bashan-theme-toggle light     force light
+#   bashan-theme-toggle status    print which one is active
+#
+# This deliberately does NOT apply a look-and-feel package. Applying one
+# re-runs its layout script, which rebuilds the dock and throws away any
+# widget the user has added or moved. Switching the four pieces separately
+# leaves the desktop layout alone, which is the whole point of a toggle you
+# can press twice a day.
+#
+# Every tool used here ships in plasma-workspace and was verified present in
+# the trixie image: plasma-apply-colorscheme, plasma-apply-desktoptheme,
+# plasma-apply-wallpaperimage and the plasma-changeicons helper.
+set -eu
+
+WALL=/usr/share/wallpapers/Bashan/contents/images
+STATE="${XDG_CONFIG_HOME:-$HOME/.config}/bashan-theme"
+CHANGEICONS=/usr/lib/x86_64-linux-gnu/libexec/plasma-changeicons
+
+current() {
+  scheme=$(kreadconfig6 --file kdeglobals --group General --key ColorScheme 2>/dev/null || true)
+  case "$scheme" in
+    BashanLight) echo light ;;
+    *)           echo dark ;;
+  esac
+}
+
+apply() {
+  mode="$1"
+  if [ "$mode" = light ]; then
+    scheme=BashanLight; dtheme=breeze-light; icons=Bashan-Light; wall=$WALL/bashan-ridge-light-3840x2160.png
+  else
+    scheme=Bashan;      dtheme=breeze-dark;  icons=Bashan;       wall=$WALL/bashan-ridge-3840x2160.png
+  fi
+
+  # Each step is allowed to fail on its own. A missing wallpaper must not
+  # leave the user with half a theme applied and an error on the terminal.
+  plasma-apply-colorscheme "$scheme"      >/dev/null 2>&1 || echo "W: colour scheme $scheme not applied" >&2
+  plasma-apply-desktoptheme "$dtheme"     >/dev/null 2>&1 || echo "W: desktop theme $dtheme not applied" >&2
+  [ -f "$wall" ] && { plasma-apply-wallpaperimage "$wall" >/dev/null 2>&1 || echo "W: wallpaper not applied" >&2; }
+  if [ -x "$CHANGEICONS" ]; then
+    "$CHANGEICONS" "$icons" >/dev/null 2>&1 || echo "W: icon theme $icons not applied" >&2
+  else
+    kwriteconfig6 --file kdeglobals --group Icons --key Theme "$icons" 2>/dev/null || true
+  fi
+
+  # Remember the choice so the welcome app and the day/night timer agree
+  # with what is actually on screen.
+  printf '%s\n' "$mode" > "$STATE"
+  echo "Bashan theme: $mode"
+}
+
+case "${1:-toggle}" in
+  dark|light) apply "$1" ;;
+  status)     current ;;
+  toggle)     if [ "$(current)" = light ]; then apply dark; else apply light; fi ;;
+  *) echo "usage: ${0##*/} [toggle|dark|light|status]" >&2; exit 2 ;;
+esac

@@ -162,8 +162,8 @@ with a genuine bootable OS on it.
 
 ## Not yet tested
 
-- BIOS (legacy) boot
-- The partition page: dual-boot offered, nothing pre-selected, Next disabled
+- Dual boot being offered on a disk with a genuinely bootable OS on it (the
+  other partition-page rules all passed; see the safety-rules table above)
 - `xprop` window class of the Bashan app (Brave would not start in a 2 GB VM
   on top of a live session)
 - Arabic and Syriac rendering on screen (fonts resolve correctly, but no

@@ -2,7 +2,7 @@
 // Applied by the "Bashan" look-and-feel. Every plasmoid id below was read
 // from the Debian packages that ship them, not guessed.
 
-var wallpaper = "/usr/share/wallpapers/Bashan/contents/images/3840x2160.png";
+var wallpaper = "/usr/share/wallpapers/Bashan/contents/images/bashan-ridge-3840x2160.png";
 
 var desks = desktops();
 for (var i = 0; i < desks.length; i++) {

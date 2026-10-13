@@ -4,6 +4,29 @@ All notable changes to the build pipeline. Newest first.
 
 ## [Unreleased]
 
+### Part B — dark and light — 2026-10-12
+- Added `theme/palette-light.json`, the same 37 token names as the dark
+  palette so every generator reads either file with no special case.
+- Added `scripts/_palette.py`: shared variant loader plus a WCAG contrast
+  check over 11 text/background rules in both variants. Wired into
+  `./build.sh test`, so a palette edit that makes text unreadable fails.
+- The dark accent `#22d3ee` measures 1.65:1 on white and could not be
+  reused; the light accent is `#0e7490` at 4.99:1.
+- Made four generators variant-aware (wallpaper, theme package, desktop
+  theme, icons). **Dark output regenerates byte-identical** — verified, not
+  assumed.
+- Moved 8 hardcoded render constants into palette tokens (`wall_*`,
+  `dock_*`, `glow_*`), so the light scene is a palette change not a branch.
+- Ships both look-and-feel packages, so System Settings > Global Theme
+  offers the switch with no custom UI.
+- Added `bashan-theme-toggle` + launcher entry. It switches scheme, desktop
+  theme, wallpaper and icon theme separately rather than applying a
+  look-and-feel, because applying one re-runs its layout and would destroy
+  the user's dock and widgets.
+- Added day/night timers, **disabled by default** (`docs/THEME-DAYNIGHT.md`).
+- Light wallpapers add ~10.8 MB uncompressed; mksquashfs deduplicates, and
+  the real ISO cost is measured in Part G.
+
 ### Part A — viewers, converters, editors — 2026-10-12
 - Added `vlc`, `gimp`, `kdenlive`, `kolourpaint`, `converseen`, `handbrake`
   to `packages/apps.list.chroot`. All six resolve in trixie, so neither

@@ -17,8 +17,8 @@ not guessed.
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-PAL = json.loads((ROOT / "theme/palette.json").read_text())
+from _palette import ROOT, VARIANTS, rgb_csv
+
 ICON_SIZES = (16, 22, 24, 32, 48, 64, 128, 256)
 
 # Dock, left to right. The Kickoff launcher is an applet, not a pinned task,
@@ -33,12 +33,12 @@ PINNED = [
 ]
 
 
-def rgb(token: str) -> str:
-    h = PAL[token].lstrip("#")[:6]
-    return ",".join(str(int(h[i:i + 2], 16)) for i in (0, 2, 4))
+def colour_scheme(v) -> str:
+    PAL = v.pal
 
+    def rgb(token: str) -> str:
+        return rgb_csv(PAL[token])
 
-def colour_scheme() -> str:
     common = f"""BackgroundNormal={rgb('bg_base')}
 BackgroundAlternate={rgb('bg_raised')}
 ForegroundNormal={rgb('text')}
@@ -57,7 +57,7 @@ DecorationHover={rgb('accent_dim')}"""
         ("Colors:Tooltip", "bg_surface"), ("Colors:Complementary", "bg_void"),
         ("Colors:Header", "bg_raised"),
     ]
-    out = ["[General]", "ColorScheme=Bashan", "Name=Bashan",
+    out = ["[General]", f"ColorScheme={v.scheme}", f"Name={v.scheme}",
            f"shadeSortColumn=true", "",
            "[WM]", f"activeBackground={rgb('bg_raised')}",
            f"activeForeground={rgb('text')}",
@@ -74,12 +74,12 @@ DecorationHover={rgb('accent_dim')}"""
     return "\n".join(out)
 
 
-def layout_js() -> str:
+def layout_js(v) -> str:
     return '''// Bashan OS - desktop and dock layout.
 // Applied by the "Bashan" look-and-feel. Every plasmoid id below was read
 // from the Debian packages that ship them, not guessed.
 
-var wallpaper = "/usr/share/wallpapers/Bashan/contents/images/3840x2160.png";
+var wallpaper = "WALLPAPER";
 
 var desks = desktops();
 for (var i = 0; i < desks.length; i++) {
@@ -147,22 +147,29 @@ if (desk) {
         trash.geometry = Qt.rect(sg.width - 188, sg.height - 188, 128, 128);
     }
 }
-'''.replace("LAUNCHERS", ",".join(PINNED))
+'''.replace("LAUNCHERS", ",".join(PINNED)) \
+     .replace("WALLPAPER",
+              f"/usr/share/wallpapers/Bashan/contents/images/"
+              f"bashan-ridge{v.suffix}-3840x2160.png")
 
 
-def main() -> None:
-    cs = ROOT / "theme/color-schemes"
-    cs.mkdir(parents=True, exist_ok=True)
-    (cs / "Bashan.colors").write_text(colour_scheme())
-    print(f"   theme/color-schemes/Bashan.colors")
+def look_and_feel(v) -> None:
+    """One look-and-feel package per variant.
 
-    laf = ROOT / "theme/look-and-feel/com.bashan.desktop"
+    Shipping two of them is what gives the user a one-click switch with no
+    code of ours involved: System Settings > Colours and System Settings >
+    Global Theme list both, and applying one sets the scheme, the desktop
+    theme and both wallpapers together.
+    """
+    laf = ROOT / "theme/look-and-feel" / v.lookandfeel
     (laf / "contents/layouts").mkdir(parents=True, exist_ok=True)
     (laf / "metadata.json").write_text(json.dumps({
         "KPlugin": {
-            "Id": "com.bashan.desktop",
-            "Name": "Bashan",
-            "Description": "The Bashan OS desktop look and feel",
+            "Id": v.lookandfeel,
+            "Name": "Bashan" if not v.is_light else "Bashan Light",
+            "Description": ("The Bashan OS desktop look and feel"
+                            if not v.is_light else
+                            "The Bashan OS desktop look and feel, light"),
             "Authors": [{"Name": "Bashan Tech LLC"}],
             "License": "Proprietary",
             "Version": "1.0",
@@ -170,9 +177,18 @@ def main() -> None:
         },
         "KPackageStructure": "Plasma/LookAndFeel",
     }, indent=4) + "\n")
+
+    wall = f"/usr/share/wallpapers/Bashan/contents/images/bashan-ridge{v.suffix}"
+    # plasmarc Theme: deliberately Breeze, not our own "Bashan" desktop theme.
+    # Plasma 6 draws a floating panel's pill, blur and border itself, so the
+    # Breeze theme already gives the dock the right shape; the dark variant
+    # was verified that way in Stage 9. Our generated desktop themes exist
+    # (see scripts/25-desktop-theme.py) but selecting one is an untested
+    # change, so it is not made here. Switching both lines together is all
+    # it would take.
     (laf / "contents/defaults").write_text(f"""[kdeglobals][General]
-ColorScheme=Bashan
-AccentColor={PAL['accent']}
+ColorScheme={v.scheme}
+AccentColor={v.pal['accent']}
 
 [kdeglobals][Icons]
 Theme=Bashan
@@ -181,19 +197,28 @@ Theme=Bashan
 widgetStyle=Breeze
 
 [plasmarc][Theme]
-name=breeze-dark
+name={'breeze-light' if v.is_light else 'breeze-dark'}
 
 [kcminputrc][Mouse]
 cursorTheme=breeze_cursors
 
 [Wallpaper][org.kde.image][General]
-Image=/usr/share/wallpapers/Bashan/contents/images/3840x2160.png
+Image={wall}-3840x2160.png
 
 [kscreenlockerrc][Greeter][Wallpaper][org.kde.image][General]
-Image=/usr/share/wallpapers/Bashan/contents/images/bashan-ridge-login-1920x1080.png
+Image={wall}-login-1920x1080.png
 """)
-    (laf / "contents/layouts/org.kde.plasma.desktop-layout.js").write_text(layout_js())
-    print(f"   theme/look-and-feel/com.bashan.desktop/ (metadata, defaults, layout)")
+    (laf / "contents/layouts/org.kde.plasma.desktop-layout.js").write_text(layout_js(v))
+    print(f"   theme/look-and-feel/{v.lookandfeel}/ (metadata, defaults, layout)")
+
+
+def main() -> None:
+    cs = ROOT / "theme/color-schemes"
+    cs.mkdir(parents=True, exist_ok=True)
+    for v in VARIANTS.values():
+        (cs / f"{v.scheme}.colors").write_text(colour_scheme(v))
+        print(f"   theme/color-schemes/{v.scheme}.colors")
+        look_and_feel(v)
 
     for variant in ("A", "B"):
         d = ROOT / f"theme/icons/Bashan-{variant}"
@@ -209,6 +234,29 @@ Directories={dirs}
             body.append(f"[{s}x{s}/places]\nSize={s}\nContext=Places\nType=Fixed\n")
         (d / "index.theme").write_text("\n".join(body))
     print("   theme/icons/Bashan-{A,B}/index.theme")
+
+    # Index for the light icon theme. 10-lb-config.sh builds Bashan-Light by
+    # copying the installed Bashan theme, dropping this index over it and
+    # laying the light launcher on top. The inherit chain is the whole point:
+    # Bashan inherits breeze-dark, whose icons are tinted pale for dark
+    # backgrounds and nearly vanish on a light one, so the light theme
+    # inherits plain breeze instead.
+    li = ROOT / "theme/icons/_light"
+    li.mkdir(parents=True, exist_ok=True)
+    dirs = ",".join(f"{s}x{s}/places" for s in ICON_SIZES)
+    dirs += "," + ",".join(f"{s}x{s}/apps" for s in ICON_SIZES)
+    body = [f"""[Icon Theme]
+Name=Bashan Light
+Comment=Bashan OS icons, light
+Inherits=breeze,hicolor
+Directories={dirs}
+"""]
+    for s in ICON_SIZES:
+        body.append(f"[{s}x{s}/places]\nSize={s}\nContext=Places\nType=Fixed\n")
+    for s in ICON_SIZES:
+        body.append(f"[{s}x{s}/apps]\nSize={s}\nContext=Applications\nType=Fixed\n")
+    (li / "index.theme").write_text("\n".join(body))
+    print("   theme/icons/_light/index.theme")
 
 
 if __name__ == "__main__":

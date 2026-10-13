@@ -12,9 +12,9 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-ROOT = Path(__file__).resolve().parent.parent
-PAL = json.loads((ROOT / "theme/palette.json").read_text())
-THEME = ROOT / "theme/rootfs/usr/share/plasma/desktoptheme/Bashan"
+from _palette import ROOT, VARIANTS
+
+THEMES = ROOT / "theme/rootfs/usr/share/plasma/desktoptheme"
 ASCII_OUT = ROOT / "theme/rootfs/usr/share/bashan/logo-ascii.txt"
 
 # 9-slice geometry for the pill. Plasma stretches `center` and the four
@@ -25,27 +25,32 @@ E = 12          # width of the stretchable edge strips
 R = 30          # visual corner radius
 
 
-def panel_svg() -> str:
+def panel_svg(v) -> str:
     """Floating dock pill, as a FrameSvg Plasma can 9-slice.
 
     Element ids are fixed by Plasma: center, top, bottom, left, right and the
     four corners. Each lives at its own offset inside one canvas.
     """
-    fill = PAL["bg_base"]
-    stroke = PAL["border_light"]
+    # Read from the palette, so the light pill is a palette change rather
+    # than a second copy of this function. A light pill needs a higher
+    # opacity and a darker border than a dark one: a pale translucent pill
+    # with a pale border on a pale wallpaper has no edge at all.
+    fill = v.pal["dock_fill"]
+    stroke = v.pal["dock_stroke"]
+    op = v.pal["dock_opacity"]
     w = C * 2 + E
     parts = []
 
     def rect(eid, x, y, ww, hh, rx=0, extra=""):
         parts.append(
             f'  <rect id="{eid}" x="{x}" y="{y}" width="{ww}" height="{hh}" '
-            f'rx="{rx}" ry="{rx}" fill="{fill}" fill-opacity="0.55" {extra}/>')
+            f'rx="{rx}" ry="{rx}" fill="{fill}" fill-opacity="{op}" {extra}/>')
 
     def edge(eid, x, y, ww, hh, side):
         """An edge strip: fill plus a 1 px border line on its outer side."""
         parts.append(f'  <g id="{eid}">')
         parts.append(f'    <rect x="{x}" y="{y}" width="{ww}" height="{hh}" '
-                     f'fill="{fill}" fill-opacity="0.55"/>')
+                     f'fill="{fill}" fill-opacity="{op}"/>')
         lx, ly, lw, lh = {
             "top":    (x, y, ww, 1),
             "bottom": (x, y + hh - 1, ww, 1),
@@ -63,7 +68,7 @@ def panel_svg() -> str:
                      f'<rect x="{x}" y="{y}" width="{C}" height="{C}"/></clipPath>')
         parts.append(f'  <g id="{eid}" clip-path="url(#{clip})">')
         parts.append(f'    <rect x="{cx}" y="{cy}" width="{R * 2}" height="{R * 2}" '
-                     f'rx="{R}" ry="{R}" fill="{fill}" fill-opacity="0.55" '
+                     f'rx="{R}" ry="{R}" fill="{fill}" fill-opacity="{op}" '
                      f'stroke="{stroke}" stroke-opacity="0.85" stroke-width="1"/>')
         parts.append("  </g>")
 
@@ -102,24 +107,27 @@ def ascii_logo(cols: int = 26) -> str:
 
 
 def main() -> None:
-    (THEME / "widgets").mkdir(parents=True, exist_ok=True)
-    (THEME / "metadata.json").write_text(json.dumps({
-        "KPlugin": {
-            "Id": "Bashan",
-            "Name": "Bashan",
-            "Description": "Bashan OS desktop theme",
-            "Authors": [{"Name": "Bashan Tech LLC"}],
-            "License": "Proprietary",
-            "Version": "1.0",
-            "Website": "https://bashan.app",
-        },
-        "X-Plasma-API": "5.0",
-    }, indent=4) + "\n")
-    (THEME / "widgets/panel-background.svg").write_text(panel_svg())
-    (THEME / "colors").write_text(
-        (ROOT / "theme/color-schemes/Bashan.colors").read_text())
-    print(f"   theme/rootfs/usr/share/plasma/desktoptheme/Bashan/ "
-          f"(metadata, colors, panel-background.svg)")
+    for v in VARIANTS.values():
+        theme = THEMES / v.desktoptheme
+        (theme / "widgets").mkdir(parents=True, exist_ok=True)
+        (theme / "metadata.json").write_text(json.dumps({
+            "KPlugin": {
+                "Id": v.desktoptheme,
+                "Name": "Bashan" if not v.is_light else "Bashan Light",
+                "Description": "Bashan OS desktop theme"
+                               + ("" if not v.is_light else ", light"),
+                "Authors": [{"Name": "Bashan Tech LLC"}],
+                "License": "Proprietary",
+                "Version": "1.0",
+                "Website": "https://bashan.app",
+            },
+            "X-Plasma-API": "5.0",
+        }, indent=4) + "\n")
+        (theme / "widgets/panel-background.svg").write_text(panel_svg(v))
+        (theme / "colors").write_text(
+            (ROOT / f"theme/color-schemes/{v.scheme}.colors").read_text())
+        print(f"   desktoptheme/{v.desktoptheme}/ "
+              f"(metadata, colors, panel-background.svg)")
 
     ASCII_OUT.parent.mkdir(parents=True, exist_ok=True)
     art = ascii_logo()

@@ -213,3 +213,118 @@ avoiding. Revisit when there is artwork.
 
 - Trash icon: variant A (faithful to reference, keeps baked-in Arabic text) vs
   variant B (text-free). Owner chooses at Stage 6.
+
+## Part B — the light variant (2026-10-12)
+
+**Dark remains the default.** Nothing about the dark theme changed: the dark
+wallpapers and the dark launcher icon regenerate byte-identical, which was
+checked with `git status` after the refactor rather than assumed.
+
+### How it is built
+
+`theme/palette-light.json` carries **the same 37 token names** as
+`theme/palette.json`. Roles are preserved, not colours — `bg_deep` is the
+text-entry surface in both files (near-black in dark, white in light), and
+`bg_void` is the strongest-contrast surface in both. Because the token names
+match, every generator reads either file with no special case, and the
+variant loop is three lines in each.
+
+`scripts/_palette.py` is the shared loader. It exposes the two variants with
+their Plasma names (`Bashan` / `BashanLight`, `com.bashan.desktop` /
+`com.bashan.desktop.light`) and the filename suffix.
+
+Four constants that used to be hardcoded in the wallpaper renderer are now
+palette tokens (`wall_glow`, `wall_vignette`, `wall_login_dim`, `wall_rim`,
+plus `wall_glow_rgb`), and three more drive the dock pill (`dock_fill`,
+`dock_stroke`, `dock_opacity`). The light scene is therefore a palette
+change, not a branch in the renderer.
+
+### What is generated per variant
+
+| Artefact | Dark | Light |
+|---|---|---|
+| Colour scheme | `Bashan.colors` | `BashanLight.colors` |
+| Look-and-feel | `com.bashan.desktop` | `com.bashan.desktop.light` |
+| Desktop theme | `Bashan` | `Bashan-Light` |
+| Wallpaper 4K / 1080p / login | `bashan-ridge-*` | `bashan-ridge-light-*` |
+| Icon theme | `Bashan` | `Bashan-Light` |
+| Launcher glow | bright cyan, strength 0.78 | dark cyan `#0e7490`, strength 0.42 |
+
+### The accent could not be reused
+
+The dark accent `#22d3ee` measures **1.65:1 on white** and is unreadable as
+text. The light accent is the same hue darkened to `#0e7490`, which measures
+**4.99:1** on the light window background. `scripts/_palette.py` enforces
+eleven contrast rules across both variants and runs as part of
+`./build.sh test`, so a future palette edit cannot quietly undo this.
+
+### Switching
+
+Two mechanisms, neither of which is custom UI:
+
+1. **System Settings → Global Theme** lists "Bashan" and "Bashan Light",
+   because both look-and-feel packages ship. No code of ours is involved.
+2. **`bashan-theme-toggle`**, also in the launcher as "Dark / Light Theme".
+
+The toggle deliberately does **not** apply a look-and-feel package. Applying
+one re-runs its layout script, which rebuilds the dock and discards any
+widget the user has added or moved. Instead it switches the four pieces
+separately — colour scheme, desktop theme, wallpaper, icon theme — using
+`plasma-apply-colorscheme`, `plasma-apply-desktoptheme`,
+`plasma-apply-wallpaperimage` and `plasma-changeicons`, all of which ship in
+`plasma-workspace` and were verified present in the built image.
+
+The launcher glow swaps because `Bashan-Light` contains different artwork
+under **the same icon name**, so changing the icon theme changes the dock
+button without touching the dock's applet configuration.
+
+Automatic day/night switching is **off by default** — see
+`docs/THEME-DAYNIGHT.md`.
+
+### Honest assessment: how hard, and what looks worse
+
+**Difficulty: moderate, and almost all of it was colour judgement rather
+than code.** The mechanical part — two palettes, a shared loader, variant
+loops in four generators — took four small patches and no new concepts. The
+dark output being byte-identical afterwards is the evidence that it was a
+clean refactor. What actually took the work was that a dark palette cannot
+be inverted into a light one. Three things had to be rethought from scratch:
+
+1. **The accent.** Covered above. It had to be re-derived, not flipped.
+2. **The horizon glow.** The wallpaper's cyan bloom is *additive*. Adding a
+   pale cyan to a pale sky clips to white and the brand cue disappears
+   entirely — the first light wallpaper had no cyan in it at all. The fix
+   was to give the wallpaper its own `wall_glow_rgb` token so the light
+   scene can use a saturated cyan where the light UI uses a pale one.
+3. **The dock pill.** A pale translucent pill with a pale border on a pale
+   wallpaper has no edge. Light needs higher opacity (0.66 vs 0.55) and a
+   darker border.
+
+**What genuinely looks worse in light, in order:**
+
+1. **The Trash icons.** The glass artwork was cut from your reference image,
+   which is lit for a dark background. On the light wallpaper it reads as
+   washed-out grey rather than glass. This is the weakest element in light
+   and cannot be fixed by palette alone — it needs a light-tuned re-cut of
+   the two icons. Not done; say the word.
+2. **The active-app indicator.** A glowing mint pill under a running app is
+   a *glow*, and a glow needs darkness around it. On light it degrades from
+   "glowing" to "a coloured dot". Still legible, no longer a signature.
+3. **The launcher mark.** Your logo is a lit hand painted on black. Its
+   halo cannot glow against white — the darker light-mode glow restores an
+   outline, but the premium lit quality is a property of the dark theme.
+4. **The active-window frame.** `accent_deep` in light is a pale cyan, so
+   the focused-window border is subtler than in dark. Comparable to stock
+   Breeze Light; acceptable, but it is a downgrade.
+
+Items 1-3 are all the same underlying fact: this identity is built on
+luminous marks against darkness, and light mode removes the darkness. The
+light theme is clean, readable and consistent, and it is not as distinctive
+as the dark one. Dark is the right default.
+
+### Not verified
+
+The toggle has never been run — nothing has started Plasma since it was
+written. The previews are mockups drawn from the real palette, real
+wallpapers and real generated icons, not screenshots. Both get exercised in
+Part G.

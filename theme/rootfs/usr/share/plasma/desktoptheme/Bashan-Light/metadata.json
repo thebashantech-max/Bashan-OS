@@ -1,0 +1,16 @@
+{
+    "KPlugin": {
+        "Id": "Bashan-Light",
+        "Name": "Bashan Light",
+        "Description": "Bashan OS desktop theme, light",
+        "Authors": [
+            {
+                "Name": "Bashan Tech LLC"
+            }
+        ],
+        "License": "Proprietary",
+        "Version": "1.0",
+        "Website": "https://bashan.app"
+    },
+    "X-Plasma-API": "5.0"
+}

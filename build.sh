@@ -116,8 +116,16 @@ cmd_test() {
   need shellcheck
   log "shellcheck on build.sh and scripts/"
   # shellcheck disable=SC2046  # intentional word splitting over found scripts
-  shellcheck -x "$ROOT/build.sh" $(find "$ROOT/scripts" -name '*.sh' -print 2>/dev/null) 2>&1 | tee -a "$LOG"
+  shellcheck -x "$ROOT/build.sh" $(find "$ROOT/scripts" -name '*.sh' -print 2>/dev/null) \
+    "$ROOT/theme/rootfs/usr/bin/bashan-theme-toggle" 2>&1 | tee -a "$LOG"
   log "shellcheck clean"
+
+  # A light theme fails in exactly one way: a colour chosen for a dark
+  # background stays in the palette and becomes unreadable text. This
+  # measures every text/background pair in both variants against WCAG.
+  log "palette contrast check (dark and light)"
+  python3 "$ROOT/scripts/_palette.py" 2>&1 | tee -a "$LOG"
+  log "contrast check passed"
 }
 
 cmd_clean() {
