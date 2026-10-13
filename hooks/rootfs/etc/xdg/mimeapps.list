@@ -1,0 +1,121 @@
+# Bashan OS — system-wide default applications.
+#
+# Photos open in Gwenview, video and audio in VLC, PDFs in Okular.
+# Every .desktop id below was read out of the actual trixie package, and
+# every MIME type below exists in trixie's shared-mime-info. Guessed names
+# fail silently, which is why they were checked rather than assumed.
+#
+# MIME names here are the canonical ones from trixie's shared-mime-info,
+# checked by scripts/52-check-defaults.sh. image/heic is kept as the one
+# deliberate alias, because that is the name phone cameras produce.
+#
+# A user can still change any of these in System Settings > Default
+# Applications; this file only sets what a fresh account starts with.
+#
+# Note: the PDF association belongs to okularApplication_pdf.desktop.
+# org.kde.okular.desktop declares no MIME types at all — it is only the
+# launcher entry — so using it here would do nothing.
+
+[Default Applications]
+# -- photos: Gwenview ---------------------------------------------------
+image/jpeg=org.kde.gwenview.desktop
+image/png=org.kde.gwenview.desktop
+image/gif=org.kde.gwenview.desktop
+image/bmp=org.kde.gwenview.desktop
+image/tiff=org.kde.gwenview.desktop
+image/webp=org.kde.gwenview.desktop
+image/heif=org.kde.gwenview.desktop
+image/heic=org.kde.gwenview.desktop
+image/avif=org.kde.gwenview.desktop
+image/jxl=org.kde.gwenview.desktop
+image/svg+xml=org.kde.gwenview.desktop
+image/x-icns=org.kde.gwenview.desktop
+image/vnd.microsoft.icon=org.kde.gwenview.desktop
+image/x-portable-pixmap=org.kde.gwenview.desktop
+image/x-portable-graymap=org.kde.gwenview.desktop
+image/x-portable-bitmap=org.kde.gwenview.desktop
+image/x-tga=org.kde.gwenview.desktop
+image/x-exr=org.kde.gwenview.desktop
+
+# -- camera RAW: Gwenview, via kimg_raw.so ------------------------------
+# GIMP cannot open these on its own: it needs darktable or RawTherapee as
+# a loader, and neither is installed. See docs/APPS.md.
+image/x-adobe-dng=org.kde.gwenview.desktop
+image/x-canon-cr2=org.kde.gwenview.desktop
+image/x-canon-cr3=org.kde.gwenview.desktop
+image/x-canon-crw=org.kde.gwenview.desktop
+image/x-nikon-nef=org.kde.gwenview.desktop
+image/x-nikon-nrw=org.kde.gwenview.desktop
+image/x-sony-arw=org.kde.gwenview.desktop
+image/x-sony-sr2=org.kde.gwenview.desktop
+image/x-sony-srf=org.kde.gwenview.desktop
+image/x-olympus-orf=org.kde.gwenview.desktop
+image/x-panasonic-rw=org.kde.gwenview.desktop
+image/x-panasonic-rw2=org.kde.gwenview.desktop
+image/x-fuji-raf=org.kde.gwenview.desktop
+image/x-pentax-pef=org.kde.gwenview.desktop
+image/x-minolta-mrw=org.kde.gwenview.desktop
+image/x-sigma-x3f=org.kde.gwenview.desktop
+image/x-kodak-dcr=org.kde.gwenview.desktop
+image/x-kodak-k25=org.kde.gwenview.desktop
+image/x-kodak-kdc=org.kde.gwenview.desktop
+
+# -- GIMP's own formats -------------------------------------------------
+image/x-xcf=gimp.desktop
+image/x-compressed-xcf=gimp.desktop
+image/vnd.adobe.photoshop=gimp.desktop
+image/openraster=gimp.desktop
+
+# -- video: VLC ---------------------------------------------------------
+video/mp4=vlc.desktop
+video/mpeg=vlc.desktop
+video/mp2t=vlc.desktop
+video/x-matroska=vlc.desktop
+video/webm=vlc.desktop
+video/quicktime=vlc.desktop
+video/vnd.avi=vlc.desktop
+video/x-ms-wmv=vlc.desktop
+application/vnd.ms-asf=vlc.desktop
+video/x-flv=vlc.desktop
+video/ogg=vlc.desktop
+video/x-theora+ogg=vlc.desktop
+video/3gpp=vlc.desktop
+video/3gpp2=vlc.desktop
+video/x-ogm+ogg=vlc.desktop
+
+# -- audio: VLC ---------------------------------------------------------
+audio/mpeg=vlc.desktop
+audio/mp4=vlc.desktop
+audio/flac=vlc.desktop
+audio/ogg=vlc.desktop
+audio/x-vorbis+ogg=vlc.desktop
+audio/x-opus+ogg=vlc.desktop
+audio/vnd.wave=vlc.desktop
+audio/x-ms-wma=vlc.desktop
+audio/aac=vlc.desktop
+audio/x-aiff=vlc.desktop
+audio/midi=vlc.desktop
+audio/x-matroska=vlc.desktop
+application/ogg=vlc.desktop
+
+# -- documents ----------------------------------------------------------
+application/pdf=okularApplication_pdf.desktop
+application/x-gzpdf=okularApplication_pdf.desktop
+application/x-bzpdf=okularApplication_pdf.desktop
+application/epub+zip=org.kde.okular.desktop
+application/vnd.comicbook+zip=org.kde.okular.desktop
+application/vnd.comicbook-rar=org.kde.okular.desktop
+image/vnd.djvu=org.kde.okular.desktop
+application/postscript=org.kde.okular.desktop
+
+# -- text and archives --------------------------------------------------
+text/plain=org.kde.kate.desktop
+text/markdown=org.kde.kate.desktop
+application/zip=org.kde.ark.desktop
+application/x-tar=org.kde.ark.desktop
+application/gzip=org.kde.ark.desktop
+application/x-bzip2=org.kde.ark.desktop
+application/x-xz=org.kde.ark.desktop
+application/zstd=org.kde.ark.desktop
+application/vnd.rar=org.kde.ark.desktop
+application/x-7z-compressed=org.kde.ark.desktop

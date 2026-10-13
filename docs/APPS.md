@@ -139,3 +139,119 @@ turn it on in System Settings > Search.
 | `plasma-vault` + `cryfs` | **flag** | encrypted folders, rarely used |
 
 Figures for actual idle RAM require a booted system and come at Stage 9.
+
+## Part A additions — viewers, converters, editors (2026-10-12)
+
+Every package name below was resolved against the **real trixie archive**,
+and every size is the **true marginal cost** measured by simulating the
+install against the already-built 7.6 GB chroot — not a guess from the
+package's own size.
+
+| Package | trixie version | Added, installed | New pkgs |
+|---|---|---|---|
+| `vlc` | 3.0.24-0+deb13u1 | **63.2 MB** | 12 |
+| `gimp` | 3.0.4-3+deb13u11 | **131.4 MB** | 19 |
+| `kdenlive` | 24.12.3-2+deb13u1 | **291.6 MB** | 85 |
+| `kolourpaint` | 4:25.04.0-1 | **11.1 MB** | 4 |
+| `converseen` | 0.14.0.0-1 | **2.2 MB** | 2 |
+| `handbrake` | 1.9.2+ds1-1 | **43.9 MB** | 7 |
+| **total** | | **543.5 MB** | **129** |
+
+Converseen and HandBrake both exist in trixie, so neither fallback was
+needed. Gwenview and Okular were already installed in Stage 4.
+
+### Image and video formats cost nothing
+
+HEIC, AVIF, JPEG XL, WebP, TIFF and camera RAW are **already supported** by
+packages installed in Stage 4, so no package was added for any of them:
+
+| Format | Provided by | Already installed |
+|---|---|---|
+| HEIC / HEIF | `kimg_heif.so` (kimageformat6-plugins) | yes |
+| AVIF | `kimg_avif.so` | yes |
+| JPEG XL | `kimg_jxl.so` | yes |
+| WebP | `libqwebp.so` (qt6-image-formats-plugins) | yes |
+| TIFF | `libqtiff.so` | yes |
+| Camera RAW | `kimg_raw.so` + `rawthumbnail.so` | yes |
+
+Audio/video codecs likewise: `gstreamer1.0-plugins-{good,bad,ugly}` and
+`gstreamer1.0-libav` were already installed, and `vlc` brings
+`vlc-plugin-base`. `libavcodec-extra` (16.3 MB) was **not** added — it would
+swap out `libavcodec61` for the extra-codecs build for a small gain in rare
+formats, and it widens the patent surface. It remains one apt command away.
+
+### RAW: what actually works, and what does not
+
+- **Viewing and thumbnailing RAW works.** `kimg_raw.so` is a Qt image
+  plugin, so Gwenview opens RAW at full size, and
+  `kdegraphics-thumbnailers` gives Dolphin RAW thumbnails. Both verified
+  present as files; neither has been exercised on a real `.cr2`/`.nef` yet.
+- **Editing RAW in GIMP does not work out of the box.** GIMP has no RAW
+  loader of its own — it hands RAW files to darktable or RawTherapee, and
+  neither is installed. Installing one costs roughly 100-200 MB. Not added:
+  it was not requested, and it is one click away in Discover.
+
+### Default applications
+
+`/etc/xdg/mimeapps.list` (87 associations): photos open in **Gwenview**,
+video and audio in **VLC**, PDFs in **Okular**, `.xcf`/`.psd` in **GIMP**,
+text in Kate, archives in Ark.
+
+This is checked, not assumed. `scripts/52-check-defaults.sh` validates every
+`.desktop` id against the files the installed system will really have, and
+every MIME name against trixie's `shared-mime-info`. It is worth running
+because a wrong name in `mimeapps.list` **fails silently** — the association
+is ignored and the file opens in whatever app wins by chance.
+
+It caught three real defects when first run:
+
+1. `image/x-psd` was pointed at Gwenview while its canonical name
+   `image/vnd.adobe.photoshop` was pointed at GIMP — the same format
+   assigned to two apps.
+2. `image/x-webp` is not a MIME type in trixie at all, despite Gwenview's
+   own `.desktop` declaring it. A dead line.
+3. Six more entries (`audio/opus`, `audio/x-wav`, `video/avi`,
+   `video/x-ms-asf`, `application/x-cb{z,r}`) were aliases rather than
+   canonical names.
+
+One alias is kept deliberately: `image/heic`, because that is the name phone
+cameras produce.
+
+### Phoning home — measured, not assumed
+
+Each shipped binary was scanned for update/telemetry URLs.
+
+| App | Finding | Action |
+|---|---|---|
+| **GIMP** | contains `https://www.gimp.org/gimp_versions.json` and checks it for new releases | `(check-update no)` in `/etc/skel/.config/GIMP/3.0/gimprc` |
+| **Converseen** | contains `https://converseen.fasterland.net/update/` and `https://fasterland.net/software-updates/converseen-version.txt` | best-effort off in `/etc/skel/.config/Faster/Converseen.conf` — **see the caveat below** |
+| **VLC** | no update URL (Debian builds the notifier out). Its album-art lookup is the only outbound call | `qt-privacy-ask=0` + `metadata-network-access=0` in `/etc/skel/.config/vlc/vlcrc`; also suppresses the first-run network dialog |
+| **Kdenlive** | no update or telemetry URL found | KUserFeedback pinned to 0 system-wide |
+| **KolourPaint** | no update or telemetry URL found | none needed |
+| **HandBrake** | no update or telemetry URL found in the shipped files | none needed |
+
+None of the six requires an account, sign-up, login or payment, and all six
+are free software in Debian main.
+
+**Caveat on Converseen:** the two setting keys (`checkCheckUpdates`,
+`DialogShowUpdateMsg`) were read out of the binary, not confirmed by running
+Converseen and reading the file it writes. If a startup version check still
+happens, the fix is to read `~/.config/Faster/Converseen.conf` after first
+run and correct the key names. This is flagged rather than claimed.
+
+### Idle RAM
+
+**None of the six adds an idle cost.** All are user-launched applications
+with no daemon, no autostart entry and no background indexer. Verified by
+the absence of any `.service`, `systemd/user` or `autostart` file in the six
+`.deb`s. The only idle effect is a slightly larger icon/MIME cache.
+
+### Deliberately excluded
+
+`krita`, `obs-studio` and `audacity` all resolve in trixie and are all one
+click away in Discover. Keeping them out of the ISO is the single biggest
+size saving available in this part.
+
+### Not done
+
+Nothing was pinned to the dock, as instructed.

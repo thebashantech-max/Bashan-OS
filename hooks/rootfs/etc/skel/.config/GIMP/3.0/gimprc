@@ -1,0 +1,6 @@
+# Bashan OS — GIMP defaults.
+#
+# Measured: the shipped GIMP binary contains the URL
+# https://www.gimp.org/gimp_versions.json and checks it for new releases.
+# This turns that off. Nothing else in GIMP contacts the network.
+(check-update no)

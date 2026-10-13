@@ -1,0 +1,12 @@
+# Bashan OS — VLC defaults: no first-run questions, no network lookups.
+#
+# qt-privacy-ask=0 suppresses the dialog VLC shows on first launch asking
+# about network access. Verified present in trixie's libqt_plugin.so.
+# Debian's VLC is built without the update notifier, so there is no
+# qt-updates-notif option to switch off.
+[qt]
+qt-privacy-ask=0
+
+# Album-art and metadata lookups are the only thing VLC would send out.
+[core]
+metadata-network-access=0

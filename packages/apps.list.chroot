@@ -19,3 +19,33 @@ kde-spectacle
 # Small utilities
 kcalc
 kamoso
+
+# --- Viewing / playback ------------------------------------------------
+# VLC plays everything we ship codecs for and is the default for video and
+# audio (see /etc/xdg/mimeapps.list). No account, no telemetry; its two
+# network features (album-art lookup, update check) are switched off in
+# /etc/skel/.config/vlc/vlcrc.
+vlc
+
+# --- Editors -----------------------------------------------------------
+# Deliberately NOT here: krita, obs-studio, audacity. All three are in
+# trixie and are one click away in Discover; keeping them out saves roughly
+# 1.1 GB installed and none of them is needed for everyday use.
+kolourpaint
+gimp
+kdenlive
+
+# --- Converters --------------------------------------------------------
+# Both resolve in trixie, so no fallback was needed.
+converseen
+handbrake
+
+# NOTE on image formats: nothing is added for HEIC, AVIF, JPEG XL, WebP,
+# TIFF or camera RAW. All of it is already present and costs 0 bytes, via
+# kimageformat6-plugins (kimg_heif, kimg_avif, kimg_jxl, kimg_raw, ...) and
+# qt6-image-formats-plugins (webp, tiff, icns), both already in
+# desktop.list.chroot. Dolphin's RAW thumbnails come from
+# kdegraphics-thumbnailers, also already installed.
+# NOTE on codecs: gstreamer good/bad/ugly/libav are already installed and
+# vlc brings vlc-plugin-base, so H.264/H.265/VP9/AV1/AAC/MP3/FLAC all play
+# without libavcodec-extra. Patent questions are logged in docs/legal/.

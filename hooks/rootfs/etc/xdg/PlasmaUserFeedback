@@ -1,0 +1,5 @@
+# Bashan OS — KDE's own usage statistics, off system-wide.
+# KUserFeedback is opt-in upstream (level 0 = send nothing); this pins it so
+# it cannot be switched on by a future default change.
+[Global]
+FeedbackLevel=0

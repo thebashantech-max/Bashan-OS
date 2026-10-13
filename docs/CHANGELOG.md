@@ -4,6 +4,29 @@ All notable changes to the build pipeline. Newest first.
 
 ## [Unreleased]
 
+### Part A — viewers, converters, editors — 2026-10-12
+- Added `vlc`, `gimp`, `kdenlive`, `kolourpaint`, `converseen`, `handbrake`
+  to `packages/apps.list.chroot`. All six resolve in trixie, so neither
+  converter fallback was needed. **+543.5 MB installed, 129 new packages**,
+  measured against the real chroot rather than estimated.
+- Added **nothing** for HEIC, AVIF, JPEG XL, WebP, TIFF or RAW: all are
+  already provided by `kimageformat6-plugins` and
+  `qt6-image-formats-plugins` from Stage 4. Same for audio/video codecs.
+  `libavcodec-extra` deliberately skipped.
+- Added `/etc/xdg/mimeapps.list`: 87 default-app associations — photos to
+  Gwenview, video and audio to VLC, PDFs to Okular.
+- Added `scripts/52-check-defaults.sh`, which validates every `.desktop` id
+  and MIME name against what the installed system will really have. It
+  caught three real defects on first run, including the same image format
+  assigned to two different apps. shellcheck-clean.
+- Measured each new binary for phone-home behaviour. **GIMP** and
+  **Converseen** both contain update-check URLs and are now switched off via
+  `/etc/skel`; VLC's first-run network dialog and album-art lookup are off.
+  Kdenlive, KolourPaint and HandBrake had no such URL in their shipped files.
+- Pinned KDE's `PlasmaUserFeedback` to level 0 system-wide.
+- None of the six adds idle RAM: no daemons, no autostart entries.
+- Nothing pinned to the dock.
+
 ### Stage 8 — 2026-10-12
 - Added `i18n/strings.json`: 20 Bashan-specific strings in all 13 languages,
   260 entries, each language carrying an honest confidence rating.
