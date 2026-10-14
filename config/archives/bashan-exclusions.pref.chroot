@@ -61,3 +61,10 @@ Pin-Priority: -1
 Package: cups-browsed
 Pin: release *
 Pin-Priority: -1
+
+# 4.6 MB plus a background service. Owner confirmed the target laptop has no
+# SIM slot, and ModemManager exists only to drive cellular modems. A
+# Recommends of network-manager, so removing it does not touch networking.
+Package: modemmanager
+Pin: release *
+Pin-Priority: -1

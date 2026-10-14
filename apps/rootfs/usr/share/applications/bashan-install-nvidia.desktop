@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=NVIDIA Graphics Driver
+GenericName=Graphics driver installer
+Comment=Install NVIDIA's driver for games and heavy video work
+Exec=bashan-install-nvidia
+Icon=preferences-desktop-display
+Terminal=false
+Categories=System;Settings;HardwareSettings;
+Keywords=nvidia;graphics;driver;gpu;games;
+StartupNotify=true

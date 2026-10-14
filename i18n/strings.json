@@ -1347,6 +1347,186 @@
         "ckb": "تۆر بە ناردنی هاتوچۆکەت بە چەند کۆمپیوتەرێکدا لە سەرانسەری جیهان، دەشارێتەوە سەردانی چ ماڵپەڕێک دەکەیت. یەکەم جار کە دەیکەیتەوە، وێبگەڕەکە لە پڕۆژەی تۆرەوە دادەبەزێنرێت، بۆیە پێویستت بە ئینتەرنێتە. دوو ئاگاداری ڕاستگۆیانە: بە ڕوونی لە گەڕانی ئاسایی خاوترە، و هەندێک ماڵپەڕ و بانق بە تەواوی ڕێگەی لێدەگرن.",
         "syr": "ܬܘܪ ܡܛܫܐ ܐܝܠܝܢ ܕܘܟܝܬܐ ܕܣܥܪ ܐܢܬ, ܒܕܡܥܒܪ ܪܕܝܟ ܥܠ ܟܡܐ ܡܚܫܒܬܐ ܒܟܠܗ ܥܠܡܐ. ܒܙܒܢܬܐ ܩܕܡܝܬܐ ܡܬܢܚܬ ܡܥܒܪܢܐ ܡܢ ܦܘܠܚܢܐ ܕܬܘܪ, ܡܛܠ ܗܕܐ ܣܢܝܩ ܐܢܬ ܥܠ ܐܝܢܬܪܢܬ. ܬܪܝܢ ܙܘܗܪܐ ܫܪܝܪܐ: ܡܗܠܐ ܗܘ ܛܒ ܡܢ ܥܒܪܐ ܫܚܝܡܐ, ܘܡܢ ܕܘܟܝܬܐ ܘܒܝܬ ܓܙܐ ܐܝܬ ܕܟܠܝܢ ܠܗ ܓܡܝܪܐܝܬ."
       }
+    },
+    "nv.title": {
+      "note": "NVIDIA installer: dialog title.",
+      "t": {
+        "en": "Install the NVIDIA graphics driver",
+        "es": "Instalar el controlador gráfico NVIDIA",
+        "de": "NVIDIA-Grafiktreiber installieren",
+        "fr": "Installer le pilote graphique NVIDIA",
+        "pt": "Instalar o controlador gráfico NVIDIA",
+        "ru": "Установить драйвер видеокарты NVIDIA",
+        "el": "Εγκατάσταση οδηγού γραφικών NVIDIA",
+        "ar": "تثبيت تعريف كرت الرسوميات NVIDIA",
+        "he": "התקנת מנהל ההתקן הגרפי של NVIDIA",
+        "fa": "نصب راه‌انداز گرافیک NVIDIA",
+        "ku": "Ajokara grafîkê ya NVIDIA saz bike",
+        "ckb": "دامەزراندنی ڕاژەی گرافیکی NVIDIA",
+        "syr": "ܣܝܡ ܡܕܒܪܢܐ ܕܨܘܪܬܐ ܕNVIDIA"
+      }
+    },
+    "nv.none": {
+      "note": "NVIDIA installer: shown when no NVIDIA card is present.",
+      "t": {
+        "en": "This computer does not have an NVIDIA graphics card, so there is nothing to install. Your graphics already work with the driver that comes with Bashan OS.",
+        "es": "Este ordenador no tiene tarjeta gráfica NVIDIA, así que no hay nada que instalar. Sus gráficos ya funcionan con el controlador que trae Bashan OS.",
+        "de": "Dieser Rechner hat keine NVIDIA-Grafikkarte, es gibt also nichts zu installieren. Ihre Grafik funktioniert bereits mit dem Treiber, der Bashan OS beiliegt.",
+        "fr": "Cet ordinateur n'a pas de carte graphique NVIDIA : il n'y a rien à installer. Votre affichage fonctionne déjà avec le pilote fourni avec Bashan OS.",
+        "pt": "Este computador não tem placa gráfica NVIDIA, por isso não há nada a instalar. Os seus gráficos já funcionam com o controlador que vem com o Bashan OS.",
+        "ru": "В этом компьютере нет видеокарты NVIDIA, устанавливать нечего. Графика уже работает на драйвере, который входит в Bashan OS.",
+        "el": "Αυτός ο υπολογιστής δεν έχει κάρτα γραφικών NVIDIA, οπότε δεν υπάρχει τίποτα να εγκατασταθεί. Τα γραφικά σας λειτουργούν ήδη με τον οδηγό που συνοδεύει το Bashan OS.",
+        "ar": "لا يحتوي هذا الحاسوب على كرت رسوميات NVIDIA، فلا شيء لتثبيته. رسومياتك تعمل بالفعل بالتعريف الذي يأتي مع نظام بشان.",
+        "he": "במחשב הזה אין כרטיס מסך NVIDIA, ולכן אין מה להתקין. הגרפיקה שלך כבר עובדת עם מנהל ההתקן שמגיע עם Bashan OS.",
+        "fa": "این رایانه کارت گرافیک NVIDIA ندارد، پس چیزی برای نصب نیست. گرافیک شما از پیش با راه‌اندازی که همراه سیستم‌عامل بشان می‌آید کار می‌کند.",
+        "ku": "Ev komputer qerta grafîkê ya NVIDIA tune ye, loma tiştek ji bo sazkirinê nîne. Grafîka te jixwe bi ajokara ku bi Bashan OS re tê dixebite.",
+        "ckb": "ئەم کۆمپیوتەرە کارتی گرافیکی NVIDIA نییە، بۆیە هیچ شتێک بۆ دامەزراندن نییە. گرافیکەکەت پێشتر بە ڕاژەکەی کە لەگەڵ سیستەمی بەشاندا دێت کاردەکات.",
+        "syr": "ܗܢܐ ܡܚܫܒܬܐ ܠܝܬ ܠܗ ܦܬܩܐ ܕܨܘܪܬܐ ܕNVIDIA, ܡܛܠ ܗܕܐ ܠܝܬ ܡܕܡ ܠܡܣܡ. ܨܘܪܬܟ ܟܒܪ ܦܠܚܐ ܒܡܕܒܪܢܐ ܕܐܬܐ ܥܡ ܒܫܢ."
+      }
+    },
+    "nv.already": {
+      "note": "NVIDIA installer: driver already present.",
+      "t": {
+        "en": "The NVIDIA driver is already installed.",
+        "es": "El controlador NVIDIA ya está instalado.",
+        "de": "Der NVIDIA-Treiber ist bereits installiert.",
+        "fr": "Le pilote NVIDIA est déjà installé.",
+        "pt": "O controlador NVIDIA já está instalado.",
+        "ru": "Драйвер NVIDIA уже установлен.",
+        "el": "Ο οδηγός NVIDIA είναι ήδη εγκατεστημένος.",
+        "ar": "تعريف NVIDIA مثبَّت بالفعل.",
+        "he": "מנהל ההתקן של NVIDIA כבר מותקן.",
+        "fa": "راه‌انداز NVIDIA از قبل نصب شده است.",
+        "ku": "Ajokara NVIDIA jixwe saz kiriye.",
+        "ckb": "ڕاژەی NVIDIA پێشتر دامەزراوە.",
+        "syr": "ܡܕܒܪܢܐ ܕNVIDIA ܟܒܪ ܣܝܡ ܗܘ."
+      }
+    },
+    "nv.ask": {
+      "note": "NVIDIA installer: the main consent dialog. Explains hybrid graphics in plain words.",
+      "t": {
+        "en": "This laptop has an NVIDIA graphics card.\n\nBashan OS does not include NVIDIA's driver, because NVIDIA does not allow us to pass it on to you. It can be downloaded from Debian in one click.\n\nYou probably do not need it. The screen, video and everyday work already run on the laptop's other, built-in graphics chip. The NVIDIA card is for games and heavy video work, and it uses more battery.\n\nThis needs about 700 MB, an internet connection, and a restart afterwards. You will be asked for your password.\n\nInstall the NVIDIA driver now?",
+        "es": "Este portátil tiene una tarjeta gráfica NVIDIA.\n\nBashan OS no incluye el controlador de NVIDIA, porque NVIDIA no nos permite distribuirlo. Se puede descargar de Debian con un clic.\n\nProbablemente no lo necesite. La pantalla, el vídeo y el trabajo diario ya funcionan con el otro chip gráfico integrado del portátil. La tarjeta NVIDIA es para juegos y trabajo de vídeo pesado, y gasta más batería.\n\nEsto necesita unos 700 MB, conexión a internet y reiniciar después. Se le pedirá su contraseña.\n\n¿Instalar el controlador NVIDIA ahora?",
+        "de": "Dieses Notebook hat eine NVIDIA-Grafikkarte.\n\nBashan OS enthält NVIDIAs Treiber nicht, weil NVIDIA uns nicht erlaubt, ihn weiterzugeben. Er kann mit einem Klick von Debian geladen werden.\n\nWahrscheinlich brauchen Sie ihn nicht. Bildschirm, Video und tägliche Arbeit laufen bereits über den anderen, eingebauten Grafikchip. Die NVIDIA-Karte ist für Spiele und aufwendige Videoarbeit und verbraucht mehr Akku.\n\nDas braucht etwa 700 MB, eine Internetverbindung und danach einen Neustart. Sie werden nach Ihrem Passwort gefragt.\n\nNVIDIA-Treiber jetzt installieren?",
+        "fr": "Cet ordinateur portable a une carte graphique NVIDIA.\n\nBashan OS n'inclut pas le pilote NVIDIA, car NVIDIA ne nous autorise pas à vous le transmettre. Il peut être téléchargé depuis Debian en un clic.\n\nVous n'en avez probablement pas besoin. L'écran, la vidéo et le travail quotidien passent déjà par l'autre puce graphique intégrée. La carte NVIDIA sert aux jeux et au travail vidéo lourd, et consomme plus de batterie.\n\nCela demande environ 700 Mo, une connexion internet et un redémarrage ensuite. Votre mot de passe vous sera demandé.\n\nInstaller le pilote NVIDIA maintenant ?",
+        "pt": "Este portátil tem uma placa gráfica NVIDIA.\n\nO Bashan OS não inclui o controlador da NVIDIA, porque a NVIDIA não nos permite distribuí-lo. Pode ser descarregado da Debian com um clique.\n\nProvavelmente não precisa dele. O ecrã, o vídeo e o trabalho do dia a dia já funcionam com o outro chip gráfico integrado. A placa NVIDIA é para jogos e trabalho de vídeo pesado, e gasta mais bateria.\n\nIsto precisa de cerca de 700 MB, ligação à internet e reiniciar depois. Ser-lhe-á pedida a palavra-passe.\n\nInstalar o controlador NVIDIA agora?",
+        "ru": "В этом ноутбуке есть видеокарта NVIDIA.\n\nBashan OS не включает драйвер NVIDIA, потому что NVIDIA не разрешает нам его передавать. Его можно загрузить из Debian одним щелчком.\n\nСкорее всего, он вам не нужен. Экран, видео и повседневная работа уже идут через другой, встроенный графический чип. Видеокарта NVIDIA нужна для игр и тяжёлой работы с видео, и она быстрее расходует батарею.\n\nПонадобится около 700 МБ, интернет и перезагрузка после. У вас спросят пароль.\n\nУстановить драйвер NVIDIA сейчас?",
+        "el": "Αυτός ο φορητός έχει κάρτα γραφικών NVIDIA.\n\nΤο Bashan OS δεν περιλαμβάνει τον οδηγό της NVIDIA, επειδή η NVIDIA δεν μας επιτρέπει να σας τον δώσουμε. Μπορεί να κατέβει από τη Debian με ένα κλικ.\n\nΚατά πάσα πιθανότητα δεν τον χρειάζεστε. Η οθόνη, το βίντεο και η καθημερινή εργασία περνούν ήδη από το άλλο, ενσωματωμένο τσιπ γραφικών. Η κάρτα NVIDIA είναι για παιχνίδια και βαριά επεξεργασία βίντεο, και ξοδεύει περισσότερη μπαταρία.\n\nΧρειάζονται περίπου 700 MB, σύνδεση στο διαδίκτυο και επανεκκίνηση μετά. Θα σας ζητηθεί ο κωδικός σας.\n\nΕγκατάσταση του οδηγού NVIDIA τώρα;",
+        "ar": "يحتوي هذا الحاسوب المحمول على كرت رسوميات NVIDIA.\n\nلا يتضمن نظام بشان تعريف NVIDIA، لأن NVIDIA لا تسمح لنا بتمريره إليك. ويمكن تنزيله من دبيان بنقرة واحدة.\n\nعلى الأرجح أنك لا تحتاجه. فالشاشة والفيديو والعمل اليومي تعمل أصلًا على شريحة الرسوميات المدمجة الأخرى. كرت NVIDIA للألعاب وأعمال الفيديو الثقيلة، وهو يستهلك بطارية أكثر.\n\nيحتاج هذا نحو 700 ميجابايت واتصالًا بالإنترنت وإعادة تشغيل بعده. ستُطلب منك كلمة السر.\n\nهل تثبّت تعريف NVIDIA الآن؟",
+        "he": "למחשב הנייד הזה יש כרטיס מסך NVIDIA.\n\nBashan OS אינה כוללת את מנהל ההתקן של NVIDIA, מפני ש-NVIDIA אינה מתירה לנו להעביר אותו אליך. אפשר להוריד אותו מדביאן בלחיצה אחת.\n\nכנראה שאינך זקוק לו. המסך, הווידאו והעבודה היומיומית כבר רצים על שבב הגרפיקה המובנה האחר. כרטיס NVIDIA מיועד למשחקים ולעבודת וידאו כבדה, והוא צורך יותר סוללה.\n\nנדרשים כ-700 מ\"ב, חיבור לאינטרנט והפעלה מחדש לאחר מכן. תתבקש להזין סיסמה.\n\nלהתקין את מנהל ההתקן של NVIDIA עכשיו?",
+        "fa": "این لپ‌تاپ کارت گرافیک NVIDIA دارد.\n\nسیستم‌عامل بشان راه‌انداز NVIDIA را ندارد، چون NVIDIA به ما اجازه نمی‌دهد آن را به شما بدهیم. با یک کلیک می‌توان آن را از دبیان گرفت.\n\nاحتمالاً به آن نیاز ندارید. نمایشگر، ویدئو و کارهای روزمره از قبل روی تراشهٔ گرافیکی داخلی دیگر کار می‌کنند. کارت NVIDIA برای بازی و کار سنگین ویدئویی است و باتری بیشتری مصرف می‌کند.\n\nاین کار حدود ۷۰۰ مگابایت، اتصال اینترنت و راه‌اندازی دوباره پس از آن لازم دارد. رمز شما پرسیده می‌شود.\n\nهم‌اکنون راه‌انداز NVIDIA نصب شود؟",
+        "ku": "Vê laptopê qerteke grafîkê ya NVIDIA heye.\n\nBashan OS ajokara NVIDIA nahewîne, ji ber ku NVIDIA destûrê nade me ku em wê bidin te. Bi tikandinekê ji Debian tê daxistin.\n\nDibe ku tu pê re ne hewce bî. Ekran, vîdyo û karê rojane jixwe bi çîpa grafîkê ya din a hundirîn dixebitin. Qerta NVIDIA ji bo lîstikan û karê vîdyoyê yê giran e, û bateriyê zêdetir dixwe.\n\nEv nêzîkî 700 MB, girêdana înternetê û ji nû ve destpêkirinek piştre dixwaze. Dê şîfreya te were pirsîn.\n\nAjokara NVIDIA niha were sazkirin?",
+        "ckb": "ئەم لاپتۆپە کارتی گرافیکی NVIDIA هەیە.\n\nسیستەمی بەشان ڕاژەی NVIDIA لەخۆناگرێت، چونکە NVIDIA ڕێگەمان پێنادات بۆ تۆی بنێرین. بە کلیکێک لە دەبیانەوە دادەبەزێنرێت.\n\nلەوانەیە پێویستت پێی نەبێت. شاشە، ڤیدیۆ و کاری ڕۆژانە پێشتر لەسەر چیپە گرافیکییە ناوەکییەکەی تر کاردەکەن. کارتی NVIDIA بۆ یاری و کاری قورسی ڤیدیۆیە، و باتری زیاتر بەکاردەهێنێت.\n\nئەمە نزیکەی ٧٠٠ مێگابایت، پەیوەندی ئینتەرنێت و دەستپێکردنەوەیەک لەدوایدا دەوێت. داوای وشەی نهێنیت لێدەکرێت.\n\nئێستا ڕاژەی NVIDIA دابمەزرێت؟",
+        "syr": "ܠܗܢܐ ܠܦܛܘܦ ܐܝܬ ܦܬܩܐ ܕܨܘܪܬܐ ܕNVIDIA.\n\nܒܫܢ ܠܐ ܐܝܬ ܒܗ ܡܕܒܪܢܐ ܕNVIDIA, ܡܛܠ ܕNVIDIA ܠܐ ܫܒܩܐ ܠܢ ܕܢܬܠܝܘܗܝ ܠܟ. ܒܚܕܐ ܢܩܫܬܐ ܡܬܢܚܬ ܡܢ ܕܒܝܐܢ.\n\nܟܒܪ ܠܐ ܣܢܝܩ ܐܢܬ ܥܠܘܗܝ. ܦܪܣܘܦܐ, ܚܙܘܢܐ ܘܥܒܕܐ ܕܟܠܝܘܡ ܟܒܪ ܦܠܚܝܢ ܥܠ ܨܘܒܥܐ ܕܨܘܪܬܐ ܐܚܪܢܐ ܕܓܘܐ. ܦܬܩܐ ܕNVIDIA ܐܝܬܘܗܝ ܠܓܘܚܟܐ ܘܠܥܒܕܐ ܥܫܝܢܐ ܕܚܙܘܢܐ, ܘܐܟܠ ܝܬܝܪ ܡܢ ܒܛܪܝܐ.\n\nܗܕܐ ܒܥܝܐ ܐܝܟ 700 MB, ܩܘܛܪܐ ܕܐܝܢܬܪܢܬ ܘܫܘܪܝܐ ܚܕܬܐ ܒܬܪܟܢ. ܢܬܒܥܐ ܡܢܟ ܡܠܬܐ ܕܥܠܠܬܐ.\n\nܢܬܬܣܝܡ ܡܕܒܪܢܐ ܕNVIDIA ܗܫܐ?"
+      }
+    },
+    "nv.sb": {
+      "note": "NVIDIA installer: the Secure Boot / MOK explanation. The hardest thing in the whole system to explain to a non-technical user, so it is written as three numbered steps.",
+      "t": {
+        "en": "One extra step, because Secure Boot is switched on.\n\nSecure Boot only lets this computer run software that carries a signature. The NVIDIA driver is built here, on your own machine, so it has no signature yet and Secure Boot would refuse to load it.\n\nTo allow it, the computer must be told to trust a key made on this machine. Three steps:\n\n1. Choose a password now. It is used once, in the next few minutes, and then never again. Write it down.\n\n2. The computer restarts into a plain blue screen called MOK Manager. This is normal, not a fault.\n\n3. On that screen choose \"Enroll MOK\", then \"Continue\", then \"Yes\", and type the password from step 1.\n\nThe computer then starts normally.\n\nIf you would rather not, press No. Nothing changes, and your graphics keep working as they do now.",
+        "es": "Un paso adicional, porque el Arranque Seguro está activado.\n\nEl Arranque Seguro solo deja ejecutar software que lleve una firma. El controlador NVIDIA se construye aquí, en su propia máquina, así que todavía no tiene firma y el Arranque Seguro se negaría a cargarlo.\n\nPara permitirlo, hay que decirle al ordenador que confíe en una clave creada en esta máquina. Tres pasos:\n\n1. Elija una contraseña ahora. Se usa una sola vez, en los próximos minutos, y nunca más. Anótela.\n\n2. El ordenador se reinicia en una pantalla azul sencilla llamada MOK Manager. Es normal, no es un fallo.\n\n3. En esa pantalla elija \"Enroll MOK\", luego \"Continue\", luego \"Yes\", y escriba la contraseña del paso 1.\n\nDespués el ordenador arranca con normalidad.\n\nSi prefiere no hacerlo, pulse No. No cambia nada y sus gráficos siguen funcionando como ahora.",
+        "de": "Ein zusätzlicher Schritt, weil Secure Boot eingeschaltet ist.\n\nSecure Boot lässt diesen Rechner nur Software ausführen, die eine Signatur trägt. Der NVIDIA-Treiber wird hier auf Ihrem eigenen Rechner gebaut, hat also noch keine Signatur, und Secure Boot würde ihn nicht laden.\n\nDamit er erlaubt wird, muss dem Rechner gesagt werden, einem auf dieser Maschine erzeugten Schlüssel zu vertrauen. Drei Schritte:\n\n1. Wählen Sie jetzt ein Passwort. Es wird einmal gebraucht, in den nächsten Minuten, danach nie wieder. Schreiben Sie es auf.\n\n2. Der Rechner startet in einen schlichten blauen Bildschirm namens MOK Manager. Das ist normal, kein Fehler.\n\n3. Wählen Sie dort \"Enroll MOK\", dann \"Continue\", dann \"Yes\", und tippen Sie das Passwort aus Schritt 1.\n\nDanach startet der Rechner normal.\n\nWenn Sie lieber nicht möchten, drücken Sie Nein. Es ändert sich nichts, und Ihre Grafik arbeitet weiter wie bisher.",
+        "fr": "Une étape supplémentaire, car le Démarrage sécurisé est activé.\n\nLe Démarrage sécurisé n'autorise que des logiciels portant une signature. Le pilote NVIDIA est construit ici, sur votre propre machine : il n'a donc pas encore de signature et le Démarrage sécurisé refuserait de le charger.\n\nPour l'autoriser, il faut dire à l'ordinateur de faire confiance à une clé créée sur cette machine. Trois étapes :\n\n1. Choisissez un mot de passe maintenant. Il sert une seule fois, dans les prochaines minutes, puis plus jamais. Notez-le.\n\n2. L'ordinateur redémarre sur un écran bleu tout simple appelé MOK Manager. C'est normal, ce n'est pas une panne.\n\n3. Sur cet écran, choisissez \"Enroll MOK\", puis \"Continue\", puis \"Yes\", et tapez le mot de passe de l'étape 1.\n\nL'ordinateur démarre ensuite normalement.\n\nSi vous préférez ne pas le faire, appuyez sur Non. Rien ne change et votre affichage continue comme avant.",
+        "pt": "Um passo adicional, porque o Arranque Seguro está ligado.\n\nO Arranque Seguro só deixa este computador executar software que tenha uma assinatura. O controlador NVIDIA é construído aqui, na sua própria máquina, por isso ainda não tem assinatura e o Arranque Seguro recusaria carregá-lo.\n\nPara o permitir, é preciso dizer ao computador que confie numa chave criada nesta máquina. Três passos:\n\n1. Escolha agora uma palavra-passe. É usada uma só vez, nos próximos minutos, e nunca mais. Escreva-a.\n\n2. O computador reinicia num ecrã azul simples chamado MOK Manager. É normal, não é uma avaria.\n\n3. Nesse ecrã escolha \"Enroll MOK\", depois \"Continue\", depois \"Yes\", e escreva a palavra-passe do passo 1.\n\nO computador arranca então normalmente.\n\nSe preferir não o fazer, carregue em Não. Nada muda e os seus gráficos continuam como estão.",
+        "ru": "Один дополнительный шаг, потому что включена Безопасная загрузка.\n\nБезопасная загрузка разрешает запускать только подписанные программы. Драйвер NVIDIA собирается здесь, на вашей машине, поэтому подписи у него пока нет, и Безопасная загрузка откажется его загружать.\n\nЧтобы разрешить, компьютеру нужно сказать доверять ключу, созданному на этой машине. Три шага:\n\n1. Придумайте пароль сейчас. Он понадобится один раз, в ближайшие минуты, и больше никогда. Запишите его.\n\n2. Компьютер перезагрузится в простой синий экран под названием MOK Manager. Это нормально, не поломка.\n\n3. На этом экране выберите \"Enroll MOK\", затем \"Continue\", затем \"Yes\", и введите пароль из шага 1.\n\nПосле этого компьютер запустится как обычно.\n\nЕсли не хотите — нажмите Нет. Ничего не изменится, графика продолжит работать как сейчас.",
+        "el": "Ένα επιπλέον βήμα, επειδή η Ασφαλής Εκκίνηση είναι ενεργή.\n\nΗ Ασφαλής Εκκίνηση επιτρέπει μόνο λογισμικό που φέρει υπογραφή. Ο οδηγός NVIDIA χτίζεται εδώ, στο δικό σας μηχάνημα, οπότε δεν έχει ακόμη υπογραφή και η Ασφαλής Εκκίνηση θα αρνιόταν να τον φορτώσει.\n\nΓια να επιτραπεί, πρέπει να πείτε στον υπολογιστή να εμπιστευτεί ένα κλειδί που φτιάχτηκε σε αυτό το μηχάνημα. Τρία βήματα:\n\n1. Επιλέξτε έναν κωδικό τώρα. Χρησιμοποιείται μία φορά, στα επόμενα λεπτά, και ποτέ ξανά. Σημειώστε τον.\n\n2. Ο υπολογιστής επανεκκινεί σε μια απλή μπλε οθόνη που λέγεται MOK Manager. Είναι φυσιολογικό, δεν είναι βλάβη.\n\n3. Σε εκείνη την οθόνη επιλέξτε \"Enroll MOK\", μετά \"Continue\", μετά \"Yes\", και πληκτρολογήστε τον κωδικό από το βήμα 1.\n\nΜετά ο υπολογιστής ξεκινά κανονικά.\n\nΑν προτιμάτε όχι, πατήστε Όχι. Τίποτα δεν αλλάζει και τα γραφικά συνεχίζουν όπως τώρα.",
+        "ar": "خطوة إضافية واحدة، لأن الإقلاع الآمن مُفعَّل.\n\nالإقلاع الآمن لا يسمح لهذا الحاسوب بتشغيل سوى البرامج التي تحمل توقيعًا. وتعريف NVIDIA يُبنى هنا على جهازك، فليس له توقيع بعد، وسيرفض الإقلاع الآمن تحميله.\n\nللسماح به، يجب إخبار الحاسوب بأن يثق بمفتاح أُنشئ على هذا الجهاز. ثلاث خطوات:\n\n١. اختر كلمة سر الآن. تُستخدم مرة واحدة خلال الدقائق القادمة ثم لا تُستخدم أبدًا. اكتبها.\n\n٢. يُعاد تشغيل الحاسوب إلى شاشة زرقاء بسيطة اسمها MOK Manager. هذا طبيعي وليس عطلًا.\n\n٣. في تلك الشاشة اختر \"Enroll MOK\" ثم \"Continue\" ثم \"Yes\"، واكتب كلمة السر من الخطوة ١.\n\nبعدها يبدأ الحاسوب بشكل طبيعي.\n\nإن كنت تفضّل عدم ذلك، اضغط لا. لا يتغير شيء وتبقى رسومياتك تعمل كما هي.",
+        "he": "שלב אחד נוסף, מפני ש-Secure Boot מופעל.\n\nSecure Boot מתיר להריץ רק תוכנה שנושאת חתימה. מנהל ההתקן של NVIDIA נבנה כאן, במחשב שלך, ולכן אין לו עדיין חתימה ו-Secure Boot יסרב לטעון אותו.\n\nכדי לאפשר זאת, צריך לומר למחשב לבטוח במפתח שנוצר במכונה הזו. שלושה שלבים:\n\n1. בחר סיסמה עכשיו. היא תשמש פעם אחת, בדקות הקרובות, ואחר כך לעולם לא. רשום אותה.\n\n2. המחשב יופעל מחדש אל מסך כחול פשוט בשם MOK Manager. זה תקין, לא תקלה.\n\n3. באותו מסך בחר \"Enroll MOK\", אחר כך \"Continue\", אחר כך \"Yes\", והקלד את הסיסמה משלב 1.\n\nלאחר מכן המחשב יעלה כרגיל.\n\nאם אתה מעדיף שלא, לחץ לא. שום דבר לא משתנה והגרפיקה ממשיכה לעבוד כמו עכשיו.",
+        "fa": "یک گام اضافی، چون راه‌اندازی امن (Secure Boot) روشن است.\n\nراه‌اندازی امن فقط به نرم‌افزاری اجازهٔ اجرا می‌دهد که امضا داشته باشد. راه‌انداز NVIDIA همین‌جا روی رایانهٔ خودتان ساخته می‌شود، پس هنوز امضا ندارد و راه‌اندازی امن از بارگذاری‌اش خودداری می‌کند.\n\nبرای اجازه دادن، باید به رایانه گفته شود به کلیدی که روی همین دستگاه ساخته شده اعتماد کند. سه گام:\n\n۱. همین حالا یک رمز انتخاب کنید. یک بار، در چند دقیقهٔ آینده، به کار می‌رود و دیگر هرگز. آن را بنویسید.\n\n۲. رایانه به صفحه‌ای آبی و ساده به نام MOK Manager راه‌اندازی می‌شود. این عادی است، خرابی نیست.\n\n۳. در آن صفحه \"Enroll MOK\"، سپس \"Continue\"، سپس \"Yes\" را انتخاب کنید و رمز گام ۱ را بزنید.\n\nپس از آن رایانه عادی بالا می‌آید.\n\nاگر ترجیح می‌دهید نه، «نه» را بزنید. هیچ چیز عوض نمی‌شود و گرافیک شما مثل حالا کار می‌کند.",
+        "ku": "Gavek zêde, ji ber ku Secure Boot vekirî ye.\n\nSecure Boot tenê destûrê dide nermalava ku îmze hildigire. Ajokara NVIDIA li vir, li ser makîneya te, tê avakirin, loma hê îmzeya wê tune ye û Secure Boot dê barkirina wê red bike.\n\nJi bo destûrdanê, divê ji komputerê re were gotin ku bi kilîtek ku li ser vê makîneyê hatiye çêkirin bawer bike. Sê gav:\n\n1. Niha şîfreyek hilbijêre. Carekê, di çend deqeyên pêş de, tê bikaranîn û paşê qet. Wê binivîse.\n\n2. Komputer ji nû ve dest pê dike û dikeve ekranek şîn a sade bi navê MOK Manager. Ev normal e, ne xerabî ye.\n\n3. Li wî ekranî \"Enroll MOK\", paşê \"Continue\", paşê \"Yes\" hilbijêre, û şîfreya gava 1 binivîse.\n\nPaşê komputer bi awayekî normal dest pê dike.\n\nGer tu tercîh dikî ku nekî, Na bitikîne. Tiştek naguhere û grafîka te wek niha dixebite.",
+        "ckb": "یەک هەنگاوی زیادە، چونکە Secure Boot کارایە.\n\nSecure Boot تەنها ڕێگە بە نەرمەکاڵایەک دەدات کە واژۆی هەبێت. ڕاژەی NVIDIA لێرە، لەسەر ئامێرەکەی خۆت، دروست دەکرێت، بۆیە هێشتا واژۆی نییە و Secure Boot ڕێگەی لە بارکردنی دەگرێت.\n\nبۆ ڕێگەپێدان، دەبێت بە کۆمپیوتەرەکە بوترێت متمانە بە کلیلێک بکات کە لەسەر ئەم ئامێرە دروستکراوە. سێ هەنگاو:\n\n١. ئێستا وشەیەکی نهێنی هەڵبژێرە. جارێک، لە چەند خولەکی داهاتوودا، بەکاردێت و پاشان هەرگیز. بینووسە.\n\n٢. کۆمپیوتەرەکە دەستپێدەکاتەوە بۆ شاشەیەکی شینی سادە بە ناوی MOK Manager. ئەمە ئاساییە، تێکچوون نییە.\n\n٣. لەو شاشەیەدا \"Enroll MOK\"، پاشان \"Continue\"، پاشان \"Yes\" هەڵبژێرە، و وشەی نهێنی هەنگاوی ١ بنووسە.\n\nپاشان کۆمپیوتەرەکە بە ئاسایی دەستپێدەکات.\n\nئەگەر پێت باشترە نا، «نەخێر» دابگرە. هیچ نەگۆڕدەبێت و گرافیکەکەت وەک ئێستا کاردەکات.",
+        "syr": "ܚܕܐ ܡܣܩܬܐ ܝܬܝܪܬܐ, ܡܛܠ ܕSecure Boot ܦܬܝܚܐ ܗܘ.\n\nSecure Boot ܫܒܩ ܠܗܢܐ ܡܚܫܒܬܐ ܕܢܦܠܘܚ ܒܠܚܘܕ ܪܟܝܟܐ ܕܐܝܬ ܠܗ ܚܬܡܐ. ܡܕܒܪܢܐ ܕNVIDIA ܗܪܟܐ ܡܬܒܢܐ, ܥܠ ܡܚܫܒܬܟ, ܡܛܠ ܗܕܐ ܥܕܟܝܠ ܠܝܬ ܠܗ ܚܬܡܐ ܘSecure Boot ܢܟܠܐ ܠܗ.\n\nܕܢܫܬܒܩ, ܘܠܐ ܕܢܬܐܡܪ ܠܡܚܫܒܬܐ ܕܢܗܝܡܢ ܒܩܠܝܕܐ ܕܐܬܥܒܕ ܥܠ ܗܕܐ ܡܚܫܒܬܐ. ܬܠܬ ܡܣܩܬܐ:\n\n1. ܓܒܝ ܡܠܬܐ ܕܥܠܠܬܐ ܗܫܐ. ܡܬܚܫܚܐ ܚܕܐ ܙܒܢܬܐ, ܒܩܛܝܢܐ ܕܐܬܝܢ, ܘܒܬܪܟܢ ܠܐ ܬܘܒ. ܟܬܘܒܝܗ.\n\n2. ܡܚܫܒܬܐ ܫܪܝܐ ܬܘܒ ܒܦܪܣܘܦܐ ܣܡܘܩܐ ܦܫܝܛܐ ܕܡܬܩܪܐ MOK Manager. ܗܕܐ ܫܚܝܡܬܐ ܗܝ, ܠܐ ܚܘܣܪܢܐ.\n\n3. ܒܗܘ ܦܪܣܘܦܐ ܓܒܝ \"Enroll MOK\", ܒܬܪܟܢ \"Continue\", ܒܬܪܟܢ \"Yes\", ܘܟܬܘܒ ܡܠܬܐ ܕܥܠܠܬܐ ܕܡܢ ܡܣܩܬܐ 1.\n\nܒܬܪܟܢ ܡܚܫܒܬܐ ܫܪܝܐ ܫܚܝܡܐܝܬ.\n\nܐܢ ܨܒܐ ܐܢܬ ܕܠܐ, ܕܚܘܩ ܠܐ. ܠܐ ܡܫܬܚܠܦ ܡܕܡ ܘܨܘܪܬܟ ܦܠܚܐ ܐܝܟ ܕܗܫܐ."
+      }
+    },
+    "nv.busy": {
+      "note": "NVIDIA installer: progress message.",
+      "t": {
+        "en": "Installing the NVIDIA driver. This can take several minutes — you can keep working.",
+        "es": "Instalando el controlador NVIDIA. Puede tardar varios minutos; puede seguir trabajando.",
+        "de": "NVIDIA-Treiber wird installiert. Das kann einige Minuten dauern — Sie können weiterarbeiten.",
+        "fr": "Installation du pilote NVIDIA. Cela peut prendre plusieurs minutes — vous pouvez continuer à travailler.",
+        "pt": "A instalar o controlador NVIDIA. Pode demorar vários minutos — pode continuar a trabalhar.",
+        "ru": "Устанавливается драйвер NVIDIA. Это может занять несколько минут — можно продолжать работать.",
+        "el": "Γίνεται εγκατάσταση του οδηγού NVIDIA. Μπορεί να πάρει μερικά λεπτά — μπορείτε να συνεχίσετε να εργάζεστε.",
+        "ar": "جارٍ تثبيت تعريف NVIDIA. قد يستغرق هذا عدة دقائق — يمكنك متابعة عملك.",
+        "he": "מתקין את מנהל ההתקן של NVIDIA. זה יכול לקחת כמה דקות — אפשר להמשיך לעבוד.",
+        "fa": "در حال نصب راه‌انداز NVIDIA. ممکن است چند دقیقه طول بکشد — می‌توانید به کارتان ادامه دهید.",
+        "ku": "Ajokara NVIDIA tê sazkirin. Dibe ku çend deqe bidome — tu dikarî karê xwe bidomînî.",
+        "ckb": "ڕاژەی NVIDIA دادەمەزرێت. لەوانەیە چەند خولەکێک بخایەنێت — دەتوانیت بەردەوام بیت لە کارەکەت.",
+        "syr": "ܡܬܬܣܝܡ ܡܕܒܪܢܐ ܕNVIDIA. ܡܨܐ ܕܢܐܪܟ ܟܡܐ ܩܛܝܢܐ — ܡܨܐ ܐܢܬ ܕܬܦܠܘܚ."
+      }
+    },
+    "nv.ok": {
+      "note": "NVIDIA installer: success, Secure Boot off, restart needed.",
+      "t": {
+        "en": "The NVIDIA driver is installed.\n\nPlease restart the computer to start using it.",
+        "es": "El controlador NVIDIA está instalado.\n\nReinicie el ordenador para empezar a usarlo.",
+        "de": "Der NVIDIA-Treiber ist installiert.\n\nBitte starten Sie den Rechner neu, um ihn zu benutzen.",
+        "fr": "Le pilote NVIDIA est installé.\n\nRedémarrez l'ordinateur pour commencer à l'utiliser.",
+        "pt": "O controlador NVIDIA está instalado.\n\nReinicie o computador para começar a usá-lo.",
+        "ru": "Драйвер NVIDIA установлен.\n\nПерезагрузите компьютер, чтобы начать им пользоваться.",
+        "el": "Ο οδηγός NVIDIA εγκαταστάθηκε.\n\nΕπανεκκινήστε τον υπολογιστή για να αρχίσετε να τον χρησιμοποιείτε.",
+        "ar": "تم تثبيت تعريف NVIDIA.\n\nأعد تشغيل الحاسوب لبدء استخدامه.",
+        "he": "מנהל ההתקן של NVIDIA הותקן.\n\nהפעל מחדש את המחשב כדי להתחיל להשתמש בו.",
+        "fa": "راه‌انداز NVIDIA نصب شد.\n\nبرای شروع استفاده، رایانه را دوباره راه‌اندازی کنید.",
+        "ku": "Ajokara NVIDIA hate sazkirin.\n\nJi kerema xwe komputerê ji nû ve bide destpêkirin da ku bikar bînî.",
+        "ckb": "ڕاژەی NVIDIA دامەزرا.\n\nتکایە کۆمپیوتەرەکە دەستپێبکەرەوە بۆ بەکارهێنانی.",
+        "syr": "ܐܬܬܣܝܡ ܡܕܒܪܢܐ ܕNVIDIA.\n\nܫܪܝ ܡܚܫܒܬܐ ܬܘܒ ܕܬܬܚܫܚ ܒܗ."
+      }
+    },
+    "nv.ok.mok": {
+      "note": "NVIDIA installer: success with Secure Boot on. Repeats the blue-screen steps, because this is the moment the user must act on them.",
+      "t": {
+        "en": "The NVIDIA driver is installed, and the key has been prepared.\n\nWhen you restart, a plain blue screen called MOK Manager will appear.\n\nChoose \"Enroll MOK\", then \"Continue\", then \"Yes\", and type the password you just chose.\n\nThe computer then starts normally. If you miss that blue screen, nothing breaks — the graphics card simply will not be used, and you can run this again.",
+        "es": "El controlador NVIDIA está instalado y la clave está preparada.\n\nAl reiniciar aparecerá una pantalla azul sencilla llamada MOK Manager.\n\nElija \"Enroll MOK\", luego \"Continue\", luego \"Yes\", y escriba la contraseña que acaba de elegir.\n\nDespués el ordenador arranca con normalidad. Si se salta esa pantalla azul no se rompe nada: simplemente no se usará la tarjeta gráfica, y puede volver a ejecutar esto.",
+        "de": "Der NVIDIA-Treiber ist installiert und der Schlüssel vorbereitet.\n\nBeim Neustart erscheint ein schlichter blauer Bildschirm namens MOK Manager.\n\nWählen Sie \"Enroll MOK\", dann \"Continue\", dann \"Yes\", und tippen Sie das eben gewählte Passwort.\n\nDanach startet der Rechner normal. Wenn Sie den blauen Bildschirm verpassen, geht nichts kaputt — die Grafikkarte wird einfach nicht benutzt, und Sie können das erneut ausführen.",
+        "fr": "Le pilote NVIDIA est installé et la clé est prête.\n\nAu redémarrage, un écran bleu tout simple appelé MOK Manager apparaîtra.\n\nChoisissez \"Enroll MOK\", puis \"Continue\", puis \"Yes\", et tapez le mot de passe que vous venez de choisir.\n\nL'ordinateur démarre ensuite normalement. Si vous manquez cet écran bleu, rien n'est cassé : la carte graphique ne sera simplement pas utilisée, et vous pourrez relancer ceci.",
+        "pt": "O controlador NVIDIA está instalado e a chave está preparada.\n\nAo reiniciar, aparecerá um ecrã azul simples chamado MOK Manager.\n\nEscolha \"Enroll MOK\", depois \"Continue\", depois \"Yes\", e escreva a palavra-passe que acabou de escolher.\n\nO computador arranca então normalmente. Se falhar esse ecrã azul, nada se estraga — a placa gráfica simplesmente não será usada, e pode executar isto outra vez.",
+        "ru": "Драйвер NVIDIA установлен, ключ подготовлен.\n\nПри перезагрузке появится простой синий экран MOK Manager.\n\nВыберите \"Enroll MOK\", затем \"Continue\", затем \"Yes\", и введите только что выбранный пароль.\n\nПосле этого компьютер запустится как обычно. Если пропустите синий экран, ничего не сломается — видеокарта просто не будет использоваться, и вы сможете запустить это снова.",
+        "el": "Ο οδηγός NVIDIA εγκαταστάθηκε και το κλειδί ετοιμάστηκε.\n\nΣτην επανεκκίνηση θα εμφανιστεί μια απλή μπλε οθόνη με το όνομα MOK Manager.\n\nΕπιλέξτε \"Enroll MOK\", μετά \"Continue\", μετά \"Yes\", και πληκτρολογήστε τον κωδικό που μόλις επιλέξατε.\n\nΜετά ο υπολογιστής ξεκινά κανονικά. Αν χάσετε εκείνη τη μπλε οθόνη, δεν χαλάει τίποτα — απλώς δεν θα χρησιμοποιηθεί η κάρτα γραφικών, και μπορείτε να το ξανατρέξετε.",
+        "ar": "تم تثبيت تعريف NVIDIA وتجهيز المفتاح.\n\nعند إعادة التشغيل ستظهر شاشة زرقاء بسيطة اسمها MOK Manager.\n\nاختر \"Enroll MOK\" ثم \"Continue\" ثم \"Yes\"، واكتب كلمة السر التي اخترتها للتو.\n\nبعدها يبدأ الحاسوب بشكل طبيعي. وإن فاتتك تلك الشاشة الزرقاء فلن يتعطل شيء — ببساطة لن يُستخدم كرت الرسوميات، ويمكنك تشغيل هذا من جديد.",
+        "he": "מנהל ההתקן של NVIDIA הותקן והמפתח הוכן.\n\nבהפעלה מחדש יופיע מסך כחול פשוט בשם MOK Manager.\n\nבחר \"Enroll MOK\", אחר כך \"Continue\", אחר כך \"Yes\", והקלד את הסיסמה שבחרת זה עתה.\n\nלאחר מכן המחשב יעלה כרגיל. אם תפספס את המסך הכחול, שום דבר לא נשבר — פשוט לא ייעשה שימוש בכרטיס המסך, ותוכל להריץ את זה שוב.",
+        "fa": "راه‌انداز NVIDIA نصب شد و کلید آماده شده است.\n\nهنگام راه‌اندازی دوباره، صفحه‌ای آبی و ساده به نام MOK Manager ظاهر می‌شود.\n\n\"Enroll MOK\"، سپس \"Continue\"، سپس \"Yes\" را انتخاب کنید و رمزی را که همین حالا انتخاب کردید بزنید.\n\nپس از آن رایانه عادی بالا می‌آید. اگر آن صفحهٔ آبی را از دست دادید چیزی خراب نمی‌شود — فقط کارت گرافیک استفاده نمی‌شود و می‌توانید دوباره این را اجرا کنید.",
+        "ku": "Ajokara NVIDIA hate sazkirin û kilît hate amadekirin.\n\nDema ku ji nû ve dest pê bikî, ekranek şîn a sade bi navê MOK Manager dê xuya bibe.\n\n\"Enroll MOK\", paşê \"Continue\", paşê \"Yes\" hilbijêre, û şîfreya ku te nû hilbijart binivîse.\n\nPaşê komputer bi awayekî normal dest pê dike. Ger te ew ekrana şîn ji dest da, tiştek xera nabe — tenê qerta grafîkê nayê bikaranîn, û tu dikarî vê dîsa bimeşînî.",
+        "ckb": "ڕاژەی NVIDIA دامەزرا و کلیلەکە ئامادە کرا.\n\nکاتێک دەستپێدەکەیتەوە، شاشەیەکی شینی سادە بە ناوی MOK Manager دەردەکەوێت.\n\n\"Enroll MOK\"، پاشان \"Continue\"، پاشان \"Yes\" هەڵبژێرە، و ئەو وشە نهێنییە بنووسە کە تازە هەڵتبژارد.\n\nپاشان کۆمپیوتەرەکە بە ئاسایی دەستپێدەکات. ئەگەر ئەو شاشە شینەت لەدەست چوو، هیچ تێکناچێت — تەنها کارتی گرافیک بەکارنایەت، و دەتوانیت دووبارە ئەمە جێبەجێ بکەیت.",
+        "syr": "ܐܬܬܣܝܡ ܡܕܒܪܢܐ ܕNVIDIA, ܘܐܬܛܝܒ ܩܠܝܕܐ.\n\nܟܕ ܫܪܐ ܐܢܬ ܬܘܒ, ܢܬܚܙܐ ܦܪܣܘܦܐ ܣܡܘܩܐ ܦܫܝܛܐ ܕܡܬܩܪܐ MOK Manager.\n\nܓܒܝ \"Enroll MOK\", ܒܬܪܟܢ \"Continue\", ܒܬܪܟܢ \"Yes\", ܘܟܬܘܒ ܡܠܬܐ ܕܥܠܠܬܐ ܕܗܫܐ ܓܒܝܬ.\n\nܒܬܪܟܢ ܡܚܫܒܬܐ ܫܪܝܐ ܫܚܝܡܐܝܬ. ܐܢ ܦܪܚ ܡܢܟ ܗܘ ܦܪܣܘܦܐ ܣܡܘܩܐ, ܠܐ ܡܬܚܒܠ ܡܕܡ — ܒܠܚܘܕ ܦܬܩܐ ܕܨܘܪܬܐ ܠܐ ܢܬܚܫܚ, ܘܡܨܐ ܐܢܬ ܕܬܦܠܘܚ ܗܕܐ ܬܘܒ."
+      }
+    },
+    "nv.failed": {
+      "note": "NVIDIA installer: failure.",
+      "t": {
+        "en": "The NVIDIA driver could not be installed.\n\nThe most common reason is no internet connection. Nothing has been changed. Please check your connection and try again.",
+        "es": "No se pudo instalar el controlador NVIDIA.\n\nLo más habitual es que no haya conexión a internet. No se ha cambiado nada. Compruebe la conexión e inténtelo de nuevo.",
+        "de": "Der NVIDIA-Treiber konnte nicht installiert werden.\n\nDer häufigste Grund ist eine fehlende Internetverbindung. Es wurde nichts geändert. Bitte prüfen Sie die Verbindung und versuchen Sie es erneut.",
+        "fr": "Le pilote NVIDIA n'a pas pu être installé.\n\nLa cause la plus fréquente est l'absence de connexion internet. Rien n'a été modifié. Vérifiez votre connexion et réessayez.",
+        "pt": "Não foi possível instalar o controlador NVIDIA.\n\nA razão mais comum é não haver ligação à internet. Nada foi alterado. Verifique a ligação e tente outra vez.",
+        "ru": "Драйвер NVIDIA установить не удалось.\n\nЧаще всего причина — нет интернета. Ничего не изменено. Проверьте подключение и попробуйте снова.",
+        "el": "Ο οδηγός NVIDIA δεν μπόρεσε να εγκατασταθεί.\n\nΗ συνηθέστερη αιτία είναι η έλλειψη σύνδεσης στο διαδίκτυο. Δεν άλλαξε τίποτα. Ελέγξτε τη σύνδεση και δοκιμάστε ξανά.",
+        "ar": "تعذّر تثبيت تعريف NVIDIA.\n\nالسبب الأشيع هو عدم وجود اتصال بالإنترنت. لم يتغير شيء. تحقق من اتصالك وحاول مرة أخرى.",
+        "he": "לא ניתן היה להתקין את מנהל ההתקן של NVIDIA.\n\nהסיבה הנפוצה ביותר היא היעדר חיבור לאינטרנט. שום דבר לא שונה. בדוק את החיבור ונסה שוב.",
+        "fa": "راه‌انداز NVIDIA نصب نشد.\n\nرایج‌ترین دلیل نبودِ اتصال اینترنت است. هیچ چیزی تغییر نکرده. اتصالتان را بررسی کنید و دوباره تلاش کنید.",
+        "ku": "Ajokara NVIDIA nehate sazkirin.\n\nSedema herî gelemperî nebûna girêdana înternetê ye. Tiştek nehate guhertin. Ji kerema xwe girêdana xwe kontrol bike û dîsa biceribîne.",
+        "ckb": "نەتوانرا ڕاژەی NVIDIA دابمەزرێت.\n\nباوترین هۆکار نەبوونی پەیوەندی ئینتەرنێتە. هیچ شتێک نەگۆڕدراوە. تکایە پەیوەندییەکەت بپشکنە و دووبارە هەوڵبدەوە.",
+        "syr": "ܠܐ ܐܬܡܨܝ ܠܡܣܡ ܡܕܒܪܢܐ ܕNVIDIA.\n\nܥܠܬܐ ܕܣܓܝ ܫܟܝܚܐ ܗܝ ܕܠܝܬ ܩܘܛܪܐ ܕܐܝܢܬܪܢܬ. ܠܐ ܐܫܬܚܠܦ ܡܕܡ. ܒܚܘܪ ܩܘܛܪܟ ܘܢܣܐ ܬܘܒ."
+      }
+    },
+    "nv.cancelled": {
+      "note": "NVIDIA installer: cancelled or wrong password.",
+      "t": {
+        "en": "Installation was cancelled, or the password was not accepted.\n\nNothing has been changed.",
+        "es": "La instalación se canceló, o la contraseña no se aceptó.\n\nNo se ha cambiado nada.",
+        "de": "Die Installation wurde abgebrochen, oder das Passwort wurde nicht akzeptiert.\n\nEs wurde nichts geändert.",
+        "fr": "L'installation a été annulée, ou le mot de passe n'a pas été accepté.\n\nRien n'a été modifié.",
+        "pt": "A instalação foi cancelada, ou a palavra-passe não foi aceite.\n\nNada foi alterado.",
+        "ru": "Установка отменена или пароль не принят.\n\nНичего не изменено.",
+        "el": "Η εγκατάσταση ακυρώθηκε ή ο κωδικός δεν έγινε δεκτός.\n\nΔεν άλλαξε τίποτα.",
+        "ar": "أُلغي التثبيت، أو لم تُقبل كلمة السر.\n\nلم يتغير شيء.",
+        "he": "ההתקנה בוטלה, או שהסיסמה לא התקבלה.\n\nשום דבר לא שונה.",
+        "fa": "نصب لغو شد، یا رمز پذیرفته نشد.\n\nهیچ چیزی تغییر نکرده است.",
+        "ku": "Sazkirin hate betalkirin, an şîfre nehate qebûlkirin.\n\nTiştek nehate guhertin.",
+        "ckb": "دامەزراندن هەڵوەشێنرایەوە، یان وشەی نهێنی وەرنەگیرا.\n\nهیچ شتێک نەگۆڕدراوە.",
+        "syr": "ܐܬܒܛܠܬ ܣܝܡܬܐ, ܐܘ ܠܐ ܐܬܩܒܠܬ ܡܠܬܐ ܕܥܠܠܬܐ.\n\nܠܐ ܐܫܬܚܠܦ ܡܕܡ."
+      }
     }
   }
 }

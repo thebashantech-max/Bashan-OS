@@ -92,6 +92,84 @@ es,Spanish (Español),high,NO,w.p7.vpn.h,Page 7: VPN card heading.,A VPN,Una VPN
 es,Spanish (Español),high,NO,w.p7.vpn.b,Page 7: VPN card body. Must say a VPN needs a server and warn about free services.,"A VPN sends your internet traffic through another computer first. Bashan OS can connect to one, but it does not come with one: a VPN needs a server, either your own or a company's. Be careful with free VPN services — many of them keep records of what you do and sell them, which is the opposite of what you wanted.","Una VPN envía su tráfico de internet a través de otro ordenador primero. Bashan OS puede conectarse a una, pero no trae ninguna: una VPN necesita un servidor, propio o de una empresa. Cuidado con los servicios de VPN gratuitos: muchos guardan registros de lo que hace y los venden, que es justo lo contrario de lo que buscaba.",,
 es,Spanish (Español),high,NO,w.p7.tor.h,Page 7: Tor card heading.,Tor Browser,Navegador Tor,,
 es,Spanish (Español),high,NO,w.p7.tor.b,"Page 7: Tor card body. Must say it downloads on first run, is slower, and some sites block it.","Tor hides which websites you visit by passing your traffic through several computers around the world. Opening it the first time downloads the browser from the Tor Project, so you need an internet connection. Two honest warnings: it is noticeably slower than normal browsing, and some websites and banks block it outright.","Tor oculta qué sitios web visita pasando su tráfico por varios ordenadores repartidos por el mundo. Al abrirlo la primera vez se descarga el navegador desde el Proyecto Tor, así que necesita conexión a internet. Dos advertencias honestas: es bastante más lento que navegar normalmente, y algunos sitios y bancos lo bloquean directamente.",,
+es,Spanish (Español),high,NO,nv.title,NVIDIA installer: dialog title.,Install the NVIDIA graphics driver,Instalar el controlador gráfico NVIDIA,,
+es,Spanish (Español),high,NO,nv.none,NVIDIA installer: shown when no NVIDIA card is present.,"This computer does not have an NVIDIA graphics card, so there is nothing to install. Your graphics already work with the driver that comes with Bashan OS.","Este ordenador no tiene tarjeta gráfica NVIDIA, así que no hay nada que instalar. Sus gráficos ya funcionan con el controlador que trae Bashan OS.",,
+es,Spanish (Español),high,NO,nv.already,NVIDIA installer: driver already present.,The NVIDIA driver is already installed.,El controlador NVIDIA ya está instalado.,,
+es,Spanish (Español),high,NO,nv.ask,NVIDIA installer: the main consent dialog. Explains hybrid graphics in plain words.,"This laptop has an NVIDIA graphics card.
+
+Bashan OS does not include NVIDIA's driver, because NVIDIA does not allow us to pass it on to you. It can be downloaded from Debian in one click.
+
+You probably do not need it. The screen, video and everyday work already run on the laptop's other, built-in graphics chip. The NVIDIA card is for games and heavy video work, and it uses more battery.
+
+This needs about 700 MB, an internet connection, and a restart afterwards. You will be asked for your password.
+
+Install the NVIDIA driver now?","Este portátil tiene una tarjeta gráfica NVIDIA.
+
+Bashan OS no incluye el controlador de NVIDIA, porque NVIDIA no nos permite distribuirlo. Se puede descargar de Debian con un clic.
+
+Probablemente no lo necesite. La pantalla, el vídeo y el trabajo diario ya funcionan con el otro chip gráfico integrado del portátil. La tarjeta NVIDIA es para juegos y trabajo de vídeo pesado, y gasta más batería.
+
+Esto necesita unos 700 MB, conexión a internet y reiniciar después. Se le pedirá su contraseña.
+
+¿Instalar el controlador NVIDIA ahora?",,
+es,Spanish (Español),high,NO,nv.sb,"NVIDIA installer: the Secure Boot / MOK explanation. The hardest thing in the whole system to explain to a non-technical user, so it is written as three numbered steps.","One extra step, because Secure Boot is switched on.
+
+Secure Boot only lets this computer run software that carries a signature. The NVIDIA driver is built here, on your own machine, so it has no signature yet and Secure Boot would refuse to load it.
+
+To allow it, the computer must be told to trust a key made on this machine. Three steps:
+
+1. Choose a password now. It is used once, in the next few minutes, and then never again. Write it down.
+
+2. The computer restarts into a plain blue screen called MOK Manager. This is normal, not a fault.
+
+3. On that screen choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password from step 1.
+
+The computer then starts normally.
+
+If you would rather not, press No. Nothing changes, and your graphics keep working as they do now.","Un paso adicional, porque el Arranque Seguro está activado.
+
+El Arranque Seguro solo deja ejecutar software que lleve una firma. El controlador NVIDIA se construye aquí, en su propia máquina, así que todavía no tiene firma y el Arranque Seguro se negaría a cargarlo.
+
+Para permitirlo, hay que decirle al ordenador que confíe en una clave creada en esta máquina. Tres pasos:
+
+1. Elija una contraseña ahora. Se usa una sola vez, en los próximos minutos, y nunca más. Anótela.
+
+2. El ordenador se reinicia en una pantalla azul sencilla llamada MOK Manager. Es normal, no es un fallo.
+
+3. En esa pantalla elija ""Enroll MOK"", luego ""Continue"", luego ""Yes"", y escriba la contraseña del paso 1.
+
+Después el ordenador arranca con normalidad.
+
+Si prefiere no hacerlo, pulse No. No cambia nada y sus gráficos siguen funcionando como ahora.",,
+es,Spanish (Español),high,NO,nv.busy,NVIDIA installer: progress message.,Installing the NVIDIA driver. This can take several minutes — you can keep working.,Instalando el controlador NVIDIA. Puede tardar varios minutos; puede seguir trabajando.,,
+es,Spanish (Español),high,NO,nv.ok,"NVIDIA installer: success, Secure Boot off, restart needed.","The NVIDIA driver is installed.
+
+Please restart the computer to start using it.","El controlador NVIDIA está instalado.
+
+Reinicie el ordenador para empezar a usarlo.",,
+es,Spanish (Español),high,NO,nv.ok.mok,"NVIDIA installer: success with Secure Boot on. Repeats the blue-screen steps, because this is the moment the user must act on them.","The NVIDIA driver is installed, and the key has been prepared.
+
+When you restart, a plain blue screen called MOK Manager will appear.
+
+Choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password you just chose.
+
+The computer then starts normally. If you miss that blue screen, nothing breaks — the graphics card simply will not be used, and you can run this again.","El controlador NVIDIA está instalado y la clave está preparada.
+
+Al reiniciar aparecerá una pantalla azul sencilla llamada MOK Manager.
+
+Elija ""Enroll MOK"", luego ""Continue"", luego ""Yes"", y escriba la contraseña que acaba de elegir.
+
+Después el ordenador arranca con normalidad. Si se salta esa pantalla azul no se rompe nada: simplemente no se usará la tarjeta gráfica, y puede volver a ejecutar esto.",,
+es,Spanish (Español),high,NO,nv.failed,NVIDIA installer: failure.,"The NVIDIA driver could not be installed.
+
+The most common reason is no internet connection. Nothing has been changed. Please check your connection and try again.","No se pudo instalar el controlador NVIDIA.
+
+Lo más habitual es que no haya conexión a internet. No se ha cambiado nada. Compruebe la conexión e inténtelo de nuevo.",,
+es,Spanish (Español),high,NO,nv.cancelled,NVIDIA installer: cancelled or wrong password.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed.","La instalación se canceló, o la contraseña no se aceptó.
+
+No se ha cambiado nada.",,
 de,German (Deutsch),high,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,Die Bashan-Web-App in einem eigenen Fenster,,
 de,German (Deutsch),high,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,"Noch nicht installiert — klicken, um Google Chrome zu installieren",,
 de,German (Deutsch),high,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Bashan OS installieren,,
@@ -185,6 +263,84 @@ de,German (Deutsch),high,NO,w.p7.vpn.h,Page 7: VPN card heading.,A VPN,Ein VPN,,
 de,German (Deutsch),high,NO,w.p7.vpn.b,Page 7: VPN card body. Must say a VPN needs a server and warn about free services.,"A VPN sends your internet traffic through another computer first. Bashan OS can connect to one, but it does not come with one: a VPN needs a server, either your own or a company's. Be careful with free VPN services — many of them keep records of what you do and sell them, which is the opposite of what you wanted.","Ein VPN schickt Ihren Internetverkehr zuerst über einen anderen Rechner. Bashan OS kann sich mit einem verbinden, bringt aber keines mit: ein VPN braucht einen Server, entweder Ihren eigenen oder den einer Firma. Vorsicht bei kostenlosen VPN-Diensten — viele führen Protokoll über das, was Sie tun, und verkaufen es, also genau das Gegenteil dessen, was Sie wollten.",,
 de,German (Deutsch),high,NO,w.p7.tor.h,Page 7: Tor card heading.,Tor Browser,Tor Browser,,
 de,German (Deutsch),high,NO,w.p7.tor.b,"Page 7: Tor card body. Must say it downloads on first run, is slower, and some sites block it.","Tor hides which websites you visit by passing your traffic through several computers around the world. Opening it the first time downloads the browser from the Tor Project, so you need an internet connection. Two honest warnings: it is noticeably slower than normal browsing, and some websites and banks block it outright.","Tor verbirgt, welche Webseiten Sie besuchen, indem es Ihren Verkehr über mehrere Rechner weltweit leitet. Beim ersten Öffnen wird der Browser vom Tor-Projekt heruntergeladen, Sie brauchen also eine Internetverbindung. Zwei ehrliche Warnungen: er ist spürbar langsamer als normales Surfen, und manche Webseiten und Banken sperren ihn ganz aus.",,
+de,German (Deutsch),high,NO,nv.title,NVIDIA installer: dialog title.,Install the NVIDIA graphics driver,NVIDIA-Grafiktreiber installieren,,
+de,German (Deutsch),high,NO,nv.none,NVIDIA installer: shown when no NVIDIA card is present.,"This computer does not have an NVIDIA graphics card, so there is nothing to install. Your graphics already work with the driver that comes with Bashan OS.","Dieser Rechner hat keine NVIDIA-Grafikkarte, es gibt also nichts zu installieren. Ihre Grafik funktioniert bereits mit dem Treiber, der Bashan OS beiliegt.",,
+de,German (Deutsch),high,NO,nv.already,NVIDIA installer: driver already present.,The NVIDIA driver is already installed.,Der NVIDIA-Treiber ist bereits installiert.,,
+de,German (Deutsch),high,NO,nv.ask,NVIDIA installer: the main consent dialog. Explains hybrid graphics in plain words.,"This laptop has an NVIDIA graphics card.
+
+Bashan OS does not include NVIDIA's driver, because NVIDIA does not allow us to pass it on to you. It can be downloaded from Debian in one click.
+
+You probably do not need it. The screen, video and everyday work already run on the laptop's other, built-in graphics chip. The NVIDIA card is for games and heavy video work, and it uses more battery.
+
+This needs about 700 MB, an internet connection, and a restart afterwards. You will be asked for your password.
+
+Install the NVIDIA driver now?","Dieses Notebook hat eine NVIDIA-Grafikkarte.
+
+Bashan OS enthält NVIDIAs Treiber nicht, weil NVIDIA uns nicht erlaubt, ihn weiterzugeben. Er kann mit einem Klick von Debian geladen werden.
+
+Wahrscheinlich brauchen Sie ihn nicht. Bildschirm, Video und tägliche Arbeit laufen bereits über den anderen, eingebauten Grafikchip. Die NVIDIA-Karte ist für Spiele und aufwendige Videoarbeit und verbraucht mehr Akku.
+
+Das braucht etwa 700 MB, eine Internetverbindung und danach einen Neustart. Sie werden nach Ihrem Passwort gefragt.
+
+NVIDIA-Treiber jetzt installieren?",,
+de,German (Deutsch),high,NO,nv.sb,"NVIDIA installer: the Secure Boot / MOK explanation. The hardest thing in the whole system to explain to a non-technical user, so it is written as three numbered steps.","One extra step, because Secure Boot is switched on.
+
+Secure Boot only lets this computer run software that carries a signature. The NVIDIA driver is built here, on your own machine, so it has no signature yet and Secure Boot would refuse to load it.
+
+To allow it, the computer must be told to trust a key made on this machine. Three steps:
+
+1. Choose a password now. It is used once, in the next few minutes, and then never again. Write it down.
+
+2. The computer restarts into a plain blue screen called MOK Manager. This is normal, not a fault.
+
+3. On that screen choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password from step 1.
+
+The computer then starts normally.
+
+If you would rather not, press No. Nothing changes, and your graphics keep working as they do now.","Ein zusätzlicher Schritt, weil Secure Boot eingeschaltet ist.
+
+Secure Boot lässt diesen Rechner nur Software ausführen, die eine Signatur trägt. Der NVIDIA-Treiber wird hier auf Ihrem eigenen Rechner gebaut, hat also noch keine Signatur, und Secure Boot würde ihn nicht laden.
+
+Damit er erlaubt wird, muss dem Rechner gesagt werden, einem auf dieser Maschine erzeugten Schlüssel zu vertrauen. Drei Schritte:
+
+1. Wählen Sie jetzt ein Passwort. Es wird einmal gebraucht, in den nächsten Minuten, danach nie wieder. Schreiben Sie es auf.
+
+2. Der Rechner startet in einen schlichten blauen Bildschirm namens MOK Manager. Das ist normal, kein Fehler.
+
+3. Wählen Sie dort ""Enroll MOK"", dann ""Continue"", dann ""Yes"", und tippen Sie das Passwort aus Schritt 1.
+
+Danach startet der Rechner normal.
+
+Wenn Sie lieber nicht möchten, drücken Sie Nein. Es ändert sich nichts, und Ihre Grafik arbeitet weiter wie bisher.",,
+de,German (Deutsch),high,NO,nv.busy,NVIDIA installer: progress message.,Installing the NVIDIA driver. This can take several minutes — you can keep working.,NVIDIA-Treiber wird installiert. Das kann einige Minuten dauern — Sie können weiterarbeiten.,,
+de,German (Deutsch),high,NO,nv.ok,"NVIDIA installer: success, Secure Boot off, restart needed.","The NVIDIA driver is installed.
+
+Please restart the computer to start using it.","Der NVIDIA-Treiber ist installiert.
+
+Bitte starten Sie den Rechner neu, um ihn zu benutzen.",,
+de,German (Deutsch),high,NO,nv.ok.mok,"NVIDIA installer: success with Secure Boot on. Repeats the blue-screen steps, because this is the moment the user must act on them.","The NVIDIA driver is installed, and the key has been prepared.
+
+When you restart, a plain blue screen called MOK Manager will appear.
+
+Choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password you just chose.
+
+The computer then starts normally. If you miss that blue screen, nothing breaks — the graphics card simply will not be used, and you can run this again.","Der NVIDIA-Treiber ist installiert und der Schlüssel vorbereitet.
+
+Beim Neustart erscheint ein schlichter blauer Bildschirm namens MOK Manager.
+
+Wählen Sie ""Enroll MOK"", dann ""Continue"", dann ""Yes"", und tippen Sie das eben gewählte Passwort.
+
+Danach startet der Rechner normal. Wenn Sie den blauen Bildschirm verpassen, geht nichts kaputt — die Grafikkarte wird einfach nicht benutzt, und Sie können das erneut ausführen.",,
+de,German (Deutsch),high,NO,nv.failed,NVIDIA installer: failure.,"The NVIDIA driver could not be installed.
+
+The most common reason is no internet connection. Nothing has been changed. Please check your connection and try again.","Der NVIDIA-Treiber konnte nicht installiert werden.
+
+Der häufigste Grund ist eine fehlende Internetverbindung. Es wurde nichts geändert. Bitte prüfen Sie die Verbindung und versuchen Sie es erneut.",,
+de,German (Deutsch),high,NO,nv.cancelled,NVIDIA installer: cancelled or wrong password.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed.","Die Installation wurde abgebrochen, oder das Passwort wurde nicht akzeptiert.
+
+Es wurde nichts geändert.",,
 fr,French (Français),high,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,L'application web Bashan dans sa propre fenêtre,,
 fr,French (Français),high,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,Pas encore installé — cliquez pour installer Google Chrome,,
 fr,French (Français),high,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Installer Bashan OS,,
@@ -278,6 +434,84 @@ fr,French (Français),high,NO,w.p7.vpn.h,Page 7: VPN card heading.,A VPN,Un VPN,
 fr,French (Français),high,NO,w.p7.vpn.b,Page 7: VPN card body. Must say a VPN needs a server and warn about free services.,"A VPN sends your internet traffic through another computer first. Bashan OS can connect to one, but it does not come with one: a VPN needs a server, either your own or a company's. Be careful with free VPN services — many of them keep records of what you do and sell them, which is the opposite of what you wanted.","Un VPN fait passer votre trafic internet par un autre ordinateur d'abord. Bashan OS peut s'y connecter, mais n'en fournit aucun : un VPN a besoin d'un serveur, le vôtre ou celui d'une entreprise. Méfiez-vous des services VPN gratuits — beaucoup conservent des traces de ce que vous faites et les vendent, soit l'inverse de ce que vous cherchiez.",,
 fr,French (Français),high,NO,w.p7.tor.h,Page 7: Tor card heading.,Tor Browser,Navigateur Tor,,
 fr,French (Français),high,NO,w.p7.tor.b,"Page 7: Tor card body. Must say it downloads on first run, is slower, and some sites block it.","Tor hides which websites you visit by passing your traffic through several computers around the world. Opening it the first time downloads the browser from the Tor Project, so you need an internet connection. Two honest warnings: it is noticeably slower than normal browsing, and some websites and banks block it outright.","Tor cache les sites que vous visitez en faisant passer votre trafic par plusieurs ordinateurs dans le monde. À la première ouverture, le navigateur est téléchargé depuis le projet Tor : il vous faut donc une connexion internet. Deux avertissements honnêtes : c'est nettement plus lent que la navigation normale, et certains sites et banques le bloquent purement et simplement.",,
+fr,French (Français),high,NO,nv.title,NVIDIA installer: dialog title.,Install the NVIDIA graphics driver,Installer le pilote graphique NVIDIA,,
+fr,French (Français),high,NO,nv.none,NVIDIA installer: shown when no NVIDIA card is present.,"This computer does not have an NVIDIA graphics card, so there is nothing to install. Your graphics already work with the driver that comes with Bashan OS.",Cet ordinateur n'a pas de carte graphique NVIDIA : il n'y a rien à installer. Votre affichage fonctionne déjà avec le pilote fourni avec Bashan OS.,,
+fr,French (Français),high,NO,nv.already,NVIDIA installer: driver already present.,The NVIDIA driver is already installed.,Le pilote NVIDIA est déjà installé.,,
+fr,French (Français),high,NO,nv.ask,NVIDIA installer: the main consent dialog. Explains hybrid graphics in plain words.,"This laptop has an NVIDIA graphics card.
+
+Bashan OS does not include NVIDIA's driver, because NVIDIA does not allow us to pass it on to you. It can be downloaded from Debian in one click.
+
+You probably do not need it. The screen, video and everyday work already run on the laptop's other, built-in graphics chip. The NVIDIA card is for games and heavy video work, and it uses more battery.
+
+This needs about 700 MB, an internet connection, and a restart afterwards. You will be asked for your password.
+
+Install the NVIDIA driver now?","Cet ordinateur portable a une carte graphique NVIDIA.
+
+Bashan OS n'inclut pas le pilote NVIDIA, car NVIDIA ne nous autorise pas à vous le transmettre. Il peut être téléchargé depuis Debian en un clic.
+
+Vous n'en avez probablement pas besoin. L'écran, la vidéo et le travail quotidien passent déjà par l'autre puce graphique intégrée. La carte NVIDIA sert aux jeux et au travail vidéo lourd, et consomme plus de batterie.
+
+Cela demande environ 700 Mo, une connexion internet et un redémarrage ensuite. Votre mot de passe vous sera demandé.
+
+Installer le pilote NVIDIA maintenant ?",,
+fr,French (Français),high,NO,nv.sb,"NVIDIA installer: the Secure Boot / MOK explanation. The hardest thing in the whole system to explain to a non-technical user, so it is written as three numbered steps.","One extra step, because Secure Boot is switched on.
+
+Secure Boot only lets this computer run software that carries a signature. The NVIDIA driver is built here, on your own machine, so it has no signature yet and Secure Boot would refuse to load it.
+
+To allow it, the computer must be told to trust a key made on this machine. Three steps:
+
+1. Choose a password now. It is used once, in the next few minutes, and then never again. Write it down.
+
+2. The computer restarts into a plain blue screen called MOK Manager. This is normal, not a fault.
+
+3. On that screen choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password from step 1.
+
+The computer then starts normally.
+
+If you would rather not, press No. Nothing changes, and your graphics keep working as they do now.","Une étape supplémentaire, car le Démarrage sécurisé est activé.
+
+Le Démarrage sécurisé n'autorise que des logiciels portant une signature. Le pilote NVIDIA est construit ici, sur votre propre machine : il n'a donc pas encore de signature et le Démarrage sécurisé refuserait de le charger.
+
+Pour l'autoriser, il faut dire à l'ordinateur de faire confiance à une clé créée sur cette machine. Trois étapes :
+
+1. Choisissez un mot de passe maintenant. Il sert une seule fois, dans les prochaines minutes, puis plus jamais. Notez-le.
+
+2. L'ordinateur redémarre sur un écran bleu tout simple appelé MOK Manager. C'est normal, ce n'est pas une panne.
+
+3. Sur cet écran, choisissez ""Enroll MOK"", puis ""Continue"", puis ""Yes"", et tapez le mot de passe de l'étape 1.
+
+L'ordinateur démarre ensuite normalement.
+
+Si vous préférez ne pas le faire, appuyez sur Non. Rien ne change et votre affichage continue comme avant.",,
+fr,French (Français),high,NO,nv.busy,NVIDIA installer: progress message.,Installing the NVIDIA driver. This can take several minutes — you can keep working.,Installation du pilote NVIDIA. Cela peut prendre plusieurs minutes — vous pouvez continuer à travailler.,,
+fr,French (Français),high,NO,nv.ok,"NVIDIA installer: success, Secure Boot off, restart needed.","The NVIDIA driver is installed.
+
+Please restart the computer to start using it.","Le pilote NVIDIA est installé.
+
+Redémarrez l'ordinateur pour commencer à l'utiliser.",,
+fr,French (Français),high,NO,nv.ok.mok,"NVIDIA installer: success with Secure Boot on. Repeats the blue-screen steps, because this is the moment the user must act on them.","The NVIDIA driver is installed, and the key has been prepared.
+
+When you restart, a plain blue screen called MOK Manager will appear.
+
+Choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password you just chose.
+
+The computer then starts normally. If you miss that blue screen, nothing breaks — the graphics card simply will not be used, and you can run this again.","Le pilote NVIDIA est installé et la clé est prête.
+
+Au redémarrage, un écran bleu tout simple appelé MOK Manager apparaîtra.
+
+Choisissez ""Enroll MOK"", puis ""Continue"", puis ""Yes"", et tapez le mot de passe que vous venez de choisir.
+
+L'ordinateur démarre ensuite normalement. Si vous manquez cet écran bleu, rien n'est cassé : la carte graphique ne sera simplement pas utilisée, et vous pourrez relancer ceci.",,
+fr,French (Français),high,NO,nv.failed,NVIDIA installer: failure.,"The NVIDIA driver could not be installed.
+
+The most common reason is no internet connection. Nothing has been changed. Please check your connection and try again.","Le pilote NVIDIA n'a pas pu être installé.
+
+La cause la plus fréquente est l'absence de connexion internet. Rien n'a été modifié. Vérifiez votre connexion et réessayez.",,
+fr,French (Français),high,NO,nv.cancelled,NVIDIA installer: cancelled or wrong password.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed.","L'installation a été annulée, ou le mot de passe n'a pas été accepté.
+
+Rien n'a été modifié.",,
 pt,Portuguese (Português),high,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,A aplicação web Bashan na sua própria janela,,
 pt,Portuguese (Português),high,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,Ainda não instalado — clique para instalar o Google Chrome,,
 pt,Portuguese (Português),high,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Instalar o Bashan OS,,
@@ -371,6 +605,84 @@ pt,Portuguese (Português),high,NO,w.p7.vpn.h,Page 7: VPN card heading.,A VPN,Um
 pt,Portuguese (Português),high,NO,w.p7.vpn.b,Page 7: VPN card body. Must say a VPN needs a server and warn about free services.,"A VPN sends your internet traffic through another computer first. Bashan OS can connect to one, but it does not come with one: a VPN needs a server, either your own or a company's. Be careful with free VPN services — many of them keep records of what you do and sell them, which is the opposite of what you wanted.","Uma VPN envia o seu tráfego de internet primeiro através de outro computador. O Bashan OS pode ligar-se a uma, mas não traz nenhuma: uma VPN precisa de um servidor, seu ou de uma empresa. Cuidado com os serviços de VPN gratuitos — muitos guardam registos do que faz e vendem-nos, que é o contrário do que pretendia.",,
 pt,Portuguese (Português),high,NO,w.p7.tor.h,Page 7: Tor card heading.,Tor Browser,Navegador Tor,,
 pt,Portuguese (Português),high,NO,w.p7.tor.b,"Page 7: Tor card body. Must say it downloads on first run, is slower, and some sites block it.","Tor hides which websites you visit by passing your traffic through several computers around the world. Opening it the first time downloads the browser from the Tor Project, so you need an internet connection. Two honest warnings: it is noticeably slower than normal browsing, and some websites and banks block it outright.","O Tor esconde que sítios visita, passando o seu tráfego por vários computadores pelo mundo. Ao abri-lo pela primeira vez, o navegador é descarregado do Projeto Tor, por isso precisa de ligação à internet. Dois avisos honestos: é bastante mais lento do que navegar normalmente, e alguns sítios e bancos bloqueiam-no por completo.",,
+pt,Portuguese (Português),high,NO,nv.title,NVIDIA installer: dialog title.,Install the NVIDIA graphics driver,Instalar o controlador gráfico NVIDIA,,
+pt,Portuguese (Português),high,NO,nv.none,NVIDIA installer: shown when no NVIDIA card is present.,"This computer does not have an NVIDIA graphics card, so there is nothing to install. Your graphics already work with the driver that comes with Bashan OS.","Este computador não tem placa gráfica NVIDIA, por isso não há nada a instalar. Os seus gráficos já funcionam com o controlador que vem com o Bashan OS.",,
+pt,Portuguese (Português),high,NO,nv.already,NVIDIA installer: driver already present.,The NVIDIA driver is already installed.,O controlador NVIDIA já está instalado.,,
+pt,Portuguese (Português),high,NO,nv.ask,NVIDIA installer: the main consent dialog. Explains hybrid graphics in plain words.,"This laptop has an NVIDIA graphics card.
+
+Bashan OS does not include NVIDIA's driver, because NVIDIA does not allow us to pass it on to you. It can be downloaded from Debian in one click.
+
+You probably do not need it. The screen, video and everyday work already run on the laptop's other, built-in graphics chip. The NVIDIA card is for games and heavy video work, and it uses more battery.
+
+This needs about 700 MB, an internet connection, and a restart afterwards. You will be asked for your password.
+
+Install the NVIDIA driver now?","Este portátil tem uma placa gráfica NVIDIA.
+
+O Bashan OS não inclui o controlador da NVIDIA, porque a NVIDIA não nos permite distribuí-lo. Pode ser descarregado da Debian com um clique.
+
+Provavelmente não precisa dele. O ecrã, o vídeo e o trabalho do dia a dia já funcionam com o outro chip gráfico integrado. A placa NVIDIA é para jogos e trabalho de vídeo pesado, e gasta mais bateria.
+
+Isto precisa de cerca de 700 MB, ligação à internet e reiniciar depois. Ser-lhe-á pedida a palavra-passe.
+
+Instalar o controlador NVIDIA agora?",,
+pt,Portuguese (Português),high,NO,nv.sb,"NVIDIA installer: the Secure Boot / MOK explanation. The hardest thing in the whole system to explain to a non-technical user, so it is written as three numbered steps.","One extra step, because Secure Boot is switched on.
+
+Secure Boot only lets this computer run software that carries a signature. The NVIDIA driver is built here, on your own machine, so it has no signature yet and Secure Boot would refuse to load it.
+
+To allow it, the computer must be told to trust a key made on this machine. Three steps:
+
+1. Choose a password now. It is used once, in the next few minutes, and then never again. Write it down.
+
+2. The computer restarts into a plain blue screen called MOK Manager. This is normal, not a fault.
+
+3. On that screen choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password from step 1.
+
+The computer then starts normally.
+
+If you would rather not, press No. Nothing changes, and your graphics keep working as they do now.","Um passo adicional, porque o Arranque Seguro está ligado.
+
+O Arranque Seguro só deixa este computador executar software que tenha uma assinatura. O controlador NVIDIA é construído aqui, na sua própria máquina, por isso ainda não tem assinatura e o Arranque Seguro recusaria carregá-lo.
+
+Para o permitir, é preciso dizer ao computador que confie numa chave criada nesta máquina. Três passos:
+
+1. Escolha agora uma palavra-passe. É usada uma só vez, nos próximos minutos, e nunca mais. Escreva-a.
+
+2. O computador reinicia num ecrã azul simples chamado MOK Manager. É normal, não é uma avaria.
+
+3. Nesse ecrã escolha ""Enroll MOK"", depois ""Continue"", depois ""Yes"", e escreva a palavra-passe do passo 1.
+
+O computador arranca então normalmente.
+
+Se preferir não o fazer, carregue em Não. Nada muda e os seus gráficos continuam como estão.",,
+pt,Portuguese (Português),high,NO,nv.busy,NVIDIA installer: progress message.,Installing the NVIDIA driver. This can take several minutes — you can keep working.,A instalar o controlador NVIDIA. Pode demorar vários minutos — pode continuar a trabalhar.,,
+pt,Portuguese (Português),high,NO,nv.ok,"NVIDIA installer: success, Secure Boot off, restart needed.","The NVIDIA driver is installed.
+
+Please restart the computer to start using it.","O controlador NVIDIA está instalado.
+
+Reinicie o computador para começar a usá-lo.",,
+pt,Portuguese (Português),high,NO,nv.ok.mok,"NVIDIA installer: success with Secure Boot on. Repeats the blue-screen steps, because this is the moment the user must act on them.","The NVIDIA driver is installed, and the key has been prepared.
+
+When you restart, a plain blue screen called MOK Manager will appear.
+
+Choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password you just chose.
+
+The computer then starts normally. If you miss that blue screen, nothing breaks — the graphics card simply will not be used, and you can run this again.","O controlador NVIDIA está instalado e a chave está preparada.
+
+Ao reiniciar, aparecerá um ecrã azul simples chamado MOK Manager.
+
+Escolha ""Enroll MOK"", depois ""Continue"", depois ""Yes"", e escreva a palavra-passe que acabou de escolher.
+
+O computador arranca então normalmente. Se falhar esse ecrã azul, nada se estraga — a placa gráfica simplesmente não será usada, e pode executar isto outra vez.",,
+pt,Portuguese (Português),high,NO,nv.failed,NVIDIA installer: failure.,"The NVIDIA driver could not be installed.
+
+The most common reason is no internet connection. Nothing has been changed. Please check your connection and try again.","Não foi possível instalar o controlador NVIDIA.
+
+A razão mais comum é não haver ligação à internet. Nada foi alterado. Verifique a ligação e tente outra vez.",,
+pt,Portuguese (Português),high,NO,nv.cancelled,NVIDIA installer: cancelled or wrong password.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed.","A instalação foi cancelada, ou a palavra-passe não foi aceite.
+
+Nada foi alterado.",,
 ru,Russian (Русский),high,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,Веб-приложение Bashan в отдельном окне,,
 ru,Russian (Русский),high,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,"Ещё не установлен — нажмите, чтобы установить Google Chrome",,
 ru,Russian (Русский),high,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Установить Bashan OS,,
@@ -464,6 +776,84 @@ ru,Russian (Русский),high,NO,w.p7.vpn.h,Page 7: VPN card heading.,A VPN,V
 ru,Russian (Русский),high,NO,w.p7.vpn.b,Page 7: VPN card body. Must say a VPN needs a server and warn about free services.,"A VPN sends your internet traffic through another computer first. Bashan OS can connect to one, but it does not come with one: a VPN needs a server, either your own or a company's. Be careful with free VPN services — many of them keep records of what you do and sell them, which is the opposite of what you wanted.","VPN пропускает ваш интернет-трафик сначала через другой компьютер. Bashan OS умеет подключаться к VPN, но своего не предоставляет: нужен сервер — ваш собственный или компании. Осторожнее с бесплатными VPN-сервисами: многие ведут записи о том, что вы делаете, и продают их, то есть делают ровно обратное тому, чего вы хотели.",,
 ru,Russian (Русский),high,NO,w.p7.tor.h,Page 7: Tor card heading.,Tor Browser,Браузер Tor,,
 ru,Russian (Русский),high,NO,w.p7.tor.b,"Page 7: Tor card body. Must say it downloads on first run, is slower, and some sites block it.","Tor hides which websites you visit by passing your traffic through several computers around the world. Opening it the first time downloads the browser from the Tor Project, so you need an internet connection. Two honest warnings: it is noticeably slower than normal browsing, and some websites and banks block it outright.","Tor скрывает, какие сайты вы посещаете, пропуская трафик через несколько компьютеров по всему миру. При первом запуске браузер скачивается с сайта Tor Project, поэтому нужен интернет. Два честных предупреждения: он заметно медленнее обычного браузера, и некоторые сайты и банки его попросту блокируют.",,
+ru,Russian (Русский),high,NO,nv.title,NVIDIA installer: dialog title.,Install the NVIDIA graphics driver,Установить драйвер видеокарты NVIDIA,,
+ru,Russian (Русский),high,NO,nv.none,NVIDIA installer: shown when no NVIDIA card is present.,"This computer does not have an NVIDIA graphics card, so there is nothing to install. Your graphics already work with the driver that comes with Bashan OS.","В этом компьютере нет видеокарты NVIDIA, устанавливать нечего. Графика уже работает на драйвере, который входит в Bashan OS.",,
+ru,Russian (Русский),high,NO,nv.already,NVIDIA installer: driver already present.,The NVIDIA driver is already installed.,Драйвер NVIDIA уже установлен.,,
+ru,Russian (Русский),high,NO,nv.ask,NVIDIA installer: the main consent dialog. Explains hybrid graphics in plain words.,"This laptop has an NVIDIA graphics card.
+
+Bashan OS does not include NVIDIA's driver, because NVIDIA does not allow us to pass it on to you. It can be downloaded from Debian in one click.
+
+You probably do not need it. The screen, video and everyday work already run on the laptop's other, built-in graphics chip. The NVIDIA card is for games and heavy video work, and it uses more battery.
+
+This needs about 700 MB, an internet connection, and a restart afterwards. You will be asked for your password.
+
+Install the NVIDIA driver now?","В этом ноутбуке есть видеокарта NVIDIA.
+
+Bashan OS не включает драйвер NVIDIA, потому что NVIDIA не разрешает нам его передавать. Его можно загрузить из Debian одним щелчком.
+
+Скорее всего, он вам не нужен. Экран, видео и повседневная работа уже идут через другой, встроенный графический чип. Видеокарта NVIDIA нужна для игр и тяжёлой работы с видео, и она быстрее расходует батарею.
+
+Понадобится около 700 МБ, интернет и перезагрузка после. У вас спросят пароль.
+
+Установить драйвер NVIDIA сейчас?",,
+ru,Russian (Русский),high,NO,nv.sb,"NVIDIA installer: the Secure Boot / MOK explanation. The hardest thing in the whole system to explain to a non-technical user, so it is written as three numbered steps.","One extra step, because Secure Boot is switched on.
+
+Secure Boot only lets this computer run software that carries a signature. The NVIDIA driver is built here, on your own machine, so it has no signature yet and Secure Boot would refuse to load it.
+
+To allow it, the computer must be told to trust a key made on this machine. Three steps:
+
+1. Choose a password now. It is used once, in the next few minutes, and then never again. Write it down.
+
+2. The computer restarts into a plain blue screen called MOK Manager. This is normal, not a fault.
+
+3. On that screen choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password from step 1.
+
+The computer then starts normally.
+
+If you would rather not, press No. Nothing changes, and your graphics keep working as they do now.","Один дополнительный шаг, потому что включена Безопасная загрузка.
+
+Безопасная загрузка разрешает запускать только подписанные программы. Драйвер NVIDIA собирается здесь, на вашей машине, поэтому подписи у него пока нет, и Безопасная загрузка откажется его загружать.
+
+Чтобы разрешить, компьютеру нужно сказать доверять ключу, созданному на этой машине. Три шага:
+
+1. Придумайте пароль сейчас. Он понадобится один раз, в ближайшие минуты, и больше никогда. Запишите его.
+
+2. Компьютер перезагрузится в простой синий экран под названием MOK Manager. Это нормально, не поломка.
+
+3. На этом экране выберите ""Enroll MOK"", затем ""Continue"", затем ""Yes"", и введите пароль из шага 1.
+
+После этого компьютер запустится как обычно.
+
+Если не хотите — нажмите Нет. Ничего не изменится, графика продолжит работать как сейчас.",,
+ru,Russian (Русский),high,NO,nv.busy,NVIDIA installer: progress message.,Installing the NVIDIA driver. This can take several minutes — you can keep working.,Устанавливается драйвер NVIDIA. Это может занять несколько минут — можно продолжать работать.,,
+ru,Russian (Русский),high,NO,nv.ok,"NVIDIA installer: success, Secure Boot off, restart needed.","The NVIDIA driver is installed.
+
+Please restart the computer to start using it.","Драйвер NVIDIA установлен.
+
+Перезагрузите компьютер, чтобы начать им пользоваться.",,
+ru,Russian (Русский),high,NO,nv.ok.mok,"NVIDIA installer: success with Secure Boot on. Repeats the blue-screen steps, because this is the moment the user must act on them.","The NVIDIA driver is installed, and the key has been prepared.
+
+When you restart, a plain blue screen called MOK Manager will appear.
+
+Choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password you just chose.
+
+The computer then starts normally. If you miss that blue screen, nothing breaks — the graphics card simply will not be used, and you can run this again.","Драйвер NVIDIA установлен, ключ подготовлен.
+
+При перезагрузке появится простой синий экран MOK Manager.
+
+Выберите ""Enroll MOK"", затем ""Continue"", затем ""Yes"", и введите только что выбранный пароль.
+
+После этого компьютер запустится как обычно. Если пропустите синий экран, ничего не сломается — видеокарта просто не будет использоваться, и вы сможете запустить это снова.",,
+ru,Russian (Русский),high,NO,nv.failed,NVIDIA installer: failure.,"The NVIDIA driver could not be installed.
+
+The most common reason is no internet connection. Nothing has been changed. Please check your connection and try again.","Драйвер NVIDIA установить не удалось.
+
+Чаще всего причина — нет интернета. Ничего не изменено. Проверьте подключение и попробуйте снова.",,
+ru,Russian (Русский),high,NO,nv.cancelled,NVIDIA installer: cancelled or wrong password.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed.","Установка отменена или пароль не принят.
+
+Ничего не изменено.",,
 el,Greek (Ελληνικά),good,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,Η εφαρμογή ιστού Bashan σε δικό της παράθυρο,,
 el,Greek (Ελληνικά),good,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,Δεν έχει εγκατασταθεί ακόμη — κάντε κλικ για εγκατάσταση του Google Chrome,,
 el,Greek (Ελληνικά),good,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Εγκατάσταση του Bashan OS,,
@@ -557,6 +947,84 @@ el,Greek (Ελληνικά),good,NO,w.p7.vpn.h,Page 7: VPN card heading.,A VPN,�
 el,Greek (Ελληνικά),good,NO,w.p7.vpn.b,Page 7: VPN card body. Must say a VPN needs a server and warn about free services.,"A VPN sends your internet traffic through another computer first. Bashan OS can connect to one, but it does not come with one: a VPN needs a server, either your own or a company's. Be careful with free VPN services — many of them keep records of what you do and sell them, which is the opposite of what you wanted.","Ένα VPN στέλνει την κίνησή σας πρώτα μέσα από έναν άλλο υπολογιστή. Το Bashan OS μπορεί να συνδεθεί σε ένα, αλλά δεν συνοδεύεται από κανένα: ένα VPN χρειάζεται διακομιστή, δικό σας ή μιας εταιρείας. Προσοχή στις δωρεάν υπηρεσίες VPN — πολλές κρατούν αρχείο όσων κάνετε και το πουλούν, δηλαδή ακριβώς το αντίθετο από αυτό που θέλατε.",,
 el,Greek (Ελληνικά),good,NO,w.p7.tor.h,Page 7: Tor card heading.,Tor Browser,Περιηγητής Tor,,
 el,Greek (Ελληνικά),good,NO,w.p7.tor.b,"Page 7: Tor card body. Must say it downloads on first run, is slower, and some sites block it.","Tor hides which websites you visit by passing your traffic through several computers around the world. Opening it the first time downloads the browser from the Tor Project, so you need an internet connection. Two honest warnings: it is noticeably slower than normal browsing, and some websites and banks block it outright.","Το Tor κρύβει ποιες ιστοσελίδες επισκέπτεστε, περνώντας την κίνησή σας από αρκετούς υπολογιστές σε όλο τον κόσμο. Την πρώτη φορά κατεβάζει τον περιηγητή από το Tor Project, οπότε χρειάζεστε σύνδεση. Δύο ειλικρινείς προειδοποιήσεις: είναι αισθητά πιο αργό και ορισμένες ιστοσελίδες και τράπεζες το μπλοκάρουν εντελώς.",,
+el,Greek (Ελληνικά),good,NO,nv.title,NVIDIA installer: dialog title.,Install the NVIDIA graphics driver,Εγκατάσταση οδηγού γραφικών NVIDIA,,
+el,Greek (Ελληνικά),good,NO,nv.none,NVIDIA installer: shown when no NVIDIA card is present.,"This computer does not have an NVIDIA graphics card, so there is nothing to install. Your graphics already work with the driver that comes with Bashan OS.","Αυτός ο υπολογιστής δεν έχει κάρτα γραφικών NVIDIA, οπότε δεν υπάρχει τίποτα να εγκατασταθεί. Τα γραφικά σας λειτουργούν ήδη με τον οδηγό που συνοδεύει το Bashan OS.",,
+el,Greek (Ελληνικά),good,NO,nv.already,NVIDIA installer: driver already present.,The NVIDIA driver is already installed.,Ο οδηγός NVIDIA είναι ήδη εγκατεστημένος.,,
+el,Greek (Ελληνικά),good,NO,nv.ask,NVIDIA installer: the main consent dialog. Explains hybrid graphics in plain words.,"This laptop has an NVIDIA graphics card.
+
+Bashan OS does not include NVIDIA's driver, because NVIDIA does not allow us to pass it on to you. It can be downloaded from Debian in one click.
+
+You probably do not need it. The screen, video and everyday work already run on the laptop's other, built-in graphics chip. The NVIDIA card is for games and heavy video work, and it uses more battery.
+
+This needs about 700 MB, an internet connection, and a restart afterwards. You will be asked for your password.
+
+Install the NVIDIA driver now?","Αυτός ο φορητός έχει κάρτα γραφικών NVIDIA.
+
+Το Bashan OS δεν περιλαμβάνει τον οδηγό της NVIDIA, επειδή η NVIDIA δεν μας επιτρέπει να σας τον δώσουμε. Μπορεί να κατέβει από τη Debian με ένα κλικ.
+
+Κατά πάσα πιθανότητα δεν τον χρειάζεστε. Η οθόνη, το βίντεο και η καθημερινή εργασία περνούν ήδη από το άλλο, ενσωματωμένο τσιπ γραφικών. Η κάρτα NVIDIA είναι για παιχνίδια και βαριά επεξεργασία βίντεο, και ξοδεύει περισσότερη μπαταρία.
+
+Χρειάζονται περίπου 700 MB, σύνδεση στο διαδίκτυο και επανεκκίνηση μετά. Θα σας ζητηθεί ο κωδικός σας.
+
+Εγκατάσταση του οδηγού NVIDIA τώρα;",,
+el,Greek (Ελληνικά),good,NO,nv.sb,"NVIDIA installer: the Secure Boot / MOK explanation. The hardest thing in the whole system to explain to a non-technical user, so it is written as three numbered steps.","One extra step, because Secure Boot is switched on.
+
+Secure Boot only lets this computer run software that carries a signature. The NVIDIA driver is built here, on your own machine, so it has no signature yet and Secure Boot would refuse to load it.
+
+To allow it, the computer must be told to trust a key made on this machine. Three steps:
+
+1. Choose a password now. It is used once, in the next few minutes, and then never again. Write it down.
+
+2. The computer restarts into a plain blue screen called MOK Manager. This is normal, not a fault.
+
+3. On that screen choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password from step 1.
+
+The computer then starts normally.
+
+If you would rather not, press No. Nothing changes, and your graphics keep working as they do now.","Ένα επιπλέον βήμα, επειδή η Ασφαλής Εκκίνηση είναι ενεργή.
+
+Η Ασφαλής Εκκίνηση επιτρέπει μόνο λογισμικό που φέρει υπογραφή. Ο οδηγός NVIDIA χτίζεται εδώ, στο δικό σας μηχάνημα, οπότε δεν έχει ακόμη υπογραφή και η Ασφαλής Εκκίνηση θα αρνιόταν να τον φορτώσει.
+
+Για να επιτραπεί, πρέπει να πείτε στον υπολογιστή να εμπιστευτεί ένα κλειδί που φτιάχτηκε σε αυτό το μηχάνημα. Τρία βήματα:
+
+1. Επιλέξτε έναν κωδικό τώρα. Χρησιμοποιείται μία φορά, στα επόμενα λεπτά, και ποτέ ξανά. Σημειώστε τον.
+
+2. Ο υπολογιστής επανεκκινεί σε μια απλή μπλε οθόνη που λέγεται MOK Manager. Είναι φυσιολογικό, δεν είναι βλάβη.
+
+3. Σε εκείνη την οθόνη επιλέξτε ""Enroll MOK"", μετά ""Continue"", μετά ""Yes"", και πληκτρολογήστε τον κωδικό από το βήμα 1.
+
+Μετά ο υπολογιστής ξεκινά κανονικά.
+
+Αν προτιμάτε όχι, πατήστε Όχι. Τίποτα δεν αλλάζει και τα γραφικά συνεχίζουν όπως τώρα.",,
+el,Greek (Ελληνικά),good,NO,nv.busy,NVIDIA installer: progress message.,Installing the NVIDIA driver. This can take several minutes — you can keep working.,Γίνεται εγκατάσταση του οδηγού NVIDIA. Μπορεί να πάρει μερικά λεπτά — μπορείτε να συνεχίσετε να εργάζεστε.,,
+el,Greek (Ελληνικά),good,NO,nv.ok,"NVIDIA installer: success, Secure Boot off, restart needed.","The NVIDIA driver is installed.
+
+Please restart the computer to start using it.","Ο οδηγός NVIDIA εγκαταστάθηκε.
+
+Επανεκκινήστε τον υπολογιστή για να αρχίσετε να τον χρησιμοποιείτε.",,
+el,Greek (Ελληνικά),good,NO,nv.ok.mok,"NVIDIA installer: success with Secure Boot on. Repeats the blue-screen steps, because this is the moment the user must act on them.","The NVIDIA driver is installed, and the key has been prepared.
+
+When you restart, a plain blue screen called MOK Manager will appear.
+
+Choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password you just chose.
+
+The computer then starts normally. If you miss that blue screen, nothing breaks — the graphics card simply will not be used, and you can run this again.","Ο οδηγός NVIDIA εγκαταστάθηκε και το κλειδί ετοιμάστηκε.
+
+Στην επανεκκίνηση θα εμφανιστεί μια απλή μπλε οθόνη με το όνομα MOK Manager.
+
+Επιλέξτε ""Enroll MOK"", μετά ""Continue"", μετά ""Yes"", και πληκτρολογήστε τον κωδικό που μόλις επιλέξατε.
+
+Μετά ο υπολογιστής ξεκινά κανονικά. Αν χάσετε εκείνη τη μπλε οθόνη, δεν χαλάει τίποτα — απλώς δεν θα χρησιμοποιηθεί η κάρτα γραφικών, και μπορείτε να το ξανατρέξετε.",,
+el,Greek (Ελληνικά),good,NO,nv.failed,NVIDIA installer: failure.,"The NVIDIA driver could not be installed.
+
+The most common reason is no internet connection. Nothing has been changed. Please check your connection and try again.","Ο οδηγός NVIDIA δεν μπόρεσε να εγκατασταθεί.
+
+Η συνηθέστερη αιτία είναι η έλλειψη σύνδεσης στο διαδίκτυο. Δεν άλλαξε τίποτα. Ελέγξτε τη σύνδεση και δοκιμάστε ξανά.",,
+el,Greek (Ελληνικά),good,NO,nv.cancelled,NVIDIA installer: cancelled or wrong password.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed.","Η εγκατάσταση ακυρώθηκε ή ο κωδικός δεν έγινε δεκτός.
+
+Δεν άλλαξε τίποτα.",,
 ar,Arabic (العربية),good,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,تطبيق بشان على الويب في نافذة خاصة به,,
 ar,Arabic (العربية),good,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,غير مُثبَّت بعد — انقر لتثبيت Google Chrome,,
 ar,Arabic (العربية),good,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,تثبيت نظام بشان,,
@@ -650,6 +1118,84 @@ ar,Arabic (العربية),good,NO,w.p7.vpn.h,Page 7: VPN card heading.,A VPN,ش
 ar,Arabic (العربية),good,NO,w.p7.vpn.b,Page 7: VPN card body. Must say a VPN needs a server and warn about free services.,"A VPN sends your internet traffic through another computer first. Bashan OS can connect to one, but it does not come with one: a VPN needs a server, either your own or a company's. Be careful with free VPN services — many of them keep records of what you do and sell them, which is the opposite of what you wanted.",الشبكة الخاصة الافتراضية تمرّر حركة الإنترنت عبر حاسوب آخر أولًا. يستطيع نظام بشان الاتصال بواحدة، لكنه لا يأتي بواحدة: فالـVPN تحتاج خادمًا، إما خادمك أنت أو خادم شركة. احذر من خدمات الـVPN المجانية — كثير منها يحتفظ بسجلات لما تفعله ويبيعها، وهو عكس ما أردته تمامًا.,,
 ar,Arabic (العربية),good,NO,w.p7.tor.h,Page 7: Tor card heading.,Tor Browser,متصفح تور,,
 ar,Arabic (العربية),good,NO,w.p7.tor.b,"Page 7: Tor card body. Must say it downloads on first run, is slower, and some sites block it.","Tor hides which websites you visit by passing your traffic through several computers around the world. Opening it the first time downloads the browser from the Tor Project, so you need an internet connection. Two honest warnings: it is noticeably slower than normal browsing, and some websites and banks block it outright.",يخفي تور المواقع التي تزورها بتمرير حركتك عبر عدة حواسيب حول العالم. وعند فتحه أول مرة يُنزَّل المتصفح من مشروع تور، فتحتاج إلى اتصال بالإنترنت. تحذيران صادقان: إنه أبطأ بوضوح من التصفح العادي، وبعض المواقع والمصارف تحجبه تمامًا.,,
+ar,Arabic (العربية),good,NO,nv.title,NVIDIA installer: dialog title.,Install the NVIDIA graphics driver,تثبيت تعريف كرت الرسوميات NVIDIA,,
+ar,Arabic (العربية),good,NO,nv.none,NVIDIA installer: shown when no NVIDIA card is present.,"This computer does not have an NVIDIA graphics card, so there is nothing to install. Your graphics already work with the driver that comes with Bashan OS.",لا يحتوي هذا الحاسوب على كرت رسوميات NVIDIA، فلا شيء لتثبيته. رسومياتك تعمل بالفعل بالتعريف الذي يأتي مع نظام بشان.,,
+ar,Arabic (العربية),good,NO,nv.already,NVIDIA installer: driver already present.,The NVIDIA driver is already installed.,تعريف NVIDIA مثبَّت بالفعل.,,
+ar,Arabic (العربية),good,NO,nv.ask,NVIDIA installer: the main consent dialog. Explains hybrid graphics in plain words.,"This laptop has an NVIDIA graphics card.
+
+Bashan OS does not include NVIDIA's driver, because NVIDIA does not allow us to pass it on to you. It can be downloaded from Debian in one click.
+
+You probably do not need it. The screen, video and everyday work already run on the laptop's other, built-in graphics chip. The NVIDIA card is for games and heavy video work, and it uses more battery.
+
+This needs about 700 MB, an internet connection, and a restart afterwards. You will be asked for your password.
+
+Install the NVIDIA driver now?","يحتوي هذا الحاسوب المحمول على كرت رسوميات NVIDIA.
+
+لا يتضمن نظام بشان تعريف NVIDIA، لأن NVIDIA لا تسمح لنا بتمريره إليك. ويمكن تنزيله من دبيان بنقرة واحدة.
+
+على الأرجح أنك لا تحتاجه. فالشاشة والفيديو والعمل اليومي تعمل أصلًا على شريحة الرسوميات المدمجة الأخرى. كرت NVIDIA للألعاب وأعمال الفيديو الثقيلة، وهو يستهلك بطارية أكثر.
+
+يحتاج هذا نحو 700 ميجابايت واتصالًا بالإنترنت وإعادة تشغيل بعده. ستُطلب منك كلمة السر.
+
+هل تثبّت تعريف NVIDIA الآن؟",,
+ar,Arabic (العربية),good,NO,nv.sb,"NVIDIA installer: the Secure Boot / MOK explanation. The hardest thing in the whole system to explain to a non-technical user, so it is written as three numbered steps.","One extra step, because Secure Boot is switched on.
+
+Secure Boot only lets this computer run software that carries a signature. The NVIDIA driver is built here, on your own machine, so it has no signature yet and Secure Boot would refuse to load it.
+
+To allow it, the computer must be told to trust a key made on this machine. Three steps:
+
+1. Choose a password now. It is used once, in the next few minutes, and then never again. Write it down.
+
+2. The computer restarts into a plain blue screen called MOK Manager. This is normal, not a fault.
+
+3. On that screen choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password from step 1.
+
+The computer then starts normally.
+
+If you would rather not, press No. Nothing changes, and your graphics keep working as they do now.","خطوة إضافية واحدة، لأن الإقلاع الآمن مُفعَّل.
+
+الإقلاع الآمن لا يسمح لهذا الحاسوب بتشغيل سوى البرامج التي تحمل توقيعًا. وتعريف NVIDIA يُبنى هنا على جهازك، فليس له توقيع بعد، وسيرفض الإقلاع الآمن تحميله.
+
+للسماح به، يجب إخبار الحاسوب بأن يثق بمفتاح أُنشئ على هذا الجهاز. ثلاث خطوات:
+
+١. اختر كلمة سر الآن. تُستخدم مرة واحدة خلال الدقائق القادمة ثم لا تُستخدم أبدًا. اكتبها.
+
+٢. يُعاد تشغيل الحاسوب إلى شاشة زرقاء بسيطة اسمها MOK Manager. هذا طبيعي وليس عطلًا.
+
+٣. في تلك الشاشة اختر ""Enroll MOK"" ثم ""Continue"" ثم ""Yes""، واكتب كلمة السر من الخطوة ١.
+
+بعدها يبدأ الحاسوب بشكل طبيعي.
+
+إن كنت تفضّل عدم ذلك، اضغط لا. لا يتغير شيء وتبقى رسومياتك تعمل كما هي.",,
+ar,Arabic (العربية),good,NO,nv.busy,NVIDIA installer: progress message.,Installing the NVIDIA driver. This can take several minutes — you can keep working.,جارٍ تثبيت تعريف NVIDIA. قد يستغرق هذا عدة دقائق — يمكنك متابعة عملك.,,
+ar,Arabic (العربية),good,NO,nv.ok,"NVIDIA installer: success, Secure Boot off, restart needed.","The NVIDIA driver is installed.
+
+Please restart the computer to start using it.","تم تثبيت تعريف NVIDIA.
+
+أعد تشغيل الحاسوب لبدء استخدامه.",,
+ar,Arabic (العربية),good,NO,nv.ok.mok,"NVIDIA installer: success with Secure Boot on. Repeats the blue-screen steps, because this is the moment the user must act on them.","The NVIDIA driver is installed, and the key has been prepared.
+
+When you restart, a plain blue screen called MOK Manager will appear.
+
+Choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password you just chose.
+
+The computer then starts normally. If you miss that blue screen, nothing breaks — the graphics card simply will not be used, and you can run this again.","تم تثبيت تعريف NVIDIA وتجهيز المفتاح.
+
+عند إعادة التشغيل ستظهر شاشة زرقاء بسيطة اسمها MOK Manager.
+
+اختر ""Enroll MOK"" ثم ""Continue"" ثم ""Yes""، واكتب كلمة السر التي اخترتها للتو.
+
+بعدها يبدأ الحاسوب بشكل طبيعي. وإن فاتتك تلك الشاشة الزرقاء فلن يتعطل شيء — ببساطة لن يُستخدم كرت الرسوميات، ويمكنك تشغيل هذا من جديد.",,
+ar,Arabic (العربية),good,NO,nv.failed,NVIDIA installer: failure.,"The NVIDIA driver could not be installed.
+
+The most common reason is no internet connection. Nothing has been changed. Please check your connection and try again.","تعذّر تثبيت تعريف NVIDIA.
+
+السبب الأشيع هو عدم وجود اتصال بالإنترنت. لم يتغير شيء. تحقق من اتصالك وحاول مرة أخرى.",,
+ar,Arabic (العربية),good,NO,nv.cancelled,NVIDIA installer: cancelled or wrong password.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed.","أُلغي التثبيت، أو لم تُقبل كلمة السر.
+
+لم يتغير شيء.",,
 he,Hebrew (עברית),good,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,יישום האינטרנט של Bashan בחלון נפרד,,
 he,Hebrew (עברית),good,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,עדיין לא מותקן — לחצו כדי להתקין את Google Chrome,,
 he,Hebrew (עברית),good,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,התקנת Bashan OS,,
@@ -743,6 +1289,84 @@ he,Hebrew (עברית),good,NO,w.p7.vpn.h,Page 7: VPN card heading.,A VPN,VPN,,
 he,Hebrew (עברית),good,NO,w.p7.vpn.b,Page 7: VPN card body. Must say a VPN needs a server and warn about free services.,"A VPN sends your internet traffic through another computer first. Bashan OS can connect to one, but it does not come with one: a VPN needs a server, either your own or a company's. Be careful with free VPN services — many of them keep records of what you do and sell them, which is the opposite of what you wanted.","VPN מעביר את תעבורת האינטרנט שלך קודם דרך מחשב אחר. Bashan OS יכולה להתחבר לאחד, אבל אינה מגיעה עם אחד: VPN צריך שרת, שלך או של חברה. היזהר משירותי VPN חינמיים — רבים מהם שומרים תיעוד של מה שאתה עושה ומוכרים אותו, בדיוק ההפך ממה שרצית.",,
 he,Hebrew (עברית),good,NO,w.p7.tor.h,Page 7: Tor card heading.,Tor Browser,דפדפן Tor,,
 he,Hebrew (עברית),good,NO,w.p7.tor.b,"Page 7: Tor card body. Must say it downloads on first run, is slower, and some sites block it.","Tor hides which websites you visit by passing your traffic through several computers around the world. Opening it the first time downloads the browser from the Tor Project, so you need an internet connection. Two honest warnings: it is noticeably slower than normal browsing, and some websites and banks block it outright.","Tor מסתיר אילו אתרים אתה מבקר בהם, בכך שהוא מעביר את התעבורה שלך דרך כמה מחשבים ברחבי העולם. בפתיחה הראשונה הדפדפן יורד מפרויקט Tor, ולכן דרוש חיבור לאינטרנט. שתי אזהרות כנות: הוא איטי משמעותית מגלישה רגילה, וחלק מהאתרים והבנקים חוסמים אותו לגמרי.",,
+he,Hebrew (עברית),good,NO,nv.title,NVIDIA installer: dialog title.,Install the NVIDIA graphics driver,התקנת מנהל ההתקן הגרפי של NVIDIA,,
+he,Hebrew (עברית),good,NO,nv.none,NVIDIA installer: shown when no NVIDIA card is present.,"This computer does not have an NVIDIA graphics card, so there is nothing to install. Your graphics already work with the driver that comes with Bashan OS.","במחשב הזה אין כרטיס מסך NVIDIA, ולכן אין מה להתקין. הגרפיקה שלך כבר עובדת עם מנהל ההתקן שמגיע עם Bashan OS.",,
+he,Hebrew (עברית),good,NO,nv.already,NVIDIA installer: driver already present.,The NVIDIA driver is already installed.,מנהל ההתקן של NVIDIA כבר מותקן.,,
+he,Hebrew (עברית),good,NO,nv.ask,NVIDIA installer: the main consent dialog. Explains hybrid graphics in plain words.,"This laptop has an NVIDIA graphics card.
+
+Bashan OS does not include NVIDIA's driver, because NVIDIA does not allow us to pass it on to you. It can be downloaded from Debian in one click.
+
+You probably do not need it. The screen, video and everyday work already run on the laptop's other, built-in graphics chip. The NVIDIA card is for games and heavy video work, and it uses more battery.
+
+This needs about 700 MB, an internet connection, and a restart afterwards. You will be asked for your password.
+
+Install the NVIDIA driver now?","למחשב הנייד הזה יש כרטיס מסך NVIDIA.
+
+Bashan OS אינה כוללת את מנהל ההתקן של NVIDIA, מפני ש-NVIDIA אינה מתירה לנו להעביר אותו אליך. אפשר להוריד אותו מדביאן בלחיצה אחת.
+
+כנראה שאינך זקוק לו. המסך, הווידאו והעבודה היומיומית כבר רצים על שבב הגרפיקה המובנה האחר. כרטיס NVIDIA מיועד למשחקים ולעבודת וידאו כבדה, והוא צורך יותר סוללה.
+
+נדרשים כ-700 מ""ב, חיבור לאינטרנט והפעלה מחדש לאחר מכן. תתבקש להזין סיסמה.
+
+להתקין את מנהל ההתקן של NVIDIA עכשיו?",,
+he,Hebrew (עברית),good,NO,nv.sb,"NVIDIA installer: the Secure Boot / MOK explanation. The hardest thing in the whole system to explain to a non-technical user, so it is written as three numbered steps.","One extra step, because Secure Boot is switched on.
+
+Secure Boot only lets this computer run software that carries a signature. The NVIDIA driver is built here, on your own machine, so it has no signature yet and Secure Boot would refuse to load it.
+
+To allow it, the computer must be told to trust a key made on this machine. Three steps:
+
+1. Choose a password now. It is used once, in the next few minutes, and then never again. Write it down.
+
+2. The computer restarts into a plain blue screen called MOK Manager. This is normal, not a fault.
+
+3. On that screen choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password from step 1.
+
+The computer then starts normally.
+
+If you would rather not, press No. Nothing changes, and your graphics keep working as they do now.","שלב אחד נוסף, מפני ש-Secure Boot מופעל.
+
+Secure Boot מתיר להריץ רק תוכנה שנושאת חתימה. מנהל ההתקן של NVIDIA נבנה כאן, במחשב שלך, ולכן אין לו עדיין חתימה ו-Secure Boot יסרב לטעון אותו.
+
+כדי לאפשר זאת, צריך לומר למחשב לבטוח במפתח שנוצר במכונה הזו. שלושה שלבים:
+
+1. בחר סיסמה עכשיו. היא תשמש פעם אחת, בדקות הקרובות, ואחר כך לעולם לא. רשום אותה.
+
+2. המחשב יופעל מחדש אל מסך כחול פשוט בשם MOK Manager. זה תקין, לא תקלה.
+
+3. באותו מסך בחר ""Enroll MOK"", אחר כך ""Continue"", אחר כך ""Yes"", והקלד את הסיסמה משלב 1.
+
+לאחר מכן המחשב יעלה כרגיל.
+
+אם אתה מעדיף שלא, לחץ לא. שום דבר לא משתנה והגרפיקה ממשיכה לעבוד כמו עכשיו.",,
+he,Hebrew (עברית),good,NO,nv.busy,NVIDIA installer: progress message.,Installing the NVIDIA driver. This can take several minutes — you can keep working.,מתקין את מנהל ההתקן של NVIDIA. זה יכול לקחת כמה דקות — אפשר להמשיך לעבוד.,,
+he,Hebrew (עברית),good,NO,nv.ok,"NVIDIA installer: success, Secure Boot off, restart needed.","The NVIDIA driver is installed.
+
+Please restart the computer to start using it.","מנהל ההתקן של NVIDIA הותקן.
+
+הפעל מחדש את המחשב כדי להתחיל להשתמש בו.",,
+he,Hebrew (עברית),good,NO,nv.ok.mok,"NVIDIA installer: success with Secure Boot on. Repeats the blue-screen steps, because this is the moment the user must act on them.","The NVIDIA driver is installed, and the key has been prepared.
+
+When you restart, a plain blue screen called MOK Manager will appear.
+
+Choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password you just chose.
+
+The computer then starts normally. If you miss that blue screen, nothing breaks — the graphics card simply will not be used, and you can run this again.","מנהל ההתקן של NVIDIA הותקן והמפתח הוכן.
+
+בהפעלה מחדש יופיע מסך כחול פשוט בשם MOK Manager.
+
+בחר ""Enroll MOK"", אחר כך ""Continue"", אחר כך ""Yes"", והקלד את הסיסמה שבחרת זה עתה.
+
+לאחר מכן המחשב יעלה כרגיל. אם תפספס את המסך הכחול, שום דבר לא נשבר — פשוט לא ייעשה שימוש בכרטיס המסך, ותוכל להריץ את זה שוב.",,
+he,Hebrew (עברית),good,NO,nv.failed,NVIDIA installer: failure.,"The NVIDIA driver could not be installed.
+
+The most common reason is no internet connection. Nothing has been changed. Please check your connection and try again.","לא ניתן היה להתקין את מנהל ההתקן של NVIDIA.
+
+הסיבה הנפוצה ביותר היא היעדר חיבור לאינטרנט. שום דבר לא שונה. בדוק את החיבור ונסה שוב.",,
+he,Hebrew (עברית),good,NO,nv.cancelled,NVIDIA installer: cancelled or wrong password.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed.","ההתקנה בוטלה, או שהסיסמה לא התקבלה.
+
+שום דבר לא שונה.",,
 fa,Persian (فارسی),good,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,برنامهٔ وب بشان در پنجرهٔ خودش,,
 fa,Persian (فارسی),good,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,هنوز نصب نشده — برای نصب Google Chrome کلیک کنید,,
 fa,Persian (فارسی),good,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,نصب بشان او‌اس,,
@@ -836,6 +1460,84 @@ fa,Persian (فارسی),good,NO,w.p7.vpn.h,Page 7: VPN card heading.,A VPN,وی�
 fa,Persian (فارسی),good,NO,w.p7.vpn.b,Page 7: VPN card body. Must say a VPN needs a server and warn about free services.,"A VPN sends your internet traffic through another computer first. Bashan OS can connect to one, but it does not come with one: a VPN needs a server, either your own or a company's. Be careful with free VPN services — many of them keep records of what you do and sell them, which is the opposite of what you wanted.",وی‌پی‌ان ترافیک اینترنت شما را اول از رایانه‌ای دیگر عبور می‌دهد. سیستم‌عامل بشان می‌تواند به یکی وصل شود، اما خودش هیچ‌کدام را ندارد: وی‌پی‌ان به یک سرور نیاز دارد، چه مال خودتان چه مال یک شرکت. مراقب سرویس‌های رایگان وی‌پی‌ان باشید — بسیاری از آن‌ها سابقهٔ کارهای شما را نگه می‌دارند و می‌فروشند، یعنی درست برعکس آنچه می‌خواستید.,,
 fa,Persian (فارسی),good,NO,w.p7.tor.h,Page 7: Tor card heading.,Tor Browser,مرورگر تور,,
 fa,Persian (فارسی),good,NO,w.p7.tor.b,"Page 7: Tor card body. Must say it downloads on first run, is slower, and some sites block it.","Tor hides which websites you visit by passing your traffic through several computers around the world. Opening it the first time downloads the browser from the Tor Project, so you need an internet connection. Two honest warnings: it is noticeably slower than normal browsing, and some websites and banks block it outright.",تور با عبور دادن ترافیک شما از چند رایانه در سراسر جهان پنهان می‌کند که چه سایت‌هایی را می‌بینید. بار اول که بازش کنید مرورگر از پروژهٔ تور دانلود می‌شود، پس به اینترنت نیاز دارید. دو هشدار صادقانه: محسوساً از مرور عادی کندتر است، و بعضی سایت‌ها و بانک‌ها آن را کامل مسدود می‌کنند.,,
+fa,Persian (فارسی),good,NO,nv.title,NVIDIA installer: dialog title.,Install the NVIDIA graphics driver,نصب راه‌انداز گرافیک NVIDIA,,
+fa,Persian (فارسی),good,NO,nv.none,NVIDIA installer: shown when no NVIDIA card is present.,"This computer does not have an NVIDIA graphics card, so there is nothing to install. Your graphics already work with the driver that comes with Bashan OS.",این رایانه کارت گرافیک NVIDIA ندارد، پس چیزی برای نصب نیست. گرافیک شما از پیش با راه‌اندازی که همراه سیستم‌عامل بشان می‌آید کار می‌کند.,,
+fa,Persian (فارسی),good,NO,nv.already,NVIDIA installer: driver already present.,The NVIDIA driver is already installed.,راه‌انداز NVIDIA از قبل نصب شده است.,,
+fa,Persian (فارسی),good,NO,nv.ask,NVIDIA installer: the main consent dialog. Explains hybrid graphics in plain words.,"This laptop has an NVIDIA graphics card.
+
+Bashan OS does not include NVIDIA's driver, because NVIDIA does not allow us to pass it on to you. It can be downloaded from Debian in one click.
+
+You probably do not need it. The screen, video and everyday work already run on the laptop's other, built-in graphics chip. The NVIDIA card is for games and heavy video work, and it uses more battery.
+
+This needs about 700 MB, an internet connection, and a restart afterwards. You will be asked for your password.
+
+Install the NVIDIA driver now?","این لپ‌تاپ کارت گرافیک NVIDIA دارد.
+
+سیستم‌عامل بشان راه‌انداز NVIDIA را ندارد، چون NVIDIA به ما اجازه نمی‌دهد آن را به شما بدهیم. با یک کلیک می‌توان آن را از دبیان گرفت.
+
+احتمالاً به آن نیاز ندارید. نمایشگر، ویدئو و کارهای روزمره از قبل روی تراشهٔ گرافیکی داخلی دیگر کار می‌کنند. کارت NVIDIA برای بازی و کار سنگین ویدئویی است و باتری بیشتری مصرف می‌کند.
+
+این کار حدود ۷۰۰ مگابایت، اتصال اینترنت و راه‌اندازی دوباره پس از آن لازم دارد. رمز شما پرسیده می‌شود.
+
+هم‌اکنون راه‌انداز NVIDIA نصب شود؟",,
+fa,Persian (فارسی),good,NO,nv.sb,"NVIDIA installer: the Secure Boot / MOK explanation. The hardest thing in the whole system to explain to a non-technical user, so it is written as three numbered steps.","One extra step, because Secure Boot is switched on.
+
+Secure Boot only lets this computer run software that carries a signature. The NVIDIA driver is built here, on your own machine, so it has no signature yet and Secure Boot would refuse to load it.
+
+To allow it, the computer must be told to trust a key made on this machine. Three steps:
+
+1. Choose a password now. It is used once, in the next few minutes, and then never again. Write it down.
+
+2. The computer restarts into a plain blue screen called MOK Manager. This is normal, not a fault.
+
+3. On that screen choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password from step 1.
+
+The computer then starts normally.
+
+If you would rather not, press No. Nothing changes, and your graphics keep working as they do now.","یک گام اضافی، چون راه‌اندازی امن (Secure Boot) روشن است.
+
+راه‌اندازی امن فقط به نرم‌افزاری اجازهٔ اجرا می‌دهد که امضا داشته باشد. راه‌انداز NVIDIA همین‌جا روی رایانهٔ خودتان ساخته می‌شود، پس هنوز امضا ندارد و راه‌اندازی امن از بارگذاری‌اش خودداری می‌کند.
+
+برای اجازه دادن، باید به رایانه گفته شود به کلیدی که روی همین دستگاه ساخته شده اعتماد کند. سه گام:
+
+۱. همین حالا یک رمز انتخاب کنید. یک بار، در چند دقیقهٔ آینده، به کار می‌رود و دیگر هرگز. آن را بنویسید.
+
+۲. رایانه به صفحه‌ای آبی و ساده به نام MOK Manager راه‌اندازی می‌شود. این عادی است، خرابی نیست.
+
+۳. در آن صفحه ""Enroll MOK""، سپس ""Continue""، سپس ""Yes"" را انتخاب کنید و رمز گام ۱ را بزنید.
+
+پس از آن رایانه عادی بالا می‌آید.
+
+اگر ترجیح می‌دهید نه، «نه» را بزنید. هیچ چیز عوض نمی‌شود و گرافیک شما مثل حالا کار می‌کند.",,
+fa,Persian (فارسی),good,NO,nv.busy,NVIDIA installer: progress message.,Installing the NVIDIA driver. This can take several minutes — you can keep working.,در حال نصب راه‌انداز NVIDIA. ممکن است چند دقیقه طول بکشد — می‌توانید به کارتان ادامه دهید.,,
+fa,Persian (فارسی),good,NO,nv.ok,"NVIDIA installer: success, Secure Boot off, restart needed.","The NVIDIA driver is installed.
+
+Please restart the computer to start using it.","راه‌انداز NVIDIA نصب شد.
+
+برای شروع استفاده، رایانه را دوباره راه‌اندازی کنید.",,
+fa,Persian (فارسی),good,NO,nv.ok.mok,"NVIDIA installer: success with Secure Boot on. Repeats the blue-screen steps, because this is the moment the user must act on them.","The NVIDIA driver is installed, and the key has been prepared.
+
+When you restart, a plain blue screen called MOK Manager will appear.
+
+Choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password you just chose.
+
+The computer then starts normally. If you miss that blue screen, nothing breaks — the graphics card simply will not be used, and you can run this again.","راه‌انداز NVIDIA نصب شد و کلید آماده شده است.
+
+هنگام راه‌اندازی دوباره، صفحه‌ای آبی و ساده به نام MOK Manager ظاهر می‌شود.
+
+""Enroll MOK""، سپس ""Continue""، سپس ""Yes"" را انتخاب کنید و رمزی را که همین حالا انتخاب کردید بزنید.
+
+پس از آن رایانه عادی بالا می‌آید. اگر آن صفحهٔ آبی را از دست دادید چیزی خراب نمی‌شود — فقط کارت گرافیک استفاده نمی‌شود و می‌توانید دوباره این را اجرا کنید.",,
+fa,Persian (فارسی),good,NO,nv.failed,NVIDIA installer: failure.,"The NVIDIA driver could not be installed.
+
+The most common reason is no internet connection. Nothing has been changed. Please check your connection and try again.","راه‌انداز NVIDIA نصب نشد.
+
+رایج‌ترین دلیل نبودِ اتصال اینترنت است. هیچ چیزی تغییر نکرده. اتصالتان را بررسی کنید و دوباره تلاش کنید.",,
+fa,Persian (فارسی),good,NO,nv.cancelled,NVIDIA installer: cancelled or wrong password.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed.","نصب لغو شد، یا رمز پذیرفته نشد.
+
+هیچ چیزی تغییر نکرده است.",,
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,Sepana webê ya Bashan di pencereya xwe de,,
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,Hê nehatiye sazkirin — ji bo sazkirina Google Chrome bitikîne,,
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,Bashan OS saz bike,,
@@ -929,6 +1631,84 @@ ku,Kurdish Kurmanji (Kurmancî),LOW,NO,w.p7.vpn.h,Page 7: VPN card heading.,A VP
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,w.p7.vpn.b,Page 7: VPN card body. Must say a VPN needs a server and warn about free services.,"A VPN sends your internet traffic through another computer first. Bashan OS can connect to one, but it does not come with one: a VPN needs a server, either your own or a company's. Be careful with free VPN services — many of them keep records of what you do and sell them, which is the opposite of what you wanted.","VPN pêşî trafîka te ya înternetê bi komputereke din re dişîne. Bashan OS dikare bi yekê ve were girêdan, lê bi yekê re nayê: VPN hewceyî serverekê ye, an ya te an ya pargîdaniyekê. Ji xizmetên VPN ên belaş hay ji xwe hebe — gelek ji wan tomarên tiştên ku tu dikî dihêlin û difiroşin, ku berevajiya tiştê ku te dixwest e.",,
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,w.p7.tor.h,Page 7: Tor card heading.,Tor Browser,Geroka Tor,,
 ku,Kurdish Kurmanji (Kurmancî),LOW,NO,w.p7.tor.b,"Page 7: Tor card body. Must say it downloads on first run, is slower, and some sites block it.","Tor hides which websites you visit by passing your traffic through several computers around the world. Opening it the first time downloads the browser from the Tor Project, so you need an internet connection. Two honest warnings: it is noticeably slower than normal browsing, and some websites and banks block it outright.","Tor bi şandina trafîka te bi çend komputeran li çar aliyê cîhanê vedişêre ka tu diçî kîjan malperan. Cara yekem ku tu wê vedikî, gerok ji Proje ya Tor tê daxistin, loma hewceyî girêdana înternetê ye. Du hişyariyên rast: ew ji gerîna asayî gelek hêdîtir e, û hin malper û bank wê bi tevahî asteng dikin.",,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,nv.title,NVIDIA installer: dialog title.,Install the NVIDIA graphics driver,Ajokara grafîkê ya NVIDIA saz bike,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,nv.none,NVIDIA installer: shown when no NVIDIA card is present.,"This computer does not have an NVIDIA graphics card, so there is nothing to install. Your graphics already work with the driver that comes with Bashan OS.","Ev komputer qerta grafîkê ya NVIDIA tune ye, loma tiştek ji bo sazkirinê nîne. Grafîka te jixwe bi ajokara ku bi Bashan OS re tê dixebite.",,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,nv.already,NVIDIA installer: driver already present.,The NVIDIA driver is already installed.,Ajokara NVIDIA jixwe saz kiriye.,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,nv.ask,NVIDIA installer: the main consent dialog. Explains hybrid graphics in plain words.,"This laptop has an NVIDIA graphics card.
+
+Bashan OS does not include NVIDIA's driver, because NVIDIA does not allow us to pass it on to you. It can be downloaded from Debian in one click.
+
+You probably do not need it. The screen, video and everyday work already run on the laptop's other, built-in graphics chip. The NVIDIA card is for games and heavy video work, and it uses more battery.
+
+This needs about 700 MB, an internet connection, and a restart afterwards. You will be asked for your password.
+
+Install the NVIDIA driver now?","Vê laptopê qerteke grafîkê ya NVIDIA heye.
+
+Bashan OS ajokara NVIDIA nahewîne, ji ber ku NVIDIA destûrê nade me ku em wê bidin te. Bi tikandinekê ji Debian tê daxistin.
+
+Dibe ku tu pê re ne hewce bî. Ekran, vîdyo û karê rojane jixwe bi çîpa grafîkê ya din a hundirîn dixebitin. Qerta NVIDIA ji bo lîstikan û karê vîdyoyê yê giran e, û bateriyê zêdetir dixwe.
+
+Ev nêzîkî 700 MB, girêdana înternetê û ji nû ve destpêkirinek piştre dixwaze. Dê şîfreya te were pirsîn.
+
+Ajokara NVIDIA niha were sazkirin?",,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,nv.sb,"NVIDIA installer: the Secure Boot / MOK explanation. The hardest thing in the whole system to explain to a non-technical user, so it is written as three numbered steps.","One extra step, because Secure Boot is switched on.
+
+Secure Boot only lets this computer run software that carries a signature. The NVIDIA driver is built here, on your own machine, so it has no signature yet and Secure Boot would refuse to load it.
+
+To allow it, the computer must be told to trust a key made on this machine. Three steps:
+
+1. Choose a password now. It is used once, in the next few minutes, and then never again. Write it down.
+
+2. The computer restarts into a plain blue screen called MOK Manager. This is normal, not a fault.
+
+3. On that screen choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password from step 1.
+
+The computer then starts normally.
+
+If you would rather not, press No. Nothing changes, and your graphics keep working as they do now.","Gavek zêde, ji ber ku Secure Boot vekirî ye.
+
+Secure Boot tenê destûrê dide nermalava ku îmze hildigire. Ajokara NVIDIA li vir, li ser makîneya te, tê avakirin, loma hê îmzeya wê tune ye û Secure Boot dê barkirina wê red bike.
+
+Ji bo destûrdanê, divê ji komputerê re were gotin ku bi kilîtek ku li ser vê makîneyê hatiye çêkirin bawer bike. Sê gav:
+
+1. Niha şîfreyek hilbijêre. Carekê, di çend deqeyên pêş de, tê bikaranîn û paşê qet. Wê binivîse.
+
+2. Komputer ji nû ve dest pê dike û dikeve ekranek şîn a sade bi navê MOK Manager. Ev normal e, ne xerabî ye.
+
+3. Li wî ekranî ""Enroll MOK"", paşê ""Continue"", paşê ""Yes"" hilbijêre, û şîfreya gava 1 binivîse.
+
+Paşê komputer bi awayekî normal dest pê dike.
+
+Ger tu tercîh dikî ku nekî, Na bitikîne. Tiştek naguhere û grafîka te wek niha dixebite.",,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,nv.busy,NVIDIA installer: progress message.,Installing the NVIDIA driver. This can take several minutes — you can keep working.,Ajokara NVIDIA tê sazkirin. Dibe ku çend deqe bidome — tu dikarî karê xwe bidomînî.,,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,nv.ok,"NVIDIA installer: success, Secure Boot off, restart needed.","The NVIDIA driver is installed.
+
+Please restart the computer to start using it.","Ajokara NVIDIA hate sazkirin.
+
+Ji kerema xwe komputerê ji nû ve bide destpêkirin da ku bikar bînî.",,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,nv.ok.mok,"NVIDIA installer: success with Secure Boot on. Repeats the blue-screen steps, because this is the moment the user must act on them.","The NVIDIA driver is installed, and the key has been prepared.
+
+When you restart, a plain blue screen called MOK Manager will appear.
+
+Choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password you just chose.
+
+The computer then starts normally. If you miss that blue screen, nothing breaks — the graphics card simply will not be used, and you can run this again.","Ajokara NVIDIA hate sazkirin û kilît hate amadekirin.
+
+Dema ku ji nû ve dest pê bikî, ekranek şîn a sade bi navê MOK Manager dê xuya bibe.
+
+""Enroll MOK"", paşê ""Continue"", paşê ""Yes"" hilbijêre, û şîfreya ku te nû hilbijart binivîse.
+
+Paşê komputer bi awayekî normal dest pê dike. Ger te ew ekrana şîn ji dest da, tiştek xera nabe — tenê qerta grafîkê nayê bikaranîn, û tu dikarî vê dîsa bimeşînî.",,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,nv.failed,NVIDIA installer: failure.,"The NVIDIA driver could not be installed.
+
+The most common reason is no internet connection. Nothing has been changed. Please check your connection and try again.","Ajokara NVIDIA nehate sazkirin.
+
+Sedema herî gelemperî nebûna girêdana înternetê ye. Tiştek nehate guhertin. Ji kerema xwe girêdana xwe kontrol bike û dîsa biceribîne.",,
+ku,Kurdish Kurmanji (Kurmancî),LOW,NO,nv.cancelled,NVIDIA installer: cancelled or wrong password.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed.","Sazkirin hate betalkirin, an şîfre nehate qebûlkirin.
+
+Tiştek nehate guhertin.",,
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,ئەپی وێبی بەشان لە پەنجەرەی خۆیدا,,
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,هێشتا دانەمەزراوە — کلیک بکە بۆ دامەزراندنی Google Chrome,,
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,دامەزراندنی بەشان ئۆ ئێس,,
@@ -1022,6 +1802,84 @@ ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,w.p7.vpn.h,Page 7: VPN c
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,w.p7.vpn.b,Page 7: VPN card body. Must say a VPN needs a server and warn about free services.,"A VPN sends your internet traffic through another computer first. Bashan OS can connect to one, but it does not come with one: a VPN needs a server, either your own or a company's. Be careful with free VPN services — many of them keep records of what you do and sell them, which is the opposite of what you wanted.",ڤی‌پی‌ئێن سەرەتا هاتوچۆی ئینتەرنێتەکەت بە کۆمپیوتەرێکی تردا دەنێرێت. سیستەمی بەشان دەتوانێت بە یەکێکەوە ببەستێت، بەڵام بە هیچێکەوە نایەت: ڤی‌پی‌ئێن پێویستی بە ڕاژەکارێکە، یان هی خۆت یان هی کۆمپانیایەک. ئاگاداری خزمەتگوزارییە خۆڕاییەکانی ڤی‌پی‌ئێن بە — زۆرێکیان تۆماری ئەوەی دەیکەیت هەڵدەگرن و دەیفرۆشن، کە پێچەوانەی ئەوەیە کە دەتویست.,,
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,w.p7.tor.h,Page 7: Tor card heading.,Tor Browser,وێبگەڕی تۆر,,
 ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,w.p7.tor.b,"Page 7: Tor card body. Must say it downloads on first run, is slower, and some sites block it.","Tor hides which websites you visit by passing your traffic through several computers around the world. Opening it the first time downloads the browser from the Tor Project, so you need an internet connection. Two honest warnings: it is noticeably slower than normal browsing, and some websites and banks block it outright.",تۆر بە ناردنی هاتوچۆکەت بە چەند کۆمپیوتەرێکدا لە سەرانسەری جیهان، دەشارێتەوە سەردانی چ ماڵپەڕێک دەکەیت. یەکەم جار کە دەیکەیتەوە، وێبگەڕەکە لە پڕۆژەی تۆرەوە دادەبەزێنرێت، بۆیە پێویستت بە ئینتەرنێتە. دوو ئاگاداری ڕاستگۆیانە: بە ڕوونی لە گەڕانی ئاسایی خاوترە، و هەندێک ماڵپەڕ و بانق بە تەواوی ڕێگەی لێدەگرن.,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,nv.title,NVIDIA installer: dialog title.,Install the NVIDIA graphics driver,دامەزراندنی ڕاژەی گرافیکی NVIDIA,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,nv.none,NVIDIA installer: shown when no NVIDIA card is present.,"This computer does not have an NVIDIA graphics card, so there is nothing to install. Your graphics already work with the driver that comes with Bashan OS.",ئەم کۆمپیوتەرە کارتی گرافیکی NVIDIA نییە، بۆیە هیچ شتێک بۆ دامەزراندن نییە. گرافیکەکەت پێشتر بە ڕاژەکەی کە لەگەڵ سیستەمی بەشاندا دێت کاردەکات.,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,nv.already,NVIDIA installer: driver already present.,The NVIDIA driver is already installed.,ڕاژەی NVIDIA پێشتر دامەزراوە.,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,nv.ask,NVIDIA installer: the main consent dialog. Explains hybrid graphics in plain words.,"This laptop has an NVIDIA graphics card.
+
+Bashan OS does not include NVIDIA's driver, because NVIDIA does not allow us to pass it on to you. It can be downloaded from Debian in one click.
+
+You probably do not need it. The screen, video and everyday work already run on the laptop's other, built-in graphics chip. The NVIDIA card is for games and heavy video work, and it uses more battery.
+
+This needs about 700 MB, an internet connection, and a restart afterwards. You will be asked for your password.
+
+Install the NVIDIA driver now?","ئەم لاپتۆپە کارتی گرافیکی NVIDIA هەیە.
+
+سیستەمی بەشان ڕاژەی NVIDIA لەخۆناگرێت، چونکە NVIDIA ڕێگەمان پێنادات بۆ تۆی بنێرین. بە کلیکێک لە دەبیانەوە دادەبەزێنرێت.
+
+لەوانەیە پێویستت پێی نەبێت. شاشە، ڤیدیۆ و کاری ڕۆژانە پێشتر لەسەر چیپە گرافیکییە ناوەکییەکەی تر کاردەکەن. کارتی NVIDIA بۆ یاری و کاری قورسی ڤیدیۆیە، و باتری زیاتر بەکاردەهێنێت.
+
+ئەمە نزیکەی ٧٠٠ مێگابایت، پەیوەندی ئینتەرنێت و دەستپێکردنەوەیەک لەدوایدا دەوێت. داوای وشەی نهێنیت لێدەکرێت.
+
+ئێستا ڕاژەی NVIDIA دابمەزرێت؟",,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,nv.sb,"NVIDIA installer: the Secure Boot / MOK explanation. The hardest thing in the whole system to explain to a non-technical user, so it is written as three numbered steps.","One extra step, because Secure Boot is switched on.
+
+Secure Boot only lets this computer run software that carries a signature. The NVIDIA driver is built here, on your own machine, so it has no signature yet and Secure Boot would refuse to load it.
+
+To allow it, the computer must be told to trust a key made on this machine. Three steps:
+
+1. Choose a password now. It is used once, in the next few minutes, and then never again. Write it down.
+
+2. The computer restarts into a plain blue screen called MOK Manager. This is normal, not a fault.
+
+3. On that screen choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password from step 1.
+
+The computer then starts normally.
+
+If you would rather not, press No. Nothing changes, and your graphics keep working as they do now.","یەک هەنگاوی زیادە، چونکە Secure Boot کارایە.
+
+Secure Boot تەنها ڕێگە بە نەرمەکاڵایەک دەدات کە واژۆی هەبێت. ڕاژەی NVIDIA لێرە، لەسەر ئامێرەکەی خۆت، دروست دەکرێت، بۆیە هێشتا واژۆی نییە و Secure Boot ڕێگەی لە بارکردنی دەگرێت.
+
+بۆ ڕێگەپێدان، دەبێت بە کۆمپیوتەرەکە بوترێت متمانە بە کلیلێک بکات کە لەسەر ئەم ئامێرە دروستکراوە. سێ هەنگاو:
+
+١. ئێستا وشەیەکی نهێنی هەڵبژێرە. جارێک، لە چەند خولەکی داهاتوودا، بەکاردێت و پاشان هەرگیز. بینووسە.
+
+٢. کۆمپیوتەرەکە دەستپێدەکاتەوە بۆ شاشەیەکی شینی سادە بە ناوی MOK Manager. ئەمە ئاساییە، تێکچوون نییە.
+
+٣. لەو شاشەیەدا ""Enroll MOK""، پاشان ""Continue""، پاشان ""Yes"" هەڵبژێرە، و وشەی نهێنی هەنگاوی ١ بنووسە.
+
+پاشان کۆمپیوتەرەکە بە ئاسایی دەستپێدەکات.
+
+ئەگەر پێت باشترە نا، «نەخێر» دابگرە. هیچ نەگۆڕدەبێت و گرافیکەکەت وەک ئێستا کاردەکات.",,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,nv.busy,NVIDIA installer: progress message.,Installing the NVIDIA driver. This can take several minutes — you can keep working.,ڕاژەی NVIDIA دادەمەزرێت. لەوانەیە چەند خولەکێک بخایەنێت — دەتوانیت بەردەوام بیت لە کارەکەت.,,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,nv.ok,"NVIDIA installer: success, Secure Boot off, restart needed.","The NVIDIA driver is installed.
+
+Please restart the computer to start using it.","ڕاژەی NVIDIA دامەزرا.
+
+تکایە کۆمپیوتەرەکە دەستپێبکەرەوە بۆ بەکارهێنانی.",,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,nv.ok.mok,"NVIDIA installer: success with Secure Boot on. Repeats the blue-screen steps, because this is the moment the user must act on them.","The NVIDIA driver is installed, and the key has been prepared.
+
+When you restart, a plain blue screen called MOK Manager will appear.
+
+Choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password you just chose.
+
+The computer then starts normally. If you miss that blue screen, nothing breaks — the graphics card simply will not be used, and you can run this again.","ڕاژەی NVIDIA دامەزرا و کلیلەکە ئامادە کرا.
+
+کاتێک دەستپێدەکەیتەوە، شاشەیەکی شینی سادە بە ناوی MOK Manager دەردەکەوێت.
+
+""Enroll MOK""، پاشان ""Continue""، پاشان ""Yes"" هەڵبژێرە، و ئەو وشە نهێنییە بنووسە کە تازە هەڵتبژارد.
+
+پاشان کۆمپیوتەرەکە بە ئاسایی دەستپێدەکات. ئەگەر ئەو شاشە شینەت لەدەست چوو، هیچ تێکناچێت — تەنها کارتی گرافیک بەکارنایەت، و دەتوانیت دووبارە ئەمە جێبەجێ بکەیت.",,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,nv.failed,NVIDIA installer: failure.,"The NVIDIA driver could not be installed.
+
+The most common reason is no internet connection. Nothing has been changed. Please check your connection and try again.","نەتوانرا ڕاژەی NVIDIA دابمەزرێت.
+
+باوترین هۆکار نەبوونی پەیوەندی ئینتەرنێتە. هیچ شتێک نەگۆڕدراوە. تکایە پەیوەندییەکەت بپشکنە و دووبارە هەوڵبدەوە.",,
+ckb,Kurdish Sorani (کوردیی ناوەندی),LOW,NO,nv.cancelled,NVIDIA installer: cancelled or wrong password.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed.","دامەزراندن هەڵوەشێنرایەوە، یان وشەی نهێنی وەرنەگیرا.
+
+هیچ شتێک نەگۆڕدراوە.",,
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,app.bashan.comment,Tooltip for the Bashan app launcher in the dock.,The Bashan web app in its own window,ܦܪܘܓܪܡܐ ܕܒܫܢ ܒܟܘܬܐ ܕܝܠܢܝܬܐ,,
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,app.chrome.comment,Shown under the Chrome placeholder icon before Chrome is installed.,Not installed yet — click to install Google Chrome,ܠܐ ܐܬܬܣܝܡ ܥܕܟܝܠ — ܢܩܘܫ ܠܡܣܡ Google Chrome,,
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,app.installer.name,Desktop icon on the live ISO that starts the installer.,Install Bashan OS,ܣܝܡ ܒܫܢ ܐܘ ܐܣ,,
@@ -1115,3 +1973,81 @@ syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,w.p7.vpn.h,Page 7: VPN card heading.,A VPN
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,w.p7.vpn.b,Page 7: VPN card body. Must say a VPN needs a server and warn about free services.,"A VPN sends your internet traffic through another computer first. Bashan OS can connect to one, but it does not come with one: a VPN needs a server, either your own or a company's. Be careful with free VPN services — many of them keep records of what you do and sell them, which is the opposite of what you wanted.","VPN ܡܫܕܪ ܠܘܩܕܡ ܪܕܝܐ ܕܐܝܢܬܪܢܬ ܕܝܠܟ ܒܡܚܫܒܬܐ ܐܚܪܬܐ. ܒܫܢ ܡܨܐ ܕܢܬܩܛܪ ܒܚܕ, ܐܠܐ ܠܐ ܐܬܐ ܥܡ ܚܕ: VPN ܣܢܝܩ ܥܠ ܫܡܫܐ, ܐܘ ܕܝܠܟ ܐܘ ܕܫܘܬܦܘܬܐ. ܐܙܕܗܪ ܡܢ ܬܫܡܫܬܐ ܕVPN ܡܓܢܐ — ܣܓܝܐܐ ܡܢܗܘܢ ܢܛܪܝܢ ܪܫܡܐ ܕܡܐ ܕܥܒܕ ܐܢܬ ܘܡܙܒܢܝܢ ܠܗܘܢ, ܕܐܝܬܘܗܝ ܗܦܟܐ ܕܡܐ ܕܒܥܝܬ.",,
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,w.p7.tor.h,Page 7: Tor card heading.,Tor Browser,ܡܥܒܪܢܐ ܕܬܘܪ,,
 syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,w.p7.tor.b,"Page 7: Tor card body. Must say it downloads on first run, is slower, and some sites block it.","Tor hides which websites you visit by passing your traffic through several computers around the world. Opening it the first time downloads the browser from the Tor Project, so you need an internet connection. Two honest warnings: it is noticeably slower than normal browsing, and some websites and banks block it outright.","ܬܘܪ ܡܛܫܐ ܐܝܠܝܢ ܕܘܟܝܬܐ ܕܣܥܪ ܐܢܬ, ܒܕܡܥܒܪ ܪܕܝܟ ܥܠ ܟܡܐ ܡܚܫܒܬܐ ܒܟܠܗ ܥܠܡܐ. ܒܙܒܢܬܐ ܩܕܡܝܬܐ ܡܬܢܚܬ ܡܥܒܪܢܐ ܡܢ ܦܘܠܚܢܐ ܕܬܘܪ, ܡܛܠ ܗܕܐ ܣܢܝܩ ܐܢܬ ܥܠ ܐܝܢܬܪܢܬ. ܬܪܝܢ ܙܘܗܪܐ ܫܪܝܪܐ: ܡܗܠܐ ܗܘ ܛܒ ܡܢ ܥܒܪܐ ܫܚܝܡܐ, ܘܡܢ ܕܘܟܝܬܐ ܘܒܝܬ ܓܙܐ ܐܝܬ ܕܟܠܝܢ ܠܗ ܓܡܝܪܐܝܬ.",,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,nv.title,NVIDIA installer: dialog title.,Install the NVIDIA graphics driver,ܣܝܡ ܡܕܒܪܢܐ ܕܨܘܪܬܐ ܕNVIDIA,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,nv.none,NVIDIA installer: shown when no NVIDIA card is present.,"This computer does not have an NVIDIA graphics card, so there is nothing to install. Your graphics already work with the driver that comes with Bashan OS.","ܗܢܐ ܡܚܫܒܬܐ ܠܝܬ ܠܗ ܦܬܩܐ ܕܨܘܪܬܐ ܕNVIDIA, ܡܛܠ ܗܕܐ ܠܝܬ ܡܕܡ ܠܡܣܡ. ܨܘܪܬܟ ܟܒܪ ܦܠܚܐ ܒܡܕܒܪܢܐ ܕܐܬܐ ܥܡ ܒܫܢ.",,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,nv.already,NVIDIA installer: driver already present.,The NVIDIA driver is already installed.,ܡܕܒܪܢܐ ܕNVIDIA ܟܒܪ ܣܝܡ ܗܘ.,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,nv.ask,NVIDIA installer: the main consent dialog. Explains hybrid graphics in plain words.,"This laptop has an NVIDIA graphics card.
+
+Bashan OS does not include NVIDIA's driver, because NVIDIA does not allow us to pass it on to you. It can be downloaded from Debian in one click.
+
+You probably do not need it. The screen, video and everyday work already run on the laptop's other, built-in graphics chip. The NVIDIA card is for games and heavy video work, and it uses more battery.
+
+This needs about 700 MB, an internet connection, and a restart afterwards. You will be asked for your password.
+
+Install the NVIDIA driver now?","ܠܗܢܐ ܠܦܛܘܦ ܐܝܬ ܦܬܩܐ ܕܨܘܪܬܐ ܕNVIDIA.
+
+ܒܫܢ ܠܐ ܐܝܬ ܒܗ ܡܕܒܪܢܐ ܕNVIDIA, ܡܛܠ ܕNVIDIA ܠܐ ܫܒܩܐ ܠܢ ܕܢܬܠܝܘܗܝ ܠܟ. ܒܚܕܐ ܢܩܫܬܐ ܡܬܢܚܬ ܡܢ ܕܒܝܐܢ.
+
+ܟܒܪ ܠܐ ܣܢܝܩ ܐܢܬ ܥܠܘܗܝ. ܦܪܣܘܦܐ, ܚܙܘܢܐ ܘܥܒܕܐ ܕܟܠܝܘܡ ܟܒܪ ܦܠܚܝܢ ܥܠ ܨܘܒܥܐ ܕܨܘܪܬܐ ܐܚܪܢܐ ܕܓܘܐ. ܦܬܩܐ ܕNVIDIA ܐܝܬܘܗܝ ܠܓܘܚܟܐ ܘܠܥܒܕܐ ܥܫܝܢܐ ܕܚܙܘܢܐ, ܘܐܟܠ ܝܬܝܪ ܡܢ ܒܛܪܝܐ.
+
+ܗܕܐ ܒܥܝܐ ܐܝܟ 700 MB, ܩܘܛܪܐ ܕܐܝܢܬܪܢܬ ܘܫܘܪܝܐ ܚܕܬܐ ܒܬܪܟܢ. ܢܬܒܥܐ ܡܢܟ ܡܠܬܐ ܕܥܠܠܬܐ.
+
+ܢܬܬܣܝܡ ܡܕܒܪܢܐ ܕNVIDIA ܗܫܐ?",,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,nv.sb,"NVIDIA installer: the Secure Boot / MOK explanation. The hardest thing in the whole system to explain to a non-technical user, so it is written as three numbered steps.","One extra step, because Secure Boot is switched on.
+
+Secure Boot only lets this computer run software that carries a signature. The NVIDIA driver is built here, on your own machine, so it has no signature yet and Secure Boot would refuse to load it.
+
+To allow it, the computer must be told to trust a key made on this machine. Three steps:
+
+1. Choose a password now. It is used once, in the next few minutes, and then never again. Write it down.
+
+2. The computer restarts into a plain blue screen called MOK Manager. This is normal, not a fault.
+
+3. On that screen choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password from step 1.
+
+The computer then starts normally.
+
+If you would rather not, press No. Nothing changes, and your graphics keep working as they do now.","ܚܕܐ ܡܣܩܬܐ ܝܬܝܪܬܐ, ܡܛܠ ܕSecure Boot ܦܬܝܚܐ ܗܘ.
+
+Secure Boot ܫܒܩ ܠܗܢܐ ܡܚܫܒܬܐ ܕܢܦܠܘܚ ܒܠܚܘܕ ܪܟܝܟܐ ܕܐܝܬ ܠܗ ܚܬܡܐ. ܡܕܒܪܢܐ ܕNVIDIA ܗܪܟܐ ܡܬܒܢܐ, ܥܠ ܡܚܫܒܬܟ, ܡܛܠ ܗܕܐ ܥܕܟܝܠ ܠܝܬ ܠܗ ܚܬܡܐ ܘSecure Boot ܢܟܠܐ ܠܗ.
+
+ܕܢܫܬܒܩ, ܘܠܐ ܕܢܬܐܡܪ ܠܡܚܫܒܬܐ ܕܢܗܝܡܢ ܒܩܠܝܕܐ ܕܐܬܥܒܕ ܥܠ ܗܕܐ ܡܚܫܒܬܐ. ܬܠܬ ܡܣܩܬܐ:
+
+1. ܓܒܝ ܡܠܬܐ ܕܥܠܠܬܐ ܗܫܐ. ܡܬܚܫܚܐ ܚܕܐ ܙܒܢܬܐ, ܒܩܛܝܢܐ ܕܐܬܝܢ, ܘܒܬܪܟܢ ܠܐ ܬܘܒ. ܟܬܘܒܝܗ.
+
+2. ܡܚܫܒܬܐ ܫܪܝܐ ܬܘܒ ܒܦܪܣܘܦܐ ܣܡܘܩܐ ܦܫܝܛܐ ܕܡܬܩܪܐ MOK Manager. ܗܕܐ ܫܚܝܡܬܐ ܗܝ, ܠܐ ܚܘܣܪܢܐ.
+
+3. ܒܗܘ ܦܪܣܘܦܐ ܓܒܝ ""Enroll MOK"", ܒܬܪܟܢ ""Continue"", ܒܬܪܟܢ ""Yes"", ܘܟܬܘܒ ܡܠܬܐ ܕܥܠܠܬܐ ܕܡܢ ܡܣܩܬܐ 1.
+
+ܒܬܪܟܢ ܡܚܫܒܬܐ ܫܪܝܐ ܫܚܝܡܐܝܬ.
+
+ܐܢ ܨܒܐ ܐܢܬ ܕܠܐ, ܕܚܘܩ ܠܐ. ܠܐ ܡܫܬܚܠܦ ܡܕܡ ܘܨܘܪܬܟ ܦܠܚܐ ܐܝܟ ܕܗܫܐ.",,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,nv.busy,NVIDIA installer: progress message.,Installing the NVIDIA driver. This can take several minutes — you can keep working.,ܡܬܬܣܝܡ ܡܕܒܪܢܐ ܕNVIDIA. ܡܨܐ ܕܢܐܪܟ ܟܡܐ ܩܛܝܢܐ — ܡܨܐ ܐܢܬ ܕܬܦܠܘܚ.,,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,nv.ok,"NVIDIA installer: success, Secure Boot off, restart needed.","The NVIDIA driver is installed.
+
+Please restart the computer to start using it.","ܐܬܬܣܝܡ ܡܕܒܪܢܐ ܕNVIDIA.
+
+ܫܪܝ ܡܚܫܒܬܐ ܬܘܒ ܕܬܬܚܫܚ ܒܗ.",,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,nv.ok.mok,"NVIDIA installer: success with Secure Boot on. Repeats the blue-screen steps, because this is the moment the user must act on them.","The NVIDIA driver is installed, and the key has been prepared.
+
+When you restart, a plain blue screen called MOK Manager will appear.
+
+Choose ""Enroll MOK"", then ""Continue"", then ""Yes"", and type the password you just chose.
+
+The computer then starts normally. If you miss that blue screen, nothing breaks — the graphics card simply will not be used, and you can run this again.","ܐܬܬܣܝܡ ܡܕܒܪܢܐ ܕNVIDIA, ܘܐܬܛܝܒ ܩܠܝܕܐ.
+
+ܟܕ ܫܪܐ ܐܢܬ ܬܘܒ, ܢܬܚܙܐ ܦܪܣܘܦܐ ܣܡܘܩܐ ܦܫܝܛܐ ܕܡܬܩܪܐ MOK Manager.
+
+ܓܒܝ ""Enroll MOK"", ܒܬܪܟܢ ""Continue"", ܒܬܪܟܢ ""Yes"", ܘܟܬܘܒ ܡܠܬܐ ܕܥܠܠܬܐ ܕܗܫܐ ܓܒܝܬ.
+
+ܒܬܪܟܢ ܡܚܫܒܬܐ ܫܪܝܐ ܫܚܝܡܐܝܬ. ܐܢ ܦܪܚ ܡܢܟ ܗܘ ܦܪܣܘܦܐ ܣܡܘܩܐ, ܠܐ ܡܬܚܒܠ ܡܕܡ — ܒܠܚܘܕ ܦܬܩܐ ܕܨܘܪܬܐ ܠܐ ܢܬܚܫܚ, ܘܡܨܐ ܐܢܬ ܕܬܦܠܘܚ ܗܕܐ ܬܘܒ.",,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,nv.failed,NVIDIA installer: failure.,"The NVIDIA driver could not be installed.
+
+The most common reason is no internet connection. Nothing has been changed. Please check your connection and try again.","ܠܐ ܐܬܡܨܝ ܠܡܣܡ ܡܕܒܪܢܐ ܕNVIDIA.
+
+ܥܠܬܐ ܕܣܓܝ ܫܟܝܚܐ ܗܝ ܕܠܝܬ ܩܘܛܪܐ ܕܐܝܢܬܪܢܬ. ܠܐ ܐܫܬܚܠܦ ܡܕܡ. ܒܚܘܪ ܩܘܛܪܟ ܘܢܣܐ ܬܘܒ.",,
+syr,Syriac (ܣܘܪܝܝܐ),VERY LOW,NO,nv.cancelled,NVIDIA installer: cancelled or wrong password.,"Installation was cancelled, or the password was not accepted.
+
+Nothing has been changed.","ܐܬܒܛܠܬ ܣܝܡܬܐ, ܐܘ ܠܐ ܐܬܩܒܠܬ ܡܠܬܐ ܕܥܠܠܬܐ.
+
+ܠܐ ܐܫܬܚܠܦ ܡܕܡ.",,

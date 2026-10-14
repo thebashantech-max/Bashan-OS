@@ -1,0 +1,65 @@
+#!/bin/sh
+# Bashan OS — root half of the NVIDIA installer. Invoked through pkexec by
+# /usr/bin/bashan-install-nvidia; not meant to be run directly.
+#
+# Argument 1: "yes" if Secure Boot is on, "no" otherwise.
+# The MOK password, when needed, arrives on stdin and is never written to
+# disk in plain form or passed on a command line, where `ps` would show it.
+set -eu
+
+SECUREBOOT="${1:-no}"
+MOKDIR=/var/lib/dkms
+MOKKEY="$MOKDIR/mok.key"
+MOKCRT="$MOKDIR/mok.pub"
+
+export DEBIAN_FRONTEND=noninteractive
+
+# --- a key for Secure Boot, if needed ------------------------------------
+# Debian's DKMS signs modules automatically when this key pair exists, so
+# making it BEFORE installing the driver is what gets the module signed on
+# its first build. Doing it afterwards would need a rebuild.
+if [ "$SECUREBOOT" = yes ]; then
+    mokpw=$(cat)
+    [ -n "$mokpw" ] || { echo "E: no enrolment password supplied" >&2; exit 1; }
+
+    mkdir -p "$MOKDIR"
+    if [ ! -f "$MOKKEY" ]; then
+        openssl req -new -x509 -newkey rsa:2048 -nodes -days 36500 \
+            -subj "/CN=Bashan OS module signing key/" \
+            -keyout "$MOKKEY" -outform DER -out "$MOKCRT" >/dev/null 2>&1 \
+            || { echo "E: could not create the signing key" >&2; exit 1; }
+        chmod 600 "$MOKKEY"
+    fi
+
+    # Queue the key for enrolment. The user confirms it at the blue MOK
+    # Manager screen on the next boot; nothing is trusted without that.
+    printf '%s\n%s\n' "$mokpw" "$mokpw" | mokutil --import "$MOKCRT" >/dev/null 2>&1 \
+        || { echo "E: could not queue the key for enrolment" >&2; exit 1; }
+    unset mokpw
+fi
+
+# --- the driver ----------------------------------------------------------
+apt-get update
+apt-get install -y nvidia-driver nvidia-settings firmware-nvidia-graphics
+
+# --- hybrid graphics -----------------------------------------------------
+# An ASUS gaming laptop has two graphics chips: the one built into the CPU,
+# which drives the screen and sips power, and the NVIDIA card for games.
+#
+# We deliberately write NO xorg.conf. Forcing the NVIDIA card to drive the
+# display is the classic way to end up at a black screen on a laptop, and it
+# costs battery all day for a benefit that only matters in games. Instead
+# the built-in chip keeps the screen and programs are sent to the NVIDIA
+# card one at a time, on demand, with the wrapper below.
+install -D -m 0755 /dev/stdin /usr/bin/bashan-run-on-nvidia <<'WRAP'
+#!/bin/sh
+# Run one program on the NVIDIA card instead of the built-in graphics.
+#   bashan-run-on-nvidia <program> [arguments]
+# Everything else keeps using the built-in chip, which is what you want for
+# battery life. Check it worked with:  bashan-run-on-nvidia glxinfo | head
+exec env __NV_PRIME_RENDER_OFFLOAD=1 \
+         __GLX_VENDOR_LIBRARY_NAME=nvidia \
+         __VK_LAYER_NV_optimus=NVIDIA_only "$@"
+WRAP
+
+echo "I: NVIDIA driver installed; display left on the built-in graphics"

@@ -31,7 +31,9 @@ DESKTOP = {
         "Name": "app.installer.name", "Comment": "app.installer.comment"},
 }
 SHELL_KEYS = ["chrome.title", "chrome.already", "chrome.ask", "chrome.busy",
-              "chrome.ok", "chrome.cancelled", "chrome.failed"]
+              "chrome.ok", "chrome.cancelled", "chrome.failed",
+              "nv.title", "nv.none", "nv.already", "nv.ask", "nv.sb",
+              "nv.busy", "nv.ok", "nv.ok.mok", "nv.failed", "nv.cancelled"]
 SLIDE_KEYS = [f"slide{n}.{p}" for n in (1, 2, 3, 4, 5) for p in ("title", "body")]
 
 

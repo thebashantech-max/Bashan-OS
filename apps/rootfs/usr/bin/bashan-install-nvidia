@@ -1,0 +1,100 @@
+#!/bin/sh
+# Bashan OS — install the NVIDIA graphics driver on demand.
+#
+# NOT baked into the ISO: NVIDIA's driver is non-free and most machines do
+# not have an NVIDIA card. This fetches it from Debian when the user asks.
+#
+# The hard part is Secure Boot. Debian builds the NVIDIA kernel module on
+# the user's own machine with DKMS, so it carries no signature, and Secure
+# Boot refuses to load unsigned modules. The honest options are to enrol a
+# key (what this does) or to turn Secure Boot off (which we do not suggest,
+# because it is a real protection). The dialog explains the key route in
+# three numbered steps, in the user's own language.
+set -u
+
+I18N_DIR=/usr/share/bashan/i18n
+# shellcheck source=/dev/null
+[ -r "$I18N_DIR/en.sh" ] && . "$I18N_DIR/en.sh"
+_lang=${LC_ALL:-${LC_MESSAGES:-${LANG:-en}}}
+_lang=${_lang%%.*}; _lang=${_lang%%@*}
+if [ -r "$I18N_DIR/$_lang.sh" ]; then
+    # shellcheck source=/dev/null
+    . "$I18N_DIR/$_lang.sh"
+elif [ -r "$I18N_DIR/${_lang%%_*}.sh" ]; then
+    # shellcheck source=/dev/null
+    . "$I18N_DIR/${_lang%%_*}.sh"
+fi
+
+TITLE="${BT_NV_TITLE:-Install the NVIDIA graphics driver}"
+
+if command -v kdialog >/dev/null 2>&1; then
+    ask()  { kdialog --title "$TITLE" --yesno "$1"; }
+    note() { kdialog --title "$TITLE" --msgbox "$1"; }
+    oops() { kdialog --title "$TITLE" --error "$1"; }
+    busy() { kdialog --title "$TITLE" --passivepopup "$1" 20 >/dev/null 2>&1; }
+    getpw() { kdialog --title "$TITLE" --password "$1"; }
+else
+    ask()  { return 0; }
+    note() { echo "$1"; }
+    oops() { echo "$1" >&2; }
+    busy() { echo "$1"; }
+    getpw() { return 1; }
+fi
+
+# --- is there anything to do? -------------------------------------------
+if [ -x /usr/bin/nvidia-smi ] || [ -e /proc/driver/nvidia/version ]; then
+    note "$BT_NV_ALREADY"
+    exit 0
+fi
+
+# nvidia-detect is in the image already. Fall back to lspci if it is not.
+has_nvidia=no
+if command -v nvidia-detect >/dev/null 2>&1; then
+    nvidia-detect 2>/dev/null | grep -qi "nvidia.*detected\|No NVIDIA" || true
+    nvidia-detect 2>/dev/null | grep -qiv "No NVIDIA GPU detected" >/dev/null 2>&1
+fi
+if lspci -nn 2>/dev/null | grep -qiE '\[030[02]\].*nvidia|nvidia.*\[10de:'; then
+    has_nvidia=yes
+fi
+
+if [ "$has_nvidia" != yes ]; then
+    note "$BT_NV_NONE"
+    exit 0
+fi
+
+ask "$BT_NV_ASK" || exit 0
+
+# --- Secure Boot: enrol a key, or we are done before we start ------------
+secureboot=no
+if command -v mokutil >/dev/null 2>&1 && mokutil --sb-state 2>/dev/null | grep -qi "enabled"; then
+    secureboot=yes
+fi
+
+MOKPW=""
+if [ "$secureboot" = yes ]; then
+    ask "$BT_NV_SB" || exit 0
+    MOKPW=$(getpw "$BT_NV_TITLE") || exit 0
+    [ -n "$MOKPW" ] || exit 0
+fi
+
+busy "$BT_NV_BUSY"
+
+err=$(printf '%s' "$MOKPW" | pkexec /usr/libexec/bashan/nvidia-install "$secureboot" 2>&1)
+rc=$?
+
+if [ "$rc" -eq 0 ]; then
+    if [ "$secureboot" = yes ]; then
+        note "$BT_NV_OK_MOK"
+    else
+        note "$BT_NV_OK"
+    fi
+    exit 0
+fi
+
+case "$rc" in
+    126|127) oops "$BT_NV_CANCELLED" ;;
+    *)       oops "$BT_NV_FAILED
+
+$err" ;;
+esac
+exit 1
