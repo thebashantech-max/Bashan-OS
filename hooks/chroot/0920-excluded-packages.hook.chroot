@@ -18,7 +18,7 @@ EXCLUDED="firmware-b43-installer firmware-b43legacy-installer b43-fwcutter
           firmware-myricom firmware-bnx2x firmware-netxen firmware-bnx2
           dahdi-firmware-nonfree firmware-siano firmware-ivtv
           atmel-firmware
-          fonts-noto-cjk-extra cups-browsed"
+          fonts-noto-cjk-extra cups-browsed kdeconnect"
 
 for pkg in $EXCLUDED; do
     if dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "install ok installed"; then

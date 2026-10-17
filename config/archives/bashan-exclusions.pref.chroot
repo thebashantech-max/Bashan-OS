@@ -67,3 +67,13 @@ Pin-Priority: -1
 # the OS to one machine, and a laptop WITH a cellular modem would have lost
 # it with no way back short of a reinstall. 4.6 MB and one service is a
 # cheap price for the build staying general.
+
+# 8.0 MB, and measured LISTENING on the network: port 1716 plus four random
+# UDP ports, and joining mDNS on 5353. KDE Connect pairs a phone with the
+# desktop. Nobody asked for it, and it was the only non-avahi network
+# listener on a machine whose firewall exists to keep things off the
+# network. Verified a Recommends of plasma-desktop: removing it takes only
+# itself.
+Package: kdeconnect
+Pin: release *
+Pin-Priority: -1

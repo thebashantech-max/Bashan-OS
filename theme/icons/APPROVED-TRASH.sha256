@@ -1,0 +1,21 @@
+# Bashan OS - checksums of the APPROVED trash artwork (variant B).
+# dark = theme/icons/Bashan-B (ships as icon theme 'Bashan')
+# light = theme/icons/_light (ships as icon theme 'Bashan-Light')
+# The test pass compares the icons the running desktop uses against
+# these. A mismatch is a FAIL, not a cosmetic note.
+51a3d00b0f04bfcd2abd0cab2cfb7454aff2a00a26b80ff8b3317c4e5c33502d  dark/128/user-trash
+e0acee5bbb91a1e7baa2eefe3efc56011db056e352a22eb845df5b87cc3de117  dark/128/user-trash-full
+ba26167550c01d5b811526f3e25341d278633a9190ff9c30be06d014c0775ec7  dark/256/user-trash
+875aa35b8c0ffbbace2535eac8150c87b8f583692614540f6a7564261ca401a3  dark/256/user-trash-full
+9c814b600f19dfa3f29e229632cacd096f72a71d8251ef3a2bae724c38e76e74  dark/48/user-trash
+938be34d94bb70b84c13d6fcc942c2a1cc5222c68e6ebdccb70264adca4726c9  dark/48/user-trash-full
+311cea4ed548180c2c21a48c77b10c8b2942bfb7de5fb67f056a24c7cc62aede  dark/64/user-trash
+56a3e92c647a4f8c2229ea557f632570e6b060d5e005e824af388bf679ec7277  dark/64/user-trash-full
+d12be369e7240b3f48fc75b300c25a5e63e2005b8068c7972736ea492d96f1dd  light/128/user-trash
+9efa0e8a8269c11a9e8792201d6d790aa8e20f684c3a8df8d40fc1159fe64a97  light/128/user-trash-full
+b5059450d7f26a4e0b07809c0bb8ffc2408a1346b06d63ce94e3f7331c10f1f9  light/256/user-trash
+efad8a090105ab2c55c2f1bb8a386e3d48256d67f26a750db9bd82c5d1d3d984  light/256/user-trash-full
+e8748e6e6b6340b7f6256eb8675c0f8f686b8ed88ae614485664013081c47945  light/48/user-trash
+622e307bdd1ccf61131f37bdced079dbc06df0a1b669a59bf5bc9dc1ede5954e  light/48/user-trash-full
+b8ff789f8941cc8cb763699cfce7415d8481354f97f1cfb48b51a7415b8cc3ea  light/64/user-trash
+f4f62aaa4254e4b5872e1c5a4f97ab53b62259f6ab0591ab21b5b20a57874083  light/64/user-trash-full

@@ -41,6 +41,16 @@ tasks.writeConfig("indicateAudioStreams", true);
 
 // Right end: the indicators a laptop cannot do without - battery, wi-fi,
 // volume, bluetooth - plus a compact clock.
+// The system monitor, weather and notes live in the DOCK, not on the
+// desktop. Desktop applet placement is not controllable: Folder View has
+// no position system at all, and on the Desktop containment Plasma
+// arranges applets itself and ignores assigned geometry. Both were proven
+// in QEMU. A panel positions its own contents reliably, so that is where
+// they go.
+var mon = dock.addWidget("org.kde.plasma.systemmonitor");
+var weather = dock.addWidget("org.kde.plasma.weather");
+var notes = dock.addWidget("org.kde.plasma.notes");
+
 dock.addWidget("org.kde.plasma.marginsseparator");
 dock.addWidget("org.kde.plasma.systemtray");
 var clock = dock.addWidget("org.kde.plasma.digitalclock");
@@ -48,10 +58,9 @@ clock.currentConfigGroup = ["Appearance"];
 clock.writeConfig("showDate", false);
 clock.writeConfig("fontWeight", 500);
 
-// ---- desktop widgets ----------------------------------------------------
-// Deliberately NOT created here. Stage 9 found that widgets added by this
-// script either never appeared or ignored their geometry: the script runs
-// while plasmashell is still starting, before the containment knows its
-// screen size. /usr/libexec/bashan/bashan-desktop-locale creates and places
-// them from the user's session instead, when plasmashell is answering
-// D-Bus, and re-runs on a language change to mirror them.
+// ---- the desktop itself --------------------------------------------------
+// No widgets are placed on the desktop. The only desktop item is the Trash,
+// and it is a real trash:/ link in ~/Desktop (shipped via /etc/skel), drawn
+// by Folder View - which is what makes its icon switch between the empty
+// and full states by itself. Folder View also mirrors under right-to-left
+// languages, so the Trash moves to the opposite corner on its own.

@@ -1,0 +1,19 @@
+[Desktop Entry]
+Type=Application
+Name=Discover notifier (disabled by Bashan OS)
+Exec=/bin/true
+Terminal=false
+NoDisplay=true
+Hidden=true
+X-GNOME-Autostart-enabled=false
+# Bashan OS — measured at 146 MB resident doing nothing.
+#
+# Shipped by plasma-discover. Its job is to tell you updates are available;
+# Bashan OS installs security updates by itself and
+# /usr/libexec/bashan/restart-notify says when a restart is needed, so this
+# is a second opinion costing 146 MB.
+#
+# The filename is NOT a guess:
+#   dpkg -S /etc/xdg/autostart/org.kde.discover.notifier.desktop
+#     -> plasma-discover
+# Discover itself stays installed; only the background notifier is off.
