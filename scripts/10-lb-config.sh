@@ -80,7 +80,7 @@ lb config \
   --chroot-squashfs-compression-level 15 \
   --zsync false \
   --cache-packages true \
-  --hostname "$OS_ID" \
+  --bootappend-live "boot=live components quiet splash hostname=$OS_ID username=$OS_ID user-fullname=$OS_NAME" \
   --iso-application "$OS_NAME" \
   --iso-publisher "$OS_PUBLISHER" \
   --iso-volume "$OS_NAME $OS_VERSION" \
