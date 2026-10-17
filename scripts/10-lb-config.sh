@@ -39,6 +39,25 @@ rm -rf "$LB_DIR"
 mkdir -p "$LB_DIR"
 cd "$LB_DIR"
 
+# --firmware-chroot false is deliberate and was learned the hard way.
+#
+# With it true, live-build enumerates EVERY package in the archive that
+# ships firmware and installs the lot. That is where the 22 firmware
+# packages nobody asked for came from, and where libfishcamp1t64 and
+# libsbig4t64 came from - astronomy camera libraries that showed up in the
+# Part D audit with no reverse dependencies and no explanation.
+#
+# It also broke the Part G build outright: those packages are pinned to
+# priority -1, so apt reported "has no installation candidate" for each,
+# and live-build treats that as fatal.
+#
+# packages/firmware.list.chroot already names the 14 firmware packages this
+# OS wants. Letting that list be the whole answer is both the fix and what
+# the Part E trim was trying to achieve, only done at the source instead of
+# by installing and then removing.
+#
+# --firmware-binary false costs nothing here: it only matters for the
+# Debian Installer, and --debian-installer is none.
 lb config \
   --mode debian \
   --distribution "$SUITE" \
@@ -52,8 +71,8 @@ lb config \
   --bootloaders "grub-efi,syslinux" \
   --uefi-secure-boot enable \
   --debian-installer none \
-  --firmware-binary true \
-  --firmware-chroot true \
+  --firmware-binary false \
+  --firmware-chroot false \
   --linux-packages linux-image \
   --memtest none \
   --apt-indices false \
@@ -61,6 +80,7 @@ lb config \
   --chroot-squashfs-compression-level 15 \
   --zsync false \
   --cache-packages true \
+  --hostname "$OS_ID" \
   --iso-application "$OS_NAME" \
   --iso-publisher "$OS_PUBLISHER" \
   --iso-volume "$OS_NAME $OS_VERSION" \
@@ -90,6 +110,27 @@ if [ -d "$ROOT/config/archives" ]; then
     cp -v "$f" config/archives/
   done
 fi
+
+# Debconf answers that must be in place BEFORE packages install, or an
+# unanswerable question aborts the build. See config/preseed/.
+# The ISO's OWN boot menu. Separate from /etc/default/grub, which only
+# affects the installed system. Stage 9 defect 3 said the fix was "written"
+# - it was, into config/bootloaders/ - but nothing ever copied it here, so
+# every ISO kept Debian's stock menu with the Debian logo on the first
+# screen a user ever sees. live-build reads grub-pc/ for the UEFI menu too;
+# the name is historical.
+echo "I: ISO boot menu theme"
+if [ -d "$ROOT/config/bootloaders" ]; then
+  mkdir -p config/bootloaders
+  cp -a "$ROOT"/config/bootloaders/. config/bootloaders/
+else
+  echo "E: config/bootloaders is missing; the ISO menu would be Debian's" >&2
+  exit 1
+fi
+
+echo "I: preseed"
+mkdir -p config/preseed
+cp -a "$ROOT"/config/preseed/*.cfg.chroot config/preseed/ 2>/dev/null || true
 
 echo "I: chroot hooks"
 for f in "$ROOT"/hooks/chroot/*.hook.chroot; do

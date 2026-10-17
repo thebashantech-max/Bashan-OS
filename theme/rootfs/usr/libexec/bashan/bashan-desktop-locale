@@ -65,6 +65,16 @@ while [ "$i" -lt 30 ]; do
 done
 [ "$i" -lt 30 ] || exit 0
 
+# A log, because the previous version of this script failed SILENTLY and
+# still reported success. Proven in QEMU: `d.screenGeometry` is undefined on
+# Plasma 6's containment object, the script's own `if (!geo) continue` guard
+# then skipped every desktop, nothing was created, evaluateScript returned 0
+# and the state file was written as if it had worked. The correct call is
+# the GLOBAL screenGeometry(screen), verified live:
+#   screenGeometry(0) -> {"x":0,"y":0,"width":1280,"height":800,...}
+LOG="$STATE_DIR/desktop-locale.log"
+mkdir -p "$STATE_DIR" 2>/dev/null || true
+
 script=$(cat <<JS
 var side = "$side";
 var margin = $MARGIN;
@@ -78,11 +88,17 @@ var panels = [
     { type: "org.kde.plasma.notes",         w: 420, h: 300 }
 ];
 
+var placed = 0;
 var ds = desktops();
 for (var i = 0; i < ds.length; i++) {
     var d = ds[i];
-    var geo = d.screenGeometry;
-    if (!geo) { continue; }
+    // screenGeometry is a GLOBAL function taking a screen index, not a
+    // property of the containment. Getting this wrong is silent.
+    var geo = screenGeometry(d.screen);
+    if (!geo || !geo.width) {
+        print("no geometry for desktop " + i);
+        continue;
+    }
 
     var y = margin;
     for (var p = 0; p < panels.length; p++) {
@@ -98,6 +114,7 @@ for (var i = 0; i < ds.length; i++) {
     }
 
     // Trash: the bottom corner on the side the language reads towards.
+    placed += 1;
     var tws = d.widgets("org.kde.plasma.trash");
     var trash = (tws && tws.length) ? tws[0] : d.addWidget("org.kde.plasma.trash");
     if (trash) {
@@ -105,13 +122,21 @@ for (var i = 0; i < ds.length; i++) {
         trash.geometry = Qt.rect(tx, geo.height - icon - margin, icon, icon);
     }
 }
+print("bashan: placed on " + placed + " of " + ds.length + " desktop(s)");
 JS
 )
 
-if "$qdbus" org.kde.plasmashell /PlasmaShell \
-        org.kde.PlasmaShell.evaluateScript "$script" >/dev/null 2>&1; then
-    mkdir -p "$STATE_DIR"
-    printf '%s:%s\n' "$lang" "$side" > "$STATE"
-fi
+out=$("$qdbus" org.kde.plasmashell /PlasmaShell \
+        org.kde.PlasmaShell.evaluateScript "$script" 2>&1) || out="call failed: $out"
+printf '%s  %s\n%s\n' "$(date -Is)" "$lang:$side" "$out" >> "$LOG" 2>/dev/null || true
+
+# Only record success if plasmashell says it actually placed something. The
+# old version wrote the state file whenever the D-Bus call returned 0, which
+# it does even when the script inside did nothing at all - so a failure was
+# remembered as a success and never retried.
+case "$out" in
+    *"placed on 0 of"*|*"call failed"*) ;;
+    *placed*) printf '%s:%s\n' "$lang" "$side" > "$STATE" ;;
+esac
 
 exit 0

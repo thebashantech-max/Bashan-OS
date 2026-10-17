@@ -27,10 +27,21 @@ firmware-zd1211
 firmware-intel-misc
 firmware-misc-nonfree
 
+# Bluetooth firmware for Broadcom BCM203x and CSR adapters, which the two
+# packages above do NOT cover. Debian ships this on its own live PC images;
+# it was missing from this list until the Part G firmware audit, which is
+# exactly the kind of hole hand-curating a list produces.
+bluez-firmware
+
 # Graphics
 firmware-amd-graphics
 firmware-intel-graphics
 firmware-nvidia-graphics
+# GSP firmware, which nouveau needs on RTX 20-series and newer. Without it
+# a modern NVIDIA laptop gets a barely-accelerated desktop out of the box.
+# Not the same package as firmware-nvidia-tesla-535-gsp, which is the
+# datacenter Tesla branch and stays trimmed.
+firmware-nvidia-gsp
 firmware-ast
 
 # Audio DSPs: SOF for 2019+ Intel, Cirrus and Realtek codecs

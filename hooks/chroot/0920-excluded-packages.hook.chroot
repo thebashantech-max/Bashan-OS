@@ -52,12 +52,16 @@ fi
 # Trimming firmware is the change most likely to break a real laptop, so
 # prove the ones that matter survived rather than assuming the pins were
 # precise enough.
-NEEDED="fonts-noto-cjk smartmontools avahi-daemon
+# The first five are Debian's own live-PC firmware task
+# (live-task-non-free-firmware-pc). bluez-firmware was missing from our
+# hand-written list until the Part G audit; checking against Debian's
+# curated set is how that was found, and this stops it recurring.
+NEEDED="bluez-firmware fonts-noto-cjk smartmontools avahi-daemon
         firmware-iwlwifi firmware-atheros firmware-realtek firmware-mediatek
         firmware-brcm80211 firmware-intel-misc firmware-misc-nonfree
         firmware-amd-graphics firmware-intel-graphics firmware-nvidia-graphics
         firmware-sof-signed firmware-cirrus firmware-intel-sound
-        intel-microcode amd64-microcode"
+        intel-microcode amd64-microcode firmware-nvidia-gsp"
 missing=""
 for pkg in $NEEDED; do
     if ! dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "install ok installed"; then

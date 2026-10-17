@@ -16,7 +16,10 @@ Comment[fa]=هنوز نصب نشده — برای نصب Google Chrome کلیک 
 Comment[ku]=Hê nehatiye sazkirin — ji bo sazkirina Google Chrome bitikîne
 Comment[ckb]=هێشتا دانەمەزراوە — کلیک بکە بۆ دامەزراندنی Google Chrome
 Comment[syr]=ܠܐ ܐܬܬܣܝܡ ܥܕܟܝܠ — ܢܩܘܫ ܠܡܣܡ Google Chrome
-# Icon: deliberately the generic 'web-browser' from Breeze, NOT Google's.
+# Icon: deliberately the generic 'internet-web-browser' from Breeze, NOT
+# Google's. Verified to exist: breeze-dark/apps/48/internet-web-browser.svg.
+# The first attempt used 'web-browser', which Breeze does not ship, so the
+# dock showed a blank page icon - the defect this was meant to fix.
 # Stage 9 defect 7 was a blank page icon here, because Icon=google-chrome
 # names an icon that does not exist until Chrome is installed. Shipping
 # Google's own logo to fill the gap would mean putting their trademark in
@@ -34,7 +37,7 @@ Comment[syr]=ܠܐ ܐܬܬܣܝܡ ܥܕܟܝܠ — ܢܩܘܫ ܠܡܣܡ Google Chrome
 # /usr/libexec/bashan/chrome-placeholder-sync puts it back and switches the
 # repository off again.
 Exec=/usr/bin/bashan-install-chrome
-Icon=web-browser
+Icon=internet-web-browser
 Terminal=false
 StartupNotify=true
 Categories=Network;WebBrowser;

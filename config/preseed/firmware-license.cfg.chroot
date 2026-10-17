@@ -1,0 +1,16 @@
+# Bashan OS — answer the one firmware licence question in advance.
+#
+# firmware-ipw2x00 asks, in its PRE-INSTALL script, whether you accept
+# Intel's licence. In a build chroot there is no one to ask, so the script
+# exits with "agree question could not be asked", dpkg aborts, and the whole
+# build fails. That is what killed the second Part G build.
+#
+# It is the ONLY package we ship that does this - checked by unpacking the
+# maintainer scripts of all 21 firmware packages in the list and grepping
+# for a licence prompt.
+#
+# NOTE FOR THE LAWYER: pre-answering this means Bashan Tech LLC accepts
+# Intel's firmware licence on behalf of every user, silently. Debian's own
+# installer asks the user once instead. Recorded in
+# docs/legal/BLOCKS-PUBLIC-RELEASE.md.
+firmware-ipw2x00 firmware-ipw2x00/license/accepted boolean true
