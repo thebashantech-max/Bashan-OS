@@ -98,3 +98,50 @@ None of the following was exercised. They are not passes.
 - Screen lock
 - **Arabic desktop in use**, and RTL dock mirroring
 - Syriac text actually rendered on screen (the font resolves; no text shown)
+
+---
+
+# Trash design — tested, and it does NOT pass
+
+Build 7, `d32c4ded72aea6c7406dd57f19c7a060b8b7b6d55255bb2d57cdc28e28da13cc`.
+
+Alternative 1 was built as approved: a real `trash:/` link in `~/Desktop`,
+shipped via `/etc/skel`, drawn by Folder View.
+
+**One screenshot shows both answers at once** (`k-07-both-trash.png`), with
+a real file in the trash:
+
+| What | Position | Icon state | Verdict |
+|---|---|---|---|
+| The `.desktop` link (alternative 1) | top-left, as predicted | **EMPTY — wrong.** Never switches. | **FAIL** |
+| The Trash **plasmoid** | wherever Plasma puts it (middle of the screen) | **FULL, with the approved variant-B glass artwork and "One item"** | correct icon, uncontrollable position |
+
+## Why the link cannot work
+
+A `Type=Link` `.desktop` file renders the icon named in its `Icon=` field.
+That is a static string. Nothing re-reads the trash to change it. Verified
+twice: with a real XDG trash entry present (`t.txt` plus its `.trashinfo`),
+and again after forcing a desktop refresh. It stayed empty both times.
+
+So the two properties you need cannot currently be had together:
+
+- **Correct, switching artwork** → only the Trash plasmoid does this.
+- **A chosen corner** → only the Folder View icon does this, and only the
+  top corner.
+
+## Position, measured
+
+- **English:** top-left.
+- **Arabic:** not yet tested, but Folder View mirrors with Qt's layout
+  direction, so it should be top-right. **Not the bottom corners
+  originally specified**, in either language.
+
+## Honest recommendation
+
+Ship the **Trash plasmoid**, not the desktop link. It is the only one that
+shows the approved artwork in both states and switches by itself, which is
+what was called critical. Accept that Plasma decides where it sits. The
+user can drag it to a corner once, and Plasma remembers that.
+
+The alternative - a desktop icon in a guaranteed corner that is **always
+drawn empty** - looks like a bug to anyone who throws a file away.
