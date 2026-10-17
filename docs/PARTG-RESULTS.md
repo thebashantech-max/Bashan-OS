@@ -145,3 +145,48 @@ user can drag it to a corner once, and Plasma remembers that.
 
 The alternative - a desktop icon in a guaranteed corner that is **always
 drawn empty** - looks like a bug to anyone who throws a file away.
+
+---
+
+# Trash plasmoid — tested, and it PASSES
+
+Build 8, `4f971b87373d7cc31bcded5663d0be7e4f6a08e75b53d4c148f4527e044a1cea`.
+
+## A correction to the previous entry
+
+The earlier "the plasmoid does not switch" finding was **wrong, because the
+test was wrong.** It created a trash entry by writing files into
+`~/.local/share/Trash/` by hand. That is correct on disk per the XDG
+specification, but it does not go through KIO, and KIO is what notifies the
+widget.
+
+Deleting a file the way a user actually does:
+
+```
+kioclient move ~/realfile.txt trash:/
+```
+
+switched the widget immediately, with no refresh.
+
+## Results
+
+| State | Mode | Result |
+|---|---|---|
+| Empty | dark | glass map, "Trash / Empty" — approved artwork |
+| Full | dark | filled glass map, "Trash / One item" — approved artwork |
+| Full | light | light re-cut artwork, reads clearly on the pale wallpaper |
+| Empty | light | captured |
+
+**Checksums: 16 of 16 approved trash icon files are byte-identical in the
+ISO.** Both states, four sizes, both themes. Zero different, zero missing.
+
+## Position — the known gap
+
+The widget sits where Plasma put it, roughly the middle of the screen. **Not
+a corner, and not mirrored for right-to-left.** No positioning is attempted
+any more; the user drags it once and Plasma remembers.
+
+Every promise of a corner has been removed: the welcome app's text in all 13
+languages, `docs/DESIGN.md`, `docs/I18N.md`, and the preview mockup.
+`docs/COMPATIBILITY.md` lists it as a known gap with the four approaches
+that were tried and why each failed.
