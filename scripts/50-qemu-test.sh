@@ -4,6 +4,9 @@
 #   ./scripts/50-qemu-test.sh disks            build the test disks
 #   ./scripts/50-qemu-test.sh boot uefi-sb     UEFI with Secure Boot ON
 #   ./scripts/50-qemu-test.sh boot bios        legacy BIOS
+#   ./scripts/50-qemu-test.sh target           make a blank install disk
+#   ./scripts/50-qemu-test.sh boot install     ISO + blank target, to install
+#   ./scripts/50-qemu-test.sh boot installed   NO ISO: boot what was installed
 #   ./scripts/50-qemu-test.sh shot NAME        screenshot the running VM
 #   ./scripts/50-qemu-test.sh key KEYS         send keystrokes
 #   ./scripts/50-qemu-test.sh stop             shut the VM down
@@ -25,6 +28,7 @@ ISO="$ROOT/build/out/$ISO_NAME"
 OVMF_CODE_SB="/usr/share/OVMF/OVMF_CODE_4M.ms.fd"
 OVMF_VARS_SB="/usr/share/OVMF/OVMF_VARS_4M.ms.fd"
 RAM_MB="${BASHAN_VM_RAM:-2560}"
+BASHAN_DISK="${BASHAN_DISK:-other-os.img}"
 
 mkdir -p "$VM" "$SHOTS"
 die() { echo "E: $*" >&2; exit 1; }
@@ -61,8 +65,52 @@ cmd_disks() {
 }
 
 # --- boot ----------------------------------------------------------------
+cmd_target() {
+  local disk="$VM/target.img"
+  rm -f "$disk"
+  truncate -s 40G "$disk"
+  echo "I: blank 40 GB install target at $disk"
+  echo "I: Secure Boot variables reset, so the install writes its own boot entry"
+  cp -f "$OVMF_VARS_SB" "$VM/vars-sb.fd"
+}
+
 cmd_boot() {
   local mode="${1:-uefi-sb}"
+  # "installed" boots the disk the installer wrote, with NO ISO attached.
+  # Until that works, an install has not been proven.
+  if [ "$mode" = "installed" ]; then
+    [ -f "$VM/target.img" ] || die "no target disk - run: $0 target, then install"
+    pgrep -f "qemu-system-x86_64.*bashan-vm" >/dev/null && die "a VM is already running"
+    nohup qemu-system-x86_64 \
+      -name "bashan-vm" \
+      -machine "q35,accel=kvm,smm=on" -cpu host -smp 2 -m "$RAM_MB" \
+      -device "virtio-vga" -display none -vnc ":9" \
+      -device "usb-ehci,id=usb" -device "usb-tablet,bus=usb.0" \
+      -monitor "unix:$MON,server,nowait" \
+      -global "driver=cfi.pflash01,property=secure,value=on" \
+      -drive "if=pflash,format=raw,unit=0,readonly=on,file=$OVMF_CODE_SB" \
+      -drive "if=pflash,format=raw,unit=1,file=$VM/vars-sb.fd" \
+      -drive "file=$VM/target.img,format=raw,if=virtio" \
+      -drive "file=$VM/harness.img,format=raw,if=virtio" \
+      -rtc "base=localtime" \
+      -audiodev "none,id=snd0" -device "intel-hda" -device "hda-duplex,audiodev=snd0" \
+      >"$VM/qemu.log" 2>&1 &
+    sleep 3
+    echo "I: booting the INSTALLED system, Secure Boot ON, no ISO attached"
+    echo "I: VM started"
+    return 0
+  fi
+
+  # "install" is UEFI+Secure Boot pointed at the blank target disk instead
+  # of the dual-boot fixture. Resolved BEFORE the case below, because a
+  # case tests the word it expanded once and reassigning $mode inside a
+  # branch never reaches the later patterns.
+  if [ "$mode" = "install" ]; then
+    [ -f "$VM/target.img" ] || die "no target disk - run: $0 target"
+    BASHAN_DISK="target.img"
+    mode="uefi-sb"
+  fi
+
   [ -f "$ISO" ] || die "no ISO at $ISO - run ./build.sh build first"
   pgrep -f "qemu-system-x86_64.*bashan-vm" >/dev/null && die "a VM is already running; ./scripts/50-qemu-test.sh stop"
 
@@ -74,7 +122,7 @@ cmd_boot() {
     -serial "unix:$VM/serial.sock,server,nowait"
     -monitor "unix:$MON,server,nowait"
     -drive "file=$ISO,media=cdrom,readonly=on"
-    -drive "file=$VM/other-os.img,format=raw,if=virtio"
+    -drive "file=$VM/$BASHAN_DISK,format=raw,if=virtio"
     # TEST ONLY: the shared disk the in-guest harness writes its results to.
     # Built by scripts/55-vm-harness.sh; never part of the ISO.
     -drive "file=$VM/harness.img,format=raw,if=virtio"
@@ -126,6 +174,7 @@ cmd_stop() { monitor "quit"; sleep 2; pkill -f "qemu-system-x86_64.*bashan-vm" 2
 
 case "${1:-}" in
   disks) cmd_disks ;;
+  target) cmd_target ;;
   boot)  shift; cmd_boot "$@" ;;
   shot)  shift; cmd_shot "$@" ;;
   key)   shift; cmd_key "$@" ;;
