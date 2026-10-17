@@ -1,0 +1,16 @@
+#!/bin/sh
+# Bashan OS — turn the idle screen lock ON for the installed system.
+#
+# Run by Calamares (installer/modules/shellprocess_bashan.conf) at the end
+# of an install, inside the target. The shipped default is Autolock=false
+# so that the LIVE session never locks during an install; this flips it for
+# the machine the user will actually live with.
+set -eu
+
+F=/etc/xdg/kscreenlockerrc
+[ -f "$F" ] || { echo "E: $F missing" >&2; exit 1; }
+
+sed -i 's/^Autolock=.*/Autolock=true/' "$F"
+grep -q '^Autolock=true' "$F" || { echo "E: could not enable the lock" >&2; exit 1; }
+
+echo "I: idle screen lock enabled for the installed system"

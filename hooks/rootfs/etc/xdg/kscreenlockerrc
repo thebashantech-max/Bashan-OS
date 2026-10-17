@@ -1,13 +1,33 @@
-# Bashan OS — lock the screen when the laptop is left alone.
+# Bashan OS — screen locking.
 #
-# Ten minutes to lock, with a five-second grace period so that brushing the
-# trackpad on the way past does not demand a password. A laptop is carried
-# into places its owner does not control; this is the difference between
-# losing a laptop and losing everything on it.
+# Autolock is FALSE here on purpose. This file is the default for BOTH the
+# live session and a fresh installed account, and in the live session an
+# idle lock is actively harmful:
 #
-# System-wide default only: the user can change it in System Settings.
+#   An install takes longer than ten minutes and needs no input, so the
+#   screen locked in the middle of one and demanded a password for an
+#   account whose password is not set up yet. A user who walks away during
+#   the install comes back to a prompt they cannot answer. Measured in
+#   QEMU, Stage 1.
+#
+# The installed system DOES get the ten-minute lock: Calamares turns it on
+# at the end of the install, via /usr/libexec/bashan/bashan-enable-lock
+# called from installer/modules/shellprocess_bashan.conf. A laptop is
+# carried into places its owner does not control; that is worth a lock. A
+# machine still being installed is not.
 [Daemon]
-Autolock=true
+Autolock=false
 LockGrace=5
 Timeout=10
 LockOnResume=true
+
+# The greeter is the one screen a confused user stares at. Without these it
+# shows Breeze's purple wallpaper and Debian's swirl as the user picture -
+# both seen in Stage 1, and both contradict the branding requirement.
+[Greeter]
+Theme=com.bashan.desktop
+WallpaperPlugin=org.kde.image
+
+[Greeter][Wallpaper][org.kde.image][General]
+Image=/usr/share/wallpapers/Bashan/contents/images/bashan-ridge-login-1920x1080.png
+FillMode=2

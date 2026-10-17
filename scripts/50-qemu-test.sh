@@ -27,7 +27,7 @@ MON="$VM/monitor.sock"
 ISO="$ROOT/build/out/$ISO_NAME"
 OVMF_CODE_SB="/usr/share/OVMF/OVMF_CODE_4M.ms.fd"
 OVMF_VARS_SB="/usr/share/OVMF/OVMF_VARS_4M.ms.fd"
-RAM_MB="${BASHAN_VM_RAM:-2560}"
+RAM_MB="${BASHAN_VM_RAM:-3584}"
 BASHAN_DISK="${BASHAN_DISK:-other-os.img}"
 
 mkdir -p "$VM" "$SHOTS"
@@ -85,7 +85,7 @@ cmd_boot() {
       -name "bashan-vm" \
       -machine "q35,accel=kvm,smm=on" -cpu host -smp 2 -m "$RAM_MB" \
       -device "virtio-vga" -display none -vnc ":9" \
-      -device "usb-ehci,id=usb" -device "usb-tablet,bus=usb.0" \
+      -device "virtio-tablet-pci" -device "virtio-keyboard-pci" \
       -monitor "unix:$MON,server,nowait" \
       -global "driver=cfi.pflash01,property=secure,value=on" \
       -drive "if=pflash,format=raw,unit=0,readonly=on,file=$OVMF_CODE_SB" \
@@ -118,7 +118,7 @@ cmd_boot() {
     -name "bashan-vm"
     -machine "q35,accel=kvm" -cpu host -smp 2 -m "$RAM_MB"
     -device "virtio-vga" -display none -vnc ":9"
-    -device "usb-ehci,id=usb" -device "usb-tablet,bus=usb.0"
+    -device "virtio-tablet-pci" -device "virtio-keyboard-pci"
     -serial "unix:$VM/serial.sock,server,nowait"
     -monitor "unix:$MON,server,nowait"
     -drive "file=$ISO,media=cdrom,readonly=on"

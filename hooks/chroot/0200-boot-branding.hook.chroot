@@ -24,3 +24,15 @@ for unit in plymouth-poweroff.service plymouth-reboot.service \
 done
 
 echo "I: boot branding activated"
+
+# The lock screen and SDDM show the user's avatar. Debian ships its swirl
+# as the default, which appeared on the Stage 1 lock screen - a Debian logo
+# in one of the most visible places there is.
+if [ -f /usr/share/bashan/default-face.png ]; then
+    install -D -m 0644 /usr/share/bashan/default-face.png /etc/skel/.face.icon
+    for d in /home/*/; do
+        [ -d "$d" ] || continue
+        install -D -m 0644 /usr/share/bashan/default-face.png "$d/.face.icon" 2>/dev/null || true
+    done
+    echo "I: default user avatar set to the Bashan mark"
+fi

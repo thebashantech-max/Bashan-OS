@@ -1,0 +1,16 @@
+# Bashan OS — do not blank the screen in the live session.
+#
+# Stage 1: the display powered off during an install and the VM reported
+# "Display output is not active", which to a user looks like a crash.
+# The installed system inherits sensible defaults from powerdevil; these
+# values only stop the aggressive blanking that bit us on the live ISO.
+[AC][DPMSControl]
+idleTime=3600
+lockBeforeTurnOff=0
+
+[AC][DimDisplay]
+idleTime=1800
+
+[AC][SuspendSession]
+idleTime=7200
+suspendType=0
