@@ -1,0 +1,48 @@
+#!/bin/sh
+# Bashan OS — the test harness must never reach a user's machine.
+#
+# test/vm-harness/ exists to drive a QEMU guest. It mounts a shared disk,
+# runs things with sudo and writes results where the host can read them.
+# None of that belongs on a laptop.
+#
+# Nothing copies test/ into the image today. This hook exists so that if
+# someone ever adds it to an overlay by accident, the build STOPS.
+#
+# TWO MISTAKES THIS FILE HAS ALREADY MADE, both worth keeping in mind:
+#
+#  1. It searched /root and found ITSELF. live-build stages each hook at
+#     /root/<hookname> inside the chroot while it runs, so a hook that
+#     greps /root for its own marker text always matches. /root is now
+#     excluded, and the marker is assembled from pieces so that this
+#     file's own text cannot match it.
+#
+#  2. It used `[ -e "$f" ] && found="$found $f"` under `set -e`. When the
+#     test failed - the normal case, nothing found - the whole statement
+#     returned 1 and the shell exited, which would have failed the build
+#     precisely when the image was CLEAN.
+set -e
+
+found=""
+for f in /usr/share/bashan/run-checks.sh /usr/share/bashan/vm-harness \
+         /usr/local/bin/run-checks.sh /opt/bashan-test \
+         /usr/share/bashan/r.sh; do
+    if [ -e "$f" ]; then
+        found="$found $f"
+    fi
+done
+
+# Catch it under any name, by a marker built at runtime so this file does
+# not contain the literal string it is looking for.
+marker="BASHAN OS"" TEST HARNESS"
+hits=$(grep -rl "$marker" /usr /etc /opt 2>/dev/null | head -5 || true)
+if [ -n "$hits" ]; then
+    found="$found $hits"
+fi
+
+if [ -n "$found" ]; then
+    echo "E: test harness files found in the image:$found" >&2
+    echo "E: test/vm-harness/ is for QEMU only and must not be shipped." >&2
+    exit 1
+fi
+
+echo "I: no test harness in the image"

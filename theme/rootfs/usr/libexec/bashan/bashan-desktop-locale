@@ -109,7 +109,7 @@ for (var i = 0; i < ds.length; i++) {
         var x = (side === "left")
                 ? (geo.width - spec.w - margin)
                 : margin;
-        widget.geometry = Qt.rect(x, y, spec.w, spec.h);
+        widget.geometry = {x: x, y: y, width: spec.w, height: spec.h};
         y += spec.h + 24;
     }
 
@@ -119,10 +119,14 @@ for (var i = 0; i < ds.length; i++) {
     var trash = (tws && tws.length) ? tws[0] : d.addWidget("org.kde.plasma.trash");
     if (trash) {
         var tx = (side === "left") ? margin : (geo.width - icon - margin);
-        trash.geometry = Qt.rect(tx, geo.height - icon - margin, icon, icon);
+        trash.geometry = {x: tx, y: geo.height - icon - margin,
+                          width: icon, height: icon};
     }
 }
-print("bashan: placed on " + placed + " of " + ds.length + " desktop(s)");
+// Report what the containment actually is: on Folder View none of this
+// works, and saying so beats a silent no-op.
+print("bashan: containment " + (ds.length ? ds[0].type : "none")
+      + "; placed on " + placed + " of " + ds.length + " desktop(s)");
 JS
 )
 

@@ -75,6 +75,9 @@ cmd_boot() {
     -monitor "unix:$MON,server,nowait"
     -drive "file=$ISO,media=cdrom,readonly=on"
     -drive "file=$VM/other-os.img,format=raw,if=virtio"
+    # TEST ONLY: the shared disk the in-guest harness writes its results to.
+    # Built by scripts/55-vm-harness.sh; never part of the ISO.
+    -drive "file=$VM/harness.img,format=raw,if=virtio"
     -boot d
     -rtc "base=localtime"
     -audiodev "none,id=snd0" -device "intel-hda" -device "hda-duplex,audiodev=snd0"
