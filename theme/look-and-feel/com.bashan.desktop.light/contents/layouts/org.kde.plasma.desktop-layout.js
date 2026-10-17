@@ -49,24 +49,9 @@ clock.writeConfig("showDate", false);
 clock.writeConfig("fontWeight", 500);
 
 // ---- desktop widgets ----------------------------------------------------
-var desk = desks[0];
-if (desk) {
-    var mon = desk.addWidget("org.kde.plasma.systemmonitor");
-    mon.geometry = Qt.rect(60, 60, 420, 260);
-
-    var weather = desk.addWidget("org.kde.plasma.weather");
-    weather.geometry = Qt.rect(60, 350, 420, 220);
-
-    var notes = desk.addWidget("org.kde.plasma.notes");
-    notes.geometry = Qt.rect(60, 600, 420, 300);
-
-    // Trash, bottom-right: correct for the eight left-to-right languages.
-    // For Arabic, Hebrew, Syriac, Sorani and Persian it is moved to the
-    // bottom-left at login by /usr/libexec/bashan/bashan-desktop-locale,
-    // which also handles the user changing language later.
-    var trash = desk.addWidget("org.kde.plasma.trash");
-    var sg = desk.screenGeometry;
-    if (sg) {
-        trash.geometry = Qt.rect(sg.width - 188, sg.height - 188, 128, 128);
-    }
-}
+// Deliberately NOT created here. Stage 9 found that widgets added by this
+// script either never appeared or ignored their geometry: the script runs
+// while plasmashell is still starting, before the containment knows its
+// screen size. /usr/libexec/bashan/bashan-desktop-locale creates and places
+// them from the user's session instead, when plasmashell is answering
+// D-Bus, and re-runs on a language change to mirror them.

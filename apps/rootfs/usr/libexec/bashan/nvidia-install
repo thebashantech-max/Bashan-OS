@@ -43,8 +43,10 @@ apt-get update
 apt-get install -y nvidia-driver nvidia-settings firmware-nvidia-graphics
 
 # --- hybrid graphics -----------------------------------------------------
-# An ASUS gaming laptop has two graphics chips: the one built into the CPU,
-# which drives the screen and sips power, and the NVIDIA card for games.
+# Most laptops with an NVIDIA card have two graphics chips: the one built
+# into the CPU, which drives the screen and sips power, and the NVIDIA card
+# for games. Desktops usually have only the NVIDIA card, where this changes
+# nothing - leaving the display alone is correct in both cases.
 #
 # We deliberately write NO xorg.conf. Forcing the NVIDIA card to drive the
 # display is the classic way to end up at a black screen on a laptop, and it

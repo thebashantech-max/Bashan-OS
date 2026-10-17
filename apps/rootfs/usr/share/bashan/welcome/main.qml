@@ -300,17 +300,21 @@ ApplicationWindow {
             }
         }
 
-        // 4 - language, theme, startup sound
+        // 4 - language, theme, startup sound.
+        // The most crowded page: three cards, each with a control. At the
+        // default 1000x720 window the third card used to sit under the
+        // footer. Smaller heading and body here rather than a taller
+        // window, because 720 is close to a 1366x768 laptop's full height.
         ScrollView {
             clip: true
             ColumnLayout {
                 width: stack.width - 120
-                x: 60; y: 30
-                spacing: 10
-                Title { text: win.tr("w.p4.title") }
+                x: 60; y: 24
+                spacing: 8
+                Title { text: win.tr("w.p4.title"); font.pixelSize: 32 }
                 Card {
-                    CardTitle { text: win.tr("w.p4.lang.h") }
-                    Body { text: win.tr("w.p4.lang.b"); font.pixelSize: 19 }
+                    CardTitle { text: win.tr("w.p4.lang.h"); font.pixelSize: 21 }
+                    Body { text: win.tr("w.p4.lang.b"); font.pixelSize: 17 }
                     Text {
                         // Double negation: a missing entry yields undefined,
                         // which Qt refuses to assign to a bool property.
@@ -326,20 +330,20 @@ ApplicationWindow {
                     }
                 }
                 Card {
-                    CardTitle { text: win.tr("w.p4.theme.h") }
-                    Body { text: win.tr("w.p4.theme.b"); font.pixelSize: 19 }
+                    CardTitle { text: win.tr("w.p4.theme.h"); font.pixelSize: 21 }
+                    Body { text: win.tr("w.p4.theme.b"); font.pixelSize: 17 }
                     BigButton {
                         text: win.tr("w.p4.theme.btn")
-                        Layout.topMargin: 8
+                        Layout.topMargin: 6
                         onClicked: win.act("theme-toggle")
                     }
                 }
                 Card {
-                    CardTitle { text: win.tr("w.p4.song.h") }
-                    Body { text: win.tr("w.p4.song.b"); font.pixelSize: 19 }
+                    CardTitle { text: win.tr("w.p4.song.h"); font.pixelSize: 21 }
+                    Body { text: win.tr("w.p4.song.b"); font.pixelSize: 17 }
                     BigCheck {
                         id: songBox
-                        Layout.topMargin: 8
+                        Layout.topMargin: 6
                         text: win.tr("w.p4.song.toggle")
                         checked: true
                         // Writing /etc/bashan/boot-sound.conf needs root, so

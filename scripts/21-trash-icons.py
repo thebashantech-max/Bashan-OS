@@ -21,10 +21,15 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFilter
 
+from _palette import VARIANTS
+
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "assets/reference/trash-icons.jpg"
 OUT = ROOT / "theme/icons"
 SIZES = (16, 22, 24, 32, 48, 64, 128, 256)
+# Which full-bin artwork the light theme uses. Mirrors TRASH_VARIANT in
+# config/build.conf; B is the text-free one.
+TRASH_LIGHT_VARIANT = "B"
 
 # Measured tile rectangles (x0, y0, x1, y1) - the full rounded square.
 TILE_EMPTY = (64, 70, 588, 553)
@@ -157,12 +162,48 @@ def to_icon(img: np.ndarray, box: tuple) -> Image.Image:
     return canvas
 
 
-def emit(art: Image.Image, variant: str, name: str) -> None:
+def for_light(art: Image.Image) -> Image.Image:
+    """The same glass, given an edge so it reads on a light background.
+
+    The artwork is unchanged - this is a re-cut, not a redesign, and the
+    dark-mode icons it came from are not touched. The problem on light is
+    only contrast: alpha is derived from brightness, so the parts that
+    survive are the bright rim and sheen, and bright-on-light disappears.
+
+    A soft dark halo is laid UNDER the glass, taken from the shape's own
+    alpha. That gives the silhouette a definite edge without drawing a
+    stroke over the artwork or altering a single pixel of the glass itself.
+    """
+    pal = VARIANTS["light"].pal
+    h = pal["text"].lstrip("#")
+    shadow_rgb = tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
+
+    a = art.getchannel("A")
+    # A TIGHT blur, not a soft one. A wide halo reads as a smudge behind the
+    # icon; a narrow one reads as the edge of the glass, which is what is
+    # missing on a pale background.
+    halo = a.filter(ImageFilter.GaussianBlur(max(1, art.size[0] // 260)))
+    halo = halo.point(lambda v: min(255, int(v * 2.4)))
+    shadow = Image.new("RGBA", art.size, shadow_rgb + (0,))
+    shadow.putalpha(halo.point(lambda v: int(v * 0.62)))
+
+    out = Image.alpha_composite(shadow, art)
+
+    # The glass body is lit for a dark scene, so on white it is nearly the
+    # same value as the page. Deepening it a little gives it substance
+    # without touching its shape or its transparency.
+    rgb = out.convert("RGB").point(lambda v: int(((v / 255) ** 1.22) * 255))
+    rgb.putalpha(out.getchannel("A"))
+    return rgb
+
+
+def emit(art: Image.Image, variant: str, name: str, root: Path = None) -> None:
     for size in SIZES:
         icon = art.resize((size, size), Image.LANCZOS)
         if size <= 48:
             icon = icon.filter(ImageFilter.UnsharpMask(radius=1, percent=70, threshold=2))
-        d = OUT / f"Bashan-{variant}" / f"{size}x{size}" / "places"
+        base = OUT / f"Bashan-{variant}" if root is None else root
+        d = base / f"{size}x{size}" / "places"
         d.mkdir(parents=True, exist_ok=True)
         icon.save(d / f"{name}.png", "PNG", optimize=True)
 
@@ -182,6 +223,16 @@ def main() -> None:
         emit(full, variant, "user-trash-full")
         print(f"   variant {variant}: {len(SIZES)} sizes x 2 states -> "
               f"{(OUT / f'Bashan-{variant}').relative_to(ROOT)}")
+
+    # Light-mode re-cut. Goes into the Bashan-Light icon theme overlay, so
+    # the dark icons above keep exactly the artwork from the reference and
+    # the light theme gets its own copies under the same names.
+    light_root = OUT / "_light"
+    chosen_full = full_b if TRASH_LIGHT_VARIANT == "B" else full_a
+    emit(for_light(empty), "", "user-trash", light_root)
+    emit(for_light(chosen_full), "", "user-trash-full", light_root)
+    print(f"   light re-cut: {len(SIZES)} sizes x 2 states -> "
+          f"{light_root.relative_to(ROOT)}")
 
     # Large masters for the previews and for any later retouching.
     d = OUT / "_masters"

@@ -18,7 +18,7 @@ EXCLUDED="firmware-b43-installer firmware-b43legacy-installer b43-fwcutter
           firmware-myricom firmware-bnx2x firmware-netxen firmware-bnx2
           dahdi-firmware-nonfree firmware-siano firmware-ivtv
           atmel-firmware
-          fonts-noto-cjk-extra cups-browsed modemmanager"
+          fonts-noto-cjk-extra cups-browsed"
 
 for pkg in $EXCLUDED; do
     if dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "install ok installed"; then
@@ -69,6 +69,19 @@ if [ -n "$missing" ]; then
     echo "E: the firmware trim has gone too far. Wi-Fi, Bluetooth, graphics" >&2
     echo "E: or audio will not work on real hardware." >&2
     exit 1
+fi
+
+# An autostart override only works if its filename matches the one the
+# package ships. Ours is named after `dpkg -L im-config`; if a future
+# version renames it, the override silently stops working and the Wayland
+# notification comes back. Check rather than hope.
+if [ -f /etc/xdg/autostart/im-launch.desktop ]; then
+    if ! grep -q '^Hidden=true' /etc/xdg/autostart/im-launch.desktop; then
+        echo "E: /etc/xdg/autostart/im-launch.desktop is not our override." >&2
+        echo "E: The input-method autostart would run and show the Wayland" >&2
+        echo "E: notification again. Check what im-config now ships." >&2
+        exit 1
+    fi
 fi
 
 echo "I: no excluded packages present; laptop firmware intact; Noto Sans Syriac in place"

@@ -1,24 +1,31 @@
 #!/bin/sh
-# Bashan OS — put the desktop Trash icon in the corner that matches the
-# reading direction, and re-do it whenever the user changes language.
+# Bashan OS — build and place the desktop widgets, in the corner and order
+# that match the reading direction, and re-do it when the language changes.
 #
 #   bottom RIGHT : English, Spanish, German, French, Portuguese,
 #                  Kurmanji, Russian, Greek
 #   bottom LEFT  : Arabic, Hebrew, Syriac, Sorani, Persian
 #
-# Everything else about right-to-left - the dock mirroring, the launcher
-# moving to the right edge, menus, Dolphin's panes - is handled by Qt
-# automatically from the locale. Only free-floating desktop widgets have
-# absolute coordinates, so only they need this.
+# WHY THE WIDGETS ARE CREATED HERE AND NOT IN THE LAYOUT SCRIPT
 #
-# Driving plasmashell's own scripting interface over D-Bus rather than
-# editing plasma-org.kde.plasma.desktop-appletsrc by hand: the config file
-# format for widget geometry is internal and changes between releases,
-# whereas the scripting API is public and applies live with no restart.
+# Stage 9 found that the Trash widget never appeared at all, and that the
+# weather and notes widgets ignored the positions set for them. Both came
+# from the same cause: the look-and-feel layout script runs once, while
+# plasmashell is still starting, before the containment knows its screen
+# geometry. addWidget at that moment is a race, and `geometry` set on an
+# applet whose containment has not been laid out is discarded.
+#
+# This script runs instead from the user's session, when plasmashell is up
+# and answering D-Bus. It is idempotent: it creates only what is missing and
+# re-positions what is there.
+#
+# Driving plasmashell's own scripting interface rather than editing
+# plasma-org.kde.plasma.desktop-appletsrc by hand: that file's geometry
+# format is internal and changes between releases, whereas the scripting
+# API is public and applies live with no restart.
 #
 # Fail-safe throughout. If anything is missing or unexpected the script
-# exits quietly and the icon simply stays where Plasma put it, which is
-# cosmetic, never broken.
+# exits quietly; the desktop is then plainer than intended, never broken.
 set -u
 
 STATE_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/bashan"
@@ -46,22 +53,56 @@ fi
 qdbus=$(command -v qdbus6 || command -v qdbus-qt6 || command -v qdbus || true)
 [ -n "$qdbus" ] || exit 0
 
-# Plasma scripting: find every Trash widget on every desktop and move it to
-# the chosen bottom corner of that desktop's own screen.
+# Wait for plasmashell to be ready to answer. On a first login the session
+# and this script start together, and asking too early is the other half of
+# why Stage 9 saw no widgets.
+i=0
+while [ "$i" -lt 30 ]; do
+    "$qdbus" org.kde.plasmashell /PlasmaShell \
+        org.kde.PlasmaShell.evaluateScript "0" >/dev/null 2>&1 && break
+    i=$((i + 1))
+    sleep 1
+done
+[ "$i" -lt 30 ] || exit 0
+
 script=$(cat <<JS
 var side = "$side";
 var margin = $MARGIN;
 var icon = $ICON;
+
+// Panels down one edge, trash in the bottom corner of the same edge, so a
+// right-to-left desktop is a mirror image rather than a rearrangement.
+var panels = [
+    { type: "org.kde.plasma.systemmonitor", w: 420, h: 260 },
+    { type: "org.kde.plasma.weather",       w: 420, h: 220 },
+    { type: "org.kde.plasma.notes",         w: 420, h: 300 }
+];
+
 var ds = desktops();
 for (var i = 0; i < ds.length; i++) {
     var d = ds[i];
     var geo = d.screenGeometry;
     if (!geo) { continue; }
-    var x = (side === "left") ? margin : (geo.width - icon - margin);
-    var y = geo.height - icon - margin;
-    var ws = d.widgets("org.kde.plasma.trash");
-    for (var j = 0; j < ws.length; j++) {
-        ws[j].geometry = Qt.rect(x, y, icon, icon);
+
+    var y = margin;
+    for (var p = 0; p < panels.length; p++) {
+        var spec = panels[p];
+        var ws = d.widgets(spec.type);
+        var widget = (ws && ws.length) ? ws[0] : d.addWidget(spec.type);
+        if (!widget) { continue; }
+        var x = (side === "left")
+                ? (geo.width - spec.w - margin)
+                : margin;
+        widget.geometry = Qt.rect(x, y, spec.w, spec.h);
+        y += spec.h + 24;
+    }
+
+    // Trash: the bottom corner on the side the language reads towards.
+    var tws = d.widgets("org.kde.plasma.trash");
+    var trash = (tws && tws.length) ? tws[0] : d.addWidget("org.kde.plasma.trash");
+    if (trash) {
+        var tx = (side === "left") ? margin : (geo.width - icon - margin);
+        trash.geometry = Qt.rect(tx, geo.height - icon - margin, icon, icon);
     }
 }
 JS

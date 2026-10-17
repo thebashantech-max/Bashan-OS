@@ -1,0 +1,24 @@
+[Desktop Entry]
+Type=Application
+Name=Input method (disabled by Bashan OS)
+Exec=/bin/true
+Terminal=false
+NoDisplay=true
+Hidden=true
+X-GNOME-Autostart-enabled=false
+# Bashan OS — Stage 9 defect 6.
+#
+# im-config's autostart launched IBus, which immediately showed a
+# notification about Wayland on first boot, to users who had asked for
+# nothing.
+#
+# The filename matters and is NOT a guess: `dpkg -L im-config` shows
+# /etc/xdg/autostart/im-launch.desktop. An override under any other name
+# does nothing at all, silently. "Hidden=true" in /etc/xdg/autostart is the
+# documented way to cancel an autostart entry a package ships, without
+# removing the package.
+#
+# IBus itself stays INSTALLED. All thirteen shipped languages type through
+# ordinary keyboard layouts, so nothing needs an input method by default.
+# Anyone who does need one - handwriting, pinyin, a script their keyboard
+# lacks - turns it on with `im-config` and it starts from then on.

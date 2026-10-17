@@ -244,7 +244,10 @@ cp -a "$variant" "$inc/icons/Bashan"
 # configuration.
 rm -rf "${inc:?}/icons/Bashan-Light"
 cp -a "$variant" "$inc/icons/Bashan-Light"
-cp -a "$ROOT/theme/icons/_light/index.theme" "$inc/icons/Bashan-Light/index.theme"
+# The whole _light overlay: its index.theme AND the light re-cut of the
+# trash icons, which replace the dark-background originals under the same
+# names. The dark theme above keeps the reference artwork untouched.
+cp -a "$ROOT/theme/icons/_light/." "$inc/icons/Bashan-Light/"
 cp -a "$ROOT/theme/icons/_launcher-light/." "$inc/icons/Bashan-Light/"
 find config/includes.chroot -type f | sed 's|^config/includes.chroot|  /|' | sort
 

@@ -1,0 +1,12 @@
+# Bashan OS — no KDE startup splash.
+#
+# Stage 9 defect 4: after our Plymouth splash and the SDDM login screen,
+# Plasma showed its own "Plasma made by KDE" splash. Three splashes in a row
+# is both unbranded and slow.
+#
+# Turned off rather than rebranded: the Plymouth splash already holds for
+# 5.5 seconds with the Bashan logo, and SDDM is branded. A fourth branded
+# screen would add nothing but another second before the desktop appears.
+[KSplash]
+Engine=none
+Theme=None
