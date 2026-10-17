@@ -701,21 +701,21 @@
       }
     },
     "w.p3.trash.b": {
-      "note": "Welcome app, page 3: the Trash. Body.",
+      "note": "Welcome app, page 3: the Trash. Body. Deliberately does NOT promise a corner: Plasma decides where the Trash lands and the position cannot be set.",
       "t": {
-        "en": "Files you delete wait in the Trash in the corner of the desktop. They are not really gone until you empty it, so a mistake can be undone.",
-        "es": "Los archivos que borras esperan en la Papelera, en la esquina del escritorio. No desaparecen de verdad hasta que la vacías, así que un error se puede deshacer.",
-        "de": "Gelöschte Dateien warten im Papierkorb in der Ecke des Schreibtisches. Sie sind erst wirklich weg, wenn Sie ihn leeren — ein Versehen lässt sich also rückgängig machen.",
-        "fr": "Les fichiers que vous supprimez attendent dans la Corbeille, dans le coin du bureau. Ils ne disparaissent vraiment qu'une fois la Corbeille vidée : une erreur peut donc être annulée.",
-        "pt": "Os ficheiros que apaga ficam à espera no Lixo, ao canto do ambiente de trabalho. Só desaparecem mesmo quando o esvaziar, por isso um engano pode ser desfeito.",
-        "ru": "Удалённые файлы ждут в Корзине в углу рабочего стола. По-настоящему они исчезают, только когда вы её очистите, так что ошибку можно исправить.",
-        "el": "Τα αρχεία που διαγράφετε περιμένουν στον Κάδο, στη γωνία της επιφάνειας εργασίας. Δεν χάνονται στ' αλήθεια μέχρι να τον αδειάσετε, οπότε ένα λάθος διορθώνεται.",
-        "ar": "الملفات التي تحذفها تنتظر في سلة المهملات في زاوية سطح المكتب. لا تختفي فعليًا حتى تفرغها، فيمكن التراجع عن الخطأ.",
-        "he": "קבצים שאתה מוחק ממתינים באשפה בפינת שולחן העבודה. הם לא נעלמים באמת עד שתרוקן אותה, כך שאפשר לתקן טעות.",
-        "fa": "پرونده‌هایی که پاک می‌کنید در سطل زباله گوشهٔ میز کار می‌مانند. تا وقتی آن را خالی نکنید واقعاً از بین نمی‌روند، پس اشتباه را می‌شود جبران کرد.",
-        "ku": "Pelên ku jê dibî di Çopê de li quncika sermaseyê dimînin. Ew bi rastî wenda nabin heta ku tu wê vala nekî, loma şaşiyek tê vegerandin.",
-        "ckb": "ئەو پەڕگانەی دەیانسڕیتەوە لە تەنەکەی خۆڵ لە گۆشەی ڕوومێزەکە چاوەڕێ دەکەن. بەڕاستی نافەوتێن تا بەتاڵی نەکەیتەوە، بۆیە هەڵەیەک دەکرێت بگەڕێنرێتەوە.",
-        "syr": "ܐܕܫܐ ܕܡܚܝܬ ܠܗܘܢ ܡܟܬܪܝܢ ܒܙܒܠܐ ܒܙܘܝܬܐ ܕܦܬܘܪܐ. ܠܐ ܐܙܠܝܢ ܫܪܝܪܐܝܬ ܥܕܡܐ ܕܡܣܪܩ ܐܢܬ ܠܗ, ܡܛܠ ܗܕܐ ܡܨܐ ܐܢܬ ܠܡܗܦܟܘ ܛܥܝܘܬܐ."
+        "en": "Files you delete wait in the Trash on the desktop. They are not really gone until you empty it, so a mistake can be undone. You can drag the Trash wherever you like.",
+        "es": "Los archivos que borras esperan en la Papelera, en el escritorio. No desaparecen de verdad hasta que la vacías, así que un error se puede deshacer. Puedes arrastrar la Papelera donde quieras.",
+        "de": "Gelöschte Dateien warten im Papierkorb auf dem Schreibtisch. Sie sind erst wirklich weg, wenn Sie ihn leeren — ein Versehen lässt sich also rückgängig machen. Sie können den Papierkorb hinziehen, wohin Sie möchten.",
+        "fr": "Les fichiers que vous supprimez attendent dans la Corbeille, sur le bureau. Ils ne disparaissent vraiment qu'une fois la Corbeille vidée : une erreur peut donc être annulée. Vous pouvez déplacer la Corbeille où vous voulez.",
+        "pt": "Os ficheiros que apaga ficam à espera no Lixo, no ambiente de trabalho. Só desaparecem mesmo quando o esvaziar, por isso um engano pode ser desfeito. Pode arrastar o Lixo para onde quiser.",
+        "ru": "Удалённые файлы ждут в Корзине на рабочем столе. По-настоящему они исчезают, только когда вы её очистите, так что ошибку можно исправить. Корзину можно перетащить куда угодно.",
+        "el": "Τα αρχεία που διαγράφετε περιμένουν στον Κάδο, στην επιφάνεια εργασίας. Δεν χάνονται στ' αλήθεια μέχρι να τον αδειάσετε, οπότε ένα λάθος διορθώνεται. Μπορείτε να σύρετε τον Κάδο όπου θέλετε.",
+        "ar": "الملفات التي تحذفها تنتظر في سلة المهملات على سطح المكتب. لا تختفي فعليًا حتى تفرغها، فيمكن التراجع عن الخطأ. ويمكنك سحب السلة إلى حيث تشاء.",
+        "he": "קבצים שאתה מוחק ממתינים באשפה על שולחן העבודה. הם לא נעלמים באמת עד שתרוקן אותה, כך שאפשר לתקן טעות. אפשר לגרור את האשפה לאן שתרצה.",
+        "fa": "پرونده‌هایی که پاک می‌کنید در سطل زباله روی میز کار می‌مانند. تا وقتی آن را خالی نکنید واقعاً از بین نمی‌روند، پس اشتباه را می‌شود جبران کرد. سطل را هر جا خواستید بکشید.",
+        "ku": "Pelên ku jê dibî di Çopê de li ser sermaseyê dimînin. Ew bi rastî wenda nabin heta ku tu wê vala nekî, loma şaşiyek tê vegerandin. Tu dikarî Çopê bikişînî kû derê ku dixwazî.",
+        "ckb": "ئەو پەڕگانەی دەیانسڕیتەوە لە تەنەکەی خۆڵ لەسەر ڕوومێز چاوەڕێ دەکەن. بەڕاستی نافەوتێن تا بەتاڵی نەکەیتەوە، بۆیە هەڵەیەک دەکرێت بگەڕێنرێتەوە. دەتوانیت تەنەکەکە بۆ هەر شوێنێک ڕابکێشیت.",
+        "syr": "ܐܕܫܐ ܕܡܚܝܬ ܠܗܘܢ ܡܟܬܪܝܢ ܒܙܒܠܐ ܕܥܠ ܦܬܘܪܐ. ܠܐ ܐܙܠܝܢ ܫܪܝܪܐܝܬ ܥܕܡܐ ܕܡܣܪܩ ܐܢܬ ܠܗ, ܡܛܠ ܗܕܐ ܡܨܐ ܐܢܬ ܠܡܗܦܟܘ ܛܥܝܘܬܐ. ܡܨܐ ܐܢܬ ܠܡܓܪܫ ܙܒܠܐ ܠܐܝܟܐ ܕܨܒܐ ܐܢܬ."
       }
     },
     "w.p3.apps.h": {

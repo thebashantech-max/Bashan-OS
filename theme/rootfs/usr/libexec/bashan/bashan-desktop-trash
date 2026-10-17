@@ -1,0 +1,64 @@
+#!/bin/sh
+# Bashan OS — put the Trash on the desktop, once.
+#
+# WHY A PLASMOID AND NOT A DESKTOP ICON
+#
+# A Type=Link .desktop file pointing at trash:/ draws whatever its Icon=
+# field names. That is a static string, so it shows the EMPTY bin forever,
+# even with files in the trash. Tested: a real XDG trash entry was created
+# and the icon did not change, before or after a forced refresh.
+#
+# The Trash plasmoid reads the trash itself. It shows the approved glass
+# artwork in both states, switches on its own, and labels itself "One item".
+#
+# WHAT WE GIVE UP: the plasmoid's position. Plasma decides where it lands.
+# Assigning geometry does not work - Folder View has no position system,
+# and the Desktop containment ignores assigned geometry and arranges
+# applets itself. Both were proven in QEMU. The user can drag it once and
+# Plasma remembers. No further attempts are made here.
+#
+# Idempotent and fail-safe: adds the widget only if it is not already
+# there, and never fails in a way that could disturb a login.
+set -u
+
+STATE_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/bashan"
+STATE="$STATE_DIR/desktop-trash"
+[ -e "$STATE" ] && exit 0
+
+qdbus=$(command -v qdbus6 || command -v qdbus-qt6 || command -v qdbus || true)
+[ -n "$qdbus" ] || exit 0
+
+# Wait for plasmashell. On a first login this script and the session start
+# together, and asking too early silently does nothing.
+i=0
+while [ "$i" -lt 30 ]; do
+    "$qdbus" org.kde.plasmashell /PlasmaShell \
+        org.kde.PlasmaShell.evaluateScript "0" >/dev/null 2>&1 && break
+    i=$((i + 1))
+    sleep 1
+done
+[ "$i" -lt 30 ] || exit 0
+
+script='
+var ds = desktops();
+var added = 0;
+for (var i = 0; i < ds.length; i++) {
+    var existing = ds[i].widgets("org.kde.plasma.trash");
+    if (existing && existing.length) { continue; }
+    if (ds[i].addWidget("org.kde.plasma.trash")) { added += 1; }
+}
+print("bashan-trash: added " + added + " of " + ds.length);
+'
+
+out=$("$qdbus" org.kde.plasmashell /PlasmaShell \
+        org.kde.PlasmaShell.evaluateScript "$script" 2>&1) || out="call failed: $out"
+mkdir -p "$STATE_DIR" 2>/dev/null || true
+printf '%s  %s\n' "$(date -Is)" "$out" >> "$STATE_DIR/desktop-trash.log" 2>/dev/null || true
+
+# Only remember it as done if plasmashell actually answered. Recording
+# success on a bare exit code is how an earlier version of this logic hid a
+# failure for weeks.
+case "$out" in
+    *"bashan-trash: added"*) : > "$STATE" ;;
+esac
+exit 0

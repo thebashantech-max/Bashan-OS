@@ -117,13 +117,30 @@ Fan behaviour falls back to whatever the laptop's own firmware does, which
 on most ASUS machines is adequate but louder than Armoury Crate's quiet
 profile.
 
-### 6. Translations
+### 6. The desktop Trash has no fixed position
+
+The Trash is a Plasma widget, and **Plasma decides where it appears** - it
+is not in a corner, and it is not mirrored for right-to-left languages.
+
+This was specified as bottom-right for left-to-right languages and
+bottom-left for right-to-left ones. Plasma 6 provides no way to set a
+desktop widget's position: Folder View has no position system, the Desktop
+containment ignores assigned geometry, and the scripting API refuses both.
+All of it was tested in QEMU; the detail is in `docs/DESIGN.md`.
+
+**Drag the Trash where you want it once and Plasma will remember.**
+
+The trade was deliberate. A static desktop icon can sit in a corner but
+always draws the EMPTY bin, even when the trash is full. The widget shows
+the right artwork in both states and switches by itself.
+
+### 7. Translations
 
 Thirteen languages ship. **None has been checked by a native speaker.**
 Kurmanji and Sorani are rated LOW confidence, Syriac VERY LOW. The system
 says so on screen when you are using one of them.
 
-### 7. "Install alongside" is unproven
+### 8. "Install alongside" is unproven
 
 Dual-boot installation **has never been successfully tested.** The Stage 9
 test could not exercise it because the test disk had no genuinely bootable

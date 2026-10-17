@@ -50,9 +50,30 @@ stays", to be decided at Stage 6:
      Chrome, and let the real one replace it on install.
   b. Accept the slot appearing only after Chrome is installed.
 
-**Desktop trash icon** — bottom-right for en, es, de, fr, pt, ku (Kurmanji), ru,
-el. Bottom-left for ar, he, syr, ckb (Sorani), fa. Placed by a first-login
-script that reads the locale and re-runs on locale change.
+**Desktop Trash** — a Trash **plasmoid**, placed by Plasma wherever it
+decides. **Its position cannot be set**, and no corner is promised.
+
+This was meant to be bottom-right for the eight left-to-right languages and
+bottom-left for the five right-to-left ones. That proved impossible, and the
+attempts are worth recording so nobody repeats them:
+
+* Folder View, Plasma 6's default desktop, has **no applet position system
+  at all** - it never imports `ContainmentLayoutManager.AppletsLayout`.
+* The Desktop containment does use that system, but assigned geometry is
+  accepted and silently ignored; Plasma arranges applets itself.
+* `Qt.rect()` does not exist in Plasma's scripting environment
+  (`ReferenceError: Qt is not defined`), and a plain `{x,y,width,height}`
+  object raises no error and has no effect.
+* The containment type is read-only from the scripting API.
+
+A static `Type=Link` desktop icon **can** be put in a corner, but it draws
+whatever its `Icon=` field names, so it shows the EMPTY bin forever - tested
+with a real trash entry, before and after a forced refresh. A Trash icon
+that never fills looks broken.
+
+The plasmoid was chosen because it shows the approved variant-B glass
+artwork in **both** states and switches by itself. The user can drag it once
+and Plasma remembers.
 
 **Boot / shutdown** — full-screen black splash, large glowing logo, identical on
 UEFI and BIOS. An early systemd service plays the boot song through ALSA: it

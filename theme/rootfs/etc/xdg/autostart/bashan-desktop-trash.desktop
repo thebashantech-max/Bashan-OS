@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Bashan OS desktop Trash
+Comment=Puts the Trash on the desktop on first login
+Exec=/usr/libexec/bashan/bashan-desktop-trash
+Terminal=false
+NoDisplay=true
+X-KDE-autostart-after=panel

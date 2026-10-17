@@ -70,7 +70,9 @@ def desktop_mockup():
     bg.alpha_composite(glass_card(300, 170, "Notes",
                                   ["shopping", "call Dad", "renew passport"]), (56, 378))
 
-    # --- desktop trash icon, bottom-right (LTR locales) ------------------
+    # Trash: drawn where Plasma happens to put it. The real desktop cannot
+    # place it in a corner - see docs/DESIGN.md - so the mockup must not
+    # imply otherwise.
     tr = Image.open(ROOT / "theme/icons/Bashan-B/64x64/places/user-trash-full.png")
     bg.alpha_composite(tr, (W - 130, H - 230))
     d.text((W - 142, H - 158), "Trash", fill=c("text"))
