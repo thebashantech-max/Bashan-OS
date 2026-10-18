@@ -208,7 +208,32 @@ cmd_shot() {
 }
 
 cmd_key()  { monitor "sendkey ${1}"; }
-cmd_stop() { monitor "quit"; sleep 2; pkill -f "qemu-system-x86_64.*bashan-vm" 2>/dev/null || true; echo "I: VM stopped"; }
+# Stop the VM and PROVE it stopped.
+#
+# The old version ended with an unconditional `echo "I: VM stopped"`, so it
+# reported success even when the process survived. A VM that was wedged
+# reading from a throttled disk ignored the monitor "quit", outlived the
+# pkill, and then blocked the next boot while this said it was gone. A
+# check that cannot fail is worse than no check: the build/QEMU rule relies
+# on this answer being true.
+cmd_stop() {
+  monitor "quit"
+  for _ in 1 2 3 4 5; do
+    ps -C qemu-system-x86_64 -o pid= >/dev/null 2>&1 || { echo "I: VM stopped"; return 0; }
+    sleep 1
+  done
+  # Still there: ask politely by PID, then insist.
+  for sig in TERM KILL; do
+    ps -C qemu-system-x86_64 -o pid= 2>/dev/null | while read -r p; do kill "-$sig" "$p" 2>/dev/null || true; done
+    for _ in 1 2 3; do
+      ps -C qemu-system-x86_64 -o pid= >/dev/null 2>&1 || { echo "I: VM stopped (needed SIG$sig)"; return 0; }
+      sleep 1
+    done
+  done
+  echo "E: VM is STILL RUNNING; do not start a build" >&2
+  ps -C qemu-system-x86_64 -o pid=,etime= >&2
+  return 1
+}
 
 case "${1:-}" in
   disks) cmd_disks ;;

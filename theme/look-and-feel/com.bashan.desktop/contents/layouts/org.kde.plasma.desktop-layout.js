@@ -2,7 +2,11 @@
 // Applied by the "Bashan" look-and-feel. Every plasmoid id below was read
 // from the Debian packages that ship them, not guessed.
 
-var wallpaper = "/usr/share/wallpapers/Bashan/contents/images/bashan-ridge-3840x2160.png";
+// The layout writes the wallpaper straight into the desktop containment at
+// first login, which OVERRIDES whatever the look-and-feel defaults say.
+// Changing the defaults alone left the old ridge on screen, so this line
+// is the one that actually decides what a person sees.
+var wallpaper = "/usr/share/wallpapers/BashanMountain/contents/images/1920x1080.png";
 
 var desks = desktops();
 for (var i = 0; i < desks.length; i++) {

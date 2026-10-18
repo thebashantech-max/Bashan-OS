@@ -146,6 +146,13 @@ cmd_test() {
   log "Trash artwork and icon lookup"
   python3 "$ROOT/test/icon-check.py" 2>&1 | tee -a "$LOG"
   log "icon check passed"
+
+  # Build 16 booted with the old wallpaper while every config file said
+  # otherwise: the layout script writes it into the desktop directly and
+  # overrides the defaults. All four deciders must agree.
+  log "wallpaper declarations agree"
+  python3 "$ROOT/test/wallpaper-check.py" 2>&1 | tee -a "$LOG"
+  log "wallpaper check passed"
 }
 
 cmd_clean() {
