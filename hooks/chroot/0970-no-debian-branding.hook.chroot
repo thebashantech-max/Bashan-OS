@@ -29,12 +29,30 @@ do
 done
 
 # The swirl itself, wherever it might have come from.
-if find /usr/share /etc -iname "*debian*logo*" -o -iname "*swirl*" 2>/dev/null | grep -q .; then
+#
+# Matching a bare "swirl" was too greedy: it flagged GIMP's chocolate
+# pattern, /usr/share/gimp/3.0/patterns/Food/choc_swirl.pat. The name has
+# to mention Debian to count.
+#
+# This search is what caught the two logos that desktop-base does not own,
+# in plymouth and debconf. 0965 overwrites those with ours, so anything
+# still matching here is something new and genuinely unhandled.
+logos=$(find /usr/share /etc \
+             \( -iname "*debian*logo*" -o -iname "*debian*swirl*" \) \
+             2>/dev/null | head -10)
+if [ -n "$logos" ]; then
     echo "E: Debian logo files still in the image:" >&2
-    find /usr/share /etc -iname "*debian*logo*" -o -iname "*swirl*" 2>/dev/null \
-        | head -10 | sed 's/^/E:   /' >&2
+    printf '%s\n' "$logos" | sed 's/^/E:   /' >&2
     fail=1
 fi
+
+# And the two we overwrite must not have reverted to Debian's artwork.
+for f in /usr/share/plymouth/debian-logo.png /usr/share/pixmaps/debian-logo.png; do
+    [ -f "$f" ] || continue
+    if ! cmp -s "$f" /usr/share/icons/hicolor/256x256/apps/bashan-app.png; then
+        err "$f is not the Bashan logo"
+    fi
+done
 
 # Nothing may put Debian's settings back on Plasma's config path.
 if grep -rl "desktop-base" /etc/xdg 2>/dev/null | grep -q .; then

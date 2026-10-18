@@ -1,0 +1,30 @@
+#!/bin/sh
+# Bashan OS — overwrite the Debian logos that belong to packages we keep.
+#
+# Build 15 failed its own branding check on two files 0920 cannot reach,
+# because purging their packages is not an option:
+#
+#   /usr/share/plymouth/debian-logo.png   owned by plymouth (our boot splash)
+#   /usr/share/pixmaps/debian-logo.png    owned by debconf (essential)
+#
+# So they are overwritten rather than deleted. Anything that references the
+# path still finds a valid PNG - it is simply ours. Deleting them would
+# risk a broken image box in a dialog nobody tested.
+#
+# shortcut: dpkg owns these paths, so upgrading plymouth or debconf on a
+# running machine restores Debian's logo until the next image is built.
+# Upgrade to dpkg-divert if that ever matters on an installed system.
+set -e
+
+SRC=/usr/share/icons/hicolor/256x256/apps/bashan-app.png
+[ -f "$SRC" ] || SRC=/usr/share/plymouth/themes/bashan/logo-256.png
+[ -f "$SRC" ] || { echo "E: no Bashan logo to substitute" >&2; exit 1; }
+
+replaced=0
+for target in /usr/share/plymouth/debian-logo.png /usr/share/pixmaps/debian-logo.png; do
+    [ -f "$target" ] || continue
+    cp -f "$SRC" "$target"
+    replaced=$((replaced + 1))
+    echo "I: replaced $target with the Bashan logo"
+done
+echo "I: $replaced Debian logo file(s) replaced"
