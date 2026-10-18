@@ -37,8 +37,14 @@ done
 # This search is what caught the two logos that desktop-base does not own,
 # in plymouth and debconf. 0965 overwrites those with ours, so anything
 # still matching here is something new and genuinely unhandled.
+# The two paths below are owned by plymouth and debconf, which we cannot
+# purge, so 0965 overwrites their CONTENTS with our logo instead. They keep
+# Debian's filename, so they are excluded here by path and checked by
+# content just below. Everything else matching by name is unhandled.
 logos=$(find /usr/share /etc \
-             \( -iname "*debian*logo*" -o -iname "*debian*swirl*" \) \
+             -path /usr/share/plymouth/debian-logo.png -prune -o \
+             -path /usr/share/pixmaps/debian-logo.png -prune -o \
+             \( -iname "*debian*logo*" -o -iname "*debian*swirl*" \) -print \
              2>/dev/null | head -10)
 if [ -n "$logos" ]; then
     echo "E: Debian logo files still in the image:" >&2
