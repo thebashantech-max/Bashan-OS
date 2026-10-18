@@ -25,7 +25,11 @@ last_size=0
 i=0
 while :; do
     i=$((i + 1))
-    for src in /root/.cache/calamares/session.log \
+    # Calamares is launched with `sudo -E`, which KEEPS HOME=/home/<liveuser>,
+    # so the log is NOT under /root. Missing this captured 2 KB of an install
+    # instead of the whole thing.
+    for src in /home/*/.cache/calamares/session.log \
+               /root/.cache/calamares/session.log \
                "$HOME/.cache/calamares/session.log" \
                /var/log/calamares.log; do
         [ -r "$src" ] || continue
