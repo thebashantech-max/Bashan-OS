@@ -1,0 +1,39 @@
+#!/bin/sh
+# Bashan OS — the lock screen must offer a way to turn the machine off.
+#
+# The stock Plasma lock screen draws Sleep, Hibernate and Switch User and
+# nothing else. On real hardware someone woke a locked laptop and had no
+# way out of it: no password existed to type, and no button would power it
+# down.
+#
+# The fix was first put in our look-and-feel package, where it did nothing
+# at all - a look-and-feel CANNOT carry a lock screen in Plasma 6. Breeze's
+# has defaults, layouts, logout, osd, previews, splash and systemdialog and
+# no lockscreen; the UI comes from the shell package only. That mistake
+# shipped once and was only caught by looking at the screen, so it is
+# asserted here instead.
+set -e
+
+F=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/lockscreen/LockScreenUi.qml
+fail=0
+
+[ -f "$F" ] || { echo "E: $F missing" >&2; exit 1; }
+
+for want in requestShutdown requestReboot canShutdown canReboot; do
+    grep -q "$want" "$F" || { echo "E: lock screen QML has no $want" >&2; fail=1; }
+done
+
+# Balanced braces, because a QML syntax error here means a lock screen that
+# never draws - and a machine nobody can get back into.
+o=$(tr -cd '{' < "$F" | wc -c)
+c=$(tr -cd '}' < "$F" | wc -c)
+[ "$o" = "$c" ] || { echo "E: lock screen QML braces unbalanced ($o open, $c close)" >&2; fail=1; }
+
+# And nothing should be left in the look-and-feel, where it does nothing.
+if find /usr/share/plasma/look-and-feel -name LockScreenUi.qml 2>/dev/null | grep -q .; then
+    echo "E: a look-and-feel package carries a LockScreenUi.qml; it will be ignored" >&2
+    fail=1
+fi
+
+[ "$fail" = 0 ] || { echo "E: lock screen check failed" >&2; exit 1; }
+echo "I: lock screen offers Shut Down and Restart"

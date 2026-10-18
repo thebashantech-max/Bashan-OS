@@ -203,6 +203,15 @@ cp -a "$ROOT/theme/palette.json" "$ROOT/theme/palette-light.json" \
       "$inc/bashan/welcome/"
 cp -a "$ROOT"/theme/look-and-feel/com.bashan.desktop* "$inc/plasma/look-and-feel/"
 
+# The lock screen comes from the SHELL package, not the look-and-feel. A
+# look-and-feel cannot carry one: Breeze's has defaults, layouts, logout,
+# osd, previews, splash and systemdialog, and no lockscreen. Putting it in
+# ours did nothing at all - the stock screen still appeared, offering Sleep
+# and Switch User and no way to turn the machine off.
+mkdir -p "$inc/plasma/shells/org.kde.plasma.desktop/contents/lockscreen"
+cp -a "$ROOT/theme/shell-lockscreen/LockScreenUi.qml" \
+      "$inc/plasma/shells/org.kde.plasma.desktop/contents/lockscreen/LockScreenUi.qml"
+
 # --- legal documents ----------------------------------------------------
 # Page 6 of the welcome app opens NOTICE.md, TERMS.md and PRIVACY.md from
 # this exact path, so the two must not drift apart.
