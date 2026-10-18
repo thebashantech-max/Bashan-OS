@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Bashan Diagnostics
+Comment=Facts about this computer, in one window you can photograph
+Exec=bashan-diagnostics-window
+Icon=utilities-system-monitor
+Terminal=false
+Categories=System;
+Keywords=diagnostics;support;help;problem;report;

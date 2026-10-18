@@ -1,0 +1,57 @@
+#!/bin/sh
+# Bashan OS — one screenful of facts about this machine, to be photographed.
+#
+# READ ONLY. It runs commands that report state and writes nothing anywhere:
+# no files, no settings, no logs. It is meant to be run on a machine that is
+# misbehaving, by someone who will photograph the window and send the photo,
+# so every line has to be legible in a phone picture and mean something to
+# whoever reads it.
+set -u
+
+say()  { printf '%s\n' "$*"; }
+rule() { say "============================================================"; }
+head2() { say ""; say "--- $* ---"; }
+
+rule
+say " BASHAN OS DIAGNOSTICS     $(date '+%Y-%m-%d %H:%M')"
+rule
+
+head2 "THIS SYSTEM"
+# shellcheck source=/dev/null
+ver=$( . /etc/os-release 2>/dev/null; printf '%s' "${PRETTY_NAME:-unknown}" )
+say "Version : $ver"
+say "Kernel  : $(uname -r)"
+say "Running : $([ -d /run/live ] && echo 'from the USB stick (live)' || echo 'installed on this computer')"
+say "Uptime  : $(uptime -p 2>/dev/null | sed 's/^up //')"
+
+head2 "MEMORY"
+free -h 2>/dev/null | awk 'NR<=2'
+
+head2 "DISK AND USB"
+# Which device the system is actually reading from matters most on a live
+# stick: a slow or failing stick makes everything stall.
+# Loop devices are squashfs mounts and only pad the photograph out.
+lsblk -o NAME,SIZE,TRAN,RM,MODEL 2>/dev/null | grep -vE "^loop|^ *.-loop" | head -10
+
+head2 "GRAPHICS"
+lspci -nn 2>/dev/null | grep -iE "vga|3d|display" | sed 's/^/  /' | head -4
+say "Driver in use:"
+lspci -k 2>/dev/null | grep -A3 -iE "vga|3d" | grep -i "kernel driver" \
+    | sed 's/^[[:space:]]*/  /' | head -4
+say "Session : ${XDG_SESSION_TYPE:-unknown}"
+
+head2 "SERVICES THAT FAILED"
+f=$(systemctl --failed --no-legend --plain 2>/dev/null | awk '{print "  "$1}')
+if [ -n "$f" ]; then say "$f"; else say "  none"; fi
+
+head2 "RECENT ERRORS"
+journalctl -p err -b --no-pager -n 12 -o short 2>/dev/null \
+    | sed 's/^/  /' | cut -c1-72 || say "  (journal not readable)"
+
+head2 "RECENT CRASHES"
+c=$(coredumpctl list -n 5 --no-pager 2>/dev/null | tail -n +2 | cut -c1-72 | sed 's/^/  /')
+if [ -n "$c" ]; then say "$c"; else say "  none recorded"; fi
+
+rule
+say " Photograph this window and send the picture."
+rule

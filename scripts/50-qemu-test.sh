@@ -37,9 +37,19 @@ RAM_MB="${BASHAN_VM_RAM:-3584}"
 # fault seen on a USB stick never appeared in testing.
 #   BASHAN_VM_ISO_BPS=26214400 ./scripts/50-qemu-test.sh boot install
 ISO_BPS="${BASHAN_VM_ISO_BPS:-0}"
+# Reads per second. Bandwidth alone does NOT simulate USB flash: a stick can
+# stream 25 MB/s sequentially and still take milliseconds per random read,
+# and cheap controllers stall for whole seconds under mixed load. Limiting
+# bandwidth only made an earlier test look fine when the real machine was
+# not. A cheap stick manages roughly 100-400 random reads/sec; this goes
+# harsher to expose anything that assumes storage always answers.
+#   BASHAN_VM_ISO_IOPS=80 ./scripts/50-qemu-test.sh boot install
+ISO_IOPS="${BASHAN_VM_ISO_IOPS:-0}"
 iso_throttle() {
-  [ "$ISO_BPS" = 0 ] && return 0
-  printf ',throttling.bps-read=%s,throttling.bps-read-max=%s' "$ISO_BPS" "$ISO_BPS"
+  [ "$ISO_BPS" = 0 ] && [ "$ISO_IOPS" = 0 ] && return 0
+  [ "$ISO_BPS" != 0 ] && printf ',throttling.bps-read=%s,throttling.bps-read-max=%s' "$ISO_BPS" "$ISO_BPS"
+  [ "$ISO_IOPS" != 0 ] && printf ',throttling.iops-read=%s,throttling.iops-read-max=%s' "$ISO_IOPS" "$ISO_IOPS"
+  return 0
 }
 BASHAN_DISK="${BASHAN_DISK:-other-os.img}"
 

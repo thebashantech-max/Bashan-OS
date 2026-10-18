@@ -163,6 +163,34 @@ cp -a "$ROOT/theme/wallpapers/bashan-ridge-3840x2160.png" \
       "$inc/wallpapers/Bashan/contents/images/3840x2160.png"
 cp -a "$ROOT/theme/wallpapers/bashan-ridge-1920x1080.png" \
       "$inc/wallpapers/Bashan/contents/images/1920x1080.png"
+
+# The default wallpaper, in its own package so the ridge above stays
+# selectable in System Settings rather than being replaced.
+#
+# The source supplied is 1280x1024, which is nearly square and under 1920
+# wide. The 16:9 version is a crop, NOT a stretch: a 1280x720 window taken
+# from y=290, which keeps the gold title high in the frame and clear of the
+# dock and holds all three men. 1920x1080 is that crop resampled up, so on a
+# 1080p screen it is a 1.5x enlargement of a 1280-wide original and will look
+# softer than a native shot. The untouched original ships alongside it.
+mkdir -p "$inc/wallpapers/BashanMountain/contents/images"
+cp -a "$ROOT/theme/wallpapers/bashan-mountain-1920x1080.png" \
+      "$inc/wallpapers/BashanMountain/contents/images/1920x1080.png"
+cp -a "$ROOT/theme/wallpapers/bashan-mountain-16x9-native.png" \
+      "$inc/wallpapers/BashanMountain/contents/images/1280x720.png"
+cp -a "$ROOT/theme/wallpapers/bashan-mountain-original-1280x1024.png" \
+      "$inc/wallpapers/BashanMountain/contents/images/1280x1024.png"
+cat > "$inc/wallpapers/BashanMountain/metadata.json" <<'WALLPAPER'
+{
+    "KPlugin": {
+        "Authors": [ { "Name": "Bashan Tech LLC" } ],
+        "Id": "BashanMountain",
+        "License": "Proprietary",
+        "Name": "Bashan Mountain"
+    },
+    "KPackageStructure": "Plasma/Wallpaper"
+}
+WALLPAPER
 # Both colour schemes and both look-and-feel packages. Shipping the light
 # look-and-feel is what puts "Bashan Light" in System Settings > Global
 # Theme, so the user gets a one-click switch with no code of ours running.

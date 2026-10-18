@@ -97,6 +97,53 @@ LIVE
 		systemctl mask --now "${_UNIT}" > /dev/null 2>&1 || true
 	done
 
+	# 6. Shutdown must never hang. On real hardware, Shut Down did nothing
+	#    for five minutes: the menu opened, the machine stayed up.
+	#
+	#    Two separate things cause that, and capping one is not enough.
+	#
+	#    Stop jobs. DefaultTimeoutStopSec is 90s per stuck unit, and
+	#    user@.service carries its OWN TimeoutStopSec=120s which the
+	#    default does not override. A handful of stuck units serially is
+	#    minutes. Both are capped here. Live only: on an installed machine
+	#    a 15s cap could cut an application off mid-save, and there is
+	#    nothing to save in a session that is discarded at power-off.
+	mkdir -p /etc/systemd/system.conf.d /etc/systemd/system/user@.service.d
+	cat > /etc/systemd/system.conf.d/10-bashan-live.conf << 'LIVE'
+[Manager]
+DefaultTimeoutStopSec=15s
+DefaultTimeoutAbortSec=15s
+LIVE
+	cat > /etc/systemd/system/user@.service.d/10-bashan-live.conf << 'LIVE'
+[Service]
+TimeoutStopSec=15s
+LIVE
+
+	#    The request never arriving. "The menu opened and nothing
+	#    happened" means the shutdown was never asked for, not that it was
+	#    slow - if a wedged Plasma holds a shutdown inhibitor, logind's
+	#    default PowerKeyIgnoreInhibited=no means the physical power
+	#    button does nothing either, and the person is stuck. This makes
+	#    the power button always work, which is the only way out of a
+	#    wedged session without pulling the plug.
+	mkdir -p /etc/systemd/logind.conf.d
+	cat > /etc/systemd/logind.conf.d/10-bashan-live.conf << 'LIVE'
+[Login]
+HandlePowerKey=poweroff
+PowerKeyIgnoreInhibited=yes
+LIVE
+
+	#    The two apt units keep their own long stop timeouts even when
+	#    masked, so they are capped as well rather than trusted.
+	for _U in unattended-upgrades apt-daily-upgrade apt-daily
+	do
+		mkdir -p "/etc/systemd/system/${_U}.service.d"
+		cat > "/etc/systemd/system/${_U}.service.d/10-bashan-live.conf" << 'LIVE'
+[Service]
+TimeoutStopSec=10s
+LIVE
+	done
+
 	# 5. No "installing updates, do not turn off" on the next boot.
 	systemctl mask packagekit-offline-update.service > /dev/null 2>&1 || true
 	rm -f /system-update

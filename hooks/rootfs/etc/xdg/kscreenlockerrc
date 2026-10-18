@@ -29,5 +29,5 @@ Theme=com.bashan.desktop
 WallpaperPlugin=org.kde.image
 
 [Greeter][Wallpaper][org.kde.image][General]
-Image=/usr/share/wallpapers/Bashan/contents/images/bashan-ridge-login-1920x1080.png
+Image=/usr/share/wallpapers/BashanMountain/contents/images/1920x1080.png
 FillMode=2

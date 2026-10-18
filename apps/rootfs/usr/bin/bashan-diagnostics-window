@@ -1,0 +1,26 @@
+#!/bin/sh
+# Bashan OS — show the diagnostics in a window big enough to photograph.
+#
+# Konsole is opened with a large font and held open after the report ends,
+# so the window does not vanish before anyone can take the picture. The
+# report itself writes nothing; this wrapper only chooses how to display it.
+set -u
+
+REPORT=/usr/libexec/bashan/bashan-diagnostics
+[ -x "$REPORT" ] || { echo "E: $REPORT missing" >&2; exit 1; }
+
+# A profile cannot be passed inline, so the font is set with an escape
+# sequence Konsole understands, then the report runs and the shell waits.
+inner="printf '\033]50;%s\007' 'Monospace,14'; \"$REPORT\"; \
+       printf '\n'; printf 'Press Enter to close this window.\n'; read -r _"
+
+if command -v konsole >/dev/null 2>&1; then
+    exec konsole --hide-menubar --hide-tabbar \
+                 -p TerminalColumns=84 -p TerminalRows=42 \
+                 -e sh -c "$inner"
+fi
+# No Konsole: any terminal beats none, and a plain run beats nothing at all.
+for t in x-terminal-emulator xterm; do
+    command -v "$t" >/dev/null 2>&1 && exec "$t" -e sh -c "$inner"
+done
+exec sh -c "$inner"

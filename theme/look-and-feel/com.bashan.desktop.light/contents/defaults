@@ -15,7 +15,7 @@ name=breeze-light
 cursorTheme=breeze_cursors
 
 [Wallpaper][org.kde.image][General]
-Image=/usr/share/wallpapers/Bashan/contents/images/bashan-ridge-light-3840x2160.png
+Image=/usr/share/wallpapers/BashanMountain/contents/images/1920x1080.png
 
 [kscreenlockerrc][Greeter][Wallpaper][org.kde.image][General]
-Image=/usr/share/wallpapers/Bashan/contents/images/bashan-ridge-light-login-1920x1080.png
+Image=/usr/share/wallpapers/BashanMountain/contents/images/1920x1080.png
