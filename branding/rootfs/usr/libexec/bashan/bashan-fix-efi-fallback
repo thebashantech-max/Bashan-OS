@@ -1,91 +1,169 @@
 #!/bin/sh
-# Bashan OS — repair the two EFI faults grub-install leaves behind.
+# Bashan OS — repair what Calamares and grub-install leave behind on the ESP.
 #
-# Runs chrooted into the target, after Calamares' bootloader job.
-# Measured on install attempt 3: the install reported success, all 35 jobs
-# green, and the result did not boot:
+# Runs chrooted into the target, immediately after the bootloader job.
+#
+# Install attempt 3 reported success — all 35 jobs green — and produced a
+# system that did not boot:
 #
 #   BdsDxe: failed to load Boot0002 "UEFI Misc Device" ... : Access Denied
 #   >>Start PXE over IPv4.
 #
-# FAULT 1 — no boot entry in NVRAM, so firmware never tried our bootloader
+# Four separate faults were measured on that installed ESP. Each is fixed
+# and then re-verified below, because the installer's own success report is
+# evidently not evidence that the system boots.
 #
-# Calamares mounts /sys as a FRESH sysfs. /sys/firmware/efi/efivars is a
-# separate filesystem (efivarfs), and a fresh sysfs does not carry it, so
-# inside the chroot the NVRAM is an empty directory. efibootmgr has nothing
-# to write to and grub-install warns and continues. The log showed no
-# efibootmgr output at all. Mounting efivarfs and re-running the same
-# grub-install writes the entry.
+# 1. NO BOOT ENTRY IN NVRAM
+#    Calamares mounts /sys as a FRESH sysfs. /sys/firmware/efi/efivars is a
+#    separate filesystem (efivarfs) that a fresh sysfs does not carry, so
+#    inside the chroot the NVRAM is an empty directory. efibootmgr has
+#    nothing to write to; grub-install warns and continues. The attempt-3
+#    log contains no efibootmgr output at all.
 #
-# FAULT 2 — the removable path held GRUB, which Secure Boot refuses
+# 2. THE REMOVABLE PATH HELD BARE GRUB
+#    Calamares' installEFIFallback copied grubx64.efi to
+#    \EFI\BOOT\BOOTX64.EFI (2684352 bytes, byte-identical to grub). GRUB
+#    carries Debian's signature, which no firmware trusts. Shim is the part
+#    signed by Microsoft, and shim is what then validates GRUB. Secure Boot
+#    refused it. Shim also loads grubx64.efi, mmx64.efi and fbx64.efi from
+#    its OWN directory, so all of them have to be there too.
 #
-# Having found no entry, firmware fell back to \EFI\BOOT\BOOTX64.EFI, where
-# Calamares' installEFIFallback had copied grubx64.efi (2684352 bytes, byte
-# size identical to grub). GRUB carries Debian's signature, which no
-# firmware trusts. Shim is the part signed by Microsoft, and shim is what
-# then validates GRUB. So the removable path must START at shim.
+# 3. GRUB COULD NOT HAVE FOUND ITS CONFIG EITHER WAY
+#    Debian's signed grubx64.efi is prebuilt with /EFI/debian baked in as
+#    its prefix:
+#        $ strings grubx64.efi | grep ^/EFI
+#        /EFI/debian
+#    It looks there for grub.cfg regardless of where it was started from.
+#    grub-install wrote the config to /EFI/Bashan/grub.cfg because of
+#    --bootloader-id=Bashan, and /EFI/debian did not exist. GRUB would have
+#    dropped to a bare "grub>" rescue prompt even with a working chain.
 #
-# Fault 2 matters on real hardware independently of fault 1: firmware
-# forgets NVRAM entries after a CMOS reset or a firmware update, and plenty
-# of machines boot the removable path by preference.
+#    We cannot rename the prefix without rebuilding and re-signing GRUB,
+#    which needs our own key enrolled and so defeats out-of-the-box Secure
+#    Boot. So the binary gets the path it insists on, holding the same
+#    three generated lines. The firmware boot menu still reads "Bashan OS";
+#    this is an ESP-internal path, not a user-visible label.
+#
+# 4. THE RECOVERY CSV WAS BRANDED "debian"
+#    BOOTX64.CSV is what shim's fallback (fbx64.efi) reads to rebuild a
+#    boot entry that firmware has forgotten. Debian ships:
+#        shimx64.efi,debian,,This is the boot entry for debian
+#    That label goes straight into the firmware boot menu, which IS a
+#    user-visible place. Rewritten to Bashan OS, same encoding
+#    (UTF-16LE, no BOM) that shim's fallback.c expects.
 set -eu
 
-ESP=/boot/efi
+# Overridable only so test/efi-fallback-selftest.sh can exercise this.
+ESP="${BASHAN_ESP:-/boot/efi}"
+SRC="$ESP/EFI/Bashan"
+FALLBACK="$ESP/EFI/BOOT"
+PREFIX="$ESP/EFI/debian"   # not branding: the signed binary's baked-in prefix
+LABEL="Bashan OS"
 
-# BIOS/legacy install: nothing here applies, and saying so beats failing.
+# A legacy/BIOS install has no ESP. Say so rather than fail.
 if [ ! -d "$ESP/EFI" ]; then
     echo "I: no EFI system partition; legacy boot, nothing to repair"
     exit 0
 fi
+[ -d "$SRC" ] || { echo "E: $SRC missing; grub-install did not run" >&2; exit 1; }
+for f in shimx64.efi grubx64.efi grub.cfg; do
+    [ -f "$SRC/$f" ] || { echo "E: $SRC/$f missing" >&2; exit 1; }
+done
 
-# --- Fault 1: give efibootmgr somewhere to write, then write the entry ----
+# --- Fault 1: give efibootmgr a NVRAM to write to, then write the entry --
 if [ -d /sys/firmware/efi ]; then
-    if [ ! -e /sys/firmware/efi/efivars/ ] || \
-       [ -z "$(ls -A /sys/firmware/efi/efivars 2>/dev/null)" ]; then
+    if [ -z "$(ls -A /sys/firmware/efi/efivars 2>/dev/null)" ]; then
         mkdir -p /sys/firmware/efi/efivars
         mount -t efivarfs efivarfs /sys/firmware/efi/efivars 2>/dev/null \
-            || echo "W: could not mount efivarfs; no boot entry will be created" >&2
+            || echo "W: could not mount efivarfs" >&2
     fi
-
     if [ -n "$(ls -A /sys/firmware/efi/efivars 2>/dev/null)" ]; then
-        # Same command the bootloader job ran; now it can reach NVRAM.
+        # The same command the bootloader job ran; now it can reach NVRAM.
         grub-install --target=x86_64-efi --efi-directory="$ESP" \
                      --bootloader-id=Bashan --force \
             || echo "W: grub-install re-run failed" >&2
-
-        if efibootmgr 2>/dev/null | grep -q 'Bashan'; then
-            echo "I: EFI boot entry created:"
-            efibootmgr | grep 'Bashan' | sed 's/^/I:   /'
+        if efibootmgr 2>/dev/null | grep -qi 'bashan'; then
+            efibootmgr | grep -i 'bashan' | sed 's/^/I: entry: /'
         else
-            echo "W: no Bashan entry in NVRAM; the removable path must carry the boot" >&2
+            echo "W: no Bashan entry in NVRAM; boot will rely on the removable path" >&2
         fi
+    else
+        echo "W: efivarfs unavailable; no NVRAM entry will be written" >&2
     fi
 else
-    echo "W: /sys/firmware/efi absent inside chroot; skipping NVRAM entry" >&2
+    echo "W: /sys/firmware/efi absent in chroot; skipping NVRAM entry" >&2
 fi
 
-# --- Fault 2: the removable path has to start at shim -------------------
-SRC="$ESP/EFI/Bashan"
-DST="$ESP/EFI/BOOT"
+# --- Fault 4: rebrand the recovery CSV before it gets copied around ------
+csv_tmp=$(mktemp)
+printf '%s,%s,,This is the boot entry for %s\n' "shimx64.efi" "$LABEL" "$LABEL" \
+    | iconv -f UTF-8 -t UTF-16LE > "$csv_tmp"
+cp -f "$csv_tmp" "$SRC/BOOTX64.CSV"
+rm -f "$csv_tmp"
 
-[ -d "$SRC" ] || { echo "E: $SRC missing; grub-install did not run" >&2; exit 1; }
-[ -f "$SRC/shimx64.efi" ] || { echo "E: no signed shim at $SRC/shimx64.efi" >&2; exit 1; }
+# --- Fault 3: the signed binary's baked-in prefix must exist --------------
+mkdir -p "$PREFIX"
+cp -f "$SRC/grub.cfg" "$PREFIX/grub.cfg"
+# Harmless, and covers a future GRUB built with a load-relative prefix.
+cp -f "$SRC/grub.cfg" "$FALLBACK/grub.cfg" 2>/dev/null || true
 
-mkdir -p "$DST"
-cp -f "$SRC/shimx64.efi" "$DST/BOOTX64.EFI"
-cp -f "$SRC/grubx64.efi" "$DST/grubx64.efi"
-for extra in mmx64.efi fbx64.efi BOOTX64.CSV; do
-    [ -f "$SRC/$extra" ] && cp -f "$SRC/$extra" "$DST/$extra"
+# --- Fault 2: the removable path starts at shim, with shim's companions --
+mkdir -p "$FALLBACK"
+cp -f "$SRC/shimx64.efi" "$FALLBACK/BOOTX64.EFI"
+for f in grubx64.efi mmx64.efi fbx64.efi BOOTX64.CSV; do
+    [ -f "$SRC/$f" ] && cp -f "$SRC/$f" "$FALLBACK/$f"
 done
+# Calamares wrote a lowercase bootx64.efi; a FAT filesystem is case
+# insensitive, so leaving a stale one risks ambiguity.
+[ -f "$FALLBACK/bootx64.efi" ] && [ ! -f "$FALLBACK/BOOTX64.EFI" ] \
+    && mv -f "$FALLBACK/bootx64.efi" "$FALLBACK/BOOTX64.EFI"
 
-# Prove it rather than trust the copy: the fallback must now weigh the same
-# as shim, not the same as grub. This is the check that would have caught
-# attempt 3 before the reboot.
-shim_size=$(stat -c %s "$SRC/shimx64.efi")
-boot_size=$(stat -c %s "$DST/BOOTX64.EFI")
-if [ "$shim_size" != "$boot_size" ]; then
-    echo "E: $DST/BOOTX64.EFI is $boot_size bytes but shim is $shim_size" >&2
-    echo "E: removable path is not shim; Secure Boot would refuse it" >&2
-    exit 1
+# --- Verify, rather than trust the copies --------------------------------
+# This is the check that would have caught attempt 3 before the reboot.
+fail=0
+check_size() {
+    want=$(stat -c %s "$1"); got=$(stat -c %s "$2" 2>/dev/null || echo missing)
+    if [ "$want" = "$got" ]; then
+        printf 'I: ok   %-28s %s bytes\n' "${2#"$ESP"}" "$got"
+    else
+        printf 'E: FAIL %-28s is %s, expected %s\n' "${2#"$ESP"}" "$got" "$want" >&2
+        fail=1
+    fi
+}
+check_size "$SRC/shimx64.efi" "$FALLBACK/BOOTX64.EFI"
+check_size "$SRC/grubx64.efi" "$FALLBACK/grubx64.efi"
+for f in mmx64.efi fbx64.efi BOOTX64.CSV; do
+    [ -f "$SRC/$f" ] && check_size "$SRC/$f" "$FALLBACK/$f"
+done
+for cfg in "$SRC/grub.cfg" "$PREFIX/grub.cfg" "$FALLBACK/grub.cfg"; do
+    if [ -s "$cfg" ]; then
+        printf 'I: ok   %-28s %s bytes\n' "${cfg#"$ESP"}" "$(stat -c %s "$cfg")"
+    else
+        printf 'E: FAIL %-28s missing or empty\n' "${cfg#"$ESP"}" >&2
+        fail=1
+    fi
+done
+# The fallback must not be grub wearing shim's name: the exact fault of
+# attempt 3, where both measured 2684352 bytes.
+if [ "$(stat -c %s "$FALLBACK/BOOTX64.EFI")" = "$(stat -c %s "$SRC/grubx64.efi")" ]; then
+    echo "E: FAIL removable path is grub-sized; Secure Boot would refuse it" >&2
+    fail=1
 fi
-echo "I: removable EFI path starts at shim ($boot_size bytes)"
+# GRUB must be able to reach the root filesystem, not just load.
+if ! grep -q 'search.fs_uuid' "$SRC/grub.cfg"; then
+    echo "E: FAIL $SRC/grub.cfg has no search.fs_uuid; GRUB cannot find root" >&2
+    fail=1
+fi
+# The CSV is UTF-16LE, so it has to be decoded before grepping: an ASCII
+# grep silently never matches, which would make this check always "pass".
+csv_text=$(iconv -f UTF-16LE -t UTF-8 < "$FALLBACK/BOOTX64.CSV" 2>/dev/null || echo "")
+case "$csv_text" in
+    *"$LABEL"*) printf 'I: ok   %-28s %s\n' "/EFI/BOOT/BOOTX64.CSV" "labelled '$LABEL'" ;;
+    *)          echo "E: FAIL BOOTX64.CSV not labelled '$LABEL': $csv_text" >&2; fail=1 ;;
+esac
+case "$csv_text" in
+    *[Dd]ebian*) echo "E: FAIL BOOTX64.CSV still branded debian" >&2; fail=1 ;;
+esac
+
+[ "$fail" = 0 ] || { echo "E: ESP verification failed; the install would not boot" >&2; exit 1; }
+echo "I: ESP verified: shim chain on both paths, prefix present, CSV rebranded"

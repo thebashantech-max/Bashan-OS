@@ -126,6 +126,13 @@ cmd_test() {
   log "palette contrast check (dark and light)"
   python3 "$ROOT/scripts/_palette.py" 2>&1 | tee -a "$LOG"
   log "contrast check passed"
+
+  # Install attempt 3 reported 35 green jobs and produced a system that did
+  # not boot. This replays that exact ESP against the repair script.
+  log "EFI chain repair self-check"
+  "$ROOT/test/efi-fallback-selftest.sh" \
+      "$ROOT/branding/rootfs/usr/libexec/bashan/bashan-fix-efi-fallback" 2>&1 | tee -a "$LOG"
+  log "EFI chain repair self-check passed"
 }
 
 cmd_clean() {

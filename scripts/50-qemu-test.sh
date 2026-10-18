@@ -7,6 +7,7 @@
 #   ./scripts/50-qemu-test.sh target           make a blank install disk
 #   ./scripts/50-qemu-test.sh boot install     ISO + blank target, to install
 #   ./scripts/50-qemu-test.sh boot installed   NO ISO: boot what was installed
+#   ./scripts/50-qemu-test.sh boot installed-wiped   as above, NVRAM forgotten
 #   ./scripts/50-qemu-test.sh shot NAME        screenshot the running VM
 #   ./scripts/50-qemu-test.sh key KEYS         send keystrokes
 #   ./scripts/50-qemu-test.sh stop             shut the VM down
@@ -76,6 +77,17 @@ cmd_target() {
 
 cmd_boot() {
   local mode="${1:-uefi-sb}"
+  # "installed-wiped" answers: does this still boot on a machine whose
+  # firmware has forgotten its boot entries, after a CMOS reset or a
+  # firmware update? Resetting to the pristine Microsoft-keys vars drops
+  # every boot variable while leaving Secure Boot ON, so the firmware has
+  # no choice but the removable path \EFI\BOOT\BOOTX64.EFI.
+  if [ "$mode" = "installed-wiped" ]; then
+    cp -f "$OVMF_VARS_SB" "$VM/vars-sb.fd"
+    echo "I: NVRAM boot variables wiped, Secure Boot still ON"
+    echo "I: only the removable fallback path can boot now"
+    mode="installed"
+  fi
   # "installed" boots the disk the installer wrote, with NO ISO attached.
   # Until that works, an install has not been proven.
   if [ "$mode" = "installed" ]; then
