@@ -9,6 +9,17 @@ TELEMETRY="popularity-contest apport whoopsie ubuntu-report reportbug"
 for pkg in $TELEMETRY; do
     if dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "install ok installed"; then
         echo "I: purging telemetry package $pkg"
+        # apt purge takes reverse-dependencies with it. That is how the installed
+        # system lost every bit of Plasma: one QML module was removed by name and
+        # the whole desktop went with it, while the installer still reported
+        # success. Simulate first and refuse, rather than find out after shipping.
+        extra=$(apt-get purge -s -y "$pkg" 2>/dev/null \
+                | awk '/^Remv /{print $2}' | grep -vx "$pkg" || true)
+        if [ -n "$extra" ]; then
+            echo "E: purging $pkg would also remove:" >&2
+            echo "$extra" | sed 's/^/E:   /' >&2
+            exit 1
+        fi
         apt-get purge -y "$pkg"
     fi
 done

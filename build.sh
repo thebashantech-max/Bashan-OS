@@ -133,6 +133,19 @@ cmd_test() {
   "$ROOT/test/efi-fallback-selftest.sh" \
       "$ROOT/branding/rootfs/usr/libexec/bashan/bashan-fix-efi-fallback" 2>&1 | tee -a "$LOG"
   log "EFI chain repair self-check passed"
+
+  # The installed system lost all of Plasma once, and the installer still
+  # said "All done." These assert the guards against that still bite.
+  log "installed-system verifier self-check"
+  "$ROOT/test/verify-install-selftest.sh" \
+      "$ROOT/branding/rootfs/usr/libexec/bashan/bashan-verify-install" 2>&1 | tee -a "$LOG"
+  log "installed-system verifier self-check passed"
+
+  # The approved Trash artwork was correct and still never drawn: every icon
+  # directory was Type=Fixed, so in-between sizes fell back to breeze.
+  log "Trash artwork and icon lookup"
+  python3 "$ROOT/test/icon-check.py" 2>&1 | tee -a "$LOG"
+  log "icon check passed"
 }
 
 cmd_clean() {

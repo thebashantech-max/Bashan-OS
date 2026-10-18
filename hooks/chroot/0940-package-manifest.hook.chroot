@@ -1,0 +1,33 @@
+#!/bin/sh
+# Bashan OS — record what the live image actually contains.
+#
+# Runs last, after every purge hook, so the manifest is the final truth
+# about the live filesystem.
+#
+# The installed system is an unsquashfs of this filesystem, so anything in
+# this list that is missing after an install was removed BY the install.
+# That is how the desktop disappeared on attempt 4 without anyone noticing:
+# `apt remove qml6-module-qtquick-controls` took all of Plasma with it and
+# Calamares still reported success. bashan-verify-install compares the
+# installed system against this file and fails the install if the two have
+# drifted apart.
+set -e
+
+mkdir -p /usr/share/bashan
+dpkg-query -W -f='${binary:Package}\n' \
+    | sed 's/:.*//' | sort -u > /usr/share/bashan/live-packages.txt
+
+count=$(wc -l < /usr/share/bashan/live-packages.txt)
+[ "$count" -gt 100 ] || { echo "E: only $count packages recorded; manifest looks wrong" >&2; exit 1; }
+echo "I: recorded $count packages in the live manifest"
+
+# The ones the installer is allowed to remove, so the comparison does not
+# flag them. Anything else going missing is a fault.
+cat > /usr/share/bashan/expected-removals.txt <<'LIST'
+calamares
+calamares-settings-debian
+live-boot
+live-boot-initramfs-tools
+live-config
+live-config-systemd
+LIST

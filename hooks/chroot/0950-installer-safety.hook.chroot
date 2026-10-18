@@ -1,0 +1,29 @@
+#!/bin/sh
+# Bashan OS — the installer must never pre-select a destructive choice.
+#
+# "Erase disk" wipes everything on the drive. It has to be a deliberate act
+# by the person installing, so the Partitions page ships with nothing
+# selected and Next stays disabled until they choose.
+#
+# During install testing the live session was temporarily set to
+# `initialPartitioningChoice: erase` to drive the installer by keyboard,
+# because the VM's pointer does not work. That change was made inside the
+# running VM only. This hook makes sure such a change can never reach an
+# ISO by accident: the build fails instead.
+set -e
+
+CONF=/etc/calamares/modules/partition.conf
+[ -f "$CONF" ] || { echo "E: $CONF missing from the image" >&2; exit 1; }
+
+choice=$(sed -n 's/^initialPartitioningChoice:[[:space:]]*//p' "$CONF" | tr -d '[:space:]')
+case "$choice" in
+    none) echo "I: installer pre-selects nothing on the Partitions page" ;;
+    "")   echo "E: initialPartitioningChoice is not set in $CONF" >&2; exit 1 ;;
+    *)    echo "E: initialPartitioningChoice is '$choice', must be 'none'" >&2
+          echo "E: a destructive option must never be pre-selected" >&2
+          exit 1 ;;
+esac
+
+swap=$(sed -n 's/^initialSwapChoice:[[:space:]]*//p' "$CONF" | tr -d '[:space:]')
+[ "$swap" = "none" ] || { echo "E: initialSwapChoice is '$swap', expected 'none'" >&2; exit 1; }
+echo "I: installer safety defaults verified"

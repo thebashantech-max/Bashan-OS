@@ -97,8 +97,9 @@ cmd_boot() {
       -name "bashan-vm" \
       -machine "q35,accel=kvm,smm=on" -cpu host -smp 2 -m "$RAM_MB" \
       -device "virtio-vga" -display none -vnc ":9" \
-      -device "virtio-tablet-pci" -device "virtio-keyboard-pci" \
+      -device "qemu-xhci,id=xhci" -device "usb-tablet,bus=xhci.0" -device "virtio-keyboard-pci" \
       -monitor "unix:$MON,server,nowait" \
+        -serial "file:$VM/serial.log" \
       -global "driver=cfi.pflash01,property=secure,value=on" \
       -drive "if=pflash,format=raw,unit=0,readonly=on,file=$OVMF_CODE_SB" \
       -drive "if=pflash,format=raw,unit=1,file=$VM/vars-sb.fd" \
@@ -130,8 +131,11 @@ cmd_boot() {
     -name "bashan-vm"
     -machine "q35,accel=kvm" -cpu host -smp 2 -m "$RAM_MB"
     -device "virtio-vga" -display none -vnc ":9"
-    -device "virtio-tablet-pci" -device "virtio-keyboard-pci"
-    -serial "unix:$VM/serial.sock,server,nowait"
+    -device "qemu-xhci,id=xhci" -device "usb-tablet,bus=xhci.0" -device "virtio-keyboard-pci"
+    # A file sink, not a socket: nothing was ever connected to the socket,
+    # and an undrained serial socket can stall the guest. The install log
+    # is streamed out through here, where it survives the VM dying.
+    -serial "file:$VM/serial.log"
     -monitor "unix:$MON,server,nowait"
     -drive "file=$ISO,media=cdrom,readonly=on"
     -drive "file=$VM/$BASHAN_DISK,format=raw,if=virtio"

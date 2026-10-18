@@ -1,0 +1,82 @@
+#!/bin/sh
+# Bashan OS — assert the installed system is still the system we shipped.
+#
+# Runs chrooted into the target, AFTER the packages job.
+#
+# Install attempt 4 finished with "All done." and handed over a machine
+# nobody could log into. SDDM came up with an empty session dropdown:
+#
+#   $ ls /usr/share/xsessions/
+#   ls: cannot access '/usr/share/xsessions/': No such file or directory
+#   $ dpkg -l plasma-desktop
+#   un  plasma-desktop  <none>  <none>
+#
+# The packages job had done a hard `apt remove qml6-module-qtquick-controls`
+# to tidy up after Calamares, and apt took every reverse-dependency with it,
+# Plasma included. The live session was fine, so nothing caught it.
+#
+# The root cause is fixed in packages.conf and the build-time purge hooks
+# now refuse to cascade. This is the last line of defence: it compares the
+# installed system against the manifest the live image recorded and fails
+# the install, loudly and specifically, rather than handing over a machine
+# that boots to a login screen with nothing behind it.
+set -eu
+
+ROOT="${BASHAN_VERIFY_ROOT:-}"   # set only by the self-test
+MANIFEST="$ROOT/usr/share/bashan/live-packages.txt"
+EXPECTED="$ROOT/usr/share/bashan/expected-removals.txt"
+# More than this many unexplained removals means something cascaded.
+TOLERANCE=5
+
+fail=0
+
+# --- A session to log into ----------------------------------------------
+found=$(find "$ROOT/usr/share/xsessions" "$ROOT/usr/share/wayland-sessions" \
+             -maxdepth 1 -name '*.desktop' 2>/dev/null | wc -l)
+if [ "$found" -eq 0 ]; then
+    echo "E: no desktop session installed - nobody could log in to this system" >&2
+    fail=1
+else
+    echo "I: $found desktop session(s) installed"
+fi
+
+# --- A greeter to log in at ---------------------------------------------
+if [ ! -x "$ROOT/usr/bin/sddm" ]; then
+    echo "E: sddm is missing; the installed system has no login screen" >&2
+    fail=1
+else
+    echo "I: sddm present"
+fi
+
+# --- Nothing else quietly removed ---------------------------------------
+if [ ! -s "$MANIFEST" ]; then
+    echo "E: $MANIFEST missing; cannot tell what the install removed" >&2
+    fail=1
+else
+    installed=$(mktemp); missing=$(mktemp)
+    # In the self-test $ROOT points at a fake tree, so read its list instead.
+    if [ -n "$ROOT" ]; then
+        sort -u "$ROOT/installed-packages.txt" > "$installed"
+    else
+        dpkg-query -W -f='${binary:Package}\n' | sed 's/:.*//' | sort -u > "$installed"
+    fi
+    # Present in the live image, absent now, and not one we meant to remove.
+    comm -23 "$MANIFEST" "$installed" | grep -vxF -f "$EXPECTED" > "$missing" || true
+
+    n=$(wc -l < "$missing")
+    if [ "$n" -eq 0 ]; then
+        echo "I: no unexpected package removals"
+    else
+        echo "W: $n package(s) present in the live image are missing after install:" >&2
+        sed 's/^/W:   /' "$missing" >&2
+        if [ "$n" -gt "$TOLERANCE" ]; then
+            echo "E: $n unexplained removals exceeds the tolerance of $TOLERANCE" >&2
+            echo "E: a removal has cascaded and taken packages with it" >&2
+            fail=1
+        fi
+    fi
+    rm -f "$installed" "$missing"
+fi
+
+[ "$fail" = 0 ] || { echo "E: the installed system is not usable; refusing to call this a success" >&2; exit 1; }
+echo "I: installed system verified"
