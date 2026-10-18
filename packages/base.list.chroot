@@ -28,6 +28,12 @@ dbus-user-session
 polkitd
 udisks2
 util-linux
+# hwclock lives here, NOT in util-linux. Without it Calamares' hwclock job
+# fails with "chroot: failed to run command 'hwclock'" and reports
+# "BIOS or Kernel BUG: Setting hwclock failed" - found in the install log.
+# Non-fatal to the install, but it means the installed system never writes
+# the time back to the hardware clock.
+util-linux-extra
 zstd
 
 # Compressed RAM swap

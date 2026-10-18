@@ -1,14 +1,38 @@
 #!/bin/sh
 # Bashan OS — copy the Bashan desktop defaults into a freshly created
-# account. Run by Calamares with the username it actually created, passed
-# as $1 via its @@USERNAME@@ substitution, so nothing is guessed.
+# account. Run by Calamares at the end of an install.
+#
+# WHY IT NO LONGER TAKES THE USERNAME FROM CALAMARES
+#
+# It used to be called as `bashan-seed-user @@USERNAME@@`, relying on
+# Calamares to substitute the name it had just created. That substitution
+# never happened: the script received the literal string "@@USERNAME@@" and
+# failed, which aborted the whole install before the bootloader was written.
+# It failed that way TWICE, and cost two full install runs to find, because
+# the first failure took its log with it.
+#
+# So the name is no longer asked for. The script finds the account itself:
+# the first regular login account in the target system. That is correct by
+# construction - Calamares has just created exactly one - and it cannot be
+# broken by a placeholder syntax changing or being wrong.
+#
+# A username may still be passed explicitly for manual use.
 set -u
 
 user="${1:-}"
 if [ -z "$user" ]; then
-    echo "E: no username given" >&2
-    exit 1
+    # First real login account: uid >= 1000, below the nobody sentinel, and
+    # with a shell someone can actually log in with.
+    user=$(awk -F: '$3 >= 1000 && $3 < 65534 && $7 !~ /(nologin|false)$/ {print $1; exit}' /etc/passwd)
 fi
+
+case "$user" in
+    ""|*@@*)
+        echo "E: could not determine which account to seed (got '${user:-empty}')" >&2
+        awk -F: '$3 >= 1000 && $3 < 65534 {print "   candidate: "$1" uid "$3}' /etc/passwd >&2
+        exit 1
+        ;;
+esac
 
 home=$(getent passwd "$user" | cut -d: -f6)
 if [ -z "$home" ] || [ ! -d "$home" ]; then
