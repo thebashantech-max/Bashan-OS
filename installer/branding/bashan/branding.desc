@@ -32,9 +32,14 @@ images:
 slideshow:            "show.qml"
 slideshowAPI:         2
 
+# Calamares accepts EXACTLY four style keys. Three of the names used here
+# before were invented and silently ignored - the install log said
+# "Unknown branding *style* entry" for each - so the current-step
+# highlight was never actually styled. Checked against the strings in
+# libcalamaresui: SidebarBackground, SidebarBackgroundCurrent,
+# SidebarText, SidebarTextCurrent.
 style:
    SidebarBackground:         "#0b1018"
    SidebarText:               "#8aa0bd"
-   SidebarTextCurrentBackground: "#0e737b"
-   SidebarTextSelect:         "#e6f0fa"
-   SidebarTextHighlight:      "#22d3ee"
+   SidebarBackgroundCurrent:  "#0e737b"
+   SidebarTextCurrent:        "#e6f0fa"
