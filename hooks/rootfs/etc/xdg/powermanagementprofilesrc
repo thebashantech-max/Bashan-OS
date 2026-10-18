@@ -1,16 +1,52 @@
-# Bashan OS — do not blank the screen in the live session.
+# Bashan OS — power behaviour for the INSTALLED system.
 #
-# Stage 1: the display powered off during an install and the VM reported
-# "Display output is not active", which to a user looks like a crash.
-# The installed system inherits sensible defaults from powerdevil; these
-# values only stop the aggressive blanking that bit us on the live ISO.
+# The live session relaxes these at runtime; see
+# /lib/live/config/2000-bashan-live, which ships only in the live image
+# because Calamares removes live-config on install.
+#
+# UNITS, which are not consistent and caused the defect this replaces:
+#   DimDisplay      idleTime is MILLISECONDS
+#   SuspendSession  idleTime is MILLISECONDS
+#   DPMSControl     idleTime is SECONDS
+#
+# The previous version set [AC][DimDisplay] idleTime=1800 meaning to say
+# thirty minutes. That is 1.8 SECONDS, and on real hardware the screen dimmed
+# almost as soon as the mouse stopped. It also set only [AC], so a laptop on
+# battery - which is how a laptop actually gets used - fell through to
+# powerdevil's own defaults entirely.
+
+# ---- on mains ------------------------------------------------------------
+[AC][DimDisplay]
+idleTime=300000
+
 [AC][DPMSControl]
-idleTime=3600
+idleTime=600
 lockBeforeTurnOff=0
 
-[AC][DimDisplay]
-idleTime=1800
-
 [AC][SuspendSession]
-idleTime=7200
-suspendType=0
+idleTime=1800000
+suspendType=1
+
+# ---- on battery ----------------------------------------------------------
+[Battery][DimDisplay]
+idleTime=300000
+
+[Battery][DPMSControl]
+idleTime=600
+lockBeforeTurnOff=0
+
+[Battery][SuspendSession]
+idleTime=900000
+suspendType=1
+
+# ---- battery nearly empty ------------------------------------------------
+[LowBattery][DimDisplay]
+idleTime=120000
+
+[LowBattery][DPMSControl]
+idleTime=300
+lockBeforeTurnOff=0
+
+[LowBattery][SuspendSession]
+idleTime=600000
+suspendType=1

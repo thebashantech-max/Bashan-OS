@@ -16,7 +16,7 @@
 # carried into places its owner does not control; that is worth a lock. A
 # machine still being installed is not.
 [Daemon]
-Autolock=false
+Autolock=true
 LockGrace=5
 Timeout=10
 LockOnResume=true

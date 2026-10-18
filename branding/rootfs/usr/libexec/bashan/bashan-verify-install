@@ -78,5 +78,42 @@ else
     rm -f "$installed" "$missing"
 fi
 
+# --- no live-only setting survived the install ---------------------------
+# These are relaxed for the live session by /lib/live/config/2000-bashan-live.
+# If any of them is still relaxed here, a live-only change has leaked onto a
+# real machine - which is how every installed system ended up never locking
+# its screen.
+LOCK="$ROOT/etc/xdg/kscreenlockerrc"
+if grep -q '^Autolock=false' "$LOCK" 2>/dev/null; then
+    echo "E: Autolock=false on the installed system - it would never lock" >&2
+    fail=1
+elif grep -q '^Autolock=true' "$LOCK" 2>/dev/null; then
+    echo "I: screen lock enabled"
+else
+    echo "E: $LOCK has no Autolock setting" >&2
+    fail=1
+fi
+
+if grep -q '^Enabled=false' "$ROOT/etc/xdg/kwalletrc" 2>/dev/null; then
+    echo "E: KWallet disabled on the installed system - that is live-only" >&2
+    fail=1
+else
+    echo "I: KWallet enabled"
+fi
+
+if [ -e "$ROOT/lib/live/config/2000-bashan-live" ]; then
+    echo "E: live-only config script still present at /lib/live/config" >&2
+    fail=1
+else
+    echo "I: live-only config removed"
+fi
+
+if [ -e "$ROOT/etc/systemd/system/multi-user.target.wants/unattended-upgrades.service" ]; then
+    echo "I: security updates enabled"
+else
+    echo "E: unattended-upgrades not enabled on the installed system" >&2
+    fail=1
+fi
+
 [ "$fail" = 0 ] || { echo "E: the installed system is not usable; refusing to call this a success" >&2; exit 1; }
 echo "I: installed system verified"

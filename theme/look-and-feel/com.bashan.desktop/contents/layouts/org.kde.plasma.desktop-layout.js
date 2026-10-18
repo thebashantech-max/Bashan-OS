@@ -56,6 +56,10 @@ dock.addWidget("org.kde.plasma.systemtray");
 var clock = dock.addWidget("org.kde.plasma.digitalclock");
 clock.currentConfigGroup = ["Appearance"];
 clock.writeConfig("showDate", false);
+// Say which timezone the clock is showing. In the live session that is
+// UTC, which otherwise just looks like the wrong time to someone whose
+// machine is set up correctly.
+clock.writeConfig("showLocalTimezone", true);
 clock.writeConfig("fontWeight", 500);
 
 // ---- the desktop itself --------------------------------------------------

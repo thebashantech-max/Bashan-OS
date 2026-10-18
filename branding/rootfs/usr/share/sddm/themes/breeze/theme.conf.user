@@ -1,0 +1,22 @@
+# Bashan OS — branding applied on top of the stock Breeze login theme.
+#
+# Our own SDDM theme does not work. SDDM loads it, the greeter cannot get a
+# display server and exits, and no login screen appears at all:
+#
+#   Greeter session started successfully
+#   Greeter stopped. SDDM::Auth::HELPER_DISPLAYSERVER_ERROR
+#
+# Breeze is the theme the greeter is actually tested against, so instead of
+# fixing our QML blind we keep Breeze's working machinery and change only
+# what it draws. theme.conf.user is SDDM's documented override file: it is
+# not shipped by any package, so this never conflicts with an upgrade.
+#
+# If the greeter still fails, the fix is to delete this file - Breeze then
+# falls back to its own wallpaper and still lets people log in.
+[General]
+type=image
+background=/usr/share/sddm/themes/bashan/background.png
+logo=/usr/share/sddm/themes/bashan/logo.png
+showlogo=shown
+showClock=true
+fontSize=11

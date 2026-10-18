@@ -1,0 +1,110 @@
+#!/bin/sh
+
+. /usr/lib/live/config.sh
+
+## Bashan OS — settings that apply ONLY to the live session.
+##
+## This file ships inside the live filesystem and is executed by live-config
+## at boot. Calamares removes the live-config package during installation, so
+## nothing here can ever run on, or leak into, an installed system. That is
+## the whole reason it exists: /etc/xdg holds the values an installed machine
+## should have, and the live session needs several of them relaxed.
+##
+## What it changes and why:
+##
+## 1. No dimming, no blanking, no suspend. A live session is used to look at
+##    hardware and to run the installer. The screen going dark mid-install
+##    reads as a crash.
+##
+## 2. No screen lock. The live user logs in automatically and has no
+##    password, so a lock screen would be a dead end with no way back in.
+##
+## 3. No KDE Wallet. Same reason: automatic login with no password means PAM
+##    has no key to create a wallet from, so KDE asks the person to create
+##    one by hand. On real hardware this popped up on first boot.
+##
+## 4. No unattended-upgrades and no apt timers. A live session downloads
+##    updates into a RAM overlay that is thrown away at shutdown, and then
+##    unattended-upgrades holds the shutdown for up to half an hour showing
+##    "Unattended-upgrade in progress during shutdown, please don't turn off
+##    the computer". On real hardware that is what it did.
+##
+## 5. No PackageKit offline updates, which would reboot into an
+##    "installing updates" screen.
+
+#set -e
+
+Init ()
+{
+	if component_was_executed "bashan-live"
+	then
+		exit 0
+	fi
+
+	printf ' bashan-live'
+}
+
+Config ()
+{
+	# 1. Screen stays on. Units differ per action: DimDisplay and
+	#    SuspendSession are milliseconds, DPMSControl is seconds.
+	cat > /etc/xdg/powermanagementprofilesrc << 'LIVE'
+# Live session only: never dim, never blank, never suspend.
+[AC][DimDisplay]
+idleTime=86400000
+
+[AC][DPMSControl]
+idleTime=86400
+lockBeforeTurnOff=0
+
+[Battery][DimDisplay]
+idleTime=86400000
+
+[Battery][DPMSControl]
+idleTime=86400
+lockBeforeTurnOff=0
+
+[LowBattery][DimDisplay]
+idleTime=86400000
+
+[LowBattery][DPMSControl]
+idleTime=86400
+lockBeforeTurnOff=0
+LIVE
+
+	# 2. No lock screen with no password to leave it.
+	if [ -f /etc/xdg/kscreenlockerrc ]
+	then
+		sed -i 's/^Autolock=true/Autolock=false/' /etc/xdg/kscreenlockerrc
+	fi
+
+	# 3. No wallet, so no "create a wallet" popup on first boot.
+	cat > /etc/xdg/kwalletrc << 'LIVE'
+# Live session only: automatic login has no password for PAM to build a
+# wallet from, so KDE would ask the person to make one. Installed systems
+# enable this and unlock it at login instead.
+[Wallet]
+Enabled=false
+First Use=false
+LIVE
+
+	# 4. No background updating of a filesystem that is discarded anyway,
+	#    and nothing that can hold the shutdown.
+	for _UNIT in unattended-upgrades.service apt-daily.timer \
+	             apt-daily-upgrade.timer apt-daily.service \
+	             apt-daily-upgrade.service
+	do
+		systemctl mask --now "${_UNIT}" > /dev/null 2>&1 || true
+	done
+
+	# 5. No "installing updates, do not turn off" on the next boot.
+	systemctl mask packagekit-offline-update.service > /dev/null 2>&1 || true
+	rm -f /system-update
+
+	# component_was_executed() only reads; the marker is this file.
+	mkdir -p /var/lib/live/config
+	touch /var/lib/live/config/bashan-live
+}
+
+Init
+Config

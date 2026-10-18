@@ -339,6 +339,10 @@ ApplicationWindow {
                     }
                 }
                 Card {
+                    CardTitle { text: win.tr("w.p4.time.h"); font.pixelSize: 21 }
+                    Body { text: win.tr("w.p4.time.b"); font.pixelSize: 17 }
+                }
+                Card {
                     CardTitle { text: win.tr("w.p4.song.h"); font.pixelSize: 21 }
                     Body { text: win.tr("w.p4.song.b"); font.pixelSize: 17 }
                     BigCheck {

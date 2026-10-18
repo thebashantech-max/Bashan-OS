@@ -22,6 +22,11 @@ build_tree() {
              "$tmp/t/usr/share/bashan" "$tmp/t/usr/bin"
     touch "$tmp/t/usr/share/wayland-sessions/plasma.desktop"
     touch "$tmp/t/usr/bin/sddm"; chmod +x "$tmp/t/usr/bin/sddm"
+    mkdir -p "$tmp/t/etc/xdg" \
+             "$tmp/t/etc/systemd/system/multi-user.target.wants"
+    printf '[Daemon]\nAutolock=true\nTimeout=10\n' > "$tmp/t/etc/xdg/kscreenlockerrc"
+    printf '[Wallet]\nEnabled=true\n' > "$tmp/t/etc/xdg/kwalletrc"
+    touch "$tmp/t/etc/systemd/system/multi-user.target.wants/unattended-upgrades.service"
     # Roughly the shape of a real Plasma install, so that removing the
     # desktop produces the double-figure casualty list it does in reality.
     DESKTOP='plasma-desktop plasma-workspace plasma-integration breeze
@@ -64,6 +69,24 @@ grep -vxE 'breeze|systemsettings' "$tmp/t/installed-packages.txt" > "$tmp/i" \
     && mv "$tmp/i" "$tmp/t/installed-packages.txt"
 want "tolerates two extra removals" run
 want "still lists them as a warning" grep -q "missing after install" "$tmp/out"
+
+echo "live-only settings must not survive the install"
+build_tree
+sed -i 's/^Autolock=true/Autolock=false/' "$tmp/t/etc/xdg/kscreenlockerrc"
+if run; then bad "accepted a system that never locks"; else ok "refuses Autolock=false"; fi
+want "says it would never lock" grep -q "would never lock" "$tmp/out"
+
+build_tree
+sed -i 's/^Enabled=true/Enabled=false/' "$tmp/t/etc/xdg/kwalletrc"
+if run; then bad "accepted a disabled wallet"; else ok "refuses a disabled KWallet"; fi
+
+build_tree
+mkdir -p "$tmp/t/lib/live/config"; touch "$tmp/t/lib/live/config/2000-bashan-live"
+if run; then bad "accepted leftover live-only config"; else ok "refuses leftover live-only config"; fi
+
+build_tree
+rm -f "$tmp/t/etc/systemd/system/multi-user.target.wants/unattended-upgrades.service"
+if run; then bad "accepted disabled security updates"; else ok "refuses disabled security updates"; fi
 
 echo "a missing manifest is itself a failure"
 build_tree

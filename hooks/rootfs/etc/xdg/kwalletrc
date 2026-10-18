@@ -1,0 +1,17 @@
+# Bashan OS — KDE Wallet on the INSTALLED system.
+#
+# Enabled, and unlocked at login by pam_kwallet5.so (which despite the name
+# is the Plasma 6 build, kwallet-pam 6.3.4) already wired into
+# /etc/pam.d/sddm. The person never sees a wallet prompt and Brave's saved
+# passwords are encrypted by the wallet rather than left in Brave's own
+# obfuscated store.
+#
+# The live session disables this instead: it logs in automatically with no
+# password, so PAM has no key to build a wallet from and KDE would ask the
+# person to create one. That override lives in the live-only
+# /lib/live/config/2000-bashan-live and can never reach an installed system.
+[Wallet]
+Enabled=true
+First Use=false
+Close When Idle=false
+Use One Wallet=true

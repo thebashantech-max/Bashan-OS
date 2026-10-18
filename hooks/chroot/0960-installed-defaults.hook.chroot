@@ -1,0 +1,68 @@
+#!/bin/sh
+# Bashan OS — the image must hold INSTALLED defaults, not live ones.
+#
+# /etc/xdg is baked into the image and the installed system is an unsquashfs
+# of it, so anything relaxed here for the live session ships to every
+# machine. That already happened once: Autolock=false was set so the screen
+# would not lock during an install, and as a result no installed Bashan OS
+# ever locked its screen.
+#
+# Live-only relaxations belong in /lib/live/config/2000-bashan-live, which
+# Calamares removes on install. This hook fails the build if any of them
+# have leaked back into the image.
+set -e
+
+fail=0
+err() { echo "E: $*" >&2; fail=1; }
+
+# --- the screen must lock on an installed system -------------------------
+LOCK=/etc/xdg/kscreenlockerrc
+[ -f "$LOCK" ] || err "$LOCK missing"
+if grep -q '^Autolock=false' "$LOCK" 2>/dev/null; then
+    err "Autolock=false in $LOCK - the installed system would never lock"
+fi
+grep -q '^Autolock=true' "$LOCK" 2>/dev/null || err "Autolock=true not set in $LOCK"
+
+# --- the wallet must be available on an installed system -----------------
+WALLET=/etc/xdg/kwalletrc
+[ -f "$WALLET" ] || err "$WALLET missing"
+if grep -q '^Enabled=false' "$WALLET" 2>/dev/null; then
+    err "KWallet disabled in $WALLET - that is a live-only setting"
+fi
+
+# --- security updates must still be enabled ------------------------------
+if [ -L /etc/systemd/system/unattended-upgrades.service ]; then
+    target=$(readlink /etc/systemd/system/unattended-upgrades.service)
+    [ "$target" = /dev/null ] && err "unattended-upgrades is masked in the image"
+fi
+[ -e /etc/systemd/system/multi-user.target.wants/unattended-upgrades.service ] \
+    || err "unattended-upgrades is not enabled in the image"
+for t in apt-daily.timer apt-daily-upgrade.timer; do
+    if [ -L "/etc/systemd/system/$t" ] && [ "$(readlink "/etc/systemd/system/$t")" = /dev/null ]; then
+        err "$t is masked in the image; that is a live-only change"
+    fi
+done
+# And the shutdown wait must be bounded.
+DROPIN=/etc/systemd/system/unattended-upgrades.service.d/10-bashan.conf
+grep -q '^TimeoutStopSec=120$' "$DROPIN" 2>/dev/null \
+    || err "$DROPIN does not cap TimeoutStopSec to 120"
+
+# --- dimming must be configured for every power profile ------------------
+PM=/etc/xdg/powermanagementprofilesrc
+for profile in AC Battery LowBattery; do
+    grep -q "^\[$profile\]\[DimDisplay\]" "$PM" 2>/dev/null \
+        || err "no [$profile][DimDisplay] in $PM - that profile falls back to powerdevil defaults"
+done
+# DimDisplay idleTime is MILLISECONDS. 1800 once meant to say 30 minutes and
+# dimmed the screen after 1.8 seconds on real hardware.
+awk '/^\[[A-Za-z]+\]\[DimDisplay\]/{p=1;next} /^\[/{p=0} p&&/^idleTime=/{split($0,a,"=");if(a[2]+0<60000) print a[2]}' "$PM" \
+    | while read -r v; do echo "E: DimDisplay idleTime=$v ms is under a minute; units are milliseconds" >&2; done
+awk '/^\[[A-Za-z]+\]\[DimDisplay\]/{p=1;next} /^\[/{p=0} p&&/^idleTime=/{split($0,a,"=");if(a[2]+0<60000) bad=1} END{exit bad?1:0}' "$PM" \
+    || fail=1
+
+# --- the live-only script must exist, and only in the live image ---------
+[ -x /lib/live/config/2000-bashan-live ] \
+    || err "/lib/live/config/2000-bashan-live missing or not executable"
+
+[ "$fail" = 0 ] || { echo "E: installed defaults check failed" >&2; exit 1; }
+echo "I: installed defaults verified (lock on, wallet on, updates on, dimming sane)"

@@ -1,0 +1,35 @@
+#!/bin/sh
+# Bashan OS — say who is talking during a shutdown update.
+#
+# unattended-upgrades prints, through plymouth, at shutdown:
+#
+#   "Unattended-upgrade in progress during shutdown, please don't turn off
+#    the computer"
+#
+# On real hardware that is what a person sees, and it names a Debian tool
+# they have never heard of on an OS that is not called Debian. The text is
+# hardcoded in the shutdown helper rather than configurable.
+#
+# shortcut: patches a file owned by the unattended-upgrades package, so an
+# apt upgrade of that package restores Debian's wording until the next
+# image is built. Upgrade this to a dpkg-divert if the wording has to
+# survive package updates on a running system.
+set -e
+
+F=/usr/share/unattended-upgrades/unattended-upgrade-shutdown
+[ -f "$F" ] || { echo "E: $F missing; unattended-upgrades not installed?" >&2; exit 1; }
+
+sed -i \
+    -e "s/Unattended-upgrade in progress during shutdown, /Bashan OS is finishing security updates. /" \
+    -e "s/please don't turn off the computer/Please do not turn off the computer./" \
+    "$F"
+
+# Prove the patch landed rather than assume sed matched.
+if grep -q "Unattended-upgrade in progress during shutdown" "$F"; then
+    echo "E: shutdown message still says 'Unattended-upgrade in progress'" >&2
+    exit 1
+fi
+grep -q "Bashan OS is finishing security updates" "$F" || {
+    echo "E: branded shutdown message not found after patching" >&2; exit 1; }
+
+echo "I: shutdown update message is branded"
