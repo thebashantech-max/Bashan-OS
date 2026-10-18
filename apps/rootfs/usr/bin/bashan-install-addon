@@ -1,0 +1,34 @@
+#!/bin/sh
+# Bashan OS — install one optional program, on request, from Debian.
+#
+#   bashan-install-addon <package> <display name> <approximate size>
+#
+# These programs are not in the image because the ISO has a size budget and
+# a USB stick is slow to read. They are offered instead, and downloaded
+# only after the person agrees - the same pattern as the Chrome entry.
+#
+# Everything comes from Debian's own archive, already configured and
+# already trusted. No new software source is added, ever.
+set -u
+
+PKG="${1:-}"
+NAME="${2:-$PKG}"
+SIZE="${3:-}"
+[ -n "$PKG" ] || { echo "usage: $0 <package> [name] [size]" >&2; exit 2; }
+
+ASK="$NAME is not installed yet.
+
+It is about ${SIZE:-a large download} and will be downloaded from Debian.
+This needs an internet connection.
+
+Install it now?"
+
+if command -v kdialog >/dev/null 2>&1; then
+    kdialog --title "Get $NAME" --yesno "$ASK" || exit 0
+else
+    printf '%s\n\nContinue? [y/N] ' "$ASK"
+    read -r reply
+    case "$reply" in y|Y|yes|YES) ;; *) exit 0 ;; esac
+fi
+
+exec pkexec sh -c "apt-get update && apt-get install -y --no-install-recommends '$PKG'"

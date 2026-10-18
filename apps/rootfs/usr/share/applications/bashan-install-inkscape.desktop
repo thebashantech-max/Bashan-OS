@@ -2,7 +2,7 @@
 Type=Application
 Name=Get Inkscape (downloads after you agree)
 Comment=Downloads Inkscape, for drawing icons and logos, from the Debian archive
-Exec=bashan-install-inkscape
+Exec=bashan-install-addon inkscape "Inkscape" "122 MB"
 Icon=applications-graphics
 Terminal=false
 Categories=Graphics;

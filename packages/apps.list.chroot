@@ -99,3 +99,22 @@ krita
 #
 #   ibus-libpinyin    2.6 MB   Pinyin input method, LGPL-2.1
 ibus-libpinyin
+
+# --- Make Games ----------------------------------------------------------
+# Free software, no account, no sign-up. Sizes are the REAL cost: the
+# dependency closure counting only packages not already in the image.
+#
+# GODOT: Debian 13 has godot3 (3.6) and NO godot4. Godot 4 is where the
+# engine's documentation and tutorials have moved, so someone following a
+# current tutorial will find things that are not in 3.6. It is shipped
+# anyway because it works, it is free, and it comes from Debian - pulling
+# Godot 4 from outside Debian was not done and needs approval first.
+#
+#   godot3           75.9 MB   MIT        no network of its own
+#   tiled            14.0 MB   GPL-2      no network of its own
+#   python3-pygame   33.4 MB   LGPL-2.1   no network of its own
+#   lmms             46.4 MB   GPL-2      no network of its own
+godot3
+tiled
+python3-pygame
+lmms

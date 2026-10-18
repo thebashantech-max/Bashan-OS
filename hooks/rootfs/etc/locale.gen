@@ -19,3 +19,24 @@ ku_TR.UTF-8 UTF-8
 ckb_IQ UTF-8
 # Syriac. No region suffix exists for this one.
 syr UTF-8
+
+# Build 17b: these ten had full KDE translations in the image and no
+# generated locale, so picking them in a LIVE session left the menus in
+# English - the catalogues were there, the locale was not. Found by
+# listing locale.gen against the language list rather than assuming.
+#
+# An installed system generates whatever the person picks during install,
+# so this only ever affected the live session. Generating them here costs
+# a few MB in the locale archive and makes the live session match the
+# installed one.
+tr_TR.UTF-8 UTF-8
+it_IT.UTF-8 UTF-8
+nl_NL.UTF-8 UTF-8
+sr_RS.UTF-8 UTF-8
+mk_MK.UTF-8 UTF-8
+ro_RO.UTF-8 UTF-8
+pl_PL.UTF-8 UTF-8
+hu_HU.UTF-8 UTF-8
+bg_BG.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+

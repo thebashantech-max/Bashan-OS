@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Get Audacity (downloads after you agree)
+Comment=Sound recording and editing — about 68 MB, downloaded from Debian
+Exec=bashan-install-addon audacity "Audacity" "68 MB"
+Icon=applications-graphics
+Terminal=false
+Categories=Graphics;

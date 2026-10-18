@@ -308,3 +308,57 @@ window using Brave's app mode, with its own window class so it groups under
 its own icon. With no internet it shows a local page saying so in one
 sentence, instead of a browser error about DNS. The icon is a generic
 education icon, not a copied logo.
+
+---
+
+## Build 17b additions
+
+Sizes are the **real** cost: the dependency closure counting only packages
+not already in the image, not each package's own size. All free software,
+no account, no sign-up, none contacts the internet by itself.
+
+### Make Games
+
+| Tool | Debian 13 version | Real size | Licence | In the ISO |
+|---|---|---|---|---|
+| Godot | **godot3 3.6+ds-2** | 75.9 MB | MIT | yes |
+| Tiled | 1.11.90-1 | 14.0 MB | GPL-2 | yes |
+| LMMS | 1.2.2+dfsg1-6 | 46.4 MB | GPL-2 | yes |
+| Pygame | python3-pygame 2.6.1 | 33.4 MB | LGPL-2.1 | yes, under Learn to Code |
+
+**Godot 4 is not in Debian 13.** Only `godot3` (3.6) exists; there is no
+`godot4` package at all. Current Godot tutorials target 4.x, so someone
+following one will meet differences. 3.6 ships because it works and comes
+from Debian. Godot 4 was **not** pulled from outside Debian — that needs
+approval first.
+
+### Offered as downloads, not shipped
+
+| Tool | Debian 13 version | Real size | Licence | Why not shipped |
+|---|---|---|---|---|
+| Blender | 4.3.2+dfsg-2 | **365.9 MB** | GPL-3 | alone it exceeds the whole budget |
+| Inkscape | 1.4-6 | 122.4 MB | GPL-3 | GTK stack nothing else needs |
+| Audacity | 3.7.3+dfsg-1 | 68.4 MB | GPL-3 | over the remaining budget |
+
+All three install through **Get … (downloads after you agree)**, from
+Debian's own archive. No new software source is ever added.
+
+### Files that survive package updates
+
+Six files in this image replace files owned by Debian packages. Without
+protection, apt would silently restore the originals on the next upgrade.
+All six are now `dpkg-divert`ed:
+
+| File | Owning package | What it would have undone |
+|---|---|---|
+| `…/lockscreen/LockScreenUi.qml` | plasma-desktop-data | lock screen with no way to shut down |
+| `/usr/lib/os-release` | base-files | the OS would call itself Debian again |
+| `/usr/share/plymouth/debian-logo.png` | plymouth | Debian logo at boot |
+| `/usr/share/pixmaps/debian-logo.png` | debconf | Debian logo in dialogs |
+| `/etc/xdg/autostart/im-launch.desktop` | im-config | input-method autostart |
+| `…/org.kde.discover.notifier.desktop` | plasma-discover | update notifier re-enabled |
+
+The list came from checking every file we ship against every package's file
+list, which is how `os-release` turned up — it had been overwritten, not
+diverted, and a routine `base-files` upgrade would have reverted the OS
+name itself.

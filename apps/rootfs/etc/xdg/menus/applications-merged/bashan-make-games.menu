@@ -1,0 +1,25 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+ "http://www.freedesktop.org/standards/menu-spec/menu-1.0.dtd">
+<!--
+  Bashan OS — a "Make Games" section in the launcher.
+
+  Godot is version 3.6: Debian 13 has no godot4 package at all. Current
+  Godot tutorials target 4.x, so someone following one will find
+  differences. It ships because it works and comes from Debian.
+-->
+<Menu>
+  <Name>Applications</Name>
+  <Menu>
+    <Name>Make Games</Name>
+    <Directory>bashan-make-games.directory</Directory>
+    <Include>
+      <Filename>org.godotengine.Godot3.desktop</Filename>
+      <Filename>godot3.desktop</Filename>
+      <Filename>org.mapeditor.Tiled.desktop</Filename>
+      <Filename>tiled.desktop</Filename>
+      <Filename>lmms.desktop</Filename>
+      <Filename>bashan-install-blender.desktop</Filename>
+      <Filename>bashan-install-audacity.desktop</Filename>
+    </Include>
+  </Menu>
+</Menu>

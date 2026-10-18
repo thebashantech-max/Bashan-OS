@@ -1,0 +1,72 @@
+#!/bin/sh
+# Bashan OS — keep our replacements through package updates.
+#
+# Three files in this image overwrite files that belong to Debian packages.
+# Overwriting works at build time, but the moment apt upgrades the owning
+# package dpkg puts its own version back, silently:
+#
+#   /usr/share/plasma/.../lockscreen/LockScreenUi.qml   plasma-desktop-data
+#   /usr/share/plymouth/debian-logo.png                 plymouth
+#   /usr/share/pixmaps/debian-logo.png                  debconf
+#   /usr/lib/os-release                                 base-files
+#   /etc/xdg/autostart/im-launch.desktop                im-config
+#   /etc/xdg/autostart/org.kde.discover.notifier.desktop plasma-discover
+#
+# The full list came from checking every file we ship against every
+# package's file list, rather than from memory - which is how os-release
+# turned up. That one carries the OS name itself: a base-files upgrade
+# would silently put Debian's back and the machine would start calling
+# itself Debian in every tool that reads it.
+#
+# The lock screen one matters most: a routine Plasma update would bring back
+# a lock screen with no way to shut the machine down, which is the exact
+# fault reported from real hardware.
+#
+# dpkg-divert tells dpkg the real file lives elsewhere, so the package's
+# copy is written to the diverted path and ours stays in place. This is the
+# supported mechanism for precisely this, and it survives upgrades.
+set -e
+
+divert() { # path
+    real="$1"
+    [ -e "$real" ] || { echo "W: $real not present; nothing to divert" >&2; return 0; }
+    if dpkg-divert --list "$real" 2>/dev/null | grep -q .; then
+        echo "I: already diverted: $real"
+        return 0
+    fi
+    # Move ours aside, let dpkg take ownership of the diverted name, put
+    # ours back at the original path.
+    cp -a "$real" "$real.bashan"
+    dpkg-divert --local --rename --divert "$real.distrib" --add "$real" >/dev/null
+    mv -f "$real.bashan" "$real"
+    echo "I: diverted $real (package copy now goes to $real.distrib)"
+}
+
+divert /usr/share/plasma/shells/org.kde.plasma.desktop/contents/lockscreen/LockScreenUi.qml
+divert /usr/share/plymouth/debian-logo.png
+divert /usr/share/pixmaps/debian-logo.png
+divert /usr/lib/os-release
+divert /etc/xdg/autostart/im-launch.desktop
+divert /etc/xdg/autostart/org.kde.discover.notifier.desktop
+
+# Prove it, rather than trust it.
+fail=0
+for f in /usr/share/plasma/shells/org.kde.plasma.desktop/contents/lockscreen/LockScreenUi.qml \
+         /usr/share/plymouth/debian-logo.png \
+         /usr/share/pixmaps/debian-logo.png \
+         /usr/lib/os-release \
+         /etc/xdg/autostart/im-launch.desktop \
+         /etc/xdg/autostart/org.kde.discover.notifier.desktop; do
+    dpkg-divert --list "$f" 2>/dev/null | grep -q . \
+        || { echo "E: $f is NOT diverted; a package update would overwrite it" >&2; fail=1; }
+done
+# And the lock screen must still be ours after all that moving about.
+grep -q requestShutdown \
+    /usr/share/plasma/shells/org.kde.plasma.desktop/contents/lockscreen/LockScreenUi.qml \
+    || { echo "E: the lock screen at the live path is not ours" >&2; fail=1; }
+
+[ "$fail" = 0 ] || { echo "E: diversion check failed" >&2; exit 1; }
+# And os-release must still say Bashan.
+grep -q '^NAME="Bashan OS"' /usr/lib/os-release \
+    || { echo "E: /usr/lib/os-release is not ours after diverting" >&2; exit 1; }
+echo "I: all six package-owned overrides are diverted"

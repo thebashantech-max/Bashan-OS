@@ -23,6 +23,10 @@
       <Filename>geany.desktop</Filename>
       <Filename>idle-python3.13.desktop</Filename>
       <Filename>org.kde.gcompris-qt.desktop</Filename>
+      <!-- Pygame sits with Thonny: it is a Python library, and Thonny is
+           where someone would actually write the game. -->
+      <Filename>pygame.desktop</Filename>
+      <Filename>python3-pygame.desktop</Filename>
       <Filename>gcompris-qt.desktop</Filename>
     </Include>
   </Menu>
