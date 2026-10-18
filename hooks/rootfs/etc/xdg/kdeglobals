@@ -13,3 +13,13 @@ AccentColor=#22d3ee
 
 [Icons]
 Theme=Bashan
+
+# Hide every "Get New Wallpapers / Plugins / Themes" button in Plasma.
+#
+# Those buttons open a store that downloads code and artwork from
+# store.kde.org, with no review, into a machine meant for someone who is
+# not an administrator. ghns is KDE's own switch for exactly this: it is a
+# Kiosk action restriction, so the buttons do not appear at all rather
+# than appearing and failing.
+[KDE Action Restrictions][$i]
+ghns=false

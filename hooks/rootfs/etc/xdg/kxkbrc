@@ -1,0 +1,32 @@
+# Bashan OS — keyboard layouts.
+#
+# FOUR layouts, because four is the limit. libxkbcommon allows at most four
+# keyboard groups in one keymap and says so itself when pushed:
+#
+#   Too many groups of %s for key %s (max %u); Ignoring %s defined for
+#   extra groups
+#
+# That ceiling applies on Wayland as well; it is not a Plasma setting that
+# can be raised. Listing more here does not add them, it silently drops
+# them - which is the likeliest reason Arabic would not switch on real
+# hardware. Every other language is one click away in
+# System Settings > Keyboard > Layouts, and the exact XKB names are in
+# docs/KEYBOARD-LAYOUTS.md.
+#
+# Chinese is deliberately NOT here. It needs an input method, not a layout;
+# ibus-libpinyin types Chinese on top of whichever layout is active and so
+# costs none of the four slots.
+[Layout]
+Use=true
+LayoutList=us,ara,es,fr
+VariantList=,,,
+DisplayNames=EN,AR,ES,FR
+# Per-window would leave someone typing Arabic in one window and Latin in
+# the next with no idea why. One layout for the whole session.
+SwitchMode=Global
+ShowLayoutIndicator=true
+ShowFlag=false
+ShowLabel=true
+# Both shortcuts, because people reach for different ones.
+Options=grp:alt_shift_toggle,grp:win_space_toggle
+ResetOldOptions=true

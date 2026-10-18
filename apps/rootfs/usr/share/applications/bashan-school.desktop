@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Mount Bashan School
+Comment=Opens the Mount Bashan School website in its own window
+Exec=bashan-school
+Icon=applications-education
+Terminal=false
+Categories=Education;
+StartupWMClass=bashan-school

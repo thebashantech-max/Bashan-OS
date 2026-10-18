@@ -255,3 +255,56 @@ size saving available in this part.
 ### Not done
 
 Nothing was pinned to the dock, as instructed.
+
+---
+
+## Build 17 additions
+
+Everything below is free software with no account, no sign-up, and nothing
+that contacts the internet by itself. Sizes are each package's own
+Installed-Size; dependencies are extra and appear in the ISO delta.
+
+### Learn to Code
+
+| Tool | Size | Licence | Talks to the internet on its own |
+|---|---|---|---|
+| Thonny | 7.9 MB | MIT | no |
+| KTurtle | 6.0 MB | GPL-2 | no |
+| Geany | 4.8 MB | GPL-2 | no |
+| IDLE (`idle-python3.13`) | 1.9 MB | PSF | no |
+| GCompris (`gcompris-qt` + data) | 78 MB | AGPL-3 | no |
+
+**There is no Scratch-style block-programming tool in Debian 13.** `scratch`,
+`scratch3`, `turtleart`, `blockly` and `snap-gui` are all absent from the
+archive. None is shipped and none is imitated. KTurtle is the closest
+teaching language that actually exists here.
+
+These appear together under **Learn to Code** in the launcher.
+
+### Graphics
+
+| Tool | Size | Licence | Talks to the internet on its own |
+|---|---|---|---|
+| Krita | 88 MB | GPL-3 | no |
+| Inkscape | 108 MB | GPL-3 | **not shipped** — offered as a download |
+
+Krita reuses the Qt and KF6 libraries Plasma already needs, so its real cost
+is close to its own size. Inkscape would bring a GTK stack nothing else in
+the image uses, which together with its own 108 MB goes past the size budget
+for a USB stick that is already slow to read. It is offered through
+**Get Inkscape (downloads after you agree)**, the same pattern as Chrome,
+and comes from Debian's own archive — no new software source is added.
+
+### Chinese input
+
+`ibus-libpinyin` (2.6 MB, LGPL-2.1) with `fonts-noto-cjk`, already present.
+Chinese is an input method, not a keyboard layout, so it does not use one of
+the four layout slots.
+
+### Mount Bashan School
+
+A menu entry that opens `https://www.mountbashanschool.org` in its own
+window using Brave's app mode, with its own window class so it groups under
+its own icon. With no internet it shows a local page saying so in one
+sentence, instead of a browser error about DNS. The icon is a generic
+education icon, not a copied logo.

@@ -1,0 +1,30 @@
+#!/bin/sh
+# Bashan OS — open Mount Bashan School in its own window.
+#
+# Brave's --app mode gives a window with no tabs or address bar, so it
+# behaves like an application rather than a browser showing a page.
+# --class sets the window class, which is what the dock matches on, so the
+# window groups under its own icon instead of under Brave.
+#
+# If there is no internet, a browser shows its own error page, which is
+# alarming and talks about DNS. A plain local page explaining the problem
+# in one sentence is shown instead.
+set -u
+
+URL="https://www.mountbashanschool.org"
+OFFLINE="file:///usr/share/bashan/school/offline.html"
+CLASS="bashan-school"
+
+brave=$(command -v brave-browser || command -v brave || true)
+[ -n "$brave" ] || { echo "E: Brave is not installed" >&2; exit 1; }
+
+# One quick look before deciding which page to open. Two seconds, because
+# this runs when someone double-clicks an icon and is watching.
+target="$URL"
+if ! getent hosts www.mountbashanschool.org >/dev/null 2>&1; then
+    target="$OFFLINE"
+elif command -v curl >/dev/null 2>&1; then
+    curl -sS --max-time 2 -o /dev/null "$URL" 2>/dev/null || target="$OFFLINE"
+fi
+
+exec "$brave" --app="$target" --class="$CLASS" --name="$CLASS"

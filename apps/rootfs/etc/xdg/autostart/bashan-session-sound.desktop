@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Bashan startup sound
+Comment=Plays the Bashan OS startup song once, through the desktop's own audio
+Exec=/usr/libexec/bashan/bashan-session-sound
+Terminal=false
+NoDisplay=true
+X-KDE-autostart-phase=1
+X-GNOME-Autostart-enabled=true

@@ -20,6 +20,9 @@ case "$action" in
     install-chrome)
         exec bashan-install-chrome
         ;;
+    open-school)
+        exec bashan-school
+        ;;
     stop-boot-song)
         # The song now plays at boot, through ALSA, before this app exists.
         # The Mute button therefore has to reach OUT of the app to silence

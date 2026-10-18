@@ -35,7 +35,9 @@ ApplicationWindow {
     property string lang: "en"
     property bool rtl: false
     property int page: 0
-    readonly property int lastPage: 6
+    // Derived, not counted by hand: a hardcoded 6 meant adding a page
+    // left the "x / y" counter wrong and Finish on the wrong page.
+    readonly property int lastPage: stack.count - 1
 
     Settings {
         id: cfg
@@ -390,6 +392,27 @@ ApplicationWindow {
                         Layout.topMargin: 8
                         // Discover registers the appstream: scheme itself.
                         onClicked: Qt.openUrlExternally("appstream:")
+                    }
+                }
+            }
+        }
+
+        // Mount Bashan School. Its own page because it is part of the
+        // computer, not one of the "more programs you could add" above.
+        ScrollView {
+            clip: true
+            ColumnLayout {
+                width: stack.width - 120
+                x: 60; y: 44
+                spacing: 14
+                Title { text: win.tr("w.p5.school.h") }
+                Card {
+                    CardTitle { text: win.tr("w.p5.school.h") }
+                    Body { text: win.tr("w.p5.school.b"); font.pixelSize: 19 }
+                    BigButton {
+                        text: win.tr("w.p5.school.h")
+                        Layout.topMargin: 8
+                        onClicked: win.act("open-school")
                     }
                 }
             }

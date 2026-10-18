@@ -1,0 +1,58 @@
+#!/bin/sh
+# Bashan OS — play the startup song inside the user's session.
+#
+# WHY THIS MOVED. The song used to run from a system service at boot,
+# through ALSA with aplay, before any user session existed. On this
+# machine it worked. On real hardware - an ASUS laptop with Intel and
+# NVIDIA graphics - it played nothing at all, while the desktop's own sound
+# and Wi-Fi were fine. The most likely reason is that bare ALSA takes the
+# first card it finds, and on a laptop with HDMI audio that is often the
+# HDMI output with nothing plugged into it. aplay reports success either
+# way, so the failure was silent.
+#
+# In the user session PipeWire is running, and PipeWire knows which output
+# is the real one because the desktop already uses it. Playing through
+# PipeWire means the song follows the same output as everything else.
+#
+# Runs once per session, before the Welcome app, and fails quietly if there
+# is no sound at all - a machine with no audio must still reach the desktop.
+set -u
+
+CONF=/etc/bashan/boot-sound.conf
+ENABLED=yes
+VOLUME=60
+SONG=/usr/share/bashan/boot-song.wav
+# shellcheck source=/dev/null
+[ -r "$CONF" ] && . "$CONF"
+
+[ "${ENABLED:-yes}" = "yes" ] || exit 0
+
+# Once per session. The marker is in the runtime directory, which is wiped
+# at logout, so the next login plays it again but a restarted shell does not.
+MARK="${XDG_RUNTIME_DIR:-/tmp}/bashan-song-played"
+[ -e "$MARK" ] && exit 0
+: > "$MARK" 2>/dev/null || true
+
+for candidate in "${SONG:-}" /etc/bashan/boot-song.wav /usr/share/bashan/boot-song.wav; do
+    [ -n "$candidate" ] && [ -r "$candidate" ] && { SONG="$candidate"; break; }
+done
+[ -r "${SONG:-}" ] || exit 0
+
+# Wait for PipeWire, but not forever: on a slow USB boot the session can be
+# up before the audio server is. Ten seconds, then give up quietly.
+i=0
+while [ "$i" -lt 20 ]; do
+    pactl info >/dev/null 2>&1 && break
+    i=$((i + 1))
+    sleep 0.5
+done
+pactl info >/dev/null 2>&1 || exit 0
+
+# Cap the volume rather than inherit whatever the machine was left at.
+# This sets the stream's own volume, so nothing the person set is changed.
+if command -v pw-play >/dev/null 2>&1; then
+    exec pw-play --volume="$(awk -v v="$VOLUME" 'BEGIN{printf "%.2f", v/100}')" "$SONG"
+elif command -v paplay >/dev/null 2>&1; then
+    exec paplay --volume="$(awk -v v="$VOLUME" 'BEGIN{printf "%d", v*65536/100}')" "$SONG"
+fi
+exit 0

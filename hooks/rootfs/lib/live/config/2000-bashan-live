@@ -72,11 +72,29 @@ idleTime=86400
 lockBeforeTurnOff=0
 LIVE
 
-	# 2. No lock screen with no password to leave it.
+	# 2. No lock screen, ever. The live user logs in automatically and has
+	#    NO password, so a lock screen is a dead end: nothing can be typed
+	#    to leave it. On real hardware this happened after Sleep - the
+	#    machine woke to a password prompt for a password that does not
+	#    exist, offering only Sleep and Switch User.
+	#
+	#    Autolock covers the idle timer; LockOnResume covers waking from
+	#    sleep, and it is the one that actually bit. Both must go.
 	if [ -f /etc/xdg/kscreenlockerrc ]
 	then
-		sed -i 's/^Autolock=true/Autolock=false/' /etc/xdg/kscreenlockerrc
+		sed -i -e 's/^Autolock=true/Autolock=false/' \
+		       -e 's/^LockOnResume=true/LockOnResume=false/' \
+		       /etc/xdg/kscreenlockerrc
 	fi
+	# And belt-and-braces at the power-management end, which has its own
+	# idea about locking before the screen turns off.
+	mkdir -p /etc/xdg
+	cat >> /etc/xdg/powermanagementprofilesrc << 'LIVE'
+
+[AC][SuspendSession]
+idleTime=86400000
+suspendType=0
+LIVE
 
 	# 3. No wallet, so no "create a wallet" popup on first boot.
 	cat > /etc/xdg/kwalletrc << 'LIVE'

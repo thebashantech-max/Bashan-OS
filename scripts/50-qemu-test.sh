@@ -45,6 +45,10 @@ ISO_BPS="${BASHAN_VM_ISO_BPS:-0}"
 # harsher to expose anything that assumes storage always answers.
 #   BASHAN_VM_ISO_IOPS=80 ./scripts/50-qemu-test.sh boot install
 ISO_IOPS="${BASHAN_VM_ISO_IOPS:-0}"
+# The VM had NO network device at all until build 17. That is why nothing
+# network-driven ever reproduced here: a live session that downloads
+# updates, a website that will not load, a name that will not resolve.
+# user-mode networking needs no privileges and no host configuration.
 iso_throttle() {
   [ "$ISO_BPS" = 0 ] && [ "$ISO_IOPS" = 0 ] && return 0
   [ "$ISO_BPS" != 0 ] && printf ',throttling.bps-read=%s,throttling.bps-read-max=%s' "$ISO_BPS" "$ISO_BPS"
@@ -120,6 +124,7 @@ cmd_boot() {
       -machine "q35,accel=kvm,smm=on" -cpu host -smp 2 -m "$RAM_MB" \
       -device "virtio-vga" -display none -vnc ":9" \
       -device "qemu-xhci,id=xhci" -device "usb-tablet,bus=xhci.0" -device "virtio-keyboard-pci" \
+      -netdev "user,id=net0" -device "virtio-net-pci,netdev=net0" \
       -monitor "unix:$MON,server,nowait" \
         -serial "file:$VM/serial.log" \
       -global "driver=cfi.pflash01,property=secure,value=on" \
@@ -153,7 +158,8 @@ cmd_boot() {
     -name "bashan-vm"
     -machine "q35,accel=kvm" -cpu host -smp 2 -m "$RAM_MB"
     -device "virtio-vga" -display none -vnc ":9"
-    -device "qemu-xhci,id=xhci" -device "usb-tablet,bus=xhci.0" -device "virtio-keyboard-pci"
+    -device "qemu-xhci,id=xhci" -device "usb-tablet,bus=xhci.0" -device "virtio-keyboard-pci" \
+      -netdev "user,id=net0" -device "virtio-net-pci,netdev=net0"
     # A file sink, not a socket: nothing was ever connected to the socket,
     # and an undrained serial socket can stall the guest. The install log
     # is streamed out through here, where it survives the VM dying.

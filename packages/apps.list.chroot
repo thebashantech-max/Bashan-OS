@@ -58,3 +58,44 @@ handbrake
 # image for Calamares and Plasma, so the entire application costs 0.1 MB.
 # PySide6 would have cost 86.4 MB and PyQt6 17.9 MB for the same thing.
 qml-qt6
+
+# --- Learn to Code -------------------------------------------------------
+# Free software, no account, no sign-up, nothing that contacts the internet
+# on its own. Sizes below are each package's own Installed-Size;
+# dependencies are extra and show up as the ISO delta.
+#
+# There is NO Scratch-style block-programming tool in Debian 13. scratch,
+# scratch3, turtleart, blockly and snap-gui are all absent from the archive,
+# so none is shipped and none is pretended at. KTurtle is the closest
+# teaching language that actually exists here.
+#
+#   thonny            7.9 MB   Python for beginners, GPL-3
+#   kturtle           6.0 MB   Logo-style teaching language, GPL-2
+#   geany             4.8 MB   small code editor, GPL-2
+#   idle-python3.13   1.9 MB   the editor that ships with Python, PSF
+#   gcompris-qt-data   77 MB   AGPL-3, activities for young children
+thonny
+kturtle
+geany
+idle-python3.13
+python3-tk
+gcompris-qt
+gcompris-qt-data
+
+# --- Graphics ------------------------------------------------------------
+# Krita reuses the Qt and KF6 libraries Plasma already pulls in, so its
+# dependency cost is small. Inkscape is NOT shipped: 108 MB plus a GTK stack
+# nothing else needs puts it over the size cap, so it is offered as a
+# download instead, the same way Chrome is.
+#
+#   krita              88 MB   digital painting and icon work, GPL-3
+krita
+
+# --- Chinese input -------------------------------------------------------
+# Chinese cannot be a keyboard layout. The keyboard stack allows four
+# layouts at once and Chinese needs an input method, not a layout. Pinyin
+# runs on top of whichever layout is active, so it costs no layout slot.
+# fonts-noto-cjk is already in fonts.list.chroot.
+#
+#   ibus-libpinyin    2.6 MB   Pinyin input method, LGPL-2.1
+ibus-libpinyin

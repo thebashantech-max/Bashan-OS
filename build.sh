@@ -153,6 +153,13 @@ cmd_test() {
   log "wallpaper declarations agree"
   python3 "$ROOT/test/wallpaper-check.py" 2>&1 | tee -a "$LOG"
   log "wallpaper check passed"
+
+  # Four layouts is a hard ceiling in libxkbcommon, and the layout chosen
+  # during install has to survive into those four.
+  log "keyboard layout rule"
+  "$ROOT/test/keyboard-rule-selftest.sh" \
+      "$ROOT/branding/rootfs/usr/libexec/bashan/bashan-apply-keyboard" 2>&1 | tee -a "$LOG"
+  log "keyboard rule passed"
 }
 
 cmd_clean() {

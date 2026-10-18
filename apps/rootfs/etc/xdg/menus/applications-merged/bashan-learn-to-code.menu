@@ -1,0 +1,29 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+ "http://www.freedesktop.org/standards/menu-spec/menu-1.0.dtd">
+<!--
+  Bashan OS — a "Learn to Code" section in the launcher.
+
+  These programs ship with categories like Development or Education, which
+  scatters them across the menu. Naming the files explicitly puts them in
+  one place someone can find, without editing files the packages own.
+
+  There is NO Scratch-style block-programming tool in Debian 13 - scratch,
+  scratch3, turtleart, blockly and snap-gui are all absent from the
+  archive - so none is listed here.
+-->
+<Menu>
+  <Name>Applications</Name>
+  <Menu>
+    <Name>Learn to Code</Name>
+    <Directory>bashan-learn-to-code.directory</Directory>
+    <Include>
+      <Filename>org.thonny.Thonny.desktop</Filename>
+      <Filename>thonny.desktop</Filename>
+      <Filename>org.kde.kturtle.desktop</Filename>
+      <Filename>geany.desktop</Filename>
+      <Filename>idle-python3.13.desktop</Filename>
+      <Filename>org.kde.gcompris-qt.desktop</Filename>
+      <Filename>gcompris-qt.desktop</Filename>
+    </Include>
+  </Menu>
+</Menu>

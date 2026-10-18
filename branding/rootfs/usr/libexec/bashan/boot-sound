@@ -1,62 +1,26 @@
 #!/bin/sh
-# Bashan OS — boot sound, and the minimum splash hold.
+# Bashan OS — hold the splash briefly. It no longer plays anything.
 #
-# Two jobs, both deliberately failure-tolerant: nothing here may ever stop
-# the machine booting.
-#   1. Start the boot song through raw ALSA. At this point in boot there is
-#      no user session, so PipeWire does not exist yet and aplay is the only
-#      option. If there is no sound card, no song, or the card is muted, we
-#      simply carry on.
-#   2. Hold the splash until the machine has been up for HOLD seconds. The
-#      wait is only ever the REMAINDER, so on a slow boot it adds nothing at
-#      all; the splash was already up that long.
+# The song used to play here, at boot, through bare ALSA with aplay. On
+# real hardware it played nothing at all while the desktop's own sound
+# worked: bare ALSA takes the first card it finds, which on a laptop with
+# HDMI audio is often an HDMI output with nothing plugged into it, and
+# aplay reports success either way, so the failure was silent.
+#
+# The song now plays inside the user session through PipeWire, which uses
+# whatever output the desktop uses. See
+# /usr/libexec/bashan/bashan-session-sound.
+#
+# What is left is the splash hold, which is about how boot LOOKS: it waits
+# only the REMAINDER up to HOLD seconds of uptime, so on a normal boot -
+# which already takes longer than that - it waits for nothing at all.
 set -u
 
 CONF=/etc/bashan/boot-sound.conf
 HOLD=5.5
-
-ENABLED=yes
-SONG=/usr/share/bashan/boot-song.wav
 # shellcheck source=/dev/null
 [ -r "$CONF" ] && . "$CONF"
 
-# Cap the output level before playing. A laptop whose mixer sits at 100%
-# would otherwise greet someone with a startup song at full volume. This
-# only ever lowers: a person who set it quiet stays quiet, and they can
-# change the volume normally afterwards.
-cap_volume() {
-    [ -n "${VOLUME:-}" ] || return 0
-    command -v amixer >/dev/null 2>&1 || return 0
-    for ctl in Master PCM Speaker; do
-        cur=$(amixer -M get "$ctl" 2>/dev/null \
-              | sed -n 's/.*\[\([0-9]\+\)%\].*/\1/p' | head -1)
-        [ -n "$cur" ] || continue
-        [ "$cur" -gt "$VOLUME" ] 2>/dev/null \
-            && amixer -M -q set "$ctl" "${VOLUME}%" >/dev/null 2>&1
-        break
-    done
-    return 0
-}
-
-play() {
-    [ "${ENABLED:-yes}" = "yes" ] || return 0
-    command -v aplay >/dev/null 2>&1 || return 0
-    cap_volume
-    for candidate in "${SONG:-}" /etc/bashan/boot-song.wav \
-                     /usr/share/bashan/boot-song.wav; do
-        [ -n "$candidate" ] || continue
-        [ -r "$candidate" ] || continue
-        aplay -q -N "$candidate" >/dev/null 2>&1 &
-        return 0
-    done
-    return 0
-}
-
-remaining() {
-    up=$(cut -d' ' -f1 /proc/uptime 2>/dev/null || echo "$HOLD")
-    awk -v u="$up" -v h="$HOLD" 'BEGIN { r = h - u; if (r < 0) r = 0; printf "%.2f", r }'
-}
-
-play
-sleep "$(remaining)"
+up=$(cut -d' ' -f1 /proc/uptime 2>/dev/null || echo "$HOLD")
+sleep "$(awk -v u="$up" -v h="$HOLD" 'BEGIN { r = h - u; if (r < 0) r = 0; printf "%.2f", r }')"
 exit 0

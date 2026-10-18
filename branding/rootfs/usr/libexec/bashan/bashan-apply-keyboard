@@ -1,0 +1,52 @@
+#!/bin/sh
+# Bashan OS — make the layout chosen during install one of the live four.
+#
+# Runs chrooted into the target, after Calamares' keyboard job.
+#
+# The keyboard stack allows four layouts at once, no more. The image ships
+# us,ara,es,fr. If someone installs in German, German must actually be
+# there, so it replaces the LAST default rather than being added to a list
+# that silently drops it.
+#
+# US and Arabic are never displaced: US is the fallback every machine needs
+# if a layout misbehaves, and Arabic is the reason this project exists.
+set -u
+
+KXKB="${BASHAN_ETC:-/etc}/xdg/kxkbrc"
+[ -f "$KXKB" ] || { echo "I: no $KXKB; nothing to adjust"; exit 0; }
+
+# What Calamares wrote for the installed system.
+CHOSEN=""
+for f in "${BASHAN_ETC:-/etc}/default/keyboard" "${BASHAN_ETC:-/etc}/X11/xorg.conf.d/00-keyboard.conf"; do
+    [ -r "$f" ] || continue
+    CHOSEN=$(sed -n 's/^ *XKBLAYOUT="\{0,1\}\([^"]*\)"\{0,1\} *$/\1/p;s/.*Option *"XkbLayout" *"\([^"]*\)".*/\1/p' "$f" \
+             | head -1 | cut -d, -f1)
+    [ -n "$CHOSEN" ] && break
+done
+[ -n "$CHOSEN" ] || { echo "I: could not read the chosen layout; leaving the defaults"; exit 0; }
+
+current=$(sed -n 's/^LayoutList=//p' "$KXKB" | head -1)
+[ -n "$current" ] || { echo "E: $KXKB has no LayoutList" >&2; exit 1; }
+
+# Already present: nothing to do.
+if printf '%s' "$current" | tr ',' '\n' | grep -qx "$CHOSEN"; then
+    echo "I: installed layout '$CHOSEN' is already active"
+    exit 0
+fi
+
+# Keep us and ara, then fill the remaining slots, newest first.
+kept="us,ara"
+rest=$(printf '%s' "$current" | tr ',' '\n' | grep -vx us | grep -vx ara | tr '\n' ' ')
+new="$kept,$CHOSEN"
+for l in $rest; do
+    [ "$(printf '%s' "$new" | tr ',' '\n' | grep -c .)" -ge 4 ] && break
+    new="$new,$l"
+done
+
+sed -i "s|^LayoutList=.*|LayoutList=$new|" "$KXKB"
+# One empty variant slot per layout, or Plasma pairs them up wrongly.
+count=$(printf '%s' "$new" | tr ',' '\n' | grep -c .)
+sed -i "s|^VariantList=.*|VariantList=$(printf ',%.0s' $(seq 1 $((count - 1))))|" "$KXKB"
+sed -i "s|^DisplayNames=.*||" "$KXKB"
+
+echo "I: active layouts are now $new (was $current, installer chose $CHOSEN)"

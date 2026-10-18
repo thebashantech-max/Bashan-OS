@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Get Inkscape (downloads after you agree)
+Comment=Downloads Inkscape, for drawing icons and logos, from the Debian archive
+Exec=bashan-install-inkscape
+Icon=applications-graphics
+Terminal=false
+Categories=Graphics;
