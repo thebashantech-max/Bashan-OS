@@ -1,0 +1,91 @@
+#!/bin/sh
+# Bashan OS — repair the two EFI faults grub-install leaves behind.
+#
+# Runs chrooted into the target, after Calamares' bootloader job.
+# Measured on install attempt 3: the install reported success, all 35 jobs
+# green, and the result did not boot:
+#
+#   BdsDxe: failed to load Boot0002 "UEFI Misc Device" ... : Access Denied
+#   >>Start PXE over IPv4.
+#
+# FAULT 1 — no boot entry in NVRAM, so firmware never tried our bootloader
+#
+# Calamares mounts /sys as a FRESH sysfs. /sys/firmware/efi/efivars is a
+# separate filesystem (efivarfs), and a fresh sysfs does not carry it, so
+# inside the chroot the NVRAM is an empty directory. efibootmgr has nothing
+# to write to and grub-install warns and continues. The log showed no
+# efibootmgr output at all. Mounting efivarfs and re-running the same
+# grub-install writes the entry.
+#
+# FAULT 2 — the removable path held GRUB, which Secure Boot refuses
+#
+# Having found no entry, firmware fell back to \EFI\BOOT\BOOTX64.EFI, where
+# Calamares' installEFIFallback had copied grubx64.efi (2684352 bytes, byte
+# size identical to grub). GRUB carries Debian's signature, which no
+# firmware trusts. Shim is the part signed by Microsoft, and shim is what
+# then validates GRUB. So the removable path must START at shim.
+#
+# Fault 2 matters on real hardware independently of fault 1: firmware
+# forgets NVRAM entries after a CMOS reset or a firmware update, and plenty
+# of machines boot the removable path by preference.
+set -eu
+
+ESP=/boot/efi
+
+# BIOS/legacy install: nothing here applies, and saying so beats failing.
+if [ ! -d "$ESP/EFI" ]; then
+    echo "I: no EFI system partition; legacy boot, nothing to repair"
+    exit 0
+fi
+
+# --- Fault 1: give efibootmgr somewhere to write, then write the entry ----
+if [ -d /sys/firmware/efi ]; then
+    if [ ! -e /sys/firmware/efi/efivars/ ] || \
+       [ -z "$(ls -A /sys/firmware/efi/efivars 2>/dev/null)" ]; then
+        mkdir -p /sys/firmware/efi/efivars
+        mount -t efivarfs efivarfs /sys/firmware/efi/efivars 2>/dev/null \
+            || echo "W: could not mount efivarfs; no boot entry will be created" >&2
+    fi
+
+    if [ -n "$(ls -A /sys/firmware/efi/efivars 2>/dev/null)" ]; then
+        # Same command the bootloader job ran; now it can reach NVRAM.
+        grub-install --target=x86_64-efi --efi-directory="$ESP" \
+                     --bootloader-id=Bashan --force \
+            || echo "W: grub-install re-run failed" >&2
+
+        if efibootmgr 2>/dev/null | grep -q 'Bashan'; then
+            echo "I: EFI boot entry created:"
+            efibootmgr | grep 'Bashan' | sed 's/^/I:   /'
+        else
+            echo "W: no Bashan entry in NVRAM; the removable path must carry the boot" >&2
+        fi
+    fi
+else
+    echo "W: /sys/firmware/efi absent inside chroot; skipping NVRAM entry" >&2
+fi
+
+# --- Fault 2: the removable path has to start at shim -------------------
+SRC="$ESP/EFI/Bashan"
+DST="$ESP/EFI/BOOT"
+
+[ -d "$SRC" ] || { echo "E: $SRC missing; grub-install did not run" >&2; exit 1; }
+[ -f "$SRC/shimx64.efi" ] || { echo "E: no signed shim at $SRC/shimx64.efi" >&2; exit 1; }
+
+mkdir -p "$DST"
+cp -f "$SRC/shimx64.efi" "$DST/BOOTX64.EFI"
+cp -f "$SRC/grubx64.efi" "$DST/grubx64.efi"
+for extra in mmx64.efi fbx64.efi BOOTX64.CSV; do
+    [ -f "$SRC/$extra" ] && cp -f "$SRC/$extra" "$DST/$extra"
+done
+
+# Prove it rather than trust the copy: the fallback must now weigh the same
+# as shim, not the same as grub. This is the check that would have caught
+# attempt 3 before the reboot.
+shim_size=$(stat -c %s "$SRC/shimx64.efi")
+boot_size=$(stat -c %s "$DST/BOOTX64.EFI")
+if [ "$shim_size" != "$boot_size" ]; then
+    echo "E: $DST/BOOTX64.EFI is $boot_size bytes but shim is $shim_size" >&2
+    echo "E: removable path is not shim; Secure Boot would refuse it" >&2
+    exit 1
+fi
+echo "I: removable EFI path starts at shim ($boot_size bytes)"
