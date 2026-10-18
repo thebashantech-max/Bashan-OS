@@ -91,7 +91,9 @@ ApplicationWindow {
         })
         // Starts the welcome music. If the song was left out by the rights
         // guard the player reports invalid media and this does nothing.
-        music.play()
+        // The song is played at BOOT now, by bashan-boot-sound.service,
+        // through ALSA before this app opens. Playing it here as well meant
+        // hearing it twice. The Mute button below still silences it.
     }
 
     LayoutMirroring.enabled: rtl
@@ -260,7 +262,12 @@ ApplicationWindow {
                     visible: win.musicAvailable
                     Layout.alignment: Qt.AlignHCenter
                     text: out.muted ? win.tr("w.unmute") : win.tr("w.mute")
-                    onClicked: out.muted = !out.muted
+                    onClicked: {
+                        out.muted = !out.muted
+                        // Reaches out to the boot song, which is a separate
+                        // process started before this app existed.
+                        if (out.muted) win.act("stop-boot-song")
+                    }
                 }
             }
         }

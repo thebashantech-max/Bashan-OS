@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Install System
+Exec=sh -c 'pkexec calamares'
+NoDisplay=true

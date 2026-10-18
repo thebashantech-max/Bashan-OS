@@ -1,0 +1,52 @@
+#!/bin/sh
+# Bashan OS — no Debian branding may survive into the image.
+#
+# On real hardware a live session reverted to a Debian blue wallpaper with a
+# Debian swirl on the desktop after about ten minutes. The cause was
+# desktop-base: it declares Debian's look-and-feel as Plasma's fallback
+# default and puts Debian's settings on Plasma's config search path, so any
+# fallback landed on Debian's branding rather than ours.
+#
+# 0920 purges the package. This proves nothing came back, and fails the
+# build if it did, because the failure mode is invisible until a user's
+# desktop resets hours later on hardware we do not have.
+set -e
+
+fail=0
+err() { echo "E: $*" >&2; fail=1; }
+
+for path in \
+    /usr/share/desktop-base \
+    /usr/share/images/desktop-base \
+    /usr/share/plasma/look-and-feel/org.debian.desktop \
+    /etc/xdg/plasma-workspace/env/env.sh \
+    /usr/share/wallpapers/DebianTheme \
+    /usr/share/wallpapers/ceratopsian \
+    /usr/share/wallpapers/emerald \
+    /usr/share/wallpapers/Joy
+do
+    [ -e "$path" ] && err "Debian branding still present: $path"
+done
+
+# The swirl itself, wherever it might have come from.
+if find /usr/share /etc -iname "*debian*logo*" -o -iname "*swirl*" 2>/dev/null | grep -q .; then
+    echo "E: Debian logo files still in the image:" >&2
+    find /usr/share /etc -iname "*debian*logo*" -o -iname "*swirl*" 2>/dev/null \
+        | head -10 | sed 's/^/E:   /' >&2
+    fail=1
+fi
+
+# Nothing may put Debian's settings back on Plasma's config path.
+if grep -rl "desktop-base" /etc/xdg 2>/dev/null | grep -q .; then
+    err "something under /etc/xdg still references desktop-base"
+fi
+
+# Our look-and-feel must be the declared default.
+laf=$(sed -n 's/^LookAndFeelPackage=//p' /etc/xdg/kdeglobals 2>/dev/null | tr -d '[:space:]')
+[ "$laf" = "com.bashan.desktop" ] \
+    || err "LookAndFeelPackage is '$laf', expected com.bashan.desktop"
+[ -d /usr/share/plasma/look-and-feel/com.bashan.desktop ] \
+    || err "our look-and-feel package is missing from the image"
+
+[ "$fail" = 0 ] || { echo "E: Debian branding check failed" >&2; exit 1; }
+echo "I: no Debian branding in the image; Bashan look-and-feel is the default"

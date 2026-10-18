@@ -20,6 +20,13 @@ case "$action" in
     install-chrome)
         exec bashan-install-chrome
         ;;
+    stop-boot-song)
+        # The song now plays at boot, through ALSA, before this app exists.
+        # The Mute button therefore has to reach OUT of the app to silence
+        # it. Killing our own aplay is enough and needs no privileges.
+        pkill -f "aplay .*boot-song" >/dev/null 2>&1
+        exit 0
+        ;;
     boot-sound-on)
         exec pkexec /usr/libexec/bashan/bashan-set-boot-sound yes
         ;;

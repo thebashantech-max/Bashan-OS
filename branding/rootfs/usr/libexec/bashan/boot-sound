@@ -20,9 +20,28 @@ SONG=/usr/share/bashan/boot-song.wav
 # shellcheck source=/dev/null
 [ -r "$CONF" ] && . "$CONF"
 
+# Cap the output level before playing. A laptop whose mixer sits at 100%
+# would otherwise greet someone with a startup song at full volume. This
+# only ever lowers: a person who set it quiet stays quiet, and they can
+# change the volume normally afterwards.
+cap_volume() {
+    [ -n "${VOLUME:-}" ] || return 0
+    command -v amixer >/dev/null 2>&1 || return 0
+    for ctl in Master PCM Speaker; do
+        cur=$(amixer -M get "$ctl" 2>/dev/null \
+              | sed -n 's/.*\[\([0-9]\+\)%\].*/\1/p' | head -1)
+        [ -n "$cur" ] || continue
+        [ "$cur" -gt "$VOLUME" ] 2>/dev/null \
+            && amixer -M -q set "$ctl" "${VOLUME}%" >/dev/null 2>&1
+        break
+    done
+    return 0
+}
+
 play() {
     [ "${ENABLED:-yes}" = "yes" ] || return 0
     command -v aplay >/dev/null 2>&1 || return 0
+    cap_volume
     for candidate in "${SONG:-}" /etc/bashan/boot-song.wav \
                      /usr/share/bashan/boot-song.wav; do
         [ -n "$candidate" ] || continue

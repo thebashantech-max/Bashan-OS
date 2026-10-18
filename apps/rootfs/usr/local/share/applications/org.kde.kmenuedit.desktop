@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Menu Editor
+Exec=kmenuedit
+NoDisplay=true

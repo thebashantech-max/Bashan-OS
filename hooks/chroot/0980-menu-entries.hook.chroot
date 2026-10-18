@@ -1,0 +1,43 @@
+#!/bin/sh
+# Bashan OS — the launcher menu must not be full of things nobody asked for.
+#
+# Hidden by overrides in /usr/local/share/applications, which XDG searches
+# before /usr/share, so an apt upgrade cannot put them back. The programs
+# stay installed and still run; they are only out of the menu.
+set -e
+
+fail=0
+A=/usr/local/share/applications
+
+for e in org.kde.drkonqi.coredump.gui im-config org.kde.kmenuedit \
+         org.freedesktop.IBus.Setup calamares; do
+    f="$A/$e.desktop"
+    [ -f "$f" ] || { echo "E: no override for $e.desktop" >&2; fail=1; continue; }
+    grep -q "^NoDisplay=true$" "$f" || { echo "E: $f does not hide it" >&2; fail=1; }
+    # And the program itself must still be installed.
+    [ -f "/usr/share/applications/$e.desktop" ] \
+        || echo "W: $e.desktop is not installed at all; the override is dead weight" >&2
+done
+
+# Exactly one install entry a person can see, and it must be ours.
+visible=0
+for f in /usr/share/applications/*.desktop; do
+    case "$f" in *install-bashan-os.desktop|*calamares.desktop) ;; *) continue ;; esac
+    base=$(basename "$f" .desktop)
+    [ -f "$A/$base.desktop" ] && continue          # hidden by an override
+    grep -q "^NoDisplay=true" "$f" && continue
+    visible=$((visible + 1))
+    echo "I: visible install entry: $base"
+done
+[ "$visible" = 1 ] || { echo "E: $visible visible install entries, expected exactly 1" >&2; fail=1; }
+
+# The NVIDIA offer stays; the driver itself must never ship.
+[ -f /usr/share/applications/bashan-install-nvidia.desktop ] \
+    || { echo "E: the NVIDIA driver offer is missing from the menu" >&2; fail=1; }
+if dpkg-query -W -f='${Package}\n' 2>/dev/null | grep -qE '^(nvidia-driver|nvidia-kernel-dkms)$'; then
+    echo "E: an NVIDIA driver is installed in the image; it must be offered, not shipped" >&2
+    fail=1
+fi
+
+[ "$fail" = 0 ] || { echo "E: menu entry check failed" >&2; exit 1; }
+echo "I: menu entries verified"

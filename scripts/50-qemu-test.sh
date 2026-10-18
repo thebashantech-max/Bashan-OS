@@ -29,6 +29,18 @@ ISO="$ROOT/build/out/$ISO_NAME"
 OVMF_CODE_SB="/usr/share/OVMF/OVMF_CODE_4M.ms.fd"
 OVMF_VARS_SB="/usr/share/OVMF/OVMF_VARS_4M.ms.fd"
 RAM_MB="${BASHAN_VM_RAM:-3584}"
+# Read speed of the ISO drive, in bytes/sec. A cheap USB 2.0 stick does
+# roughly 25 MB/s; this machine's NVMe does thousands. Everything the live
+# session does on first launch - loading Dolphin, Gwenview, KolourPaint -
+# reads from a COMPRESSED squashfs, so the real cost is decompression on
+# top of a slow bus. Unthrottled QEMU hides that completely, which is why a
+# fault seen on a USB stick never appeared in testing.
+#   BASHAN_VM_ISO_BPS=26214400 ./scripts/50-qemu-test.sh boot install
+ISO_BPS="${BASHAN_VM_ISO_BPS:-0}"
+iso_throttle() {
+  [ "$ISO_BPS" = 0 ] && return 0
+  printf ',throttling.bps-read=%s,throttling.bps-read-max=%s' "$ISO_BPS" "$ISO_BPS"
+}
 BASHAN_DISK="${BASHAN_DISK:-other-os.img}"
 
 mkdir -p "$VM" "$SHOTS"
@@ -137,7 +149,7 @@ cmd_boot() {
     # is streamed out through here, where it survives the VM dying.
     -serial "file:$VM/serial.log"
     -monitor "unix:$MON,server,nowait"
-    -drive "file=$ISO,media=cdrom,readonly=on"
+    -drive "file=$ISO,media=cdrom,readonly=on$(iso_throttle)"
     -drive "file=$VM/$BASHAN_DISK,format=raw,if=virtio"
     # TEST ONLY: the shared disk the in-guest harness writes its results to.
     # Built by scripts/55-vm-harness.sh; never part of the ISO.

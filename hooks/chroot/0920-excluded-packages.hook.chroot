@@ -18,7 +18,31 @@ EXCLUDED="firmware-b43-installer firmware-b43legacy-installer b43-fwcutter
           firmware-myricom firmware-bnx2x firmware-netxen firmware-bnx2
           dahdi-firmware-nonfree firmware-siano firmware-ivtv
           atmel-firmware
-          fonts-noto-cjk-extra cups-browsed kdeconnect"
+          fonts-noto-cjk-extra cups-browsed kdeconnect
+          sddm-theme-debian-breeze desktop-base"
+
+# ORDER MATTERS: sddm-theme-debian-breeze Depends on desktop-base, so it is
+# purged first. Each purge then removes exactly the package named, which is
+# what the cascade guard above requires.
+#
+# desktop-base is Debian's branding package and the proven cause of a fault
+# seen on real hardware: after about ten minutes of a live session the
+# wallpaper turned Debian blue and a Debian swirl appeared on the desktop.
+# One package ships all of it:
+#   /usr/share/desktop-base/debian-logos/   the swirl, in six sizes
+#   /usr/share/wallpapers/{DebianTheme,ceratopsian,emerald,Joy,...}
+#   /usr/share/plasma/look-and-feel/org.debian.desktop
+#   /usr/share/desktop-base/kf5-settings/kdeglobals
+#   /etc/xdg/plasma-workspace/env/env.sh
+#
+# The last two are the mechanism. env.sh puts Debian's settings on Plasma's
+# config search path:
+#   XDG_CONFIG_DIRS=/etc/xdg:/usr/share/desktop-base/kf5-settings
+# and that kdeglobals declares LookAndFeelPackage=org.debian.desktop, whose
+# defaults are Image=DebianTheme and Icons Theme=breeze. So whenever Plasma
+# falls back to a default, it falls back to DEBIAN's rather than ours.
+# Removing the package removes the wallpaper, the swirl, the look-and-feel
+# and the config path together, leaving nothing to fall back to.
 
 for pkg in $EXCLUDED; do
     if dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep -q "install ok installed"; then
