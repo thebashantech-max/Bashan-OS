@@ -1,0 +1,48 @@
+#!/bin/sh
+# Bashan OS — the login screen must actually be ours.
+#
+# The branded theme was installed and selected, and the machine still showed
+# the stock grey SDDM screen with a virtual keyboard over it. SDDM said:
+#
+#   The theme at "/usr/share/sddm/themes/bashan" requires missing
+#   "/usr/bin/sddm-greeter". Using fallback theme.
+#   Greeter stopped. SDDM::Auth::HELPER_DISPLAYSERVER_ERROR
+#
+# The theme's metadata.desktop did not declare QtVersion, so SDDM assumed
+# Qt5 and looked for a greeter binary this image does not ship. Everything
+# a person would check -- the theme directory, Current=bashan in
+# sddm.conf.d -- looked correct, which is exactly why this needs a build
+# time assertion rather than an eyeball.
+set -e
+
+THEME=/usr/share/sddm/themes/bashan
+META="$THEME/metadata.desktop"
+CONF=/etc/sddm.conf.d/10-bashan.conf
+
+[ -d "$THEME" ] || { echo "E: $THEME missing from the image" >&2; exit 1; }
+[ -f "$META" ]  || { echo "E: $META missing" >&2; exit 1; }
+[ -f "$THEME/Main.qml" ] || { echo "E: $THEME/Main.qml missing" >&2; exit 1; }
+
+# The theme has to be the selected one.
+sel=$(sed -n 's/^Current=[[:space:]]*//p' "$CONF" 2>/dev/null | tr -d '[:space:]')
+[ "$sel" = "bashan" ] || { echo "E: sddm theme is '$sel', expected 'bashan'" >&2; exit 1; }
+
+# NOT asserted: QtVersion=6 in the theme metadata.
+#
+# Without it SDDM treats the theme as Qt5, looks for /usr/bin/sddm-greeter
+# (which this image does not ship), logs
+#   The theme at ".../bashan" requires missing "/usr/bin/sddm-greeter".
+#   Using fallback theme.
+# and shows the stock grey login screen. Branded login is therefore still
+# BROKEN and this hook does not pretend otherwise.
+#
+# Adding QtVersion=6 was tested on a real install and made things worse,
+# not better: SDDM then loads our theme with sddm-greeter-qt6, the greeter
+# cannot get a display server and exits, and NO login screen appears at
+# all -- HELPER_DISPLAYSERVER_ERROR, with Xorg terminating with error (1)
+# and the Wayland greeter failing only for our theme, not for SDDM's own
+# fallback. An unbranded login a person can use beats a branded one they
+# cannot, so the metadata stays as it is until the theme's QML is made to
+# work under the Qt6 greeter.
+echo "I: sddm theme 'bashan' present and selected"
+echo "W: login screen is NOT branded yet; theme needs Qt6 greeter work" >&2
