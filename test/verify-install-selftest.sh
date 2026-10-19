@@ -37,6 +37,8 @@ build_tree() {
         | sort -u > "$tmp/t/usr/share/bashan/live-packages.txt"
     printf '%s\n' calamares calamares-settings-debian live-boot \
         live-boot-initramfs-tools live-config live-config-systemd \
+        live-boot-doc live-config-doc live-tools user-setup \
+        fonts-quicksand libyaml-cpp0.8 \
         > "$tmp/t/usr/share/bashan/expected-removals.txt"
     # What survived: everything but the intended removals.
     # shellcheck disable=SC2086
@@ -69,6 +71,20 @@ grep -vxE 'breeze|systemsettings' "$tmp/t/installed-packages.txt" > "$tmp/i" \
     && mv "$tmp/i" "$tmp/t/installed-packages.txt"
 want "tolerates two extra removals" run
 want "still lists them as a warning" grep -q "missing after install" "$tmp/out"
+
+echo "a real install's own autoremoved dependencies"
+# A correct install FAILED on this: apt autoremoves calamares' own
+# dependencies and the live-* docs, which came to six removals against a
+# tolerance of five, and the installer refused to finish on a machine whose
+# desktop was perfectly fine. Naming them must not cost the tolerance.
+build_tree
+{ printf '%s\n' calamares live-boot live-config fonts-quicksand \
+      libyaml-cpp0.8 live-boot-doc live-config-doc live-tools user-setup
+  cat "$tmp/t/installed-packages.txt"; } | sort -u \
+      > "$tmp/t/usr/share/bashan/live-packages.txt"
+want "a real install's removals do not fail it" run
+want "and it still reports none unexpected" \
+    grep -q "no unexpected package removals" "$tmp/out"
 
 echo "live-only settings must not survive the install"
 build_tree

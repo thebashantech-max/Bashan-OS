@@ -23,6 +23,15 @@ echo "I: recorded $count packages in the live manifest"
 
 # The ones the installer is allowed to remove, so the comparison does not
 # flag them. Anything else going missing is a fault.
+#
+# The last six were found the hard way: a correct install FAILED with
+#   E: 6 unexplained removals exceeds the tolerance of 5
+# and refused to finish, on a machine whose desktop was perfectly fine.
+# They are all legitimate. apt autoremoves calamares' own dependencies
+# (fonts-quicksand, libyaml-cpp0.8) once calamares goes, and the live-*
+# documentation, live-tools and user-setup go with live-boot and
+# live-config. Naming them keeps the tolerance of five for a REAL cascade
+# rather than spending it on removals we already expect.
 cat > /usr/share/bashan/expected-removals.txt <<'LIST'
 calamares
 calamares-settings-debian
@@ -30,4 +39,10 @@ live-boot
 live-boot-initramfs-tools
 live-config
 live-config-systemd
+live-boot-doc
+live-config-doc
+live-tools
+user-setup
+fonts-quicksand
+libyaml-cpp0.8
 LIST
