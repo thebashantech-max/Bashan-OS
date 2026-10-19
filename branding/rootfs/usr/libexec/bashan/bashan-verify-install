@@ -73,20 +73,27 @@ fi
 MANIFEST="$ROOT/usr/share/bashan/live-packages.txt"
 EXPECTED="$ROOT/usr/share/bashan/expected-removals.txt"
 if [ -s "$MANIFEST" ]; then
-    installed=$(mktemp); missing=$(mktemp)
+    installed=$(mktemp); missing=$(mktemp); manifest=$(mktemp)
+    # comm compares line by line and trusts BOTH sides to be sorted the same
+    # way. The manifest is sorted when the image is built and this list when
+    # the install runs, under whatever locale each had; a different collation
+    # makes comm walk straight past matching lines. It once reported 471
+    # packages missing - libc6 and grep among them - on a machine that was
+    # running perfectly well. LC_ALL=C pins both to byte order.
+    LC_ALL=C sort -u "$MANIFEST" > "$manifest"
     if [ -n "$ROOT" ]; then
-        sort -u "$ROOT/installed-packages.txt" > "$installed"
+        LC_ALL=C sort -u "$ROOT/installed-packages.txt" > "$installed"
     else
-        dpkg-query -W -f='${binary:Package}\n' | sed 's/:.*//' | sort -u > "$installed"
+        dpkg-query -W -f='${binary:Package}\n' | sed 's/:.*//' | LC_ALL=C sort -u > "$installed"
     fi
-    comm -23 "$MANIFEST" "$installed" | grep -vxF -f "$EXPECTED" > "$missing" 2>/dev/null || true
+    LC_ALL=C comm -23 "$manifest" "$installed" | grep -vxF -f "$EXPECTED" > "$missing" 2>/dev/null || true
     n=$(wc -l < "$missing")
     if [ "$n" -gt 0 ]; then
         warn "$n package(s) from the live image are not installed:"
         sed 's/^/W:   /' "$missing" >&2
         warn "this is information only and does not stop the install"
     fi
-    rm -f "$installed" "$missing"
+    rm -f "$installed" "$missing" "$manifest"
 else
     warn "$MANIFEST missing; cannot compare packages"
 fi

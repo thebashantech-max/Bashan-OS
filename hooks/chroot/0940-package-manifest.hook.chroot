@@ -15,7 +15,7 @@ set -e
 
 mkdir -p /usr/share/bashan
 dpkg-query -W -f='${binary:Package}\n' \
-    | sed 's/:.*//' | sort -u > /usr/share/bashan/live-packages.txt
+    | sed 's/:.*//' | LC_ALL=C sort -u > /usr/share/bashan/live-packages.txt
 
 count=$(wc -l < /usr/share/bashan/live-packages.txt)
 [ "$count" -gt 100 ] || { echo "E: only $count packages recorded; manifest looks wrong" >&2; exit 1; }

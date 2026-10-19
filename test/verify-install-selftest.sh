@@ -59,6 +59,39 @@ printf '%s\n' libfoo1 libbar2 libbaz3 zlib-extra qt6-spare gtk-spare \
     > "$tmp/t/usr/share/bashan/live-packages.txt"
 want "eight removed libraries do not fail it" run
 
+# The manifest ships sorted at build time and the installed list is sorted
+# at install time. If the two collations differ, comm walks past matching
+# lines and invents missing packages - it once reported 471, libc6 among
+# them, on a machine that was running fine.
+build_tree
+# python3-apt, python3.13 and python3-dev are enough to flip the order:
+# byte order puts "-" before ".", en_US.UTF-8 does not, and comm then walks
+# straight past matching lines. On the real 2373-package manifest the same
+# mismatch invented 471 missing packages, libc6 and grep among them. The
+# manifest is sorted when the image is built and the installed list when
+# the install runs, so the two locales really can differ.
+if locale -a 2>/dev/null | grep -qi "^en_US.utf8$"; then
+    pkgs="plasma-desktop sddm konsole dolphin kwin-wayland python3-apt python3.13 python3-dev"
+    # shellcheck disable=SC2086  # a deliberate word split over the names
+    printf '%s\n' $pkgs | LC_ALL=C sort -u \
+        > "$tmp/t/usr/share/bashan/live-packages.txt"
+    # shellcheck disable=SC2086
+    printf '%s\n' $pkgs > "$tmp/t/installed-packages.txt"
+    if BASHAN_VERIFY_ROOT="$tmp/t" LC_ALL=en_US.UTF-8 sh "$FIX" >"$tmp/out" 2>&1; then
+        ok "a manifest sorted under another locale does not fail it"
+    else
+        bad "a manifest sorted under another locale does not fail it"
+    fi
+    if grep -q "are not installed" "$tmp/out"; then
+        bad "and invents no missing packages"
+    else
+        ok "and invents no missing packages"
+    fi
+else
+    echo "  skip  sort-order case (en_US.UTF-8 not generated here)"
+fi
+
+
 build_tree; sed -i 's/^Autolock=true/Autolock=false/' "$tmp/t/etc/xdg/kscreenlockerrc"
 want "no auto-lock does not fail it" run
 want "but warns about it" grep -q "will not lock" "$tmp/out"
