@@ -14,7 +14,13 @@
 #   ./scripts/50-qemu-test.sh stop             shut the VM down
 #
 # Runs headless with a VNC display and a monitor socket, so screenshots can
-# be taken without a window being open. Never start this while a build is
+# be taken without a window being open.
+#
+# There is no pointer. The monitor's mouse_move sends RELATIVE events and
+# the usb-tablet is an ABSOLUTE device, so clicks never arrive; adding a
+# relative usb-mouse beside it did not help either. Drive everything by
+# keyboard. sendkey also cannot produce "$", so shell one-liners typed into
+# the guest must not use variables. Never start this while a build is
 # running: the host has under 4 GB free.
 set -Eeuo pipefail
 
