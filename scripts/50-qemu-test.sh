@@ -10,6 +10,7 @@
 #   ./scripts/50-qemu-test.sh boot installed-wiped   as above, NVRAM forgotten
 #   ./scripts/50-qemu-test.sh shot NAME        screenshot the running VM
 #   ./scripts/50-qemu-test.sh key KEYS         send keystrokes
+#   ./scripts/50-qemu-test.sh mon CMD          raw monitor command
 #   ./scripts/50-qemu-test.sh stop             shut the VM down
 #
 # Runs headless with a VNC display and a monitor socket, so screenshots can
@@ -214,6 +215,10 @@ cmd_shot() {
 }
 
 cmd_key()  { monitor "sendkey ${1}"; }
+# Raw QEMU monitor command. Needed for things the guest cannot do to
+# itself: waking a suspended machine (system_wakeup) and pulling the
+# network cable (set_link net0 off).
+cmd_mon()  { monitor "$*"; echo "I: monitor: $*"; }
 # Stop the VM and PROVE it stopped.
 #
 # The old version ended with an unconditional `echo "I: VM stopped"`, so it
@@ -247,6 +252,7 @@ case "${1:-}" in
   boot)  shift; cmd_boot "$@" ;;
   shot)  shift; cmd_shot "$@" ;;
   key)   shift; cmd_key "$@" ;;
+  mon)   shift; cmd_mon "$@" ;;
   stop)  cmd_stop ;;
-  *)     die "usage: $0 {disks|boot <uefi-sb|bios>|shot NAME|key KEYS|stop}" ;;
+  *)     die "usage: $0 {disks|boot <uefi-sb|bios>|shot NAME|key KEYS|mon CMD|stop}" ;;
 esac
