@@ -8,27 +8,79 @@
 # only after the person agrees - the same pattern as the Chrome entry.
 #
 # Everything comes from Debian's own archive, already configured and
-# already trusted. No new software source is added, ever.
+# already trusted. No new software source is ever added.
+#
+# The first version of this just exec'd pkexec apt-get with Terminal=false
+# in its .desktop, which meant someone clicked the menu entry, typed their
+# password, and then saw NOTHING for several minutes while a few hundred
+# megabytes downloaded - and saw nothing at all if it failed. Every outcome
+# now says something.
 set -u
 
 PKG="${1:-}"
 NAME="${2:-$PKG}"
 SIZE="${3:-}"
 [ -n "$PKG" ] || { echo "usage: $0 <package> [name] [size]" >&2; exit 2; }
+TITLE="Get $NAME"
 
-ASK="$NAME is not installed yet.
+if command -v kdialog >/dev/null 2>&1; then
+    ask()  { kdialog --title "$TITLE" --yesno "$1"; }
+    note() { kdialog --title "$TITLE" --msgbox "$1"; }
+    oops() { kdialog --title "$TITLE" --error  "$1"; }
+    busy() { kdialog --title "$TITLE" --passivepopup "$1" 30 >/dev/null 2>&1; }
+else
+    ask()  { printf '%s\n\nContinue? [y/N] ' "$1"; read -r r; case "$r" in y|Y|yes|YES) ;; *) return 1 ;; esac; }
+    note() { printf '%s\n' "$1"; }
+    oops() { printf '%s\n' "$1" >&2; }
+    busy() { printf '%s\n' "$1"; }
+fi
+
+# Already here? Say so instead of downloading it again.
+if dpkg-query -W -f='${Status}' "$PKG" 2>/dev/null | grep -q "install ok installed"; then
+    note "$NAME is already installed.
+
+Look for it in the menu."
+    exit 0
+fi
+
+ask "$NAME is not installed yet.
 
 It is about ${SIZE:-a large download} and will be downloaded from Debian.
 This needs an internet connection.
 
-Install it now?"
+Install it now?" || exit 0
 
-if command -v kdialog >/dev/null 2>&1; then
-    kdialog --title "Get $NAME" --yesno "$ASK" || exit 0
-else
-    printf '%s\n\nContinue? [y/N] ' "$ASK"
-    read -r reply
-    case "$reply" in y|Y|yes|YES) ;; *) exit 0 ;; esac
+# Check the things that fail, before asking for a password.
+if ! getent hosts deb.debian.org >/dev/null 2>&1; then
+    oops "This computer is not connected to the internet.
+
+$NAME has to be downloaded, so connect to Wi-Fi using the network icon at
+the bottom right of the screen, then try again."
+    exit 1
+fi
+if fuser /var/lib/dpkg/lock-frontend >/dev/null 2>&1; then
+    oops "The computer is busy installing something else.
+
+Wait a minute and try again."
+    exit 1
 fi
 
-exec pkexec sh -c "apt-get update && apt-get install -y --no-install-recommends '$PKG'"
+busy "Downloading $NAME. This can take a few minutes."
+err=$(pkexec sh -c "apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends '$PKG'" 2>&1)
+rc=$?
+
+if [ "$rc" = 0 ] && dpkg-query -W -f='${Status}' "$PKG" 2>/dev/null | grep -q "install ok installed"; then
+    note "$NAME is installed.
+
+You will find it in the menu."
+    exit 0
+fi
+
+case "$rc" in
+    126|127) oops "Nothing was installed - the password was not accepted, or the
+request was cancelled." ;;
+    *) oops "$NAME could not be installed.
+
+$(printf '%s' "$err" | tail -3)" ;;
+esac
+exit 1
