@@ -26,3 +26,6 @@ secrets/
 *~
 .*.swp
 .DS_Store
+
+# VM scratch: firmware vars and serial logs churn on every boot
+build/vm/
