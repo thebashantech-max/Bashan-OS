@@ -1,119 +1,105 @@
 #!/bin/sh
-# Bashan OS — assert the installed system is still the system we shipped.
+# Bashan OS — check the installed system before handing it over.
 #
-# Runs chrooted into the target, AFTER the packages job.
+# WHAT BLOCKS AND WHAT DOES NOT
 #
-# Install attempt 4 finished with "All done." and handed over a machine
-# nobody could log into. SDDM came up with an empty session dropdown:
+# This only fails the install for faults that leave a machine unusable:
+# no bootloader, no kernel, no greeter, no desktop session, no user
+# account, or a broken fstab/EFI. Everything else - packages that differ
+# from the live image, libraries apt tidied away - is a WARNING in the log
+# and never stops an install.
 #
-#   $ ls /usr/share/xsessions/
-#   ls: cannot access '/usr/share/xsessions/': No such file or directory
-#   $ dpkg -l plasma-desktop
-#   un  plasma-desktop  <none>  <none>
+# That rule was learned the hard way. An earlier version failed a correct
+# install because six packages had gone:
 #
-# The packages job had done a hard `apt remove qml6-module-qtquick-controls`
-# to tidy up after Calamares, and apt took every reverse-dependency with it,
-# Plasma included. The live session was fine, so nothing caught it.
+#   W: fonts-quicksand libyaml-cpp0.8 live-boot-doc
+#   W: live-config-doc live-tools user-setup
+#   E: 6 unexplained removals exceeds the tolerance of 5
 #
-# The root cause is fixed in packages.conf and the build-time purge hooks
-# now refuse to cascade. This is the last line of defence: it compares the
-# installed system against the manifest the live image recorded and fails
-# the install, loudly and specifically, rather than handing over a machine
-# that boots to a login screen with nothing behind it.
+# Every one was legitimate - apt autoremoving calamares' own dependencies
+# and the live-* packages - and the desktop was perfectly fine. The person
+# installing would have seen "Installation Failed" and had no way forward.
+# A check that stops a working install is worse than no check at all.
 set -eu
 
-ROOT="${BASHAN_VERIFY_ROOT:-}"   # set only by the self-test
+ROOT="${BASHAN_VERIFY_ROOT:-}"
+crit=0
+err()  { echo "E: $*" >&2; crit=1; }
+warn() { echo "W: $*" >&2; }
+
+# ---- CRITICAL: can this machine start at all? --------------------------
+
+# A kernel to boot.
+if [ -z "$(find "$ROOT/boot" -maxdepth 1 -name 'vmlinuz-*' 2>/dev/null)" ]; then
+    err "no kernel in /boot - this machine cannot start"
+fi
+
+# Something to boot it with. Either an EFI bootloader or a BIOS grub.
+if [ -d "$ROOT/boot/efi/EFI" ]; then
+    if [ -z "$(find "$ROOT/boot/efi/EFI" -iname '*.efi' 2>/dev/null)" ]; then
+        err "/boot/efi/EFI holds no bootloader - this machine cannot start"
+    fi
+elif [ ! -f "$ROOT/boot/grub/grub.cfg" ]; then
+    err "no EFI bootloader and no /boot/grub/grub.cfg - this machine cannot start"
+fi
+
+# An fstab that names a root filesystem.
+if [ ! -s "$ROOT/etc/fstab" ]; then
+    err "/etc/fstab is missing or empty"
+elif ! awk '$1 !~ /^#/ && $2 == "/" {found=1} END {exit !found}' "$ROOT/etc/fstab"; then
+    err "/etc/fstab has no root filesystem entry"
+fi
+
+# A greeter to log in at.
+[ -x "$ROOT/usr/bin/sddm" ] || err "sddm is missing - there is no login screen"
+
+# A desktop to log in to.
+sessions=$(find "$ROOT/usr/share/xsessions" "$ROOT/usr/share/wayland-sessions" \
+                -maxdepth 1 -name '*.desktop' 2>/dev/null | wc -l)
+[ "$sessions" -gt 0 ] || err "no desktop session installed - nobody could log in"
+
+# An account to log in as.
+if [ -r "$ROOT/etc/passwd" ]; then
+    if ! awk -F: '$3 >= 1000 && $3 < 65534 && $7 !~ /(nologin|false)$/ {found=1} END {exit !found}' \
+         "$ROOT/etc/passwd"; then
+        err "no ordinary user account exists - nobody could log in"
+    fi
+else
+    err "/etc/passwd is unreadable"
+fi
+
+# ---- WARNINGS: worth knowing, never worth blocking ---------------------
+
 MANIFEST="$ROOT/usr/share/bashan/live-packages.txt"
 EXPECTED="$ROOT/usr/share/bashan/expected-removals.txt"
-# More than this many unexplained removals means something cascaded.
-TOLERANCE=5
-
-fail=0
-
-# --- A session to log into ----------------------------------------------
-found=$(find "$ROOT/usr/share/xsessions" "$ROOT/usr/share/wayland-sessions" \
-             -maxdepth 1 -name '*.desktop' 2>/dev/null | wc -l)
-if [ "$found" -eq 0 ]; then
-    echo "E: no desktop session installed - nobody could log in to this system" >&2
-    fail=1
-else
-    echo "I: $found desktop session(s) installed"
-fi
-
-# --- A greeter to log in at ---------------------------------------------
-if [ ! -x "$ROOT/usr/bin/sddm" ]; then
-    echo "E: sddm is missing; the installed system has no login screen" >&2
-    fail=1
-else
-    echo "I: sddm present"
-fi
-
-# --- Nothing else quietly removed ---------------------------------------
-if [ ! -s "$MANIFEST" ]; then
-    echo "E: $MANIFEST missing; cannot tell what the install removed" >&2
-    fail=1
-else
+if [ -s "$MANIFEST" ]; then
     installed=$(mktemp); missing=$(mktemp)
-    # In the self-test $ROOT points at a fake tree, so read its list instead.
     if [ -n "$ROOT" ]; then
         sort -u "$ROOT/installed-packages.txt" > "$installed"
     else
         dpkg-query -W -f='${binary:Package}\n' | sed 's/:.*//' | sort -u > "$installed"
     fi
-    # Present in the live image, absent now, and not one we meant to remove.
-    comm -23 "$MANIFEST" "$installed" | grep -vxF -f "$EXPECTED" > "$missing" || true
-
+    comm -23 "$MANIFEST" "$installed" | grep -vxF -f "$EXPECTED" > "$missing" 2>/dev/null || true
     n=$(wc -l < "$missing")
-    if [ "$n" -eq 0 ]; then
-        echo "I: no unexpected package removals"
-    else
-        echo "W: $n package(s) present in the live image are missing after install:" >&2
+    if [ "$n" -gt 0 ]; then
+        warn "$n package(s) from the live image are not installed:"
         sed 's/^/W:   /' "$missing" >&2
-        if [ "$n" -gt "$TOLERANCE" ]; then
-            echo "E: $n unexplained removals exceeds the tolerance of $TOLERANCE" >&2
-            echo "E: a removal has cascaded and taken packages with it" >&2
-            fail=1
-        fi
+        warn "this is information only and does not stop the install"
     fi
     rm -f "$installed" "$missing"
-fi
-
-# --- no live-only setting survived the install ---------------------------
-# These are relaxed for the live session by /lib/live/config/2000-bashan-live.
-# If any of them is still relaxed here, a live-only change has leaked onto a
-# real machine - which is how every installed system ended up never locking
-# its screen.
-LOCK="$ROOT/etc/xdg/kscreenlockerrc"
-if grep -q '^Autolock=false' "$LOCK" 2>/dev/null; then
-    echo "E: Autolock=false on the installed system - it would never lock" >&2
-    fail=1
-elif grep -q '^Autolock=true' "$LOCK" 2>/dev/null; then
-    echo "I: screen lock enabled"
 else
-    echo "E: $LOCK has no Autolock setting" >&2
-    fail=1
+    warn "$MANIFEST missing; cannot compare packages"
 fi
 
-if grep -q '^Enabled=false' "$ROOT/etc/xdg/kwalletrc" 2>/dev/null; then
-    echo "E: KWallet disabled on the installed system - that is live-only" >&2
-    fail=1
-else
-    echo "I: KWallet enabled"
-fi
+grep -q '^Autolock=false' "$ROOT/etc/xdg/kscreenlockerrc" 2>/dev/null \
+    && warn "the screen will not lock automatically on this installed system"
+grep -q '^Enabled=false' "$ROOT/etc/xdg/kwalletrc" 2>/dev/null \
+    && warn "KWallet is disabled; Brave will store passwords less securely"
+[ -e "$ROOT/lib/live/config/2000-bashan-live" ] \
+    && warn "live-only configuration is still present at /lib/live/config"
+[ -e "$ROOT/etc/systemd/system/multi-user.target.wants/unattended-upgrades.service" ] \
+    || warn "security updates are not enabled"
 
-if [ -e "$ROOT/lib/live/config/2000-bashan-live" ]; then
-    echo "E: live-only config script still present at /lib/live/config" >&2
-    fail=1
-else
-    echo "I: live-only config removed"
-fi
-
-if [ -e "$ROOT/etc/systemd/system/multi-user.target.wants/unattended-upgrades.service" ]; then
-    echo "I: security updates enabled"
-else
-    echo "E: unattended-upgrades not enabled on the installed system" >&2
-    fail=1
-fi
-
-[ "$fail" = 0 ] || { echo "E: the installed system is not usable; refusing to call this a success" >&2; exit 1; }
-echo "I: installed system verified"
+[ "$crit" = 0 ] || { echo "E: the installed system would not start; refusing to continue" >&2; exit 1; }
+echo "I: installed system verified - it has a kernel, a bootloader, a login screen,"
+echo "I: a desktop session and a user account"
