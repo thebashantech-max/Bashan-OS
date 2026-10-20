@@ -51,8 +51,21 @@ want "and says how to proceed" grep -q "PLACEHOLDER_ASSETS=yes" "$tmp/out"
 build_tree yes yes
 cp theme/wallpapers/bashan-mountain-1920x1080.png \
    "$tmp/t/usr/share/wallpapers/1920x1080.png"
-if run; then bad "a listed file shipped byte for byte fails"; else ok "a listed file shipped byte for byte fails"; fi
+if run; then bad "the mountain wallpaper shipped byte for byte fails"; else ok "the mountain wallpaper shipped byte for byte fails"; fi
 want "and names it" grep -q "byte-identical" "$tmp/out"
+
+# The hand came OFF the unconfirmed list on 2026-10-20. Shipping it must now
+# be fine, or the public build has no brand mark at all.
+build_tree yes yes
+cp assets/branding/logo-source.jpg "$tmp/t/usr/share/bashan/logo-source.jpg"
+cp branding/plymouth/bashan/logo-256.png "$tmp/t/usr/share/plymouth/logo-256.png"
+cp config/bootloaders/grub-pc/splash.png "$tmp/t/boot/grub/splash.png"
+want "the hand logo and the boot splashes are allowed through" run
+if grep -q "byte-identical" "$tmp/out"; then
+    bad "and nothing is reported against them"
+else
+    ok "and nothing is reported against them"
+fi
 
 echo "a clean public build passes"
 build_tree yes yes

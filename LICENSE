@@ -95,7 +95,13 @@ the MIT License above:
 
   - The name "Bashan OS", the name "Bashan Tech LLC", and the Arabic
     wordmark.
-  - The hand logo, in every size and every derived form.
+  - THE HAND MARK - the "OK hand" - in every size and every derived form.
+    This is the Bashan app logo and a Druze community symbol, and Bashan
+    Tech LLC is entitled to use it. It is the brand mark of Bashan Tech LLC,
+    all rights reserved, and it is NOT covered by the MIT grant in section 1.
+    It ships in public builds; that is a decision about distribution, not a
+    licence to anyone else. Removing it is what a fork must do.
+    Drawing credited to: ________________________  (to be filled in)
   - The wallpapers.
   - The Trash icon artwork.
   - The boot and welcome audio.
@@ -124,9 +130,18 @@ is why one unconfirmed source file puts dozens of files in doubt.
 
 SOURCE ASSETS — the files everything else is built from
 
+CONFIRMED BY THE OWNER — 2026-10-20
+
+| File | Where it came from | Status |
+|---|---|---|
+| `assets/branding/logo-source.jpg` (716x749) | **Owner-confirmed.** The "OK hand" is the Bashan app logo and a Druze community symbol; Bashan Tech LLC is entitled to use it. Drawing's creator still to be named — see section 2. | Proprietary, all rights reserved. Ships in public builds. |
+| `config/bootloaders/isolinux/splash.png`, `config/bootloaders/grub-pc/splash.png` | The hand above, composited over `bashan-ridge`, which `scripts/22-wallpaper.py` draws from code. Both inputs are ours. | Proprietary, all rights reserved. Ships in public builds. |
+| Everything generated from the hand: Plymouth logos, the GRUB, SDDM and installer logos, the installer banner, the app icons, `default-face.png`, `logo-ascii.txt` | `scripts/20-bashan-app-icons.py`, `scripts/25-desktop-theme.py`, `scripts/30-boot-branding.py` | Proprietary, all rights reserved. Ship in public builds. |
+
+STILL UNCONFIRMED — the owner must confirm these in writing
+
 | File | Where it came from | Owner must confirm rights? |
 |---|---|---|
-| `assets/branding/logo-source.jpg` (716x749) | Supplied by the owner at the start of the project. No author, licence or purchase record anywhere in the repository. | **YES — UNCONFIRMED** |
 | `assets/reference/trash-icons.jpg` (1280x640) | Supplied by the owner. Named a "reference", but `scripts/21-trash-icons.py` cuts the shipped Trash icons straight out of it — its own comment says the icons "keep exactly the artwork from the reference". It is source artwork, not a reference. | **YES — UNCONFIRMED** |
 | `assets/reference/dock-reference.jpg` (1280x853) | Supplied by the owner. No script reads it; it appears to be a visual reference only and nothing derived from it ships. | **YES — UNCONFIRMED** (but nothing ships from it; deleting it costs nothing) |
 | `assets/audio/boot-song.mp3` (103 KB) | Supplied by the owner. No author, title or licence metadata; re-encoded with ffmpeg, which erased anything that may have been there. | **YES — UNCONFIRMED. This is blocker #1.** |
@@ -164,9 +179,16 @@ OUR OWN WORK — drawn procedurally by our scripts, no third-party input
 | `branding/plymouth/bashan/background.png`, `branding/grub/bashan/background.png`, `branding/sddm/bashan/background.png`, `installer/branding/bashan/slide-bg.png` | `scripts/30-boot-branding.py`, from the ridge wallpaper above | No |
 | The two GRUB `.pf2` fonts | generated from a Debian-supplied font; the font's own licence applies — see NOTICES.md | No |
 
-SUMMARY: seven source files need the owner's written confirmation, and
-roughly ninety generated files depend on them. The audio and the default
-wallpaper are the two that stop a release.
+SUMMARY: as of 2026-10-20, SIX source files still need the owner's written
+confirmation - the two reference images, the two copies of the audio, and the
+mountain photograph in its three sizes (counted once). The audio and the
+mountain wallpaper, which carries the Arabic wordmark, are the two that stop
+a release.
+
+The hand mark came off this list on 2026-10-20 on the owner's confirmation.
+It is proprietary to Bashan Tech LLC and excluded from the MIT grant, and it
+now ships in public builds. One thing is still missing: the name of whoever
+drew it. Section 2 has a line for it.
 
 
 -------------------------------------------------------------------------

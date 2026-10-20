@@ -192,5 +192,21 @@ you received, so the exact package versions can be identified.
 ## Bashan Tech LLC's own work
 
 The build scripts and configuration are under the licence in `LICENSE`. The
-Bashan name, logo, wallpapers, Trash artwork and audio are **not** open
-licensed and are excluded from it; see `LICENSE` section 2.
+Bashan name, the hand mark, the wallpapers, the Trash artwork and the audio
+are **not** open licensed and are excluded from it; see `LICENSE` section 2.
+
+### The hand mark
+
+The "OK hand" that appears in the boot menu, the startup splash, the login
+avatar, the dock, the installer and the welcome window is the **brand mark of
+Bashan Tech LLC**. It is also the Bashan app's logo and a Druze community
+symbol, and Bashan Tech LLC is entitled to use it. Origin: **owner-confirmed,
+2026-10-20.**
+
+Drawing credited to: ________________________ *(to be filled in)*
+
+It is **all rights reserved** and excluded from the open licence on the code.
+It being present in a published ISO is a decision about distributing Bashan
+OS, not permission for anyone else to use the mark. A fork must remove it and
+supply its own; `PLACEHOLDER_ASSETS=yes` no longer does that for you, because
+the mark is now intended to ship.

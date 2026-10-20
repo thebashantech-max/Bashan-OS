@@ -1,0 +1,41 @@
+#!/bin/sh
+# Bashan OS — put the hand on the login screen.
+#
+# The login screen showed Breeze's grey silhouette, not the Bashan mark, in
+# every build up to 17c. Two separate faults:
+#
+#   1. 0200-boot-branding.hook.chroot copies default-face.png to
+#      /etc/skel/.face.icon behind "if [ -f ... ]". At hook 0200 the branding
+#      files are not in the chroot yet, so the test was false and it silently
+#      did nothing. /etc/skel/.face.icon was never in the image at all.
+#
+#   2. Even with it there, SDDM does not read ~/.face.icon. It takes avatars
+#      from /usr/share/sddm/faces/, falling back to the dotfile name in that
+#      directory for any user without one of their own.
+#
+# So the mark goes in SDDM's own faces directory, where one file covers every
+# user and no per-user step is needed at install time. The copies are
+# diverted so a package upgrade cannot put the silhouette back.
+set -e
+
+SRC=/usr/share/bashan/default-face.png
+[ -f "$SRC" ] || { echo "E: $SRC missing; the login avatar cannot be set" >&2; exit 1; }
+
+# A user's own avatar, for anyone created from skel.
+install -D -m 0644 "$SRC" /etc/skel/.face.icon
+
+for real in /usr/share/sddm/faces/.face.icon \
+            /usr/share/sddm/themes/breeze/faces/.face.icon; do
+    [ -e "$real" ] || [ -d "$(dirname "$real")" ] || continue
+    if ! dpkg-divert --list "$real" 2>/dev/null | grep -q .; then
+        dpkg-divert --local --rename --divert "$real.distrib" --add "$real" >/dev/null
+    fi
+    install -D -m 0644 "$SRC" "$real"
+done
+
+# Prove it, rather than trusting the copies above.
+for f in /etc/skel/.face.icon /usr/share/sddm/faces/.face.icon; do
+    [ -f "$f" ] || { echo "E: $f was not created" >&2; exit 1; }
+    cmp -s "$SRC" "$f" || { echo "E: $f is not the Bashan avatar" >&2; exit 1; }
+done
+echo "I: login avatar set to the Bashan mark (skel + SDDM faces, diverted)"
