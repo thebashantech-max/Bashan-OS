@@ -119,18 +119,24 @@ def main() -> int:
     # The installer's banner is a wide strip across the top of every page.
     # A plain gradient there just reads as a blank band, so it gets the
     # product name set in it - no logo, nothing from the unconfirmed art.
+    # 920x140 is the size the real banner is drawn at. Calamares scales the
+    # image to fill the strip and crops the overflow, so a different aspect
+    # ratio loses the edges: a 1024x128 version came out reading "shan OS".
+    # Centred text survives a crop from either side.
     banner = share / "calamares/branding/bashan/banner.png"
     if banner.parent.is_dir():
-        im = backdrop(1024, 128)
+        bw, bh = 920, 140
+        im = backdrop(bw, bh)
         d = ImageDraw.Draw(im)
         try:
             f = ImageFont.truetype(
-                "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 40)
+                "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 44)
         except OSError:
             f = ImageFont.load_default()
         box = d.textbbox((0, 0), "Bashan OS", font=f)
-        d.text((48, (128 - box[3] + box[1]) / 2 - box[1]), "Bashan OS",
-               font=f, fill=INK)
+        d.text(((bw - box[2] + box[0]) / 2 - box[0],
+                (bh - box[3] + box[1]) / 2 - box[1]),
+               "Bashan OS", font=f, fill=INK)
         im.save(banner, "PNG", optimize=True)
         n += 1
 
