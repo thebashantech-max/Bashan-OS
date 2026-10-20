@@ -117,6 +117,16 @@ def main() -> int:
             backdrop(w, h).save(p, "PNG", optimize=True)
             n += 1
 
+    # fastfetch prints an ASCII rendering of the hand logo in every terminal.
+    # It is text, so the image sweep above walks straight past it - it reached
+    # a finished public ISO once before this was noticed.
+    ascii_logo = share / "bashan/logo-ascii.txt"
+    if ascii_logo.parent.is_dir():
+        ascii_logo.write_text(
+            "\n".join(["", "   ####### ", "   ##    ##", "   ####### ",
+                        "   ##    ##", "   ####### ", ""]) + "\n")
+        n += 1
+
     # The ISO boot menu splashes, which are committed by hand and unexplained.
     for p, w, h in [(tree / "config/bootloaders/isolinux/splash.png", 640, 480),
                     (tree / "config/bootloaders/grub-pc/splash.png", 1920, 1080)]:
