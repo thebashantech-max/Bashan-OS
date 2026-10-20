@@ -1,0 +1,47 @@
+#!/bin/sh
+# Bashan OS - put the login screen back if it dies on its way up.
+#
+# SDDM has a failure that ends with a black screen and no way in: the
+# greeter starts, exits a fraction of a second later, and SDDM sits there
+# doing nothing. It happened on about three boots in four before
+# DisplayServer was changed to rootful x11. That change should remove the
+# cause; this removes the consequence, whatever the cause turns out to be
+# on hardware we have not seen.
+#
+# The rule: if the greeter session opens and closes again within GRACE
+# seconds, restart sddm. Give up after MAX_TRIES so a machine that truly
+# cannot start a display server does not sit in a restart loop - better a
+# black screen with a text console than one that reboots forever.
+set -eu
+
+GRACE=5          # a greeter that dies this fast never showed anything
+MAX_TRIES=3
+SETTLE=4         # let sddm finish coming up before judging it
+
+log() { logger -t bashan-greeter-watchdog "$@"; echo "$@"; }
+
+tries=0
+while [ "$tries" -lt "$MAX_TRIES" ]; do
+    sleep "$SETTLE"
+
+    # Follow sddm's own journal and look for a greeter that opened and then
+    # closed. --since is relative to now, so each pass only judges itself.
+    opened=$(journalctl -u sddm --since "-${SETTLE}s" -o cat 2>/dev/null \
+             | grep -c "Greeter session started successfully" || true)
+    [ "$opened" -gt 0 ] || continue
+
+    sleep "$GRACE"
+    dead=$(journalctl -u sddm --since "-$((SETTLE + GRACE))s" -o cat 2>/dev/null \
+           | grep -cE "Greeter stopped|Failed to read display number" || true)
+    if [ "$dead" -eq 0 ]; then
+        log "greeter survived $GRACE s; nothing to do"
+        exit 0
+    fi
+
+    tries=$((tries + 1))
+    log "greeter died within $GRACE s of starting (attempt $tries of $MAX_TRIES); restarting sddm"
+    systemctl restart sddm || true
+done
+
+log "greeter failed $MAX_TRIES times; leaving it alone. Use Ctrl+Alt+F2 for a text console."
+exit 0

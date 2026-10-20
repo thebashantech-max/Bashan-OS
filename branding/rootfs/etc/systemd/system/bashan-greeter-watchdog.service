@@ -1,0 +1,16 @@
+[Unit]
+Description=Restart the login screen if its greeter dies on startup
+After=sddm.service
+Wants=sddm.service
+# Only where a graphical login is wanted at all.
+ConditionPathExists=/usr/bin/sddm
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/bashan/bashan-greeter-watchdog
+# It watches, waits and exits; it must never hold up the boot.
+TimeoutStartSec=60
+RemainAfterExit=no
+
+[Install]
+WantedBy=graphical.target

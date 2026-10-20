@@ -62,6 +62,18 @@ iso_throttle() {
   [ "$ISO_IOPS" != 0 ] && printf ',throttling.iops-read=%s,throttling.iops-read-max=%s' "$ISO_IOPS" "$ISO_IOPS"
   return 0
 }
+# Which virtual graphics card. The SDDM black screen was a display-server
+# fault, so it has to be proved against more than one of these.
+#   virtio-vga (default) - virtio-gpu with a VGA compatibility mode
+#   std                  - plain Bochs/VGA, the dumbest option there is
+#   qxl                  - the SPICE card, a different kernel driver again
+case "${BASHAN_VM_GPU:-virtio-vga}" in
+  virtio-vga) GPU_DEV="virtio-vga" ;;
+  std)        GPU_DEV="VGA" ;;
+  qxl)        GPU_DEV="qxl-vga" ;;
+  *) echo "E: unknown BASHAN_VM_GPU '${BASHAN_VM_GPU}' (virtio-vga|std|qxl)" >&2; exit 1 ;;
+esac
+
 BASHAN_DISK="${BASHAN_DISK:-other-os.img}"
 
 mkdir -p "$VM" "$SHOTS"
@@ -129,7 +141,7 @@ cmd_boot() {
     nohup qemu-system-x86_64 \
       -name "bashan-vm" \
       -machine "q35,accel=kvm,smm=on" -cpu host -smp 2 -m "$RAM_MB" \
-      -device "virtio-vga" -display none -vnc ":9" \
+      -device "$GPU_DEV" -display none -vnc ":9" \
       -device "qemu-xhci,id=xhci" -device "usb-tablet,bus=xhci.0" -device "virtio-keyboard-pci" \
       -netdev "user,id=net0" -device "virtio-net-pci,netdev=net0" \
       -monitor "unix:$MON,server,nowait" \
@@ -164,7 +176,7 @@ cmd_boot() {
   local -a args=(
     -name "bashan-vm"
     -machine "q35,accel=kvm" -cpu host -smp 2 -m "$RAM_MB"
-    -device "virtio-vga" -display none -vnc ":9"
+    -device "$GPU_DEV" -display none -vnc ":9"
     -device "qemu-xhci,id=xhci" -device "usb-tablet,bus=xhci.0" -device "virtio-keyboard-pci" \
       -netdev "user,id=net0" -device "virtio-net-pci,netdev=net0"
     # A file sink, not a socket: nothing was ever connected to the socket,

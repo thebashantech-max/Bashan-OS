@@ -111,11 +111,28 @@ def main() -> int:
         (inc / "boot/grub/themes/bashan/background.png", 1920, 1080),
         (share / "sddm/themes/bashan/background.png", 1920, 1080),
         (share / "calamares/branding/bashan/slide-bg.png", 1024, 640),
-        (share / "calamares/branding/bashan/banner.png", 1024, 128),
     ]:
         if p.parent.is_dir():
             backdrop(w, h).save(p, "PNG", optimize=True)
             n += 1
+
+    # The installer's banner is a wide strip across the top of every page.
+    # A plain gradient there just reads as a blank band, so it gets the
+    # product name set in it - no logo, nothing from the unconfirmed art.
+    banner = share / "calamares/branding/bashan/banner.png"
+    if banner.parent.is_dir():
+        im = backdrop(1024, 128)
+        d = ImageDraw.Draw(im)
+        try:
+            f = ImageFont.truetype(
+                "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 40)
+        except OSError:
+            f = ImageFont.load_default()
+        box = d.textbbox((0, 0), "Bashan OS", font=f)
+        d.text((48, (128 - box[3] + box[1]) / 2 - box[1]), "Bashan OS",
+               font=f, fill=INK)
+        im.save(banner, "PNG", optimize=True)
+        n += 1
 
     # fastfetch prints an ASCII rendering of the hand logo in every terminal.
     # It is text, so the image sweep above walks straight past it - it reached

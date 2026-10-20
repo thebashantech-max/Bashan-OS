@@ -1,0 +1,40 @@
+#!/bin/sh
+# Bashan OS — the login screen must actually appear.
+#
+# DisplayServer=wayland shipped in Build 17b and left a black screen with no
+# way in on about three boots in four. The Wayland greeter failed every
+# time (SDDM's compositor default is weston, which we do not ship), SDDM
+# fell back to rootless x11-user, and that failed intermittently with
+# "Failed to read display number from pipe". Rootful x11 has no fallback to
+# go wrong.
+#
+# This hook stops that setting coming back by accident, and makes sure the
+# watchdog that recovers from it is installed and enabled.
+set -e
+
+CONF=/etc/sddm.conf.d/10-bashan.conf
+[ -f "$CONF" ] || { echo "E: $CONF missing from the image" >&2; exit 1; }
+
+ds=$(sed -n 's/^DisplayServer=[[:space:]]*//p' "$CONF" | tr -d '[:space:]')
+case "$ds" in
+    x11) echo "I: login screen uses rootful X11" ;;
+    "")  echo "E: DisplayServer is not set in $CONF" >&2; exit 1 ;;
+    *)   echo "E: DisplayServer is '$ds'. Only 'x11' is known to work." >&2
+         echo "E: 'wayland' shipped once and gave a black screen on most" >&2
+         echo "E: boots; 'x11-user' is the fallback that actually fails." >&2
+         exit 1 ;;
+esac
+
+# An unset CompositorCommand points at weston, which is not in the image.
+grep -q '^CompositorCommand=' "$CONF" \
+    || { echo "E: CompositorCommand unset; SDDM would default to weston" >&2; exit 1; }
+comp=$(sed -n 's/^CompositorCommand=[[:space:]]*//p' "$CONF" | awk '{print $1}')
+command -v "$comp" >/dev/null 2>&1 \
+    || { echo "E: CompositorCommand names '$comp', which is not installed" >&2; exit 1; }
+echo "I: greeter compositor '$comp' exists"
+
+W=/usr/libexec/bashan/bashan-greeter-watchdog
+[ -x "$W" ] || { echo "E: $W missing or not executable" >&2; exit 1; }
+[ -e /etc/systemd/system/graphical.target.wants/bashan-greeter-watchdog.service ] \
+    || { echo "E: the greeter watchdog is not enabled" >&2; exit 1; }
+echo "I: greeter watchdog installed and enabled"

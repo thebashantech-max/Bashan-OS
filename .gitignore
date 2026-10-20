@@ -5,7 +5,10 @@
 # they can capture whatever happened to be on the screen.
 build/
 
-# Chroots and caches, wherever they end up
+# Caches and disk images, wherever they end up. There is deliberately no
+# bare "chroot/" rule: it matched hooks/chroot/ as well, so every hook file
+# added after it was silently untracked. build/ already covers the real
+# live-build chroot.
 *.iso
 *.iso.sha256
 *.img
@@ -13,7 +16,6 @@ build/
 *.qcow2
 *.vmdk
 *.fd
-chroot/
 .cache/
 __pycache__/
 *.pyc

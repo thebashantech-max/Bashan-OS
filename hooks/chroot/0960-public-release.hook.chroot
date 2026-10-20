@@ -1,0 +1,84 @@
+#!/bin/sh
+# Bashan OS — a public build must not carry anything we cannot give away.
+#
+# config/build.conf already refuses to run live-build when the song is asked
+# for and PUBLIC_RELEASE is yes. That guard reads two variables; it cannot
+# see what actually ended up inside the image. A stale chroot, a second copy
+# path, or someone dropping a file into config/includes.chroot by hand all
+# get past it.
+#
+# This one looks at the image. It runs on every build and only refuses when
+# PUBLIC_RELEASE=yes, so a private test build is unaffected.
+#
+# BASHAN_PUBLIC_ROOT lets test/public-release-selftest.sh point the whole
+# check at a fake tree. It is empty in a real build, so every path below is
+# absolute inside the chroot exactly as before.
+set -e
+
+R="${BASHAN_PUBLIC_ROOT:-}"
+FLAGS="$R/usr/share/bashan/build-flags"
+LIST="$R/usr/share/bashan/unconfirmed-assets.sha256"
+
+[ -r "$FLAGS" ] || { echo "E: $FLAGS missing; the build cannot tell whether this is a public release" >&2; exit 1; }
+# shellcheck disable=SC1090  # a generated key=value file, not a script
+. "$FLAGS"
+
+if [ "${PUBLIC_RELEASE:-no}" != "yes" ]; then
+    echo "I: private test build; public-release checks not applied"
+    rm -f "$LIST"
+    exit 0
+fi
+
+echo "I: PUBLIC RELEASE - checking the image carries nothing unreleasable"
+fail=0
+
+# 1. The audio, by name, wherever it landed. Checked by FILE, not by flag.
+songs=$(find "$R/" -xdev \( -path "$R/proc" -o -path "$R/sys" -o -path "$R/run" \) -prune -o \
+    -type f \( -iname 'boot-song*' -o -iname '*welcome-song*' \) -print 2>/dev/null || true)
+if [ -n "$songs" ]; then
+    echo "E: a public build must not contain the boot song, and these exist:" >&2
+    echo "$songs" | sed 's/^/E:   /' >&2
+    echo "E: the rights to that recording are unconfirmed (LICENSE 2b)." >&2
+    fail=1
+else
+    echo "I: no boot song in the image"
+fi
+
+# 2. Anything still listed as unconfirmed needs the placeholder art switched
+#    on. Confirming the rights means deleting that asset's line from the list.
+if [ -s "$LIST" ] && grep -qv '^#' "$LIST"; then
+    n=$(grep -cv '^#' "$LIST" || true)
+    if [ "${PLACEHOLDER_ASSETS:-no}" != "yes" ]; then
+        echo "E: $n asset(s) still have unconfirmed rights and the real" >&2
+        echo "E: artwork is being shipped. Either set PLACEHOLDER_ASSETS=yes," >&2
+        echo "E: or confirm the rights and remove those lines from" >&2
+        echo "E: config/unconfirmed-assets.sha256." >&2
+        fail=1
+    else
+        echo "I: $n asset(s) unconfirmed; neutral placeholders are in use"
+    fi
+
+    # 3. Belt and braces: none of those files may be in the image byte for
+    #    byte, placeholders or not.
+    hits=$(find "$R/usr/share/bashan" "$R/usr/share/wallpapers" "$R/usr/share/icons" \
+        "$R/usr/share/plymouth" "$R/usr/share/sddm" "$R/usr/share/calamares" "$R/boot/grub" \
+        -type f 2>/dev/null | while read -r f; do
+            h=$(sha256sum "$f" | cut -d' ' -f1)
+            if grep -q "^$h  " "$LIST"; then echo "$f"; fi
+        done)
+    if [ -n "$hits" ]; then
+        echo "E: these files in the image are byte-identical to assets whose" >&2
+        echo "E: rights are unconfirmed:" >&2
+        echo "$hits" | sed 's/^/E:   /' >&2
+        fail=1
+    else
+        echo "I: no unconfirmed artwork reached the branded directories"
+    fi
+fi
+
+# The list is a record of our own open questions; it does not belong in a
+# published image.
+rm -f "$LIST"
+
+[ "$fail" = 0 ] || { echo "E: refusing to build a public release from this tree" >&2; exit 1; }
+echo "I: public-release checks passed"
