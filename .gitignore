@@ -1,11 +1,22 @@
-# Build output and scratch
-build/work/
-build/out/
-build/logs/
+# Nothing under build/ is source. It is all produced by ./build.sh or the
+# QEMU harness and can be regenerated: ISOs, the live-build chroot, VM disks
+# and firmware variables, logs, screenshots and the approval previews.
+# Screenshots in particular are test evidence, not code - they are large and
+# they can capture whatever happened to be on the screen.
+build/
+
+# Chroots and caches, wherever they end up
 *.iso
 *.iso.sha256
 *.img
 *.squashfs
+*.qcow2
+*.vmdk
+*.fd
+chroot/
+.cache/
+__pycache__/
+*.pyc
 
 # Bashan app source/archive: never in git, never in the ISO
 assets/apps/
@@ -16,16 +27,25 @@ assets/_extra-copies/
 # Secrets
 *.key
 *.pem
+*.p12
+*.pfx
 *.gpg
 *.asc
+*.keystore
+id_rsa
+id_ed25519
 secrets/
 .env
 .env.*
+
+# ...except these two, which are PUBLIC apt signing keys. They are not
+# secrets: they are how apt verifies Brave's and Google's packages, and the
+# build needs them. Without this exception the *.key rule above silently
+# drops them and the archives stop verifying.
+!config/archives/brave-browser.key
+!config/archives/google-chrome.key.binary
 
 # Editor / OS noise
 *~
 .*.swp
 .DS_Store
-
-# VM scratch: firmware vars and serial logs churn on every boot
-build/vm/

@@ -1,0 +1,18 @@
+# Assets whose redistribution rights nobody has written down.
+# See LICENSE section 2b. hooks/chroot/0960-public-release.hook.chroot
+# refuses to finish a PUBLIC_RELEASE=yes build while this list has
+# entries and PLACEHOLDER_ASSETS is not yes, and refuses outright if
+# any of these files reaches the image byte for byte.
+#
+# Confirming the rights to one of these means DELETING its line here,
+# which is a reviewable act. Do not edit it any other way.
+7d974934f052c87e5bee075194135e8515cd71bfa3b7f6cc04adfd5f20e278bf  assets/branding/logo-source.jpg
+2f16ececa07511fd125145e68835e9d88b8a9f76ec0ad57805163ef030a0ff38  assets/reference/trash-icons.jpg
+b58d653f5077e33c2e7d847d940e0bf22c562548c7f8cbcbd0f010ffb59a2531  assets/reference/dock-reference.jpg
+f89cc795e1b75ec61156168cb77778f1ac714dd2bf0d08d7153fbd47223bb68f  assets/audio/boot-song.mp3
+14320f397dbcdd303b834e32fe76a61127587b6d018d74563e5d0da6090b6aa7  branding/boot-song/boot-song.wav
+a35ed68db44d7654e1f3203bc055c92833079a49c609eae04e7ba25b53c038ac  theme/wallpapers/bashan-mountain-original-1280x1024.png
+2f06c7be1395064289fdaaac6312fc23b7adc7e944fdc09a6cd314d1225e7c49  theme/wallpapers/bashan-mountain-16x9-native.png
+93cef8c249aa32f901a926d839daa2dee7a589877b191698833febb32e549c31  theme/wallpapers/bashan-mountain-1920x1080.png
+55c6237299d8107e6ee3e8d7a384b51d8ffe32862b052adae22826a248d08653  config/bootloaders/isolinux/splash.png
+fc2140b4ed3ef718fd0e2bc885bd5a22741b3454cf97ef3bb21c4c1acc17b44c  config/bootloaders/grub-pc/splash.png

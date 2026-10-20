@@ -1,0 +1,191 @@
+Bashan OS — licensing
+=====================
+
+This file covers three separate things, and they are NOT under the same
+terms:
+
+  1. The build scripts and configuration in this repository — open source.
+  2. The Bashan artwork, logo, wallpapers and audio — NOT open source.
+  3. The thousands of programs that make up the operating system — each
+     keeps its own licence. See NOTICES.md.
+
+Read all three sections before redistributing anything.
+
+
+-------------------------------------------------------------------------
+1. THE CODE IN THIS REPOSITORY
+-------------------------------------------------------------------------
+
+Which licence to choose, in plain words
+---------------------------------------
+
+Two licences were considered for the scripts and configuration. The
+difference matters only to someone who takes this code and changes it.
+
+MIT
+  Anyone may use the code for anything, including in a closed commercial
+  product, as long as they keep the copyright notice. They are not required
+  to publish their changes. It is short, it is understood everywhere, and it
+  creates no obligations for Bashan Tech LLC.
+
+GPL-3.0
+  Anyone may use and change the code, but if they distribute a product built
+  from it, they must publish their changed source under the GPL as well. It
+  keeps improvements in the open. The cost is that it reaches further than
+  people expect: it can complicate combining this code with proprietary code
+  later, including Bashan Tech LLC's own.
+
+RECOMMENDATION: MIT.
+
+The reasoning: this repository is a recipe for assembling Debian packages,
+not the operating system itself. The parts that genuinely matter to software
+freedom — the kernel, the desktop, the browser, the office suite — are
+already GPL, LGPL and MPL, and nothing here can weaken that. Choosing GPL-3.0
+for the recipe would add obligations for Bashan Tech LLC and for anyone
+adapting the build, while protecting software that is already protected by
+its own authors' licences. MIT gives the recipe away cleanly and keeps the
+brand protected separately, in section 2, which is where the real value is.
+
+Note what neither choice does: it does NOT change the licence of the
+operating system produced by this build. The ISO contains GPL software and
+carries GPL obligations regardless of what this file says. See section 3.
+
+THIS IS NOT LEGAL ADVICE. The owner of Bashan Tech LLC must confirm the
+choice. Switching to GPL-3.0 later means replacing the text below; it does
+not require changing any other file.
+
+The grant
+---------
+
+MIT License
+
+Copyright (c) 2026 Bashan Tech LLC
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+What the grant covers: the shell scripts, Python scripts, live-build
+configuration, Calamares configuration, hooks, package lists, QML, desktop
+files, translations authored for this project, and documentation.
+
+What it does NOT cover: everything listed in section 2.
+
+
+-------------------------------------------------------------------------
+2. THE BASHAN BRAND ASSETS — ALL RIGHTS RESERVED
+-------------------------------------------------------------------------
+
+The following are proprietary to Bashan Tech LLC and are NOT licensed under
+the MIT License above:
+
+  - The name "Bashan OS", the name "Bashan Tech LLC", and the Arabic
+    wordmark.
+  - The hand logo, in every size and every derived form.
+  - The wallpapers.
+  - The Trash icon artwork.
+  - The boot and welcome audio.
+  - The Plymouth, GRUB, SDDM and installer branding built from the above.
+
+Copyright (c) 2026 Bashan Tech LLC. All rights reserved.
+
+No permission is granted to copy, modify or redistribute these assets, and
+no trademark rights are granted. If you fork this project, you must remove
+them and supply your own. The build has a switch for exactly this purpose:
+see `PLACEHOLDER_ASSETS` in `config/build.conf`.
+
+
+-------------------------------------------------------------------------
+2b. ASSET INVENTORY — WHAT MUST BE CONFIRMED BEFORE PUBLISHING
+-------------------------------------------------------------------------
+
+"Origin" below records only what the repository itself can prove. Where
+nothing records where a file came from, it is marked UNCONFIRMED. UNCONFIRMED
+does not mean the rights are missing — it means nobody has written down that
+they exist, and the owner of Bashan Tech LLC must confirm them in writing
+before this is published.
+
+Generated files inherit the status of whatever they were generated from. That
+is why one unconfirmed source file puts dozens of files in doubt.
+
+SOURCE ASSETS — the files everything else is built from
+
+| File | Where it came from | Owner must confirm rights? |
+|---|---|---|
+| `assets/branding/logo-source.jpg` (716x749) | Supplied by the owner at the start of the project. No author, licence or purchase record anywhere in the repository. | **YES — UNCONFIRMED** |
+| `assets/reference/trash-icons.jpg` (1280x640) | Supplied by the owner. Named a "reference", but `scripts/21-trash-icons.py` cuts the shipped Trash icons straight out of it — its own comment says the icons "keep exactly the artwork from the reference". It is source artwork, not a reference. | **YES — UNCONFIRMED** |
+| `assets/reference/dock-reference.jpg` (1280x853) | Supplied by the owner. No script reads it; it appears to be a visual reference only and nothing derived from it ships. | **YES — UNCONFIRMED** (but nothing ships from it; deleting it costs nothing) |
+| `assets/audio/boot-song.mp3` (103 KB) | Supplied by the owner. No author, title or licence metadata; re-encoded with ffmpeg, which erased anything that may have been there. | **YES — UNCONFIRMED. This is blocker #1.** |
+| `branding/boot-song/boot-song.wav` (914 KB) | The same recording as above, converted to WAV for playback. | **YES — same recording, same question** |
+| `theme/wallpapers/bashan-mountain-original-1280x1024.png` | Supplied by the owner as an image attachment during Build 16. A photographic image of three people on a mountain. No author or licence recorded. | **YES — UNCONFIRMED. It is the default desktop wallpaper.** |
+| `theme/wallpapers/bashan-mountain-16x9-native.png`, `bashan-mountain-1920x1080.png` | Cropped and scaled from the file above. | **YES — same image** |
+| `config/bootloaders/isolinux/splash.png` (640x480), `config/bootloaders/grub-pc/splash.png` (1920x1080) | Committed by hand in Stage 9. No script produces them and no record says where they came from. | **YES — UNCONFIRMED** |
+
+GENERATED FROM THE LOGO — all inherit the logo's UNCONFIRMED status
+
+| Files | Produced by |
+|---|---|
+| `apps/rootfs/usr/share/icons/hicolor/*/apps/*.png` (18 files) | `scripts/20-bashan-app-icons.py` |
+| `theme/icons/_launcher-light/*/apps/*.png` (9 files) | `scripts/20-bashan-app-icons.py` |
+| `branding/plymouth/bashan/logo-*.png` (5 files) | `scripts/30-boot-branding.py` |
+| `branding/grub/bashan/logo.png`, `branding/sddm/bashan/logo.png` | `scripts/30-boot-branding.py` |
+| `installer/branding/bashan/logo.png`, `welcome.png`, `banner.png` | `scripts/30-boot-branding.py` |
+| `branding/rootfs/usr/share/bashan/default-face.png` | derived from the logo |
+| `theme/rootfs/.../desktoptheme/Bashan*/widgets/panel-background.svg` | `scripts/25-desktop-theme.py`, which reads the logo for its colour |
+
+GENERATED FROM THE TRASH REFERENCE — inherit its UNCONFIRMED status
+
+| Files | Produced by |
+|---|---|
+| `theme/icons/_masters/trash-empty.png`, `trash-full-A.png`, `trash-full-B.png` | `scripts/21-trash-icons.py` |
+| `theme/icons/Bashan-A/*/places/*.png` (16 files) | `scripts/21-trash-icons.py` |
+| `theme/icons/Bashan-B/*/places/*.png` (16 files) | `scripts/21-trash-icons.py` |
+| `theme/icons/_light/*/places/*.png` (16 files) | `scripts/21-trash-icons.py` |
+
+OUR OWN WORK — drawn procedurally by our scripts, no third-party input
+
+| Files | Produced by | Confirm? |
+|---|---|---|
+| `theme/wallpapers/bashan-ridge-*.png` (6 files) | `scripts/22-wallpaper.py` — drawn from code, mathematically, with no source image | No |
+| `branding/plymouth/bashan/background.png`, `branding/grub/bashan/background.png`, `branding/sddm/bashan/background.png`, `installer/branding/bashan/slide-bg.png` | `scripts/30-boot-branding.py`, from the ridge wallpaper above | No |
+| The two GRUB `.pf2` fonts | generated from a Debian-supplied font; the font's own licence applies — see NOTICES.md | No |
+
+SUMMARY: seven source files need the owner's written confirmation, and
+roughly ninety generated files depend on them. The audio and the default
+wallpaper are the two that stop a release.
+
+
+-------------------------------------------------------------------------
+3. THE OPERATING SYSTEM ITSELF
+-------------------------------------------------------------------------
+
+Bashan OS is assembled from Debian. The programs in the ISO are not ours and
+are not covered by this file. Each carries its own licence and copyright
+statement in the running system at:
+
+    /usr/share/doc/<package>/copyright
+
+Most are GPL-2.0, GPL-3.0, LGPL, MPL-2.0, Apache-2.0, MIT or BSD. Some
+firmware is non-free and redistributable only under its own terms.
+
+The GPL requires that source code be available to everyone who receives the
+binaries. See NOTICES.md for the written offer of source code and how to
+obtain it.
+
+Nothing in section 1 or section 2 of this file reduces any right that the
+GPL, LGPL, MPL or any other licence gives you over the software it covers.
+Where this file conflicts with such a licence, that licence wins.

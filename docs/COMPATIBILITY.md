@@ -5,23 +5,29 @@ build tested in a virtual machine and, when the owner reports back, on
 **one** real laptop. Everything below says what has actually been tried and
 what has not.
 
-Last updated: 2026-10-13.
+Last updated: 2026-10-20.
 
 ## What has been tested
 
 | Where | What |
 |---|---|
+| **One real ASUS ROG laptop**, live USB, UEFI | boots, reaches the desktop, desktop usable |
 | QEMU, UEFI with **Secure Boot on** | boots to desktop |
 | QEMU, legacy BIOS | boots to desktop |
-| QEMU | installer runs, safety rules behave |
+| QEMU | installer runs to completion, safety rules behave |
+| QEMU | installed system boots, logs in, locks, shuts down |
 
-**That is the whole list.** Everything was a virtual machine with virtual
-hardware. Virtual hardware always works; it proves the software, not the
-driver support.
+**That is the whole list.** One real machine has booted the live session; no
+real machine has ever had Bashan OS installed to its disk. Everything else
+was a virtual machine with virtual hardware, which always works — it proves
+the software, not the driver support.
+
+Defects found on that laptop were fixed in later builds and **have not been
+re-tested on it**. They were verified in a virtual machine only.
 
 ## What has NOT been tested
 
-- **Any real computer.** Not one, yet.
+- **Installing to a real disk.** Not once, on any machine.
 - Wi-Fi, Bluetooth, sound, touchpad, brightness, sleep and wake on real
   hardware.
 - Any machine other than the one laptop described in

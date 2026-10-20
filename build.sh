@@ -57,7 +57,22 @@ cmd_config() {
   need podman
   podman container exists "$CONTAINER_NAME" || die "no container; run: ./build.sh container"
   podman start "$CONTAINER_NAME" >/dev/null
-  podman exec "$CONTAINER_NAME" bash /work/scripts/10-lb-config.sh 2>&1 | tee -a "$LOG"
+  # podman exec starts with an empty environment, so the release settings
+  # have to be handed over by name or the container silently builds the
+  # private default. This bit someone once: a "public" config run produced a
+  # private tree and said nothing.
+  podman exec \
+    -e "PUBLIC_RELEASE=$PUBLIC_RELEASE" \
+    -e "PLACEHOLDER_ASSETS=$PLACEHOLDER_ASSETS" \
+    -e "INCLUDE_BOOT_SONG=$INCLUDE_BOOT_SONG" \
+    -e "TRASH_VARIANT=$TRASH_VARIANT" \
+    -e "ISO_NAME=$ISO_NAME" \
+    "$CONTAINER_NAME" bash /work/scripts/10-lb-config.sh 2>&1 | tee -a "$LOG"
+  # Drawn on the host, because the build container has no Pillow. The lb
+  # tree is bind-mounted, so the container sees the result on its next step.
+  if [ "$PLACEHOLDER_ASSETS" = "yes" ]; then
+    "$ROOT/scripts/26-placeholder-art.py" "$ROOT/build/work/lb" 2>&1 | tee -a "$LOG"
+  fi
 }
 
 cmd_in() {  # run a command inside the build container
@@ -140,6 +155,14 @@ cmd_test() {
   "$ROOT/test/verify-install-selftest.sh" \
       "$ROOT/branding/rootfs/usr/libexec/bashan/bashan-verify-install" 2>&1 | tee -a "$LOG"
   log "installed-system verifier self-check passed"
+
+  # A public release must not carry the boot song or any artwork whose
+  # rights nobody wrote down. The flag check in 10-lb-config.sh reads two
+  # variables; this one reads the image.
+  log "public-release guard self-check"
+  "$ROOT/test/public-release-selftest.sh" \
+      "$ROOT/hooks/chroot/0960-public-release.hook.chroot" 2>&1 | tee -a "$LOG"
+  log "public-release guard self-check passed"
 
   # The approved Trash artwork was correct and still never drawn: every icon
   # directory was Type=Fixed, so in-between sizes fell back to breeze.

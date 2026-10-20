@@ -174,12 +174,26 @@ cp -a "$ROOT/theme/wallpapers/bashan-ridge-1920x1080.png" \
 # 1080p screen it is a 1.5x enlargement of a 1280-wide original and will look
 # softer than a native shot. The untouched original ships alongside it.
 mkdir -p "$inc/wallpapers/BashanMountain/contents/images"
-cp -a "$ROOT/theme/wallpapers/bashan-mountain-1920x1080.png" \
-      "$inc/wallpapers/BashanMountain/contents/images/1920x1080.png"
-cp -a "$ROOT/theme/wallpapers/bashan-mountain-16x9-native.png" \
-      "$inc/wallpapers/BashanMountain/contents/images/1280x720.png"
-cp -a "$ROOT/theme/wallpapers/bashan-mountain-original-1280x1024.png" \
-      "$inc/wallpapers/BashanMountain/contents/images/1280x1024.png"
+if [ "${PLACEHOLDER_ASSETS:-no}" = "yes" ]; then
+  # The mountain photograph's origin is unconfirmed, so a placeholder build
+  # fills the same package with the ridge art, which is drawn from code.
+  # The package keeps its name because the layouts name it by id.
+  echo "I: placeholder: default wallpaper is the generated ridge, not the photo"
+  cp -a "$ROOT/theme/wallpapers/bashan-ridge-1920x1080.png" \
+        "$inc/wallpapers/BashanMountain/contents/images/1920x1080.png"
+  cp -a "$ROOT/theme/wallpapers/bashan-ridge-1920x1080.png" \
+        "$inc/wallpapers/BashanMountain/contents/images/1280x720.png"
+  cp -a "$ROOT/theme/wallpapers/bashan-ridge-1920x1080.png" \
+        "$inc/wallpapers/BashanMountain/contents/images/1280x1024.png"
+  rm -f "$inc"/wallpapers/Bashan/contents/images/bashan-mountain-*.png
+else
+  cp -a "$ROOT/theme/wallpapers/bashan-mountain-1920x1080.png" \
+        "$inc/wallpapers/BashanMountain/contents/images/1920x1080.png"
+  cp -a "$ROOT/theme/wallpapers/bashan-mountain-16x9-native.png" \
+        "$inc/wallpapers/BashanMountain/contents/images/1280x720.png"
+  cp -a "$ROOT/theme/wallpapers/bashan-mountain-original-1280x1024.png" \
+        "$inc/wallpapers/BashanMountain/contents/images/1280x1024.png"
+fi
 cat > "$inc/wallpapers/BashanMountain/metadata.json" <<'WALLPAPER'
 {
     "KPlugin": {
@@ -247,6 +261,19 @@ VENDOR_NAME="$OS_PUBLISHER"
 EOF
 # Debian ships /etc/os-release as a symlink into /usr/lib; keep that shape.
 ln -sf ../usr/lib/os-release config/includes.chroot/etc/os-release
+
+# How this ISO was built, for the hooks that run inside the chroot. They
+# cannot see the host's environment, so the settings have to travel with the
+# image. 0960-public-release.hook.chroot reads this.
+mkdir -p "$inc/bashan"
+cat > "$inc/bashan/build-flags" <<EOF
+PUBLIC_RELEASE="${PUBLIC_RELEASE:-no}"
+PLACEHOLDER_ASSETS="${PLACEHOLDER_ASSETS:-no}"
+INCLUDE_BOOT_SONG="${INCLUDE_BOOT_SONG:-no}"
+TRASH_VARIANT="${TRASH_VARIANT:-B}"
+BUILD_DATE="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+EOF
+cp -a "$ROOT/config/unconfirmed-assets.sha256" "$inc/bashan/"
 
 cat > config/includes.chroot/etc/issue <<EOF
 $OS_NAME $OS_VERSION \\n \\l
@@ -327,6 +354,19 @@ cp -a "$variant" "$inc/icons/Bashan-Light"
 # names. The dark theme above keeps the reference artwork untouched.
 cp -a "$ROOT/theme/icons/_light/." "$inc/icons/Bashan-Light/"
 cp -a "$ROOT/theme/icons/_launcher-light/." "$inc/icons/Bashan-Light/"
+
+# --- neutral placeholders for artwork whose rights are unconfirmed -------
+if [ "${PLACEHOLDER_ASSETS:-no}" = "yes" ]; then
+  # The Trash icons are cut straight out of assets/reference/trash-icons.jpg,
+  # so they go with it. Removing them leaves the themes inheriting Breeze,
+  # which has perfectly good trash icons of its own.
+  find "$inc/icons" -path '*/places/*' -name 'user-trash*.png' -delete
+  echo "I: placeholder: Trash artwork dropped; Breeze's own icons inherit"
+  # The images themselves are drawn on the HOST by build.sh, right after
+  # this script returns: the build container has no Pillow, and every other
+  # art script in this project runs on the host for the same reason.
+fi
+
 find config/includes.chroot -type f | sed 's|^config/includes.chroot|  /|' | sort
 
 echo "I: live-build tree ready"
