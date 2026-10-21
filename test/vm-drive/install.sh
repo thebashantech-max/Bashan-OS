@@ -3,7 +3,7 @@
 # Lives in the repo now: /tmp gets cleaned mid-session and took this with it.
 set -u
 cd ~/Bashan-OS-1.0
-S=/tmp/claude-1000/-home-simple-Bashan-OS-1/97f92a81-c143-4a02-8a75-c567676dcf59/scratchpad
+S="$PWD/test/vm-drive"
 Q=./scripts/50-qemu-test.sh
 MON="$PWD/build/vm/monitor.sock"
 T="${TAG:-X}"
