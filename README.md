@@ -24,6 +24,33 @@ See [NOTICES.md](NOTICES.md).
 
 ---
 
+## Download
+
+**This is a Public Preview.** It has been tested on one laptop and in virtual
+machines, and has never been installed to a real disk. Do not put it on a
+computer you depend on, and back up your files first.
+
+| | |
+|---|---|
+| Download | <https://archive.org/details/bashan-os-1-0-public-preview> |
+| SHA256 | `2f7a2c5224762176ee152b4c966d358086e1241924a9274fbab55bdf13d67727` |
+| Size | 3,339,059,200 bytes (about 3.1 GB) |
+
+Check the download before you write it to anything:
+
+```bash
+sha256sum Bashan-OS-1.0-amd64-public.hybrid.iso
+```
+
+If a single character of the result differs from the checksum above, delete
+the file and fetch it again.
+
+[docs/DOWNLOAD.md](docs/DOWNLOAD.md) has the full instructions — what you
+need, how to verify on Windows and macOS, how to write the USB stick with
+Balena Etcher or `dd`, and how to boot it.
+
+---
+
 ## What has actually been tested
 
 ### On real hardware — one machine, live USB only
