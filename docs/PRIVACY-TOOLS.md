@@ -152,5 +152,5 @@ for tor; the others ship no enabled unit.
 
 Tor and VPN tools are ordinary software in most countries and restricted in
 some. Export rules may also apply to distributing cryptographic software.
-Both are recorded in `docs/legal/BLOCKS-PUBLIC-RELEASE.md` as questions for
+Both are recorded in Bashan Tech LLC's internal legal notes (not published) as questions for
 a lawyer. **Nothing here is legal advice.**

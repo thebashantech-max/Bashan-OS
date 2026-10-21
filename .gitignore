@@ -51,3 +51,13 @@ secrets/
 *~
 .*.swp
 .DS_Store
+
+# Artwork and notes whose rights or contents are not for publication.
+# Local-only: kept in ~/bashan-private-assets and staged into private builds
+# by scripts/27-private-assets.sh. A clone builds without them.
+theme/wallpapers/bashan-mountain-*.png
+assets/reference/
+assets/audio/
+branding/boot-song/
+installer/branding/bashan/welcome.png
+docs/legal/BLOCKS-PUBLIC-RELEASE.md

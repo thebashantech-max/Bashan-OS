@@ -90,6 +90,53 @@ graphics card. **It has not been ruled out on real hardware.**
 
 ---
 
+## Known limitations
+
+Read this before you download. None of it is hidden in a tracker.
+
+**Some artwork is a stand-in.** The rights to three pieces are not settled,
+so this release ships plain generated substitutes:
+
+- the desktop wallpaper is a generated mountain ridge, not the photograph
+  that carries the Arabic wordmark **باشان**;
+- the Trash icons are Breeze's, not Bashan's glass artwork;
+- the installer's first page shows a plain panel, not the multilingual
+  welcome panel.
+
+The hand mark — the "OK hand" — *is* the real artwork and is Bashan Tech
+LLC's, all rights reserved.
+
+**The boot song has been removed.** Earlier builds played a short piece of
+music at startup and on the welcome screen. Its rights are not settled, so it
+is not in this ISO: startup is silent and there is no Mute button because
+there is nothing to mute.
+
+**Three translations have never been checked by a speaker.** Kurmanji,
+Sorani and Syriac are machine translations of low confidence, and that
+includes **the installer's warning that a disk is about to be erased**. If
+you read one of those languages, do not rely on the warning text — read the
+English, or check the disk page carefully before pressing Next. The other ten
+languages are higher confidence but are also unreviewed.
+
+**Most testing was in a virtual machine.** One real laptop has booted the USB
+stick. **No machine has ever had Bashan OS installed to a real disk.** Wi-Fi,
+Bluetooth, sound through real speakers, the touchpad, screen brightness, the
+battery, the lid switch, the webcam, suspend and wake, printers and external
+monitors are all untested on real hardware. So is the NVIDIA driver
+installer.
+
+**There is no Bashan update channel yet.** Debian's own updates work
+normally: security updates install automatically in the background, and you
+can install the rest yourself through **Discover**. But fixes to Bashan's
+*own* parts — the branding, the welcome app, the login configuration —
+cannot reach a machine that is already installed. Today the only way to get
+them is to reinstall from a newer ISO. An apt repository to fix this is
+designed but not built; see `docs/APT-REPOSITORY-DESIGN.md`.
+
+**You will not be told when updates exist.** The desktop's update notifier is
+deliberately switched off, so nothing nags you. Security updates still
+install by themselves; anything else waits until you open Discover.
+
 ## System requirements
 
 | | |
@@ -171,7 +218,7 @@ rebuild after it is a full rebuild.
 
 `config/build.conf` has a `PUBLIC_RELEASE` switch. A public build refuses to
 include anything whose redistribution rights are not settled — see
-[LICENSE](LICENSE) and `docs/legal/BLOCKS-PUBLIC-RELEASE.md`.
+[LICENSE](LICENSE) and Bashan Tech LLC's internal legal notes (not published).
 
 ---
 

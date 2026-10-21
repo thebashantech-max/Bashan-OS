@@ -5,7 +5,7 @@ using Bashan OS at risk, please tell us before telling the world.
 
 ## How to report
 
-Email **CONTACT_EMAIL_HERE** with:
+Email **admin@bashan.app** with:
 
 - what the problem is, in as much or as little detail as you have;
 - how to reproduce it, if you know;
@@ -40,10 +40,10 @@ We will credit you when the fix is published unless you ask us not to.
   they will reach far more users that way.
 - Bugs in Brave, Chrome, LibreOffice, KDE or the Linux kernel. Report those
   upstream.
-- **Known, documented limitations.** Several are listed in
-  `docs/legal/BLOCKS-PUBLIC-RELEASE.md` and in the release notes. If it is
-  already written down as a known problem, it is not a new finding — though
-  if you think we have underestimated one, say so.
+- **Known, documented limitations.** Several are listed under "Known
+  limitations" in `README.md` and in the release notes. If it is already
+  written down as a known problem, it is not a new finding — though if you
+  think we have underestimated one, say so.
 
 ## Things you should know already
 

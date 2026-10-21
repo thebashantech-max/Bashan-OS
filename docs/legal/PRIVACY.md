@@ -81,7 +81,7 @@ Measured by scanning each shipped binary, not assumed:
 were read out of the program's binary, not confirmed by running it and
 inspecting the file it writes. It is possible that a version check still
 happens when Converseen starts. This is flagged rather than claimed, and is
-listed in `BLOCKS-PUBLIC-RELEASE.md`.
+listed in Bashan Tech LLC's internal legal notes (not published).
 
 ## What stays on your computer
 
@@ -95,7 +95,7 @@ The welcome application stores whether to show itself again
 Bashan OS has no account system, collects nothing, and is not directed at
 children. **If it is ever supplied to a school, children's-privacy law may
 apply to that supply even though the software collects nothing.** See
-`BLOCKS-PUBLIC-RELEASE.md`.
+Bashan Tech LLC's internal legal notes (not published).
 
 ## Your rights
 

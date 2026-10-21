@@ -18,7 +18,7 @@ years from the date on which you received the binary.**
 
 To request it, write to:
 
-> **CONTACT_EMAIL_HERE**
+> **admin@bashan.app**
 
 Please include the **SHA256 checksum of the ISO you received**, so the exact
 package versions can be identified. The checksum for each release is

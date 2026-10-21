@@ -48,10 +48,16 @@ build_tree yes no
 if run; then bad "real artwork + unconfirmed list fails"; else ok "real artwork + unconfirmed list fails"; fi
 want "and says how to proceed" grep -q "PLACEHOLDER_ASSETS=yes" "$tmp/out"
 
+# A synthetic unconfirmed file, so this case does not depend on which
+# artwork happens to be unconfirmed today. The real ones are local-only now
+# and are not in a clone at all, which is exactly why this has to stand on
+# its own.
 build_tree yes yes
-cp theme/wallpapers/bashan-mountain-1920x1080.png \
-   "$tmp/t/usr/share/wallpapers/1920x1080.png"
-if run; then bad "the mountain wallpaper shipped byte for byte fails"; else ok "the mountain wallpaper shipped byte for byte fails"; fi
+printf 'pretend this is unconfirmed artwork\n' > "$tmp/fake-art.png"
+sha256sum "$tmp/fake-art.png" | sed "s#$tmp/#theme/wallpapers/#" \
+    >> "$tmp/t/usr/share/bashan/unconfirmed-assets.sha256"
+cp "$tmp/fake-art.png" "$tmp/t/usr/share/wallpapers/1920x1080.png"
+if run; then bad "a listed file shipped byte for byte fails"; else ok "a listed file shipped byte for byte fails"; fi
 want "and names it" grep -q "byte-identical" "$tmp/out"
 
 # The hand came OFF the unconfirmed list on 2026-10-20. Shipping it must now

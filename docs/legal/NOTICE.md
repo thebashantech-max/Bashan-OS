@@ -44,7 +44,7 @@ available to anyone who receives the binaries. Debian's source archive
 satisfies this for every package taken unmodified from Debian. **A lawyer
 must confirm whether distributing an ISO requires Bashan Tech LLC to make
 its own written offer of source code, and in what form.** This is listed in
-`BLOCKS-PUBLIC-RELEASE.md`.
+Bashan Tech LLC's internal legal notes (not published).
 
 ## 3. Components that are NOT free software
 
@@ -145,7 +145,7 @@ target is a laptop installed from USB with no network) and a legal one (they
 cause the user's machine to fetch firmware whose terms we have not reviewed
 and do not control).
 
-**Recommendation: remove all five.** Logged in `BLOCKS-PUBLIC-RELEASE.md`.
+**Recommendation: remove all five.** Logged in Bashan Tech LLC's internal legal notes (not published).
 
 ## 4. Browsers
 
@@ -184,7 +184,7 @@ each package's own copyright file after the Part G rebuild.
 
 All six come from Debian main. **Patent questions about the video formats
 they handle are a separate matter** and are recorded in
-`BLOCKS-PUBLIC-RELEASE.md`.
+Bashan Tech LLC's internal legal notes (not published).
 
 ## 6. Original work by Bashan Tech LLC
 
@@ -198,7 +198,7 @@ The Trash icons are derived from artwork supplied by the owner.
 
 **The boot song and the welcome music are of unconfirmed provenance** and
 are excluded from any public release by a build guard. See
-`BLOCKS-PUBLIC-RELEASE.md`.
+Bashan Tech LLC's internal legal notes (not published).
 
 ## 7. Trademarks
 

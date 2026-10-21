@@ -96,17 +96,15 @@ honest status before they see a download link. Leave it that way.
 
 ---
 
-## One thing to decide before making it public
+## Authorship — already settled
 
-Commits in this repository carry two author identities:
+Every commit carries one identity:
 
-- `Mike Hagari <your-github-email@example.com>` — 51 commits
-- `Bashan Tech LLC <thebashantech@gmail.com>` — 12 commits
+```
+Bashan Tech LLC <252811763+thebashantech-max@users.noreply.github.com>
+```
 
-Both become permanently visible. The second is a real, working mailbox that
-will be scraped. If you would rather publish under a role address or a
-GitHub `noreply` address, that has to be changed **before** the first push —
-rewriting authorship afterwards means rewriting every commit again and
-breaking any clone anyone has made.
-
-See `docs/legal/BLOCKS-PUBLIC-RELEASE.md` §12.
+A GitHub `noreply` address, so no personal mailbox is exposed to scraping.
+This was done by rewriting history on 2026-10-20, before the first push.
+**Do not rewrite it again once the repository is public** — it breaks every
+clone anyone has made.

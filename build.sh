@@ -68,10 +68,21 @@ cmd_config() {
     -e "TRASH_VARIANT=$TRASH_VARIANT" \
     -e "ISO_NAME=$ISO_NAME" \
     "$CONTAINER_NAME" bash /work/scripts/10-lb-config.sh 2>&1 | tee -a "$LOG"
-  # Drawn on the host, because the build container has no Pillow. The lb
-  # tree is bind-mounted, so the container sees the result on its next step.
-  if [ "$PLACEHOLDER_ASSETS" = "yes" ]; then
+  # Both of these run on the HOST: the container has no Pillow, and cannot
+  # see a folder outside the repository. The lb tree is bind-mounted, so the
+  # container picks up the result on its next step.
+  #
+  # The stand-in welcome panel is drawn whenever the real one is absent, not
+  # only for public builds - a clone has no real one either.
+  if [ "$PLACEHOLDER_ASSETS" = "yes" ] \
+     || [ ! -f "$ROOT/installer/branding/bashan/welcome.png" ]; then
     "$ROOT/scripts/26-placeholder-art.py" "$ROOT/build/work/lb" 2>&1 | tee -a "$LOG"
+  fi
+  # A private build on the owner's machine then puts the real artwork back.
+  if [ "$PLACEHOLDER_ASSETS" != "yes" ]; then
+    INCLUDE_BOOT_SONG="$INCLUDE_BOOT_SONG" \
+      "$ROOT/scripts/27-private-assets.sh" "$ROOT/build/work/lb" \
+      "${BASHAN_PRIVATE_ASSETS:-$HOME/bashan-private-assets}" 2>&1 | tee -a "$LOG"
   fi
 }
 

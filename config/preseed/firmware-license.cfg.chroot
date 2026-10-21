@@ -12,5 +12,5 @@
 # NOTE FOR THE LAWYER: pre-answering this means Bashan Tech LLC accepts
 # Intel's firmware licence on behalf of every user, silently. Debian's own
 # installer asks the user once instead. Recorded in
-# docs/legal/BLOCKS-PUBLIC-RELEASE.md.
+# Bashan Tech LLC's internal legal notes (not published).
 firmware-ipw2x00 firmware-ipw2x00/license/accepted boolean true

@@ -174,7 +174,16 @@ cp -a "$ROOT/theme/wallpapers/bashan-ridge-1920x1080.png" \
 # 1080p screen it is a 1.5x enlargement of a 1280-wide original and will look
 # softer than a native shot. The untouched original ships alongside it.
 mkdir -p "$inc/wallpapers/BashanMountain/contents/images"
-if [ "${PLACEHOLDER_ASSETS:-no}" = "yes" ]; then
+# The mountain photograph is local-only: its rights are unconfirmed, so it is
+# not in the repository. A clone does not have it, and neither does a public
+# build. Either way the ridge art - drawn from code, ours outright - stands in.
+if [ ! -f "$ROOT/theme/wallpapers/bashan-mountain-1920x1080.png" ] \
+   && [ "${PLACEHOLDER_ASSETS:-no}" != "yes" ]; then
+  echo "I: the mountain wallpaper is not in the tree; using the generated ridge"
+  echo "I:   put it back with ~/bashan-private-assets to build with the photo"
+fi
+if [ "${PLACEHOLDER_ASSETS:-no}" = "yes" ] \
+   || [ ! -f "$ROOT/theme/wallpapers/bashan-mountain-1920x1080.png" ]; then
   # The mountain photograph's origin is unconfirmed, so a placeholder build
   # fills the same package with the ridge art, which is drawn from code.
   # The package keeps its name because the layouts name it by id.
@@ -313,6 +322,10 @@ if [ "${INCLUDE_BOOT_SONG:-no}" = "yes" ]; then
     echo "E: and remove this guard deliberately." >&2
     exit 1
   fi
+  if [ ! -f "$ROOT/branding/boot-song/boot-song.wav" ]; then
+    echo "I: the boot song is not in the tree, so this build has no audio."
+    echo "I:   it is local-only; ~/bashan-private-assets supplies it."
+  else
   cp -a "$ROOT/branding/boot-song/boot-song.wav" "$inc/bashan/"
   echo "W: ================================================================"
   echo "W:  BOOT SONG INCLUDED - PRIVATE TEST BUILD ONLY"
@@ -321,6 +334,7 @@ if [ "${INCLUDE_BOOT_SONG:-no}" = "yes" ]; then
   echo "W:  this ISO publicly. Set INCLUDE_BOOT_SONG=no in config/build.conf"
   echo "W:  to build without it."
   echo "W: ================================================================"
+  fi
 else
   echo "I: boot song omitted (INCLUDE_BOOT_SONG=no); splash still holds"
 fi

@@ -11,6 +11,7 @@ There are four deciders, and they disagree easily:
   contents/defaults     [Wallpaper] and the lock screen, per look-and-feel
   kscreenlockerrc       the lock screen on the installed system
 """
+import os
 import pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -39,10 +40,22 @@ for line in (ROOT / "hooks/rootfs/etc/xdg/kscreenlockerrc").read_text().splitlin
         if line[6:] != WANT:
             fails.append(f"kscreenlockerrc has {line[6:]}")
 
-# And the file itself has to exist, at the size its name claims.
+# The photograph itself is local-only - its rights are unconfirmed, so it is
+# not in the repository and a clone does not have it. Check it where it
+# actually lives if it is present, and say so if it is not. What matters to
+# this test is that every declaration AGREES; the build substitutes the ridge
+# art when the photo is absent.
 src = ROOT / "theme/wallpapers/bashan-mountain-1920x1080.png"
-if not src.is_file():
-    fails.append(f"missing {src.relative_to(ROOT)}")
+private = pathlib.Path(
+    os.environ.get("BASHAN_PRIVATE_ASSETS", pathlib.Path.home() / "bashan-private-assets")
+) / "theme/wallpapers/bashan-mountain-1920x1080.png"
+if src.is_file():
+    print("  the mountain photograph is in the tree")
+elif private.is_file():
+    print("  the mountain photograph is local-only, found in the private assets")
+else:
+    print("  the mountain photograph is local-only and not on this machine;")
+    print("  the build will substitute the generated ridge art")
 
 print(f"  {checked} wallpaper declarations checked")
 if fails:

@@ -98,7 +98,7 @@ All notable changes to the build pipeline. Newest first.
 
 ### Part D — legal drafts — 2026-10-12
 - Added `docs/legal/`: NOTICE.md, TERMS.md, PRIVACY.md,
-  BLOCKS-PUBLIC-RELEASE.md, COOKIES.md. Each marked "DRAFT - not legal
+  Bashan Tech LLC's internal legal notes (not published), COOKIES.md. Each marked "DRAFT - not legal
   advice". Nothing published.
 - Written from **measured facts**, not boilerplate. The built image has
   2,106 packages; 3 from contrib, 4 from non-free, 36 non-free-firmware,

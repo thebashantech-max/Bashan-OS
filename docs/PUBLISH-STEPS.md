@@ -30,15 +30,15 @@ Fill in `GITHUB_USER_HERE` before you start.
 Three things are still unfilled and **should be decided before the first
 push**, because changing them afterwards means rewriting history again:
 
-1. **The contact email.** `CONTACT_EMAIL_HERE` appears in `SOURCE-OFFER.md`
-   and `SECURITY.md`. A source offer nobody can reply to is not an offer.
-2. **Commit authorship.** The history carries
-   `Mike Hagari <your-github-email@example.com>` (51 commits) and
-   `Bashan Tech LLC <thebashantech@gmail.com>` (12 commits). Both become
-   permanently public.
-3. **The history rewrite**, if you approve it — see
-   `docs/legal/BLOCKS-PUBLIC-RELEASE.md` §12. Do that **before** pushing,
-   never after.
+1. **The contact email is set** to `admin@bashan.app` in `SOURCE-OFFER.md`
+   and `SECURITY.md`. Make sure that mailbox exists and is read — a source
+   offer nobody answers is worse than no offer.
+2. **Commit authorship is settled.** Every commit carries
+   `Bashan Tech LLC <252811763+thebashantech-max@users.noreply.github.com>`
+   — a GitHub noreply address, so no personal mailbox is published.
+3. **The history rewrite** — done on 2026-10-20. Every commit now carries a
+   single identity and the local-only artwork is gone from every commit. It
+   must not be repeated after the first push.
 
 ---
 
@@ -101,14 +101,9 @@ Open `https://github.com/GITHUB_USER_HERE/Bashan-OS` and check:
 - [ ] The README's "Public Preview — do not put this on a computer you
       depend on" warning is the first thing visible.
 - [ ] `LICENSE` is detected, and says MIT with the brand assets excluded.
-- [ ] `SOURCE-OFFER.md` and `SECURITY.md` have a **real email**, not
-      `CONTACT_EMAIL_HERE`.
+- [ ] `SOURCE-OFFER.md` and `SECURITY.md` show `admin@bashan.app`, and that
+      mailbox is live.
 - [ ] No audio file anywhere — search the repo for `boot-song`.
-- [ ] `docs/legal/BLOCKS-PUBLIC-RELEASE.md` — decide whether you want this
-      public. It is an honest, detailed list of the project's own legal
-      exposure: codec patents, trademark questions, export control. Publishing
-      it is unusually transparent, and it is also a catalogue of where the
-      project is weakest. **Your call, and worth making deliberately.**
 - [ ] The commit author names and emails are ones you are happy to publish.
 
 Apply the settings in `docs/GITHUB-SETUP.md` — topics, website, and

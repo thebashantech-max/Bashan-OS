@@ -32,7 +32,7 @@ user mistakes this for Debian. Debian is named in documentation and in this
 file to say truthfully where the software came from.
 
 > **Open:** a lawyer must confirm this use fits Debian's trademark policy for
-> a rebranded commercial derivative. See `docs/legal/BLOCKS-PUBLIC-RELEASE.md`
+> a rebranded commercial derivative. See Bashan Tech LLC's internal legal notes (not published)
 > §8.
 
 ## KDE
@@ -67,7 +67,7 @@ Software has not endorsed Bashan OS and does not support this distribution.
 
 > **Open:** redistributing the official Brave binary, and using the Brave name
 > and icon in the dock and menu, must be confirmed against Brave's trademark
-> and redistribution policy. See `BLOCKS-PUBLIC-RELEASE.md` §8.
+> and redistribution policy. See Bashan Tech LLC's internal legal notes (not published) §8.
 
 ## Google and Chrome
 
@@ -146,7 +146,7 @@ only package in the image that does this.
 
 > **Open:** confirm that all 26 permit redistribution by a third party in a
 > commercially published product, and decide whether pre-accepting Intel's
-> licence is acceptable. See `BLOCKS-PUBLIC-RELEASE.md` §4c and §5.
+> licence is acceptable. See Bashan Tech LLC's internal legal notes (not published) §4c and §5.
 
 ---
 
@@ -185,7 +185,7 @@ you received, so the exact package versions can be identified.
 > discharges the obligation for unmodified packages, or whether Bashan Tech
 > LLC must host its own source archive, and must fill in a real contact
 > address for the offer above. An offer with no address is not an offer. See
-> `BLOCKS-PUBLIC-RELEASE.md` §10.
+> Bashan Tech LLC's internal legal notes (not published) §10.
 
 ---
 
